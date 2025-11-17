@@ -1,147 +1,147 @@
 toc:
   properties:
-    subcollection: EventStreams
+    subcollection: EventStreams-gen2
     service-name: messagehub
     category: integration
     audience: service
-    href: /docs/EventStreams/
-    path: EventStreams
+    href: /docs/EventStreams-gen2/
+    path: EventStreams-gen2
     label: Event Streams
     version: 2
     console-page: /catalog/services/event-streams
     product-page: https://www.ibm.com/products/event-streams
   entries:
-    - navgroup:
-        id: learn
-        topics:
-        - getting-started.md
-        - topic: quick_setup_guide.md
-          navtitle: Quick setup guide
-        - topic: overview.md
-          navtitle: Overview
-        - topic: release-notes.md
-          navtitle: Release notes
-        - topic: apache_kafka_concepts.md
-          navtitle: Apache Kafka concepts
-        - topic: use_cases.md
-          navtitle: Apache Kafka use cases
-        - choosing_your_plan.md
-    - navgroup:
-        id: howto
-        topics:
-        - connecting_es.md
-        - topicgroup:
-            label: Administering Event Streams
-            topics:
-            - using_admin_rest_api.md
-            - using_admin_kafka_api.md
-            - using_kafka_console.md
-            - getting_started_cli.md
-            - scaling_capacity.md
-            - enabling_mirroring.md
-            - disabling_mirroring.md
-            - enabling_kafka_quotas.md
-        - topicgroup:
-            label: Developing apps with Event Streams
-            topics:
-            - using_kafka_api.md
-            - producing_messages.md
-            - consuming_messages.md
-            - topic: partition_leadership.md
-              navtitle: Partition leadership
-            - schema_registry.md
-            - using_kafka_connect.md
-            - using_kafka_streams.md
-            - using_ksqldb.md
-            - using_rest_producer.md
-            - mirroring.md
-        - topicgroup:
-            label: Integrating with other services
-            topics:
-            - connecting_cos.md
-            - connecting_mq.md
-            - watson_platform.md
-            - streaming_cloud_logs.md
-        - topicgroup:
-            label: Enhancing security
-            topics:
-            - security_overview.md
-            - topic: data_security.md
-              navtitle: Data security and privacy
-            - topic: security.md
-              navtitle: Understanding compliance
-            - topic: manage_security.md
-              navtitle: Managing security and compliance
-            - topic: managing_encryption.md
-              navtitle: Managing encryption
-            - topic: managing_access.md
-              navtitle: Managing authentication
-            - restricting_access_enterprise.md
-            - topic: restricting_access_iam.md
-              navtitle: Using IAM IP address access restrictions
-        - using_kafka_client.md
-    - navgroup:
-        id: reference
-        topics:
-        - sla.md
-        - responsibilities.md
-        - ha-dr.md
-        - resiliency.md
-        - data_portability.md
-        - topic: limits_quotas.md
-          navtitle: Limits and quotas
-        - activity_tracker_events.md
-        - monitoring.md
-        - kafka_client_metrics.md
-        - disaster_recovery.md
-        - service-dependency.md
-        - reserved_disk.md
-        - setting_up_app_vpn.md
-        - topicgroup:
-            label: API and CLI reference
-            topics:
-            - topic: api_overview.md
-            - link:
-                label: IBM Event Streams REST Producer API
-                href: https://{DomainName}/apidocs/event-streams/restproducer
-            - link:
-                label: IBM Event Streams REST Producer v2 endpoint API
-                href: https://{DomainName}/apidocs/event-streams/restproducer_v2
-            - link:
-                label: IBM Event Streams Admin REST API
-                href: https://{DomainName}/apidocs/event-streams/adminrest
-            - eventstreams-cli.md
-        - eventstreams-terraform.md    
-        - sdk.md
-        - topicgroup:
-              label: Related links
-              topics:
-              - link:
-                  label: Event Streams Java Kafka sample
-                  href: https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-console-sample
-              - link:
-                  label: Apache Kafka client downloads
-                  href: https://kafka.apache.org/downloads
-              - link:
-                  label: IBM Event Streams on ibm.com
-                  href: https://www.ibm.com/products/event-streams
-              - link:
-                  label: IBM Cloud pricing information
-                  href: https://cloud.ibm.com/docs/billing-usage?topic=billing-usage-cost#cost
-              - link:
-                  label: Apache Kafka documentation
-                  href: http://kafka.apache.org/documentation.html
-    - navgroup:
-        id: help
-        topics:
-          - faq.md
-          - topicgroup:
-              label: Troubleshooting
-              topics:
-              - topic: getting_support.md
-                navtitle: Getting help and support
-              - topic: known_restrictions.md
-                navtitle: Known restrictions
-              - troubleshooting.md
-              - topic: reporting_problem.md
-                navtitle: Reporting a problem
+  - navgroup:
+      id: learn
+      topics:
+      - getting-started.md
+      - topic: quick_setup_guide.md
+        navtitle: Quick setup guide
+      - topic: overview.md
+        navtitle: Overview
+      - topic: release-notes.md
+        navtitle: Release notes
+      - topic: apache_kafka_concepts.md
+        navtitle: Apache Kafka concepts
+      - topic: use_cases.md
+        navtitle: Apache Kafka use cases
+      - choosing_your_plan.md
+  - navgroup:
+      id: howto
+      topics:
+      - connecting_es.md
+      - topicgroup:
+          label: Administering Event Streams
+          topics:
+          - using_admin_rest_api.md
+          - using_admin_kafka_api.md
+          - using_kafka_console.md
+          - getting_started_cli.md
+          - scaling_capacity.md
+          - enabling_mirroring.md
+          - disabling_mirroring.md
+          - enabling_kafka_quotas.md
+      - topicgroup:
+          label: Developing apps with Event Streams
+          topics:
+          - using_kafka_api.md
+          - producing_messages.md
+          - consuming_messages.md
+          - topic: partition_leadership.md
+            navtitle: Partition leadership
+          - schema_registry.md
+          - using_kafka_connect.md
+          - using_kafka_streams.md
+          - using_ksqldb.md
+          - using_rest_producer.md
+          - mirroring.md
+      - topicgroup:
+          label: Integrating with other services
+          topics:
+          - connecting_cos.md
+          - connecting_mq.md
+          - watson_platform.md
+          - streaming_cloud_logs.md
+      - topicgroup:
+          label: Enhancing security
+          topics:
+          - security_overview.md
+          - topic: data_security.md
+            navtitle: Data security and privacy
+          - topic: security.md
+            navtitle: Understanding compliance
+          - topic: manage_security.md
+            navtitle: Managing security and compliance
+          - topic: managing_encryption.md
+            navtitle: Managing encryption
+          - topic: managing_access.md
+            navtitle: Managing authentication
+          - restricting_access_enterprise.md
+          - topic: restricting_access_iam.md
+            navtitle: Using IAM IP address access restrictions
+      - using_kafka_client.md
+  - navgroup:
+      id: reference
+      topics:
+      - sla.md
+      - responsibilities.md
+      - ha-dr.md
+      - resiliency.md
+      - data_portability.md
+      - topic: limits_quotas.md
+        navtitle: Limits and quotas
+      - activity_tracker_events.md
+      - monitoring.md
+      - kafka_client_metrics.md
+      - disaster_recovery.md
+      - service-dependency.md
+      - reserved_disk.md
+      - setting_up_app_vpn.md
+      - topicgroup:
+          label: API and CLI reference
+          topics:
+          - topic: api_overview.md
+          - link:
+              label: IBM Event Streams REST Producer API
+              href: https://{DomainName}/apidocs/event-streams/restproducer
+          - link:
+              label: IBM Event Streams REST Producer v2 endpoint API
+              href: https://{DomainName}/apidocs/event-streams/restproducer_v2
+          - link:
+              label: IBM Event Streams Admin REST API
+              href: https://{DomainName}/apidocs/event-streams/adminrest
+          - eventstreams-cli.md
+      - eventstreams-terraform.md
+      - sdk.md
+      - topicgroup:
+          label: Related links
+          topics:
+          - link:
+              label: Event Streams Java Kafka sample
+              href: https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-console-sample
+          - link:
+              label: Apache Kafka client downloads
+              href: https://kafka.apache.org/downloads
+          - link:
+              label: IBM Event Streams on ibm.com
+              href: https://www.ibm.com/products/event-streams
+          - link:
+              label: IBM Cloud pricing information
+              href: https://cloud.ibm.com/docs/billing-usage?topic=billing-usage-cost#cost
+          - link:
+              label: Apache Kafka documentation
+              href: http://kafka.apache.org/documentation.html
+  - navgroup:
+      id: help
+      topics:
+      - faq.md
+      - topicgroup:
+          label: Troubleshooting
+          topics:
+          - topic: getting_support.md
+            navtitle: Getting help and support
+          - topic: known_restrictions.md
+            navtitle: Known restrictions
+          - troubleshooting.md
+          - topic: reporting_problem.md
+            navtitle: Reporting a problem
