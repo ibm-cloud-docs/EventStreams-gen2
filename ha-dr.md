@@ -2,11 +2,11 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-09-15"
+lastupdated: "2025-11-20"
 
 keywords: HA for Event Streams, DR for Event Streams, Event Streams recovery time objective, high availability, disaster recovery
 
-subcollection: content-kit
+subcollection: EventStreams-gen2
 
 ---
 
@@ -26,7 +26,7 @@ subcollection: content-kit
 
 
 
-{{site.data.keyword.messagehub_full}} is a global service and you can find the available region and data center locations in the [Service and infrastructure availability by location](/docs/overview?topic=overview-services_region) documentation. As a global service, {{site.data.keyword.messagehub}}} fulfills the defined [Service Level Objectives (SLO)](/docs/resiliency?topic=resiliency-slo) with the Standard and Enterprise plans. The SLO is not a warranty and {{site.data.keyword.IBM}} will not issue credits for failure to meet an objective.
+{{site.data.keyword.messagehub_full}} is a global service and you can find the available region and data center locations in the [Service and infrastructure availability by location](/docs/overview?topic=overview-services_region) documentation. As a global service, {{site.data.keyword.messagehub}}} fulfills the defined [Service Level Objectives (SLO)](/docs/resiliency?topic=resiliency-slo) using the Enterprise Gen2 plans. **N.B. during Beta no SLOs apply**. The SLO is not a warranty and {{site.data.keyword.IBM}} will not issue credits for failure to meet an objective.
 
 ## High availability architecture
 {: #ha-architecture}
@@ -52,25 +52,29 @@ subcollection: content-kit
 
 
 
+NEED disaster recovery architecture diagram! DESIGN TEAM
+
 
 
 
 ### Disaster recovery features
 {: #dr-features}
 
-{{site.data.keyword.messagehub}} supports the following disaster recovery features:
+The Enterprose Gen2 initial release does not support Mirroring as a managed feature, although you can set up your own Kafka Mirroring solution.
 
 
 
 | Feature | Description | Consideration |
 | -------------- | -------------- | -------------- |
-| Mirroring | Mirroring for cluster replication | {{site.data.keyword.messagehub}} provides a mirroring feature that enables messages in one {{site.data.keyword.messagehub}} instance to be continuously copied into a second instance. You can use the {{site.data.keyword.messagehub}} [Mirroring feature](/docs/EventStreams?topic=EventStreams-mirroring), or choose to manage your own mirroring solution. |
+| Mirroring | Mirroring for cluster replication | {{site.data.keyword.messagehub}} Enterprose Gne2 initial release does not provide provides a mirroring feature, however a customer can choose to manager their own mirroring solution to enable messages to be continuously copied into a second instance. |
 {: caption="DR features for {{site.data.keyword.messagehub}}" caption-side="bottom"}
 
 #### Mirroring for {{site.data.keyword.messagehub}}
 {: #dr-feature-1}
 
 Mirroring enables messages in one {{site.data.keyword.messagehub}} service instance to be continuously copied to a second instance. Application resilience can be improved by using mirroring, so if the first service instance becomes unavailable, applications can reconnect to the second instance and continue their normal operation.
+
+GREY THIS SECTION OUT or REMOVE UNTIL SUPPORTED???
 
 This feature is part of the fully managed service and can only be used between service instances that use the {{site.data.keyword.messagehub}} Enterprise plan.
 
@@ -81,7 +85,7 @@ This feature is part of the fully managed service and can only be used between s
 2. Limitations of mirroring:
 - Unidirectional: Data can only be mirrored in one direction at a time between a pair of service instances. This means that mirroring offers an "active-passive" style of high availability, not an "active-active" style.
 - Asynchronous: Messages must be successfully produced to the source instance before they can be mirrored to the target instance. This means that when a failure occurs, some message data may be lost.
-- At-least-once message consumption: When a consumer moves between instances, it may need to reprocess messages that it has already processed.
+- At-least-once message consumption: When a consumer moves between instances, it may need to reprocess messages that it has already processed.-->
 
 
 
@@ -95,16 +99,17 @@ The disaster recovery steps must be practiced regularly. As you build your plan,
 | Failure | Resolution |
 | -------------- | -------------- |
 | Hardware failure (single point) | {{site.data.keyword.messagehub}} is resilient to a single point of hardware failure within a zone - no configuration required. |
-| Zone failure | An {{site.data.keyword.messagehub}} instance that is deployed in a multi-zone region is resilient to the failure of a single zone - no configuration required. For single zone deployments, set up another {{site.data.keyword.messagehub}} cluster as a mirrored pair to mitigate against a zone failure.|
-| Data corruption | {{site.data.keyword.messagehub}} does not include any built-in mechanisms to recover from data corruption. You are required to plan for such circumstances as a part of a disaster recovery plan and may need to use the mirroring feature or configure a new instance.  |
+| Zone failure | An {{site.data.keyword.messagehub}} instance that is deployed in a multi-zone region is resilient to the failure of a single zone - no configuration required.|
+| Data corruption | {{site.data.keyword.messagehub}} does not include any built-in mechanisms to recover from data corruption. You are required to plan for such circumstances as a part of a disaster recovery plan and may need to use a mirroring feature or configure a new instance. |
 | Regional failure | If you configured your {{site.data.keyword.messagehub}} instance in a multi-zone region, a regional disaster is unlikely. If a regional failure does occur, you are required to configure a new instance in another region. For more information, see [Understanding your responsibilities](/docs/EventStreams?topic=EventStreams-event_streams_responsibilities). |
 {: caption="Disaster recovery scenarios for {{site.data.keyword.messagehub}}" caption-side="bottom"}
 
 
-## Your responsibilities for HA and DR
-{: #feature-responsibilities}
 
-The following information can help you to create and continuously practice your plan for HA and DR.
+
+
+## Change management
+{: #change-management}
 
 
 
@@ -112,7 +117,7 @@ It is important to understand the management responsibilities and terms and cond
 
 As part of disaster recovery, it is recommended that you grant users and processes the IAM roles and actions with the least privilege required for their work. For more information, see [How can I prevent accidental deletion of services?](/docs/resiliency?topic=resiliency-dr-faq#prevent-accidental-deletion).
 
-All {{site.data.keyword.messagehub}} plans (excluding Satellite) can recover a deleted instance within reclamation period of three days, after which the data is irreversibly destroyed. You can check the status of a reclamation, and force or cancel a scheduled reclamation by using  the [IBM Cloud CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_reclamations).
+All {{site.data.keyword.messagehub}} plans can recover a deleted instance within reclamation period of three days, after which the data is irreversibly destroyed. You can check the status of a reclamation, and force or cancel a scheduled reclamation by using  the [IBM Cloud CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_reclamations).
 
 
 
