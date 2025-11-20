@@ -2,11 +2,11 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-09-15"
+lastupdated: "2025-11-20"
 
 keywords: protocols, encryption, data isolation, data retention, data isolation model
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -18,7 +18,7 @@ subcollection: EventStreams
 {{site.data.keyword.IBM}} uses the following methods to help ensure the security and privacy of your data: cryptographic protocols, encryption, and data isolation. Each plan provides different data isolation models.
 {: shortdesc}
 
-## Cryptographic protocols
+## Cryptographic protocols - THIS SECTION NEEDS INPUT FROM TEAM TO BE UPDATED
 {: #cryptographic}
 
 * Connections are restricted to the following strong cipher suites:
@@ -58,26 +58,10 @@ For information about compliance on each of the {{site.data.keyword.messagehub}}
 ## Data isolation model
 {: #data_isolation}
 
-{{site.data.keyword.messagehub}}'s data isolation model varies according to which plan you use.
-
-### Enterprise plan
+### Enterprise Gen2 plan
 {: #data_isolation_enterprise}
 
-The Enterprise plan provides a tenant-specific service in the {{site.data.keyword.IBM_notm}} service domain. The Enterprise plan creates a single tenant instance on a dedicated Kubernetes cluster on shared hardware (VSI isolation). By default, the Enterprise plan provides public endpoints, but it also supports Cloud service endpoints to enable private endpoints for further network isolation on request. The Enterprise plan creates single tenant {{site.data.keyword.blockstorageshort}} for each new instance.
-
-### Standard plan
-{: #data_isolation_standard}
-
-The Standard plan provides a public service with public endpoints. The Standard plan creates a tenant instance on a shared Kubernetes cluster on shared hardware (VSI isolation). The Standard plan provides public endpoints only.
-
-The Standard plan uses shared {{site.data.keyword.blockstorageshort}} and achieves tenant isolation through separation of files and access controls.
-
-### Lite plan
-{: #data_isolation_lite}
-
-The Lite plan provides a public service with public endpoints. The Lite plan creates a tenant instance on a shared Kubernetes cluster on shared hardware (VSI isolation). The Lite plan provides public endpoints only.
-
-The Lite plan uses shared {{site.data.keyword.blockstorageshort}} and achieves tenant isolation through separation of files and access controls.
+The Enterprise Gen2 plan provides a tenant-specific service in the {{site.data.keyword.IBM_notm}} service domain. The Enterprise Gen2 plan creates a single-tenant instance on a shared Kubernetes cluster on shared hardware (VSI isolation). The Enterprise Gen2 plan provides private endpoints only for network isolation. The Enterprise Gen2 plan creates single-tenant {{site.data.keyword.blockstorageshort}} for each new instance.
 
 ## Data retention and reclamation
 {: #data_retention_reclamation}
