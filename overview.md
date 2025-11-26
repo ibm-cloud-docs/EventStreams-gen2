@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-10-23"
+  years: 2025
+lastupdated: "2025-11-26"
 
 keywords: managed kafka, kafka as a service, managed apache kafka, kafka on cloud
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -34,3 +34,15 @@ Apache Kafka tools usually work directly with {{site.data.keyword.messagehub}}, 
 
 In {{site.data.keyword.messagehub}}, applications send data by creating a message and sending it to a topic. To receive messages, applications subscribe to a topic
 and choose to either receive all the topic's messages, or to share the messages between them. {{site.data.keyword.messagehub}} hosts and maintains the messages in an ordered sequence. 
+
+## Generation 1 (Classic)
+{: #about-gen1
+}
+IBM’s original platform with a rich feature set across all regions. Gen 1 supports both private and public endpoints, with single-tenant and multi-tenant options. This environment is best suited for workloads that benefit from simpler networking and isolation features.
+
+## Generation 2 (VPC)
+{: #about-gen2}
+
+Built on IBM’s latest platform, using highly secure software-defined networking and is ideal for cloud-native applications. Currently only available in select regions with support for private endpoints and isolated compute hosting. This environment is ideal for modern applications that demand advanced networking and secure, software-defined isolation.
+
+The isolated compute hosting model provides a Kafka cluster per service instance which runs on single-tenant virtual machines and storage, providing hypervisor-level isolation and dedicated storage bandwidth. This model is ideal for workloads that demand consistent performance, security, and compliance.

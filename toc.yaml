@@ -18,8 +18,8 @@ toc:
         navtitle: Quick setup guide
       - topic: overview.md
         navtitle: Overview
-      - topic: release-notes.md
-        navtitle: Release notes
+      - topic: release-notes-gen2.md
+        navtitle: Release notes Gen 2
       - topic: apache_kafka_concepts.md
         navtitle: Apache Kafka concepts
       - topic: use_cases.md
