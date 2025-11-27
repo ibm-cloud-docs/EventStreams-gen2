@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-11-26"
+lastupdated: "2025-11-27"
 
 keywords: managed kafka, kafka as a service, managed apache kafka, kafka on cloud
 
@@ -32,12 +32,11 @@ By being built with Apache Kafka, our offering directly benefits from all the in
 
 Apache Kafka tools usually work directly with {{site.data.keyword.messagehub}}, although you do need to provide more configuration because connections to {{site.data.keyword.messagehub}} always authenticate by using credentials.
 
-In {{site.data.keyword.messagehub}}, applications send data by creating a message and sending it to a topic. To receive messages, applications subscribe to a topic
-and choose to either receive all the topic's messages, or to share the messages between them. {{site.data.keyword.messagehub}} hosts and maintains the messages in an ordered sequence. 
+In {{site.data.keyword.messagehub}}, applications send data by creating a message and sending it to a topic. To receive messages, applications subscribe to a topic and choose to either receive all the topic's messages, or to share the messages between them. {{site.data.keyword.messagehub}} hosts and maintains the messages in an ordered sequence. 
 
 ## Generation 1 (Classic)
-{: #about-gen1
-}
+{: #about-gen1}
+
 IBM’s original platform with a rich feature set across all regions. Gen 1 supports both private and public endpoints, with single-tenant and multi-tenant options. This environment is best suited for workloads that benefit from simpler networking and isolation features.
 
 ## Generation 2 (VPC)
