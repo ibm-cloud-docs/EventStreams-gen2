@@ -14,6 +14,8 @@ toc:
   - navgroup:
       id: learn
       topics:
+      - topic: gen2-beta.md
+        navtitle: Beta reference
       - topic: quick_setup_guide.md
         navtitle: Quick setup guide
       - topic: overview.md
