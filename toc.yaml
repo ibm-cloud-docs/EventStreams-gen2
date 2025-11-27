@@ -94,12 +94,8 @@ toc:
       - service-dependency.md
       - reserved_disk.md
       - setting_up_app_vpn.md
-      - topicgroup:
-          label: API and CLI reference
-          topics:
-          - api_overview.md
-          - api.md
-          - cli.md
+      - api.md
+      - cli.md
       - eventstreams-terraform.md
       - sdk.md
       - topicgroup:
