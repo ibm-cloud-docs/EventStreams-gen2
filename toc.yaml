@@ -97,17 +97,9 @@ toc:
       - topicgroup:
           label: API and CLI reference
           topics:
-          - topic: api_overview.md
-          - link:
-              label: IBM Event Streams REST Producer API
-              href: https://{DomainName}/apidocs/event-streams/restproducer
-          - link:
-              label: IBM Event Streams REST Producer v2 endpoint API
-              href: https://{DomainName}/apidocs/event-streams/restproducer_v2
-          - link:
-              label: IBM Event Streams Admin REST API
-              href: https://{DomainName}/apidocs/event-streams/adminrest
-          - eventstreams-cli.md
+          - api_overview.md
+          - api.md
+          - cli.md
       - eventstreams-terraform.md
       - sdk.md
       - topicgroup:
