@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2015, 2024
-lastupdated: "2024-03-01"
+  years: 2025
+lastupdated: "2025-12-01"
 
 keywords: console tools, console producer, console consumer, consumer groups
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -20,7 +20,7 @@ Apache Kafka comes with various console tools for simple administration and mess
 
 These console tools are in the `bin` directory of your Kafka download. You can download a client from [Apache Kafka downloads](http://kafka.apache.org/downloads){: external}.
 
-For an example of how run and connect these tools see [Connecting to Kafka](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting)
+For an example of how to run and connect these tools, see [Connecting to Kafka](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting).
 
 To provide the SASL credentials to these tools, create a properties file based on the following example:
 
