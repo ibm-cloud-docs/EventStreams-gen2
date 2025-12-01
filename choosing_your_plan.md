@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2025
-lastupdated: "2025-11-20"
+  years: 2025
+lastupdated: "2025-12-01"
 
 keywords: plan, Enterprise, Standard, Lite, pricing, throughput, partitions, tenancy, compliance
 
@@ -49,7 +49,9 @@ The architecture is highly available when you choose to deploy into a multi-zone
 
 The Enterprise Gen2 plan is appropriate if data isolation, performance, and increased retention are important considerations.
 
->NEED UCHE'S INPUT>
+Built on {{site.data.keyword.IBM}}’s latest platform, using highly secure software-defined networking and ideal for cloud-native applications. Currently only available in select regions with support for private endpoints and isolated compute hosting. This environment is ideal for modern applications that demand advanced networking and secure, software-defined isolation.
+
+The isolated compute hosting model provides a Kafka cluster per service instance which runs on single-tenant virtual machines and storage, providing hypervisor-level isolation and dedicated storage bandwidth. This model is ideal for workloads that demand consistent performance, security, and compliance.
 
 ## What is supported by the Lite, Standard, Enterprise and Enterprise Gen2  plans
 {: #what_is_supported}
