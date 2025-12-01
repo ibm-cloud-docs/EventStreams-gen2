@@ -1,12 +1,11 @@
 ---
-
 copyright:
-  years: {CURRENT_YEAR}]
-lastupdated: "2025-11-26" 
+  years: 2025
+lastupdated: "2025-12-01"
 
-keywords: release notes
+keywords: gen 2, beta
 
-subcollection: EventStreams-gen2
+subcollection: event-streams-gen2
 
 content-type: release-note
 
@@ -25,7 +24,6 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 Beta introduciton of Enterprise Gen2 plan
-:   Support for Apache Kafka version 4.1
-:   Support for VPC and software defined networking
-:   Support for Isolated Compute hosting model
+:   Support for Apache Kafka version 4.1.
+:   Built on VPC and software defined networking.
 :   Available in the Montreal region.
