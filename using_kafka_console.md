@@ -15,10 +15,12 @@ subcollection: EventStreams
 # Using Kafka console tools with {{site.data.keyword.messagehub}}
 {: #kafka_console_tools}
 
-Apache Kafka comes with various console tools for simple administration and messaging operations. You can use many of them with {{site.data.keyword.messagehub}}, although {{site.data.keyword.messagehub}} does not permit connection to its ZooKeeper cluster. As Kafka developed, many of the tools that previously required connection to ZooKeeper no longer have that requirement.
+Apache Kafka comes with various console tools for simple administration and messaging operations. You can use many of them with {{site.data.keyword.messagehub}}, although {{site.data.keyword.messagehub}} does not permit connection to its KRaft cluster. 
 {: shortdesc}
 
 These console tools are in the `bin` directory of your Kafka download. You can download a client from [Apache Kafka downloads](http://kafka.apache.org/downloads){: external}.
+
+For an example of how run and connect these tools see [Connecting to Kafka](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting)
 
 To provide the SASL credentials to these tools, create a properties file based on the following example:
 

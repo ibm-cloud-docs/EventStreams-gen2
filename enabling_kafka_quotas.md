@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2023
-lastupdated: "2023-12-05"
+  years: 2025
+lastupdated: "2025-12-01"
 
 keywords: quotas, quota implementation, mapping quotas, authorization, client metrics
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -52,7 +52,7 @@ The Java client also exposes throttling information with the following per-broke
 ## Setting client quotas
 {: #setting_quotas}
 
-The {{site.data.keyword.messagehub_full}} Enterprise plan allows the use of the Kafka API to set and describe quotas on Kafka V3.1.x clusters. For more information, see the [Quota Operations section](https://cloud.ibm.com/apidocs/event-streams/adminrest#create-quota) of the {{site.data.keyword.messagehub_full}} Admin REST API.
+The {{site.data.keyword.messagehub_full}} Enterprise plan allows the use of the Kafka API to set and describe quotas.
 
 With reference to the [Kafka documentation on quotas](https://kafka.apache.org/documentation/#quotas), only throughput quota types ("producer_byte_rate" and "consumer_byte_rate" quota types) applied to the "user" entity (or the "default user") are supported. 
 
@@ -87,7 +87,7 @@ See the following example output:
 ## Mapping quotas onto an IBM Event Streams Enterprise cluster
 {: #mapping_quotas_enterprise}
 
-The Kafka API quotas are per-broker, however Enterprise plan capacity is described as a [per-cluster throughput](https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-kafka_quotas#enterprise_throughput). Therefore, if you want to limit a user to 10 MB/s in total, you apply a quota of 10/n MB/s to each broker (where n is the number of brokers in the cluster).
+The Kafka API quotas are per-broker, however Enterprise plan capacity is described as a per-cluster throughput. Therefore, if you want to limit a user to 10 MB/s in total, you apply a quota of 10/n MB/s to each broker (where n is the number of brokers in the cluster).
 
 To find the number of brokers in a cluster, you can use the `KafkaAdminClient.describeCluster` call.
 
