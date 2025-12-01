@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024, 2025
-lastupdated: "2025-11-20"
+  years: 2025
+lastupdated: "2025-12-01"
 
 keywords: quick setup guide
 
@@ -11,7 +11,6 @@ subcollection: EventStreams-gen2
 ---
 
 {{site.data.keyword.attribute-definition-list}}
-{:ui: .ph data-hd-interface="ui"}
 
 # Quick setup guide for {{site.data.keyword.messagehub}} for {{site.data.keyword.cloud_notm}}
 {: #quick_setup_guide}
@@ -40,16 +39,16 @@ Follow these steps to complete the tutorial: {: ui}
 {: #prereqs}
 
 Before you get started, we highly recommend that you read the following information to better understand Apache Kafka, which {{site.data.keyword.messagehub}} is built on:
-* [Apache Kafka concepts](/docs/EventStreams?topic=EventStreams-apache_kafka){: external}
-* [Apache Kafka fundamentals](https://developer.ibm.com/articles/event-streams-kafka-fundamentals/?mhsrc=ibmsearch_a&mhq=event%20streams){: external}
+* [Apache Kafka concepts](/docs/EventStreams-gen2?topic=EventStreams-gen2-apache_kafka)
+* [Apache Kafka fundamentals](https://developer.ibm.com/articles/event-streams-kafka-fundamentals/?mhsrc=ibmsearch_a&mhq=event%20streams)
 
 
 ## Step 1: Select your plan 
 {: #choose_plan}
 
-{{site.data.keyword.messagehub}} offers different plans according to the generation of the platform, see [Choosing your plan](/docs/EventStreams?topic=EventStreams-plan_choose){: external}. For the Gen2 platform the following plan can be selected.
+{{site.data.keyword.messagehub}} offers different plans according to the generation of the platform, see [Choosing your plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose){: external}. For the Gen2 platform the following plan can be selected.
 
-* The [Enterprise Gen2 plan](/docs/EventStreams?topic=EventStreams-plan_choose#plan_enterprise-gen2){: external} offers pay-as-you-go access to an isolated single-tenant {{site.data.keyword.messagehub}} service running on the Gen2 (VPC) platform. In addition to a selection of throughput and storage options, this plan also offers user-managed encryption private endpoints and meets a higher number of regulatory compliance standards. The Enterprise Gen2 plan is the best choice if data isolation, scalability, security, guaranteed performance, and increased retention are important considerations.
+* The [Enterprise Gen2 plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose) offers pay-as-you-go access to an isolated single-tenant {{site.data.keyword.messagehub}} service running on the Gen2 (VPC) platform. In addition to a selection of throughput and storage options, this plan also offers user-managed encryption private endpoints and meets a higher number of regulatory compliance standards. The Enterprise Gen2 plan is the best choice if data isolation, scalability, security, guaranteed performance, and increased retention are important considerations.
 
 
 ## Step 2: Provision an {{site.data.keyword.messagehub}} instance by using the console
@@ -75,7 +74,7 @@ Before you get started, we highly recommend that you read the following informat
 {: #create_topic_ui}
 {: ui}
 
-For guidance about the settings that you can modify when creating topics, see [topic configuration](/docs/EventStreams?topic=EventStreams-kafka_java_api){: external}.
+For guidance about the settings that you can modify when creating topics, see [topic configuration](/docs/EventStreams?topic=EventStreams-kafka_java_api).
 
 
 1. From your newly provisioned instance, navigate to **Topics** using the menu on the left.
@@ -87,7 +86,6 @@ For guidance about the settings that you can modify when creating topics, see [t
     Partitions are distributed across the brokers to increase the scalability of your topic. You can also use them to distribute messages across the members of a consumer group.
 
     Click **Next**.
-
 
 4. Set the message retention period. This is how long messages are retained before they are deleted. If your messages are not read by a consumer within this time, they will be missed. The default retention period for messages is 24 hours. The minimum is 1 hour and the maximum is 30 days. Specify this value as multiples of hours.
 
@@ -169,10 +167,10 @@ To get up and running with {{site.data.keyword.at_short}}, see [Getting Started 
 
 For more information about events specific to {{site.data.keyword.messagehub}}, see:
 
-* [Where to view events](/docs/EventStreams?topic=EventStreams-at_events#ui){: external}
-* [Topic events](/docs/EventStreams?topic=EventStreams-at_events#topic-events){: external}
-* [Message audit events](/docs/EventStreams?topic=EventStreams-at_events#message-events){: external}
-* [Other events](/docs/EventStreams?topic=EventStreams-at_events#other-events){: external}
+* [Where to view events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events#ui){: external}
+* [Topic events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events#topic-events){: external}
+* [Message audit events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events#message-events){: external}
+* [Other events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events#other-events){: external}
 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
