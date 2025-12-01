@@ -6,7 +6,7 @@ lastupdated: "2024-05-13"
 
 keywords: api, consumer, producer, admin, streams, connect, client
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -28,21 +28,21 @@ Kafka provides a rich set of APIs and clients across a broad range of languages.
 
 The following table summarizes what you can use with {{site.data.keyword.messagehub}}:
 
-|                                              | Enterprise plan                                                                                                                                  | Standard plan                                                                                                                                    | Lite plan                                                                                                                                        |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Kafka version on cluster**                 | Kafka 3.8                                                                                                                                        | Kafka 3.8                                                                                                                                        | Kafka 3.8                                                                                                                                        |
-| **Minimum recommended Kafka client version** | Kafka 2.6.0, or later                                                                                                                            | Kafka 2.6.0, or later                                                                                                                            | Kafka 2.6.0, or later                                                                                                                            |
-| **Supported client versions**                | See [Support summary for all recommended clients](/docs/EventStreams?topic=EventStreams-kafka_using#client_summary)                              |                                                                                                                                                  |                                                                                                                                                  |
-| **Kafka Connect supported**                  | Yes                                                                                                                                              | Yes                                                                                                                                              | No                                                                                                                                               |
-| **Kafka Streams supported**                  | Yes                                                                                                                                              | Yes                                                                                                                                              | No                                                                                                                                               |
-| **ksqlDB supported**                         | Yes                                                                                                                                              | No                                                                                                                                               | No                                                                                                                                               |
-| **Authentication requirements**              | Client must support authentication by using the SASL Plain mechanism and use the Server Name Indication (SNI) extension to the TLSv1.2 protocol. | Client must support authentication by using the SASL Plain mechanism and use the Server Name Indication (SNI) extension to the TLSv1.2 protocol. | Client must support authentication by using the SASL Plain mechanism and use the Server Name Indication (SNI) extension to the TLSv1.2 protocol. |
-{: caption="Kafka client support in Standard, Enterprise, and Lite plans." caption-side="bottom"}
+|                                              | Enterprise plan Gen2                                                                                                                          | 
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Kafka version on cluster**                 | Kafka 4.1                                                                                                                                        | 
+| **Minimum recommended Kafka client version** | Kafka 2.6.0, or later                                                                                                                            |
+| **Supported client versions**                | See [Support summary for all recommended clients](/docs/EventStreams-gen2?topic=EventStreams-kafka_using-gen2#client_summary)                              |
+| **Kafka Connect supported**                  | Yes                                                                                                                                              |
+| **Kafka Streams supported**                  | Yes                                                                                                                                              |
+| **ksqlDB supported**                         | Yes                                                                                                                                              |
+| **Authentication requirements**              | Client must support authentication by using the SASL Plain mechanism and use the Server Name Indication (SNI) extension to the TLSv1.2 protocol. |
+{: caption="Kafka client support in Enterprise Gen2 plan." caption-side="bottom"}
 
 ## Choosing a Kafka client to use with {{site.data.keyword.messagehub}}
 {: #kafka_clients}
 
-The official client for the Kafka API is written in Java, and as such contains the latest features and bug fixes. For more information about this API, see [Kafka Producer API 3.8](https://kafka.apache.org/38/javadoc/org/apache/kafka/clients/producer/KafkaProducer.html){: external} and [Kafka Consumer API 3.8](https://kafka.apache.org/38/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html){: external}.
+The official client for the Kafka API is written in Java, and as such contains the latest features and bug fixes. For more information about this API, see [Kafka Producer API 4.1](https://kafka.apache.org/41/javadoc/org/apache/kafka/clients/producer/KafkaProducer.html){: external} and [Kafka Consumer API 4.1](https://kafka.apache.org/41/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html){: external}.
 
 For other languages, run one of the following clients, all of which are tested with {{site.data.keyword.messagehub}}.
 
@@ -52,7 +52,7 @@ For other languages, run one of the following clients, all of which are tested w
 | Client                                                                                   | Language | Recommended version | Minimum version supported [^tabletext1] | Link to sample                                                                                                                                                                                     |
 | ---------------------------------------------------------------------------------------- | -------- | ------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Official Apache Kafka client:**                                                        |          |                     |                                         |                                                                                                                                                                                                    |
-| [Apache Kafka client](http://kafka.apache.org/downloads)                                 | Java     | 3.8.1, or later     | 2.5.0                                   | [Java console sample](/docs/EventStreams?topic=EventStreams-kafka_java_using) \n \n [Liberty sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-liberty-sample) |
+| [Apache Kafka client](http://kafka.apache.org/downloads)                                 | Java     | 4.1.1, or later     | 2.5.0                                   | [Java console sample](/docs/EventStreams?topic=EventStreams-kafka_java_using) \n \n [Liberty sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-liberty-sample) |
 | **Third-party clients:**                                                                 |          |                     |                                         |                                                                                                                                                                                                    |
 | [confluent-kafka-javascript](https://github.com/confluentinc/confluent-kafka-javascript) | Node.js  | Latest              | 1.0.0                                   |                                                                                                                                                                                                    |
 | [confluent-kafka-python](https://github.com/confluentinc/confluent-kafka-python)         | Python   | Latest              | 1.4.0                                   | [Kafka Python sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-python-console-sample)                                                                              |
@@ -67,14 +67,14 @@ For other languages, run one of the following clients, all of which are tested w
 ### Connecting your client to {{site.data.keyword.messagehub}}
 {: #connect_client}
 
-For information about how to configure your Java client to connect to {{site.data.keyword.messagehub}}, see [Configuring your client](/docs/EventStreams?topic=EventStreams-kafka_using#kafka_api_client).
+For information about how to configure your Java client to connect to {{site.data.keyword.messagehub}}, see [Configuring your client](/docs/EventStreams-gen2?topic=EventStreams-kafka_using#kafka_api_client).
 
 ## Configuring your Kafka API client
 {: #kafka_api_client}
 
 To establish a connection, clients must be configured to use SASL PLAIN or SASL OAUTHBEARER over TLSv1.2 at a minimum and to require a username, and a list of the bootstrap servers. TLSv1.2 ensures that connections are encrypted and validates the authenticity of the brokers (to prevent man-in-the-middle attacks). SASL enforces authentication on all connections.
 
-To retrieve the username, password, and list of bootstrap servers, a service credentials object, or service key is required for the service instance. For more information about creating these objects, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-connecting).
+To retrieve the username, password, and list of bootstrap servers, a service credentials object, or service key is required for the service instance. For more information about creating these objects, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-connecting).
 
 ### Using SASL PLAIN
 {: #using_sasl_plain}
