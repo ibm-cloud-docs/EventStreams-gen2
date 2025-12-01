@@ -34,13 +34,11 @@ toc:
       - topicgroup:
           label: Administering Event Streams
           topics:
-          - using_admin_rest_api.md
           - using_admin_kafka_api.md
+          - api.md
+          - cli.md
           - using_kafka_console.md
-          - getting_started_cli.md
           - scaling_capacity.md
-          - enabling_mirroring.md
-          - disabling_mirroring.md
           - enabling_kafka_quotas.md
       - topicgroup:
           label: Developing apps with Event Streams
@@ -50,12 +48,9 @@ toc:
           - consuming_messages.md
           - topic: partition_leadership.md
             navtitle: Partition leadership
-          - schema_registry.md
           - using_kafka_connect.md
           - using_kafka_streams.md
           - using_ksqldb.md
-          - using_rest_producer.md
-          - mirroring.md
       - topicgroup:
           label: Integrating with other services
           topics:
@@ -92,14 +87,10 @@ toc:
       - activity_tracker_events.md
       - monitoring.md
       - kafka_client_metrics.md
-      - disaster_recovery.md
       - service-dependency.md
       - reserved_disk.md
       - setting_up_app_vpn.md
-      - api.md
-      - cli.md
       - eventstreams-terraform.md
-      - sdk.md
       - topicgroup:
           label: Related links
           topics:
