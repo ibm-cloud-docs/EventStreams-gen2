@@ -1,141 +1,215 @@
 ---
 
 copyright:
-  years: 2015, 2025
-lastupdated: "2025-09-15"
+  years: {CURRENT_YEAR}]
+lastupdated: "2025-12-01"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
-{:external: target="_blank" .external}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:note: .note}
-
+{{site.data.keyword.attribute-definition-list}}
 
 # Connecting to {{site.data.keyword.messagehub}}
 {: #connecting}
 
-To connect to your {{site.data.keyword.messagehub}} instance, you need the endpoint URLs for the APIs and the credentials for authentication. Learn how to obtain these details and the connectivity options that you can use.
+To connect to {{site.data.keyword.messagehub}}, a {{site.data.keyword.vpe_full}} must be created to establish a secure private connection. Credentials must then be created to authenticate with IAM. For applications not running within VPC, additional networking setup is required.
+
+The following information gives an overview of the steps required, using the example of a Kafka client application running on a VPC VSI, but could be applied to any of the VPC application platforms. For apps running externally to a VPC, further information is provided for the additional steps required.
 {: #shortdesc}
 
+### Creating a VPE
+{: #create_VPE}
 
-## Overview
-{: #connect_enterprise}
+To enable an application deployed in an {{site.data.keyword.vpc_full}} to access your Enterprise instance over the private network, a virtual private endpoint (VPE) must be created in the VPC.
 
-Services that are provisioned by using the Lite, Standard, or Enterprise plans are grouped in the dashboard under the heading **Services**. 
+1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon and select **VPC infrastructure** > **Network** > **Virtual private endpoint gateways**. 
+2. Create a VPE for your {{site.data.keyword.messagehub}} instance by using the guidance in [About virtual private endpoint gateways](/docs/vpc?topic=vpc-about-vpe){: external}. 
+3. After you create your VPE, it might take a few minutes for the new VPE and pDNS to complete the process and begin working for your VPC. Completion is confirmed when you see an IP address set in the [details view](/docs/vpc?topic=vpc-vpe-viewing-details-of-an-endpoint-gateway&interface=ui){: external} of the VPE. 
 
-All plans use [IAM](/docs/account?topic=account-overview){: external} for authentication. You don't need to understand IAM to get started but some knowledge is recommended if you want to secure your {{site.data.keyword.messagehub}} service. For more information, see [Managing access to your {{site.data.keyword.messagehub}} resources](/docs/EventStreams?topic=EventStreams-security). To complete the following steps and be authorized to create topics, your application or Service Key must have a Manager access role. By default, the owner of the account that contains the service instance has this role.
+### Creating a service credential
+{: #create_a_service_credential}
 
-By default, {{site.data.keyword.messagehub}} instances are configured to use the {{site.data.keyword.cloud}} public network, so they are accessible over the public internet. If required, you can restrict this access by selecting an alternative networking type or restricting the location that connections are accepted from. For more information, see [Restricting Network Access](/docs/EventStreams?topic=EventStreams-restrict_access).
+All plans use [IAM](/docs/account?topic=account-overview){: external} for authentication. You don't need to understand IAM to get started but some knowledge is recommended if you want to secure your {{site.data.keyword.messagehub}} service. For more information, see [Managing access to your {{site.data.keyword.messagehub}} resources](/docs/EventStreams?topic=EventStreams-security). To complete the following steps and be authorized to create topics, your application must have a Manager access role. By default, the owner of the account that contains the service instance has this role.
 
-## Connection information
-{: #connection_information}
-
-To access a service instance, create a service key. A service key contains the information that is needed to access the instance, including the endpoint details for its APIs and a unique API key credential.
-
-To create a service key by using the {{site.data.keyword.cloud_notm}} console:
+A service credential enables an API key to be created with the required access role. To create a service credential by using the {{site.data.keyword.cloud_notm}} console, complete the following steps.
 
 1. Locate your {{site.data.keyword.messagehub}} service on the dashboard.
 2. Click your service tile.
-3. Click **Service Credentials**.
-4. Click **New Credential**. 
+3. Click **Service credentials**.
+4. Click **New credential**. 
 5. Complete the details for your new credential. Choose a name and a role and click **Add**. A new credential appears in the credentials list.
-6. Click the new credential by using **View Credentials** to reveal the details in JSON format.
+6. Click the new credential by using **View credentials** to reveal the details in JSON format.
 
 To create a service key by using the {{site.data.keyword.cloud_notm}} CLI, complete the following steps.
 
-1. Locate your service: 
+1. Locate your service:
+   
     ```bash
     ibmcloud resource service-instances
     ```
     {: codeblock}
 
-2. Create a service key: 
+3. Create a service key:
+
     ```bash
     ibmcloud resource service-key-create <key_name> <key_role> --instance-name <your_service_name>
     ```
     {: codeblock}
 
-3. Print the service key: 
+4. Print the service key:
+
     ```bash
     ibmcloud resource service-key <key_name>
     ```
     {: codeblock}
 
-    A single set of endpoint details are contained in each service key. For service instances configured to be connected to a single network type, either the {{site.data.keyword.cloud_notm}} Public network (the default) or the {{site.data.keyword.cloud_notm}} Private network, the service key contains the details relevant to that network type. For instances configured to support both the private and public networks, details for the public network are returned. If you want details for the private network, you must add the `--service-endpoint private` parameter the previous CLI command, as in the following example. 
-    {: note}
+### Create an {{site.data.keyword.vpc_short}} 
+{: #create_a_vpc}
+
+Set up a Virtual Private Cloud in your region and turn on SSH access. [Create your VPC](https://cloud.ibm.com/infrastructure/network/vpcs){: external}
+
+Keep resources in the same region to avoid issues.
+{: note}
+
+### Create an SSH key
+{: #create_a_ssh_key}
+
+1. [Create an SSH key](https://cloud.ibm.com/infrastructure/compute/sshKeys) in the same region as the VPC.
+
+2. Once your key is ready, move it to the .ssh directory on your local machine to follow best practices for secure SSH key management.
+
+3. Update the key’s permissions to make it read-only for the file owner. On Unix-like systems such as macOS, run the following command:
+
+    ```sh
+    $ chmod 400 <COPY LOCAL LOCATION OF THE SSH KEY>
+    ```
+    {: pre}
+   
+### Create a Virtual Server Instance (VSI) in the VPC
+{: #create_a_vsi}
+
+[Create a VSI](https://cloud.ibm.com/infrastructure/compute/vs) in the same region, select your VPC, choose *Ubuntu Linux* for operating system. (You can use the smallest profile.)
+
+### Reserve a floating IP for your VSI
+{: #create_a_floatingip}
+
+[Reserve a floating IP address](https://cloud.ibm.com/infrastructure/network/floatingIPs). Make sure the correct region and zone is selected, and bind it to the VSI created in the previous step.
+
+### Log in to your VSI
+{: #login_to_vsi}
+
+In your terminal, SSH in to your VSI with the following command.
+
+If you saved the private SSH key in a different directory, replace the file path in the command accordingly.
+{: note}
 
     ```bash
-    ibmcloud resource service-key-create <private-key-name> <role> --instance-name <instance-name> --service-endpoint private
+    $ ssh -i ~/.ssh/<NAME OF THE SSH KEY> root@<FLOATING IP ADDRESS>
     ```
     {: codeblock}
 
-For more information, see [Network types](/docs/EventStreams?topic=EventStreams-restrict_access).
+Your local terminal session should now be connected to your virtual server. Continue using this session for the next steps.
 
-## Establishing a connection
-{: #establishing_connection}
+### Install java to your VSI
+{: #install_java}
 
-To connect a Kafka application, complete the following tasks.
+Install java with the following commands:
 
-* Use the `<bootstrap_endpoints>` field from the service key as the `bootstrap.servers` property of your Kafka application.
-* Set the security.protocol property to SASL_SSL and the sasl.mechanism property to PLAIN.
-* Use the `<user>` field from the service key as the username and the `<api_key>` field from the service key as the password. Ensure that your application parses the details. 
-* For more information, see [Configuring your Kafka API client](/docs/EventStreams?topic=EventStreams-kafka_using#kafka_api_client). 
+    ```bash
+    $ sudo apt update
+    $ sudo apt install openjdk-17-jdk
+    ```
+    {: codeblock}
+    
+Next, you can verify the installation:
 
-To call an HTTP API, complete the following tasks.
+    ```bash
+    $ java -version
+    ```
+    {: codeblock}
 
-* Use the `<kafka_admin_url>` field of the service key as the base URL for HTTP requests. 
-* Use the {{site.data.keyword.cloud_notm}} CLI `ibmcloud iam oauth-tokens` command to generate an auth token. 
-    Place this token in the `Authorization` header of the HTTP request with the value formatted as `Bearer <token>`. Both API key or JWT tokens are supported.
-* Further documentation is provided for each API.
-    * [REST Admin API](/docs/EventStreams?topic=EventStreams-admin_api)
-    * [REST Producer API](/docs/EventStreams?topic=EventStreams-rest_producer_using)
-    * [Schema Registry API](/docs/EventStreams?topic=EventStreams-ES_schema_registry#schema_registry_rest_endpoints)
+### Add kafka to your VSI
+{: #add_kafka_to_vsi}
 
-## Network connectivity
-{: #network_connectivity}
+Download Kafka with the following command:
 
-By default, Lite, Standard, and Enterprise instances are configured to be accessible over the public internet. If you're using the Enterprise plan, you can restrict connectivity as follows:
+    ```bash
+    $ wget https://downloads.apache.org/kafka/4.0.0/kafka_2.13-4.0.0.tgz
+    ```
+    {: codeblock}
 
-Private networking
-:   If your workload is running entirely within the {{site.data.keyword.cloud_notm}}, and public access to the service is not required, {{site.data.keyword.messagehub}} instances can instead be configured to be accessible only over the {{site.data.keyword.cloud_notm}} Private network. This configuration offers increased isolation and does not incur the egress bandwidth charges associated with public traffic. Instances can also be configured to be accessible over both the {{site.data.keyword.cloud_notm}} Public and Private networks.
+Next, extract what you’ve downloaded:
 
-Context-based restrictions
-:   You can define access rules that limit the network locations that connections are accepted from according to certain characteristics. For example, network type, IP ranges, VPC, or other services.
+    ```bash
+    $ tar -xzf kafka_2.13-4.0.0.tgz
+    ```
+    {: codeblock}
 
-For more information, see [Restricting network access](/docs/EventStreams?topic=EventStreams-restrict_access).
+### Create the client.properties file
+{: #create_properties_file}
 
-### Accessing an Enterprise instance over the private network from Classic infrastructure
-{: #private_network_classic}
+Change into the folder:
 
-To access your Enterprise instance over the private network for workloads deployed on {{site.data.keyword.cloud_notm}} classic infrastructure, the Virtual Route Forwarding (VRF) and Service Endpoints features must be enabled in your account. For more information, see [Restricting network access](/docs/EventStreams?topic=EventStreams-restrict_access).
+    ```bash
+    $ cd kafka_2.13-4.0.0/
+    ```
+    {: codeblock}
 
-### Accessing an Enterprise instance over the private network from a VPC
-{: #private_network_vpc}
+Create client.properties file:
 
-For workloads deployed in an {{site.data.keyword.cloud_notm}} VPC to be able to access your Enterprise instance over the private network, a Virtual Private Endpoint (VPE) must be created in the VPC:
-1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon and select **VPC infrastructure** > **Network** > **Virtual private endpoint gateways**. 
-2. Create a VPE for your {{site.data.keyword.messagehub}} instance by using the guidance in [About virtual private endpoint gateways](/docs/vpc?topic=vpc-about-vpe){: external}. 
-3. After you create your VPE, it might take a few minutes for the new VPE and pDNS to complete the process and begin working for your VPC. Completion is confirmed when you see an IP address set in the [details view](/docs/vpc?topic=vpc-vpe-viewing-details-of-an-endpoint-gateway&interface=ui){: external} of the VPE. 
+    ```bash
+    $ nano client.properties
+    ```
+    {: codeblock}
 
-### Accessing an Enterprise instance over the private network from outside the {{site.data.keyword.cloud_notm}}
+### Use sample configuration properties
+{: #sample_config}
+
+Copy the snippet below into the client.properties file, using your own API key. Save and then exit nano.
+
+    ```bash
+    bootstrap.servers=<BOOTSTRAP_SERVERS>
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required
+username="token" password="<APIKEY>";
+    security.protocol=SASL_SSL
+    sasl.mechanism=PLAIN
+    ssl.protocol=TLSv1.2
+    ssl.enabled.protocols=TLSv1.2
+    ssl.endpoint.identification.algorithm=HTTPS
+    ```
+    {: codeblock}
+
+### Connect from the VSI by creating a topic
+{: #create_topic}
+
+Your VSI connects using the bootstrap server. To connect, use a bootstrap server address and an API key (if you don’t have one, create an API key.) Copy the command and update the broker address as needed.
+
+    ```bash
+$ ./bin/kafka-topics.sh --create --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --partitions 1 --replication-factor 3 --config retention.ms=604800000
+    ```
+    {: codeblock}
+
+### Accessing an Enterprise instance from an external network
 {: #private_network_outside_cloud}
 
-Solutions such as [Direct Link 2.0](https://cloud.ibm.com/docs/dl){: external} can be utilized to establish a connection between an external network, such as an on-premise data center, and the {{site.data.keyword.cloud_notm}} private network. However, when dealing with workloads operating on an external network, it is essential to consider additional factors to ensure a successful connection to Kafka. Note that these considerations do not apply to HTTP workloads.
+Solutions such as [Direct Link 2.0](https://cloud.ibm.com/docs/dl){: external} or [Transit Gateway](https://cloud.ibm.com/docs/transit-gateway?topic=transit-gateway-about){: external} can be utilized to establish a connection between an external network, such as an on-premise data center or Classic infrastructure, and the {{site.data.keyword.cloud_notm}} VPE. However, when dealing with workloads operating on an external network, it is essential to consider additional factors to ensure a successful connection to Kafka. Note that these considerations do not apply to HTTP workloads.
 
 The private endpoint details allocated to your instance (as described in the service key) must be resolvable and routable from the network that the workload is running in. It is not possible to specify alternative hostname entries in the workload's `bootstrap.servers` properties as a way to route traffic from the external network.
 
 The reason for this behavior is Kafka's two-step connection process. In the initial step, the hostnames that are provided in the client's `bootstrap.servers` property are used to establish the first bootstrap connection. However, the server then responds to the client with the actual endpoint hostname details it uses. These hostname details are the private endpoint details originally allocated to your instance and cannot be changed. Hence, the details must be resolvable and routable directly from the external network.
 
-For more information, see [Accessing private API endpoints from an on-premises network by using IBM Cloud Direct Link](https://cloud.ibm.com/docs/vpc?topic=vpc-end-to-end-private-connectivity-vpe&interface=cli){: external}.
+For more information, see [Accessing a VPE externally from a VPC](/docs/vpc?topic=vpc-end-to-end-private-connectivity-vpe&interface=cli){: external}.
 
 ## What to do next
 {: #after_connecting}
 
-Now you have connection and credential information, you can choose a Kafka client. For more information, see [Using the Kafka API](/docs/EventStreams?topic=EventStreams-kafka_using).
+Now you have connection and credential information, you can choose a Kafka client. For more information, see [Using the Kafka API](/docs/EventStreams-gen2?topic=EventStreams-kafka_using).
+
+## Further Information
+{: #further_info}
+
+[Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-kafka_using#kafka_api_client). 
+[Restricting network access](/docs/EventStreams-gen2?topic=EventStreams-restrict_access).
