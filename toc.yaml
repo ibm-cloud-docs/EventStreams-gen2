@@ -66,7 +66,8 @@ toc:
             navtitle: Data security and privacy
           - topic: security.md
             navtitle: Understanding compliance
-          - private-connections.md
+          - topic: private-connections.md
+            navtitle: Virtual Private Endpoints for Gen 2
           - topic: managing_encryption.md
             navtitle: Managing encryption
           - topic: managing_access.md
