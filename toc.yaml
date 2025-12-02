@@ -66,6 +66,7 @@ toc:
             navtitle: Data security and privacy
           - topic: security.md
             navtitle: Understanding compliance
+          - private-connections.md
           - topic: managing_encryption.md
             navtitle: Managing encryption
           - topic: managing_access.md
