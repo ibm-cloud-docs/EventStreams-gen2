@@ -75,6 +75,8 @@ toc:
           - restricting_access_enterprise.md
           - topic: restricting_access_iam.md
             navtitle: Using IAM IP address access restrictions
+          - topic: key-protect.md
+            navtitle: Key Protect integration
       - using_kafka_client.md
   - navgroup:
       id: reference
