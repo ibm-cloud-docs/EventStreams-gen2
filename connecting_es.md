@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: {CURRENT_YEAR}]
-lastupdated: "2025-12-01"
+  years: 2025
+lastupdated: "2025-12-03"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -25,7 +25,7 @@ The following information gives an overview of the steps required, using the exa
 
 To enable an application deployed in an {{site.data.keyword.vpc_full}} to access your Enterprise instance over the private network, a virtual private endpoint (VPE) must be created in the VPC.
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon and select **VPC infrastructure** > **Network** > **Virtual private endpoint gateways**. 
+1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon and select **VPC infrastructure** > **Network** > **Virtual private endpoint gateways**.
 2. Create a VPE for your {{site.data.keyword.messagehub}} instance by using the guidance in [About virtual private endpoint gateways](/docs/vpc?topic=vpc-about-vpe){: external}. 
 3. After you create your VPE, it might take a few minutes for the new VPE and pDNS to complete the process and begin working for your VPC. Completion is confirmed when you see an IP address set in the [details view](/docs/vpc?topic=vpc-vpe-viewing-details-of-an-endpoint-gateway&interface=ui){: external} of the VPE. 
 
@@ -39,14 +39,14 @@ A service credential enables an API key to be created with the required access r
 1. Locate your {{site.data.keyword.messagehub}} service on the dashboard.
 2. Click your service tile.
 3. Click **Service credentials**.
-4. Click **New credential**. 
+4. Click **New credential**.
 5. Complete the details for your new credential. Choose a name and a role and click **Add**. A new credential appears in the credentials list.
 6. Click the new credential by using **View credentials** to reveal the details in JSON format.
 
 To create a service key by using the {{site.data.keyword.cloud_notm}} CLI, complete the following steps.
 
 1. Locate your service:
-   
+
     ```bash
     ibmcloud resource service-instances
     ```
@@ -66,7 +66,7 @@ To create a service key by using the {{site.data.keyword.cloud_notm}} CLI, compl
     ```
     {: codeblock}
 
-### Create an {{site.data.keyword.vpc_short}} 
+### Create an {{site.data.keyword.vpc_short}}
 {: #create_a_vpc}
 
 Set up a Virtual Private Cloud in your region and turn on SSH access. [Create your VPC](https://cloud.ibm.com/infrastructure/network/vpcs){: external}
@@ -87,7 +87,7 @@ Keep resources in the same region to avoid issues.
     $ chmod 400 <COPY LOCAL LOCATION OF THE SSH KEY>
     ```
     {: pre}
-   
+
 ### Create a Virtual Server Instance (VSI) in the VPC
 {: #create_a_vsi}
 
@@ -123,7 +123,7 @@ Install java with the following commands:
     $ sudo apt install openjdk-17-jdk
     ```
     {: codeblock}
-    
+
 Next, you can verify the installation:
 
     ```bash
@@ -137,14 +137,14 @@ Next, you can verify the installation:
 Download Kafka with the following command:
 
     ```bash
-    $ wget https://downloads.apache.org/kafka/4.0.0/kafka_2.13-4.0.0.tgz
+    $ wget https://downloads.apache.org/kafka/4.1.1/kafka_2.13-4.1.1.tgz
     ```
     {: codeblock}
 
 Next, extract what you’ve downloaded:
 
     ```bash
-    $ tar -xzf kafka_2.13-4.0.0.tgz
+    $ tar -xzf kafka_2.13-4.1.1.tgz
     ```
     {: codeblock}
 
@@ -154,7 +154,7 @@ Next, extract what you’ve downloaded:
 Change into the folder:
 
     ```bash
-    $ cd kafka_2.13-4.0.0/
+    $ cd kafka_2.13-4.1.1/
     ```
     {: codeblock}
 
@@ -170,15 +170,10 @@ Create client.properties file:
 
 Copy the snippet below into the client.properties file, using your own API key. Save and then exit nano.
 
-    ```bash
-    bootstrap.servers=<BOOTSTRAP_SERVERS>
-sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required
-username="token" password="<APIKEY>";
+    ```properties
+    sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="<APIKEY>";
     security.protocol=SASL_SSL
     sasl.mechanism=PLAIN
-    ssl.protocol=TLSv1.2
-    ssl.enabled.protocols=TLSv1.2
-    ssl.endpoint.identification.algorithm=HTTPS
     ```
     {: codeblock}
 
@@ -188,7 +183,7 @@ username="token" password="<APIKEY>";
 Your VSI connects using the bootstrap server. To connect, use a bootstrap server address and an API key (if you don’t have one, create an API key.) Copy the command and update the broker address as needed.
 
     ```bash
-$ ./bin/kafka-topics.sh --create --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --partitions 1 --replication-factor 3 --config retention.ms=604800000
+    $ ./bin/kafka-topics.sh --create --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --partitions 1 --replication-factor 3 --config retention.ms=604800000
     ```
     {: codeblock}
 
