@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2024
-lastupdated: "2024-01-26"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: security
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -14,6 +14,11 @@ subcollection: EventStreams
 
 # Security and compliance overview
 {: #security_overview}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 {{site.data.keyword.messagehub_full}} is built on the best industry standards and provides tools and options to manage security, compliance, encryption, authentication, and restrictions that might be required.
 {: shortdesc}

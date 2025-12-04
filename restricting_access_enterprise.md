@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2015, 2024
-lastupdated: "2024-03-01"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: network access, service endpoints, VSIs, VPC, CSE, disruptive, context-based restrictions
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -14,6 +14,11 @@ subcollection: EventStreams
 
 # Restricting network access
 {: #restrict_access}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 By default, {{site.data.keyword.messagehub}} instances are configured to use the {{site.data.keyword.Bluemix_short}} public network, so they are accessible over the public internet.
 {: #shortdesc} 
@@ -262,5 +267,3 @@ If both context-based restrictions rules and IP allowlists are defined against t
 {: #cbr_migrating}
 
 The customer is responsible for migration. You can create IP allowlist definitions again as context-based restrictions network zones and apply them to the service instance by creating a context-based restrictions rule. You can then delete the previous private IP allowlist.
-
-
