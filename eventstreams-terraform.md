@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2024
-lastupdated: "2024-09-26"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: terraform, schematics, automation, declarative, Event streams 
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -14,6 +14,11 @@ subcollection: EventStreams
 
 # {{site.data.keyword.messagehub}} Terraform reference
 {: #eventstreams-terraform}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 You can manage your {{site.data.keyword.messagehub_full}} instance using Terraform, which enables you to rapidly and predictably create and change your instance following Infrastructure as Code (IaC) principles. Terraform is an open source tool that codifies APIs into declarative configuration files. These files can be shared among team members and are treated as code, edited, reviewed, and versioned. You write down what your infrastructure should look like and Terraform will create, update, and remove cloud resources as needed. For more information, see [Understand the basics of Terraform](https://www.terraform.io/intro){: external}.
 
