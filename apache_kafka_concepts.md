@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2015, 2024
-lastupdated: "2024-02-15"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: brokers, messages, topics, partitions, replication, replica, producer, consumer, consumer group
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -14,6 +14,11 @@ subcollection: EventStreams
 
 # Learning Apache Kafka concepts
 {: #apache_kafka}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the  [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 Apache Kafka is a distributed streaming platform used by many companies for numerous batch workloads, as well as real-time data integration, and data streaming use cases.
 {: shortdesc}

@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-02-29"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: use cases, examples
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -14,6 +14,11 @@ subcollection: EventStreams
 
 # Kafka use cases with {{site.data.keyword.messagehub}}
 {: #use_cases}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the  [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 The use cases for Kafka break down into three broad catagories: Stream processing, data pipelines, and event streaming. Some real-life examples of Kafka include streaming real-time rail data to provide passengers with up-to-the-minute information about their journeys, providing seamless streaming experience to users watching movies online, or fraud detection.
 {: shortdesc}
