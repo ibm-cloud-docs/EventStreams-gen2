@@ -1,19 +1,24 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-07-24"
+  years: 2025
+lastupdated: "2025-12-04"
 
-keywords: partition leadership, partition leader, 
+keywords: partition leadership, partition leader
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
 
 # Understanding partition leadership
-{: #partition_leadership }
+{: #partition_leadership}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 Each partition has one server in the cluster that acts as the partition's leader and other servers that act as the followers. All produce and consume requests for the partition are handled by the leader. The followers replicate the partition data from the leader with the aim of keeping up with the leader. If a follower is keeping up with the leader of a partition, the follower's replica is in-sync. 
 {: shortdesc}
