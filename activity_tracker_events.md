@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2016, 2025
-lastupdated: "2025-09-15" 
+  years: 2025
+lastupdated: "2025-12-04" 
 
 keywords: activity , cloud logs
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -14,6 +14,11 @@ subcollection: EventStreams
 
 # {{site.data.keyword.cloudaccesstrailshort}} events
 {: #at_events}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 Use the {{site.data.keyword.logs_full}} service to track how users and applications interact with the {{site.data.keyword.messagehub}} service on the Standard and Enterprise plans in {{site.data.keyword.Bluemix_notm}}.
 {: shortdesc}
