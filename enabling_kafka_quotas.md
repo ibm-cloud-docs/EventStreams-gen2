@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-01"
+lastupdated: "2025-12-04"
 
 keywords: quotas, quota implementation, mapping quotas, authorization, client metrics
 
@@ -14,6 +14,11 @@ subcollection: EventStreams-gen2
 
 # Setting Kafka quotas
 {: #enabling_kafka_quotas}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 Kafka quotas enforce limits on produce and consume requests to control the broker resources used by clients. Kafka quotas enable an administrator to enforce limits on the network throughput that can be consumed by individual producer and consumer applications.
 {: shortdesc}
