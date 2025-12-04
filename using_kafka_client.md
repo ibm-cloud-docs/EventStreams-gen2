@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-11-21"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: java client, api, admin api, liberty, migrate client, sasl.jaas.config property
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -14,6 +14,11 @@ subcollection: EventStreams
 
 # Using the Kafka Java client
 {: #kafka_java_using}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 The Java&trade; Kafka API sample is an example producer and consumer that is written in Java, which directly uses the Kafka API. You can run this sample locally or in {{site.data.keyword.Bluemix_short}}.
 {: shortdesc}
