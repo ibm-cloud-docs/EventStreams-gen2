@@ -2,11 +2,11 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-09-15" 
+lastupdated: "2025-12-04" 
 
 keywords: cloud logs, streaming
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -14,6 +14,11 @@ subcollection: EventStreams
 
 # Streaming data from {{site.data.keyword.logs_full_notm}}
 {: #streaming_data_cloud_logs}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 {{site.data.keyword.messagehub}} can be used to stream data from {{site.data.keyword.logs_full}} to other corporate tools, such as Security Information and Event Management (SIEM) tools.
 {: shortdesc}
