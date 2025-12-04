@@ -30,32 +30,39 @@ toc:
   - navgroup:
       id: howto
       topics:
-      - connecting_es.md
+      - topic: connecting_es.md
+        navtitle: Connecting
       - topicgroup:
-          label: Administering Event Streams
+          label: Administering
           topics:
           - using_admin_kafka_api.md
           - api.md
           - cli.md
-          - using_kafka_console.md
+          - topic: using_kafka_console.md
+            navtitle: Using Kafka console tools
           - scaling_capacity.md
           - enabling_kafka_quotas.md
       - topicgroup:
-          label: Developing apps with Event Streams
+          label: Developing apps
           topics:
           - using_kafka_api.md
           - producing_messages.md
           - consuming_messages.md
           - topic: partition_leadership.md
             navtitle: Partition leadership
-          - using_kafka_connect.md
-          - using_kafka_streams.md
-          - using_ksqldb.md
+          - topic: using_kafka_connect.md
+            navtitle: Using Kafka Connect
+          - topic: using_kafka_streams.md
+            navtitle: Using Kafka Streams
+          - topic: using_ksqldb.md
+            navtitle: Using ksqldb
       - topicgroup:
           label: Integrating with other services
           topics:
-          - connecting_cos.md
-          - connecting_mq.md
+          - topic: connecting_cos.md
+            navtitle: Connecting to Cloud Object Storage by using Kubernetes
+          - topic: connecting_mq.md
+            navtitle: Connecting MQ to Event Streams by using Kubernetes
           - watson_platform.md
           - streaming_cloud_logs.md
       - topicgroup:
@@ -82,19 +89,25 @@ toc:
       id: reference
       topics:
       - sla.md
-      - responsibilities.md
-      - ha-dr.md
-      - resiliency.md
-      - data_portability.md
+      - topic: responsibilities.md
+        navtitle: Understanding your responsibilities
+      - topic: ha-dr.md
+        navtitle: Understanding high availability and disaster recovery
+      - topic: resiliency.md
+        navtitle: Maximizing resiliency for your instance
+      - topic: data_portability.md
+        navtitle: Understanding data portability
       - topic: limits_quotas.md
         navtitle: Limits and quotas
       - activity_tracker_events.md
       - monitoring.md
       - kafka_client_metrics.md
-      - service-dependency.md
+      - topic: service-dependency.md
+        navtitle: Service dependency map
       - reserved_disk.md
       - setting_up_app_vpn.md
-      - eventstreams-terraform.md
+      - topic: eventstreams-terraform.md
+        navtitle: Terraform reference
       - topicgroup:
           label: Related links
           topics:
