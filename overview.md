@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-01"
+lastupdated: "2025-12-04"
 
 keywords: managed kafka, kafka as a service, managed apache kafka, kafka on cloud
 
@@ -14,6 +14,11 @@ subcollection: EventStreams-gen2
 
 # {{site.data.keyword.messagehub}} overview
 {: #about}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the  [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 {{site.data.keyword.messagehub_full}} is a high-throughput message bus that is built with Apache Kafka. This managed Kafka service is optimized for event ingestion into {{site.data.keyword.cloud}} and event stream distribution between your services and applications. {{site.data.keyword.messagehub}} was previously known as Message Hub.
 {: shortdesc}
