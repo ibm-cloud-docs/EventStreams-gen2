@@ -1,23 +1,24 @@
 ---
 
 copyright:
-  years: 2015, 2024
-lastupdated: "2024-02-15"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: MQ bridge, connect configuration
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
-{:external: target="_blank" .external}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
+{{site.data.keyword.attribute-definition-list}}
 
 # Connecting {{site.data.keyword.IBM}} MQ to {{site.data.keyword.messagehub}} by using the Kubernetes service
 {: #mq_connector}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 Get the Kafka Connect runtime to run in an {{site.data.keyword.containerlong}} cluster. Then, start the {{site.data.keyword.IBM_notm}} MQ Source Connector to copy messages from an {{site.data.keyword.IBM_notm}} MQ source queue to a destination Kafka topic in {{site.data.keyword.messagehub}}.
 {: shortdesc}
@@ -155,4 +156,3 @@ You can check your connector by going to the following address:
 `http://localhost:8083/connectors/mq-source/status`
 
 If the state of the connector is not running, restart the connector.
-
