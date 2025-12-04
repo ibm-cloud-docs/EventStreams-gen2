@@ -1,5 +1,5 @@
 ---
- 
+
 copyright:
   years: 2025
 lastupdated: "2025-12-04"
@@ -20,7 +20,7 @@ subcollection: event-streams-gen2
 {{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the  [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
 {: beta}
 
-To interact with {{site.data.keyword.messagehub}} on Gen 2 via the CLI you must utilize the IBM Cloud Resource Controller's CLI. For more info please see [General {{site.data.keyword.messagehub}} CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli). 
+To interact with {{site.data.keyword.messagehub}} on Gen 2 via the CLI you must utilize the IBM Cloud Resource Controller's CLI. For more information, see the [General {{site.data.keyword.messagehub}} CLI (ibmcloud) commands](docs/cli?topic=cli-ibmcloud_cli).
 
 The {{site.data.keyword.messagehub}} plugin supports only Gen 1 instances. For Gen 2 instances, use the Resource Controller CLI.
 {: note}
@@ -28,7 +28,7 @@ The {{site.data.keyword.messagehub}} plugin supports only Gen 1 instances. For G
 ## Getting started - Create an instance
 {: #cli-create}
 
-You can create an instance by using the following command: 
+You can create an instance by using the following command:
 
 ```sh
 ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> -g <RESOURCE_GROUP>
@@ -38,11 +38,11 @@ ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVIC
 Example command for {{site.data.keyword.messagehub}}:
 
 ```sh
-ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> -g <RESOURCE_GROUP> -p '{
+ibmcloud resource service-instance-create <INSTANCE_NAME> messagehub enterprise-gen2 ca-mon -g Default -p '{
    "dataservices":{
       "kafka": {
-        "throughput_mb_s": 1000,
-        "storage_gb": 200
+        "throughput_mb_s": 100,
+        "storage_gb": 2000
       },
       "encryption": {
          "disk": "crn:v1..."
@@ -58,7 +58,7 @@ ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVIC
 ## Getting information about your instance
 {: #cli-getting-info}
 
-You can get instance information using the following command: 
+You can get instance information using the following command:
 
 ```sh
 ibmcloud resource service-instance <INSTANCE_NAME> -o JSON
@@ -81,8 +81,8 @@ Example of full updates for {{site.data.keyword.messagehub}}:
 ibmcloud resource service-instance-update <INSTANCE_NAME> -p'{
    "dataservices":{
       "kafka": {
-         "throughput_mb_s": 1000, <------ Change to the value you desire
-         "storage_gb": 200 <------ Change to the value you desire
+         "throughput_mb_s": 100, <------ Change to the value you desire
+         "storage_gb": 4000 <------ Change to the value you desire
       },
    }
 }'
