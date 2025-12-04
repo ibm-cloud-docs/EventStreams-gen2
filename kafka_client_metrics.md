@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2024
-lastupdated: "2024-03-15"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: monitoring, metrics
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -14,6 +14,12 @@ subcollection: EventStreams
 
 # Getting started with Kafka client metrics
 {: #getting-started-metrics}
+
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 With Kafka, monitoring typically involves various metrics that are related to topics, partitions, brokers, and consumer groups. Standard Kafka metrics include information on throughput, latency, replication, and disk usage. Refer to the [Kafka documentation](https://kafka.apache.org/documentation/){: external} and relevant monitoring tools to understand the specific metrics available for your version of Kafka and how to interpret them effectively.
 
