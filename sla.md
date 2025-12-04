@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2015, 2025
-lastupdated: "2025-09-15"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: sla, service level agreement, connectivity, throughput
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -17,6 +17,11 @@ subcollection: EventStreams
 
 ## Standard plan
 {: #sla_standard}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 The {{site.data.keyword.messagehub}} Standard Plan provides a highly available architecture by multi-zone region deployment. In a multi-zone location, the {{site.data.keyword.messagehub}} service is distributed across three availability zones, which means that the cluster is resilient to the failure of a single zone or any component within that zone.
 {: shortdesc}
