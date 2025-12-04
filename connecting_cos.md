@@ -1,23 +1,24 @@
 ---
 
 copyright:
-  years: 2015, 2024
-lastupdated: "2024-02-15"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: archive, connector, connect to cos, using kubernetes
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
-{:external: target="_blank" .external}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
+{{site.data.keyword.attribute-definition-list}}
 
 # Connecting {{site.data.keyword.messagehub}} to {{site.data.keyword.cos_full_notm}} by using the Kubernetes Service
 {: #cos_connector}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 Get the Kafka Connect runtime to run in an {{site.data.keyword.containershort}} cluster. Then, start the {{site.data.keyword.cos_full}} Sink Connector to archive data from Kafka topics in {{site.data.keyword.messagehub}} to an instance of the {{site.data.keyword.cos_full}} service. 
 {: shortdesc}
