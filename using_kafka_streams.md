@@ -1,19 +1,24 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-07-24"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: asl.jaas.config
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
 
 # Using Kafka Streams with {{site.data.keyword.messagehub}}
-{: #kafka_streams }
+{: #kafka_streams}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 Kafka Streams is a stream processing library that is part of the Apache Kafka project. It simplifies building applications that process and analyze data in Kafka. 
 {: shortdesc}
@@ -37,5 +42,3 @@ See the following example:
 
 Where `BOOTSTRAP_SERVERS`, `USERNAME`, and `PASSWORD` are the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in
 {{site.data.keyword.Bluemix_notm}}.
-
-
