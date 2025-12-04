@@ -1,24 +1,23 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-12-05"
+  years: 2025
+lastupdated: "2025-12-04"
 
 keywords: messages, consumer, record, offset, rebalancing, consumer group, consumer properties
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
-{:external: target="_blank" .external}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-
+{{site.data.keyword.attribute-definition-list}}
 
 # Consuming messages
-{: #consuming_messages }
+{: #consuming_messages}
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 A consumer is an application that consumes streams of messages from Kafka topics. A consumer can subscribe to one or more topics or partitions. This information focuses on the Java™ programming interface that is part of the Apache Kafka project. The concepts apply to other languages too, but the names are sometimes a little different.
 {: shortdesc}
@@ -34,7 +33,7 @@ In the programming interfaces, a message is called a record. For example, the Ja
 You might find it useful to read this information along with [producing messages](/docs/EventStreams?topic=EventStreams-producing_messages) in {{site.data.keyword.messagehub}}.
 
 ## Configuring consumer properties 
-{: #configuring_consumer_properties }
+{: #configuring_consumer_properties}
 
 Many configuration settings exist for the consumer that control aspects of its behavior. The following settings are some of the most important ones. 
 
@@ -76,7 +75,7 @@ When one of the following changes takes place in a consumer group, the group reb
 If you have a consumer group that is rebalanced, be aware that any consumer that has left the group has its commits that are rejected until it rejoins the group. In this case, the consumer needs to rejoin the group, where it might be assigned a different partition to the one it was previously consuming from.
 
 ## Consumer liveness
-{: #consumer_liveness }
+{: #consumer_liveness}
 
 Kafka automatically detects failed consumers so that it can reassign partitions to working consumers. It uses two mechanisms: polling and heartbeating.
 
@@ -137,7 +136,7 @@ If a consumer fell so far behind that it is consuming messages in a log segment 
 You can use the `kafka-consumer-groups` tool to see the consumer lag. You can also use the consumer API and the consumer metrics for the same purpose.
 
 ## Controlling the speed of message consumption
-{: #message_consumption_speed }
+{: #message_consumption_speed}
 
 If you have problems with message handling that is caused by message flooding, you can set a consumer option to control the speed of message consumption. Use `fetch.max.bytes` and `max.poll.records` to control how much data a call to `poll()` can return.
 
@@ -247,4 +246,3 @@ Thrown as a result of `Consumer.commitSync(...)` when an unrecoverable error occ
 {: #timeout_exception}
 
 Thrown by `Producer.send(...),  Consumer.listTopics()` if the metadata cannot be retrieved. The exception is also seen in the send callback (or the returned Future) when the requested acknowledgment does not come back within `request.timeout.ms`. The client can retry the operation, but the effect of a repeated operation depends on the specific operation. For example, if sending a message is retried, the message is possibly duplicated.
-
