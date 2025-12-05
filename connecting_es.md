@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-03"
+lastupdated: "2025-12-05"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -106,10 +106,10 @@ In your terminal, SSH in to your VSI with the following command.
 If you saved the private SSH key in a different directory, replace the file path in the command accordingly.
 {: note}
 
-    ```bash
-    $ ssh -i ~/.ssh/<NAME OF THE SSH KEY> root@<FLOATING IP ADDRESS>
-    ```
-    {: codeblock}
+```bash
+$ ssh -i ~/.ssh/<NAME OF THE SSH KEY> root@<FLOATING IP ADDRESS>
+```
+{: codeblock}
 
 Your local terminal session should now be connected to your virtual server. Continue using this session for the next steps.
 
@@ -118,74 +118,74 @@ Your local terminal session should now be connected to your virtual server. Cont
 
 Install java with the following commands:
 
-    ```bash
-    $ sudo apt update
-    $ sudo apt install openjdk-17-jdk
-    ```
-    {: codeblock}
+```bash
+$ sudo apt update
+$ sudo apt install openjdk-17-jdk
+```
+{: codeblock}
 
 Next, you can verify the installation:
 
-    ```bash
-    $ java -version
-    ```
-    {: codeblock}
+```bash
+$ java -version
+```
+{: codeblock}
 
 ### Add kafka to your VSI
 {: #add_kafka_to_vsi}
 
 Download Kafka with the following command:
 
-    ```bash
-    $ wget https://downloads.apache.org/kafka/4.1.1/kafka_2.13-4.1.1.tgz
-    ```
-    {: codeblock}
+```bash
+$ wget https://downloads.apache.org/kafka/4.1.1/kafka_2.13-4.1.1.tgz
+```
+{: codeblock}
 
 Next, extract what you’ve downloaded:
 
-    ```bash
-    $ tar -xzf kafka_2.13-4.1.1.tgz
-    ```
-    {: codeblock}
+```bash
+$ tar -xzf kafka_2.13-4.1.1.tgz
+```
+{: codeblock}
 
 ### Create the client.properties file
 {: #create_properties_file}
 
 Change into the folder:
 
-    ```bash
-    $ cd kafka_2.13-4.1.1/
-    ```
-    {: codeblock}
+```bash
+$ cd kafka_2.13-4.1.1/
+```
+{: codeblock}
 
 Create client.properties file:
 
-    ```bash
-    $ nano client.properties
-    ```
-    {: codeblock}
+```bash
+$ nano client.properties
+```
+{: codeblock}
 
 ### Use sample configuration properties
 {: #sample_config}
 
 Copy the snippet below into the client.properties file, using your own API key. Save and then exit nano.
 
-    ```properties
-    sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="<APIKEY>";
-    security.protocol=SASL_SSL
-    sasl.mechanism=PLAIN
-    ```
-    {: codeblock}
+```properties
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="<APIKEY>";
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+```
+{: codeblock}
 
 ### Connect from the VSI by creating a topic
 {: #create_topic}
 
 Your VSI connects using the bootstrap server. To connect, use a bootstrap server address and an API key (if you don’t have one, create an API key.) Copy the command and update the broker address as needed.
 
-    ```bash
-    $ ./bin/kafka-topics.sh --create --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --partitions 1 --replication-factor 3 --config retention.ms=604800000
-    ```
-    {: codeblock}
+```bash
+$ ./bin/kafka-topics.sh --create --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --partitions 1 --replication-factor 3 --config retention.ms=604800000
+```
+{: codeblock}
 
 ### Accessing an Enterprise instance from an external network
 {: #private_network_outside_cloud}
