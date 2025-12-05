@@ -27,7 +27,8 @@ To enable an application deployed in an {{site.data.keyword.vpc_full}} to access
 
 1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon and select **VPC infrastructure** > **Network** > **Virtual private endpoint gateways**.
 2. Create a VPE for your {{site.data.keyword.messagehub}} instance by using the guidance in [About virtual private endpoint gateways](/docs/vpc?topic=vpc-about-vpe){: external}. 
-3. After you create your VPE, it might take a few minutes for the new VPE and pDNS to complete the process and begin working for your VPC. Completion is confirmed when you see an IP address set in the [details view](/docs/vpc?topic=vpc-vpe-viewing-details-of-an-endpoint-gateway&interface=ui){: external} of the VPE. 
+3. After you create your VPE, it might take a few minutes for the new VPE and pDNS to complete the process and begin working for your VPC. Completion is confirmed when you see an IP address set in the [details view](/docs/vpc?topic=vpc-vpe-viewing-details-of-an-endpoint-gateway&interface=ui){: external} of the VPE.
+4. Take a note of this VPE IP address.
 
 ### Creating a service credential
 {: #create_a_service_credential}
@@ -52,14 +53,14 @@ To create a service key by using the {{site.data.keyword.cloud_notm}} CLI, compl
     ```
     {: codeblock}
 
-3. Create a service key:
+2. Create a service key:
 
     ```bash
     ibmcloud resource service-key-create <key_name> <key_role> --instance-name <your_service_name>
     ```
     {: codeblock}
 
-4. Print the service key:
+3. Print the service key:
 
     ```bash
     ibmcloud resource service-key <key_name>
@@ -113,57 +114,88 @@ $ ssh -i ~/.ssh/<NAME OF THE SSH KEY> root@<FLOATING IP ADDRESS>
 
 Your local terminal session should now be connected to your virtual server. Continue using this session for the next steps.
 
+### Update `/etc/hosts` with the IP of the VPE
+{: #update_etchosts}
+
+1. Associate the hostname of each Kafka server with the VPE IP recorded above. 
+
+2. Open the `/etc/hosts` file with nano and add an entry at the top for each broker.
+
+    ```bash
+    $ nano etc/hosts
+    ```
+
+    The list of brokers can be found in the * bootstrap_servers* field of your service credentials. Entries are of the form: 
+    
+    ```properties
+    <VPE IP> kafka-0.<url>.eventstreams.dataservices.appdomain.cloud
+    <VPE IP> kafka-1.<url>.eventstreams.dataservices.appdomain.cloud
+    <VPE IP> kafka-2.<url>.eventstreams.dataservices.appdomain.cloud
+    ```
+    {: codeblock}
+    
+    For example:
+    
+    ```properties
+    a.b.c.d kafka-0.uuid.private.uhp.ca-mon.eventstreams.dataservices.appdomain.cloud
+    a.b.c.d kafka-1.uuid.private.uhp.ca-mon.eventstreams.dataservices.appdomain.cloud
+    a.b.c.d kafka-2.uuid.private.uhp.ca-mon.eventstreams.dataservices.appdomain.cloud
+    ```
+    {: codeblock}
+
+3. Exist and close nano.
+
 ### Install java to your VSI
 {: #install_java}
 
-Install java with the following commands:
+1. Install java with the following commands:
 
-```bash
-$ sudo apt update
-$ sudo apt install openjdk-17-jdk
-```
-{: codeblock}
+    ```bash
+    $ sudo apt update
+    $ sudo apt install openjdk-17-jdk
+    ```
+    {: codeblock}
 
-Next, you can verify the installation:
+2. Next, you can verify the installation:
 
-```bash
-$ java -version
-```
-{: codeblock}
+    ```bash
+    $ java -version
+    ```
+    {: codeblock}
 
-### Add kafka to your VSI
+### Add Kafka to your VSI
 {: #add_kafka_to_vsi}
 
-Download Kafka with the following command:
+1. Download Kafka with the following command:
 
-```bash
-$ wget https://downloads.apache.org/kafka/4.1.1/kafka_2.13-4.1.1.tgz
-```
-{: codeblock}
+    ```bash
+    $ wget https://downloads.apache.org/kafka/4.1.1/kafka_2.13-4.1.1.tgz
+    ```
+    {: codeblock}
 
-Next, extract what you’ve downloaded:
+2. Extract what you’ve downloaded:
 
-```bash
-$ tar -xzf kafka_2.13-4.1.1.tgz
-```
-{: codeblock}
+    ```bash
+    $ tar -xzf kafka_2.13-4.1.1.tgz
+    ```
+    {: codeblock}
 
 ### Create the client.properties file
 {: #create_properties_file}
 
-Change into the folder:
+1. Change into the folder:
 
-```bash
-$ cd kafka_2.13-4.1.1/
-```
-{: codeblock}
+    ```bash
+    $ cd kafka_2.13-4.1.1/
+    ```
+    {: codeblock}
 
-Create client.properties file:
+2. Create client.properties file:
 
-```bash
-$ nano client.properties
-```
-{: codeblock}
+    ```bash
+    $ nano client.properties
+    ```
+    {: codeblock}
 
 ### Use sample configuration properties
 {: #sample_config}
@@ -206,5 +238,5 @@ Now you have connection and credential information, you can choose a Kafka clien
 ## Further Information
 {: #further_info}
 
-[Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-kafka_using#kafka_api_client). 
-[Restricting network access](/docs/EventStreams-gen2?topic=EventStreams-restrict_access).
+- [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-kafka_using#kafka_api_client). 
+- [Restricting network access](/docs/EventStreams-gen2?topic=EventStreams-restrict_access).
