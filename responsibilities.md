@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2015, 2025
-lastupdated: "2025-09-15"
+  years: 2025
+lastupdated: "2025-12-05"
 
 keywords: responsibilities, incident, operations, cluster management, security, compliance, infrastructure, disaster recovery, client-side libraries, app orchestration
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
@@ -14,6 +14,11 @@ subcollection: EventStreams
 
 # Understanding your responsibilities when you use {{site.data.keyword.messagehub}}
 {: #event_streams_responsibilities}
+
+[Gen 2]{: tag-purple}
+
+{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
+{: beta}
 
 Learn about the management responsibilities and terms and conditions that you have when you use {{site.data.keyword.messagehub_full}}. For a high-level view of the service types in {{site.data.keyword.Bluemix}} and the breakdown of responsibilities between the customer and {{site.data.keyword.IBM_notm}} for each type, see [Shared responsibilities for {{site.data.keyword.cloud_notm}} offerings](/docs/overview?topic=overview-shared-responsibilities).
 {: shortdesc}
@@ -78,20 +83,6 @@ If you configured your {{site.data.keyword.messagehub}} instance in a multi-zone
 |Provide service binding to other {{site.data.keyword.IBM_notm}} services| {{site.data.keyword.messagehub}} provides the capability for service binding to other {{site.data.keyword.IBM_notm}} services.  | |
 |Manage, integrate, and monitor|   | Customer is responsible for using the provided tools and features to manage the lifecycle of customer-owned applications, for integrating with other services, and monitoring the health of the application (for example, Availability Monitoring).|
 {: caption="Responsibilities for app orchestration" caption-side="bottom"}
-
-## Mirroring
-{: #mirroring_responsibilities}
-
-| Task | {{site.data.keyword.IBM_notm}} responsibilities | Your responsibilities |
-|----------|-----------------------|--------|
-|Clusters| Checking clusters are viable mirroring pairs|Provisioning both clusters. |
-|Setup  | Setting up mirroring    |  Setting up service to service binding. |
-|Enablement and monitoring | Monitoring health and SLA of mirroring link.  |  Requesting enablement by using the **service-instance-update** CLI comamnd.  |
-|Metrics and applications  | Providing metrics to enable customer to understand the current recovery point objective (RPO).   |  Enabling applications to switch clusters.  |
-|IAM  |    | Setting up required access policies.    |
-|Failover  |  Disabling any existing mirroring configurations.  | Deciding when to fail over and failover applications. |
-|Failback  | Reconfiguring mirroring |Developing and executing failback plan. Coordinating with {{site.data.keyword.IBM_notm}} to reconfigure mirroring. |
-{: caption="Responsibilities for mirroring" caption-side="bottom"}
 
 ## Support of client-side libraries
 {: #support_client_libraries}

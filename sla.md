@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-05"
 
 keywords: sla, service level agreement, connectivity, throughput
 
@@ -15,28 +15,14 @@ subcollection: EventStreams-gen2
 # Service Level Agreement (SLA) for {{site.data.keyword.messagehub}} availability 
 {: #sla}
 
-## Standard plan
-{: #sla_standard}
-
 [Gen 2]{: tag-purple}
 
 {{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
 {: beta}
 
-The {{site.data.keyword.messagehub}} Standard Plan provides a highly available architecture by multi-zone region deployment. In a multi-zone location, the {{site.data.keyword.messagehub}} service is distributed across three availability zones, which means that the cluster is resilient to the failure of a single zone or any component within that zone.
-{: shortdesc}
+The {{site.data.keyword.messagehub}} Enterprise Plan Gen 2 provides a highly available architecture distributed across three availability zones with an availability of 99.99%.
 
-The {{site.data.keyword.messagehub}} service is provided with availability of 99.99% on the Standard Plan. For more information about the SLA for high availability services in {{site.data.keyword.Bluemix}}, see
-[Service Level Agreements for {{site.data.keyword.Bluemix_notm}} (Public Cloud)](https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en){: external}.
-
-## Enterprise plan
-{: #sla_enterprise}
-
-The {{site.data.keyword.messagehub}} Enterprise Plan provides a highly available architecture by multi-zone region deployment. In a multi-zone location, the Event Streams service is distributed across three availability zones, which means that the cluster is resilient to the failure of a single zone or any component within that zone.
-
-In a multi-zone region deployment the {{site.data.keyword.messagehub}} service is provided with availability of 99.99% on the Enterprise plan. For more information about the SLA for high availability services in {{site.data.keyword.Bluemix_notm}}, see [Service Level Agreements for {{site.data.keyword.Bluemix_notm}} (Public Cloud)](https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en){: external}.
-
-When the {{site.data.keyword.messagehub}} service is run in a non-highly available configuration, such as [single zone locations](#sla_szr), the availability is 99.9%. For more information about the SLA for non-highly availabile services in {{site.data.keyword.Bluemix_notm}}, see [Service Level Agreements for {{site.data.keyword.Bluemix_notm}} (Public Cloud)](https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en){: external}.
+For more information about the SLA for high availability services in {{site.data.keyword.Bluemix_notm}}, see [Service Level Agreements for {{site.data.keyword.cloud}} (Public Cloud)](https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en){: external}.
 
 ## How do we measure it?
 {: #sla_measure}
