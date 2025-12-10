@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025
-lastupdated: "2025-12-03"
+lastupdated: "2025-12-10"
 
 subcollection: event-streams-gen2
 
@@ -16,10 +16,10 @@ keywords: bring your own key, byok, cryptoshredding, key rotation, key rotation 
 
 [Gen 2]{: tag-purple}
 
-{{site.data.keyword.messagehub}} Gen 2 is currently in Beta and does not support {{site.data.keyword.keymanagementservicelong}} integration. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see [Beta reference](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-icd-gen2-beta).
+The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see [Beta reference](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-icd-gen2-beta).
 {: beta}
 
-The data that you store in {{site.data.keyword.messagehub}} is encrypted by default by using randomly generated keys. To control the encryption keys, you can Bring Your Own Key (BYOK) through [{{site.data.keyword.keymanagementservicelong_notm}}](/docs/key-protect?topic=key-protect-integrate-services) and use one of your own keys to encrypt your databases and backups.
+The data that you store in {{site.data.keyword.messagehub}} is encrypted by default by using randomly generated keys. To control the encryption keys, you can Bring Your Own Key (BYOK) through [{{site.data.keyword.keymanagementservicelong_notm}}](/docs/key-protect?topic=key-protect-integrate-services) and use one of your own keys to encrypt the storage volumes of the brokers.
 
 This document covers the integration of {{site.data.keyword.keymanagementserviceshort}} with Gen 2 {{site.data.keyword.messagehub}}. 
 {: .note}
@@ -41,7 +41,7 @@ Authorize {{site.data.keyword.keymanagementserviceshort}} for use with {{site.da
 2. From the menu bar, click **Manage > Access (IAM)**.
 3. In the side navigation, click **Authorizations**.
 4. Click **Create**.
-5. In the **Source service** menu, select the service of the deployment. For example, **Event Streams**.
+5. In the **Source service** menu, select the service of the deployment: **{{site.data.keyword.messagehub}}**.
 6. In the **Source service resources** menu, select **All resources**.
 7. In the **Target service** menu, select **{{site.data.keyword.keymanagementserviceshort}}**.
 8. Select or retain the default value **Account** as the resource group for the **Target Service**
@@ -62,6 +62,8 @@ If the service authorization is not present before provisioning your deployment 
 bx iam authorization-policy-create messagehub kms "Reader,AuthorizationDelegator"
 ```
 {: codeblock}
+
+If the service authorization is not present before provisioning your deployment with a key, the provision fails.
 
 ## Granting service authorization via the REST API
 {: #granting-service-auth-api}
@@ -117,12 +119,14 @@ curl -X POST 'https://iam.cloud.ibm.com/v1/policies' -H 'Authorization: Bearer $
 ```
 {: codeblock}
 
+If the service authorization is not present before provisioning your deployment with a key, the provision fails.
+
 ## Using the {{site.data.keyword.keymanagementserviceshort}} key
 {: #key-using}
 
 After you grant your {{site.data.keyword.messagehub}} deployments permission to use your keys, you supply the [key name or CRN](/docs/key-protect?topic=key-protect-view-keys) when you provision a deployment. The deployment uses your encryption key to encrypt your data.
 
-## Using the {{site.data.keyword.keymanagementserviceshort}} key in the UI
+## Using the {{site.data.keyword.keymanagementserviceshort}} key in the UI at provision
 {: #key-using-ui}
 {: ui}
 
@@ -199,11 +203,11 @@ After you enable delegation and provisioned your deployment, two entries appear 
 | AuthorizationDelegator, Reader | `event-streams` service | {{site.data.keyword.keymanagementserviceshort}} service | User defined |
 {: caption="Example delegator {{site.data.keyword.keymanagementserviceshort}} Authorization" caption-side="bottom"}
 
-And one for the {{site.data.keyword.block_storage_is_full}} volume for its backups, where the deployment is the initiator.
+And one for the {{site.data.keyword.block_storage_is_full}} volume, where the deployment is the initiator.
 
 | Role | Source | Target | Type |
 | -----|-----|-----|----- |
-| Reader | {{site.data.keyword.block_storage_is_short}} service | {{site.data.keyword.keymanagementserviceshort}} Service | Created by `<cloud-databases-crn>` |
+| Reader | {{site.data.keyword.block_storage_is_short}} service | {{site.data.keyword.keymanagementserviceshort}} Service | Created by `event-streams` |
 {: caption="Example {{site.data.keyword.keymanagementserviceshort}} authorization for {{site.data.keyword.block_storage_is_short}} and {{site.data.keyword.cos_full}} from {{site.data.keyword.messagehub}}" caption-side="bottom"}
 
 ### Removing keys
@@ -216,11 +220,9 @@ IAM/{{site.data.keyword.keymanagementserviceshort}} does not stop you from remov
 
 Be careful when removing keys and authorizations. If you have multiple deployments that use the same keys, it is possible to inadvertently destroy data to **all** of those deployments by revoking the delegation authorization. If possible, do not use the same key for multiple deployments.
 
-If you want to shred the data associated with your instance, you can delete the key. {{site.data.keyword.block_storage_is_short}} ensures that the storage is unreadable and unwriteable. However, any other deployments that use that same key for backups encounter subsequent backup failures.
+If you want to shred the data associated with your instance, you can delete the key. {{site.data.keyword.block_storage_is_short}} ensures that the storage is unreadable and unwriteable. However, any other deployments that use that same key will also encounter failures.
 
-If you do require that the same key to be used for multiple deployment's backups, removing keys and authorizations can have the following side effects:
-
-- If you delete the {{site.data.keyword.block_storage_is_short}} volume authorization (as seen in Table 2), not only the deployment that is shown as the creator is affected, but any deployments that also use the same key are affected as well. Those deployments will encounter topic/partition failures until you open a support ticket and request the policy to be re-created.
+If you delete the {{site.data.keyword.block_storage_is_short}} volume authorization (as seen in Table 2), not only the deployment that is shown as the creator is affected, but any deployments that also use the same key are affected as well. Those deployments will encounter topic/partition failures until you open a support ticket and request the policy to be re-created.
 
 Use caution if you reuse keys.
 {: .important}
