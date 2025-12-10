@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-10"
 
 keywords: quotas, quota implementation, mapping quotas, authorization, client metrics
 
@@ -28,10 +28,10 @@ Kafka quotas enforce limits on produce and consume requests to control the broke
 
 If left unconstrained, it is possible for a small number of consumers or producers to monopolize the available network throughput for your service instance.
 
-Kafka brokers support quotas that enforce rate limits to prevent clients saturating the network or monopolizing broker resources. For more information, see the 
+Kafka brokers support quotas that enforce rate limits to prevent clients saturating the network or monopolizing broker resources. For more information, see the
 [Apache Kafka documentation](https://kafka.apache.org/documentation/#design_quotas).
 
-Kafka quotas can be configured to limit network bandwidth usage, Kafka measures this throughput in bytes per second. If throughput over a 30 second window is found to 
+Kafka quotas can be configured to limit network bandwidth usage, Kafka measures this throughput in bytes per second. If throughput over a 30 second window is found to
 exceed a configured quota, Kafka calculates a sufficient delay to bring throughput within the quota limit.
 
 Kafka brokers then send the delay information to clients as part of standard Kafka protocol responses. A cooperative client, respecting the protocol contract, waits for this delay before making new requests; an uncooperative client may not respect the throttling request, but in such a case, the broker does not read that client's requests until the throttling delay has elapsed (which may cause timeouts on the uncooperative client).
@@ -61,33 +61,7 @@ The {{site.data.keyword.messagehub_full}} Enterprise plan allows the use of the 
 
 With reference to the [Kafka documentation on quotas](https://kafka.apache.org/documentation/#quotas), only throughput quota types ("producer_byte_rate" and "consumer_byte_rate" quota types) applied to the "user" entity (or the "default user") are supported. 
 
-The "client-id" entity, the "request", and the "controller-mutation" quota types are not supported as user-settable quotas. In {{site.data.keyword.messagehub}}, an authenticated user identity is represented by an {{site.data.keyword.iamlong}} ID. Because Kafka quotas are applied per {{site.data.keyword.iamshort}} ID, a single quota can be shared by a group of API keys, if these all belong to the same {{site.data.keyword.iamshort}} service ID.
-
-To obtain the {{site.data.keyword.iamshort}} ID of an {{site.data.keyword.iamshort}} (IAM) service ID, the IBM Cloud CLI can be used.
-
-```bash
-ibmcloud iam service-id ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab --output json
-```
-{: codeblock}
-
-See the following example output:
-
-```bash
-{
-
-    "active":true,
-
-    "jti":"...",
-
-    "iam_id":"iam-ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab",
-
-    "realmId":"iam",
-
-     ....
-
-}
-```
-{: codeblock}
+The "client-id" entity, the "request", and the "controller-mutation" quota types are not supported as user-settable quotas. In {{site.data.keyword.messagehub}}, an authenticated user identity is represented by an {{site.data.keyword.iamlong}} service ID. Because Kafka quotas are applied per {{site.data.keyword.iamshort}} service ID, a single quota can be shared by a group of API keys, if these all belong to the same {{site.data.keyword.iamshort}} service ID.
 
 ## Mapping quotas onto an IBM Event Streams Enterprise cluster
 {: #mapping_quotas_enterprise}
@@ -113,28 +87,20 @@ To be authorized to set client quotas, a user must have the Manager role on the 
 A set of credentials created with the {{site.data.keyword.messagehub}} UI with the Manager role on the instance also has the Manager role on cluster. Thus, you are able to create, delete, and alter topics in addition to setting quotas. Any authenticated user has an implied Reader role on cluster and is able to describe quotas.
 {: note}
 
-To create a set of credentials that can manage topics, groups, and participate in transactions but are not authrorized to set quotas, an IAM access policy that has 
+To create a set of credentials that can manage topics, groups, and participate in transactions but are not authrorized to set quotas, an IAM access policy that has
 Manager role on resource types "topic", "group", and "txnid" and Reader role on "cluster" must to be associated with the service ID. 
 
-### Example: Managing quotas with `the kafka-config.sh` script (Apache client)
+### Example: Managing quotas with the `kafka-config.sh` script (Apache client)
 {: #example_managing_quotas_kafka_script}
 
-1. Download a Kafka *binary* distribution (at least V3.1.0).
+1. Download a Kafka *binary* distribution (4.1.x recommended).
 
 2. Create a properties file (named command-config.properties in the following command lines examples), containing the following entries (replacing "myapikey" with the actual API key).
 
 ```bash
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="myapikey";
-
 security.protocol=SASL_SSL
-
 sasl.mechanism=PLAIN
-
-ssl.protocol=TLSv1.2
-
-ssl.enabled.protocols=TLSv1.2
-
-ssl.endpoint.identification.algorithm=HTTPS
 ```
 {: codeblock}
 
@@ -145,43 +111,48 @@ For more information, see [Configuring your Kafka API client](https://cloud.ibm.
     - Alter quotas for user:
 
     ```bash
-    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" --alter --add-config 'producer_byte_rate=1024,
-    consumer_byte_rate=2048' --entity-type users --entity-name iam-ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab
+    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" \
+    --alter --add-config 'producer_byte_rate=1024, consumer_byte_rate=2048' \
+    --entity-type users --entity-name ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab
     ```
     {: codeblock}
 
-    Completed updating configuration for user `iam-ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab`.
+    Completed updating configuration for user `ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab`.
 
     - Describe quotas for user:
-    
+
     ```bash
-    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" --describe --entity-type users --entity-name 
-    iam-ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab
+    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" \
+    --describe --entity-type users --entity-name ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab
     ```
     {: codeblock}
 
-    The quota configurations for user-principal `iam-ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab` are `consumer_byte_rate=2048.0` and `producer_byte_rate=1024.0`.
+    The quota configurations for user-principal `ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab` are `consumer_byte_rate=2048.0` and `producer_byte_rate=1024.0`.
 
     - Remove quotas for user:
 
     ```bash
-    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" --alter --delete-config       'producer_byte_rate,consumer_byte_rate' --entity-type users --entity-name iam-ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab
+    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" \
+    --alter --delete-config 'producer_byte_rate,consumer_byte_rate' \
+    --entity-type users --entity-name ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab
     ```
     {: codeblock}
 
-    Completed updating config for user `iam-ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab`.
+    Completed updating config for user `ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab`.
 
     - Describe all quotas that were set to any user, including the default user:
 
     ```bash
-    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" --describe --entity-type users
+    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" \
+    --describe --entity-type users
     ```
     {: codeblock}
 
     - Alter quotas for the default user:
 
     ```bash
-    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" --alter --add-config 'producer_byte_rate=1024,
+    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" \
+    --alter --add-config 'producer_byte_rate=1024,
     consumer_byte_rate=2048' --entity-type users --entity-default
     ```
     {: codeblock}
@@ -191,7 +162,8 @@ For more information, see [Configuring your Kafka API client](https://cloud.ibm.
     - Remove quotas for the default user:
 
     ```bash
-    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" --alter --delete-config 'producer_byte_rate,
+    bin/kafka-configs.sh --command-config command-config.properties --bootstrap-server "kafka-0.blah.cloud:9093" \
+    --alter --delete-config 'producer_byte_rate,
     consumer_byte_rate' --entity-type users --entity-default
     ```
     {: codeblock}
@@ -233,10 +205,6 @@ class Snippet {
 
         properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "sasl_ssl");
 
-        properties.put(SslConfigs.SSL_ENABLED_PROTOCOLS_CONFIG, "TLSv1.2");
-
-        properties.put(SslConfigs.SSL_PROTOCOL_CONFIG, "TLSv1.2");
-
         properties.put(SaslConfigs.SASL_MECHANISM, "PLAIN");
 
         properties.put(SaslConfigs.SASL_JAAS_CONFIG,
@@ -247,15 +215,15 @@ class Snippet {
 
         AdminClient admin = AdminClient.create(properties);
 
-        String iamID = "iam-ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab"; //set iam id of target user to set quotas to
+        String serviceID = "ServiceId-12345678-aaaa-bbbb-cccc-1234567890ab"; //set service id of target user to set quotas to
 
-        // if null is used instead of the iamID string, the following quota alteration will be applied to the default user
+        // if null is used instead of the serviceID string, the following quota alteration will be applied to the default user
 
         // add quotas 
 
         ClientQuotaEntity entity = new ClientQuotaEntity(
 
-                Collections.singletonMap(ClientQuotaEntity.USER, iamID));
+                Collections.singletonMap(ClientQuotaEntity.USER, serviceID));
 
         ClientQuotaAlteration alteration = new ClientQuotaAlteration(entity,
 
@@ -273,7 +241,7 @@ class Snippet {
 
         //remove quotas (set them to null)
 
-        entity = new ClientQuotaEntity(Collections.singletonMap(ClientQuotaEntity.USER, iamID));
+        entity = new ClientQuotaEntity(Collections.singletonMap(ClientQuotaEntity.USER, serviceID));
 
         alteration = new ClientQuotaAlteration(entity,
 
