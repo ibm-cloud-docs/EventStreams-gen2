@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-10"
 
 subcollection: event-streams-gen2
 
@@ -40,8 +40,6 @@ The API uses standard `HTTP` response codes to indicate whether a method complet
 
 You can monitor API activity within your account by using the [{{site.data.keyword.cloudaccesstraillong}}](docs-draft/cloud-databases-gen2?topic=cloud-databases-gen2-at_events&interface=terraform) service. Whenever an API method is called, an event is generated that you can then track and audit from within Activity Tracker. The specific event type is listed for each individual method.
 
-For more information about how to track Certificate Manager activity, see [Auditing events for {{site.data.keyword.cloud_notm}}]() <— THIS LINK IS BROKEN.
-
 ## Deployment IDs and CRNs
 {: #api-deployment}
 
@@ -50,14 +48,14 @@ Deployment IDs are CRNs on the Cloud Data Services platform. When you use the CR
 Example: The following CRN
 
 ```sh
-   crn:v1:bluemix:public:databases-for-redis:us-south:a/274074dce64e9c423ffc238516c755e1:29caf0e7-120f-4da8-9551-3abf57ebcfc7::
+   crn:v1:bluemix:public:messagehub:us-south:a/274074dce64e9c423ffc238516c755e1:29caf0e7-120f-4da8-9551-3abf57ebcfc7::
    ```
 {: pre}
 
 becomes as follows when URL encoded.
 
 ```sh
-   crn:v1:bluemix:public:databases-for-redis:us-south:a%2F274074dce64e9c423ffc238516c755e1:29caf0e7-120f-4da8-9551-3abf57ebcfc7::
+   crn%3Av1%3Abluemix%3Apublic%3Amessagehubs%3Aus-south%3Aa%2F274074dce64e9c423ffc238516c755e1%3A29caf0e7-120f-4da8-9551-3abf57ebcfc7::
    ```
 {: pre}
 
@@ -95,22 +93,22 @@ curl -X GET https://resource-controller.cloud.ibm.com/v2/resource_instances -H "
 Example response:
 
 ```sh
-Name:                test-mysql-01
+Name:                test-eventstreams-01
 Location:            us-south
 Family:              resource_controller
 Resource Type:       resource-instance
 Resource Group ID:   eb922ba0717f47589ca26d202c5cc915
-CRN:                 crn:v1:bluemix:public:databases-for-mysql:us-south:a/40ddc34a953a8c02f10987b59085b60e:09a8b8a3-29cf-4c1b-85ad-35e25611a414::
+CRN:                 crn:v1:bluemix:public:messagehub:us-south:a/40ddc34a953a8c02f10987b59085b60e:09a8b8a3-29cf-4c1b-85ad-35e25611a414::
 Tags:
 Service Tags:
 Access Tags:
 
-Name:                test-mysql-02
+Name:                test-eventstreams-02
 Location:            us-south
 Family:              resource_controller
 Resource Type:       resource-instance
 Resource Group ID:   eb922ba0717f47589ca26d202c5cc915
-CRN:                 crn:v1:bluemix:public:databases-for-mysql:us-south:a/40ddc34a953a8c02f10987b59085b60e:3a81147c-ae5a-48c4-a0e5-cbf3e88cf215::
+CRN:                 crn:v1:bluemix:public:messagehub:us-south:a/40ddc34a953a8c02f10987b59085b60e:3a81147c-ae5a-48c4-a0e5-cbf3e88cf215::
 Tags:
 Service Tags:
 Access Tags:
@@ -140,56 +138,29 @@ Example response:
 [
     {
         "guid": "5aa314a5-76d9-4440-8e84-faa343d40127",
-        "id": "crn:v1:staging:public:databases-for-postgresql-cdp-dev:us-east:a/cf8d4161fa0243b9a2a5494cd7ff66b7:5aa314a5-76d9-4440-8e84-faa343d40127::",
+        "id": "crn:v1:staging:public:messagehub:us-east:a/cf8d4161fa0243b9a2a5494cd7ff66b7:5aa314a5-76d9-4440-8e84-faa343d40127::",
         "url": "/v2/resource_instances/5aa314a5-76d9-4440-8e84-faa343d40127",
         "created_at": "2025-08-28T16:35:07.650372748Z",
         "updated_at": "2025-08-28T16:41:53.419092609Z",
         "deleted_at": null,
-        "name": "omar-pg-cdp-test",
+        "name": "eventstreams-test",
         "region_id": "us-east",
         "account_id": "cf8d4161fa0243b9a2a5494cd7ff66b7",
-        "resource_plan_id": "databases-for-postgresql-cdp-dev-standard",
+        "resource_plan_id": "messagehub-standard",
         "resource_group_id": "97bc590fddc845ee903645bce8771bab",
-        "crn": "crn:v1:staging:public:databases-for-postgresql-cdp-dev:us-east:a/cf8d4161fa0243b9a2a5494cd7ff66b7:5aa314a5-76d9-4440-8e84-faa343d40127::",
+        "crn": "crn:v1:staging:public:messagehub-cdp-dev:us-east:a/cf8d4161fa0243b9a2a5494cd7ff66b7:5aa314a5-76d9-4440-8e84-faa343d40127::",
         "extensions": {
           "dataservices": {
             "resources": {
-              "database": {
-                "storage_gb": 10,
-                "members": 2,
-                "host_flavor": "b3c.8x32.encrypted"
+              "kafka": {
+                "storage_gb": 2000,
+                "throughput_mb_s": 100,
+                "version": "4.1"
               }
             },
             "connection": {
-                "cli": {
-                    "arguments": [
-                        "host=5aa314a5-76d9-4440-8e84-faa343d40127.private.axd.us-east.postgresql.dataservices.dev.appdomain.cloud port=5432 dbname=postgres user=$PGUSER password=$PGPASSWORD"
-                    ],
-                    "bin": "psql",
-                    "composed": [
-                        "psql 'host=5aa314a5-76d9-4440-8e84-faa343d40127.private.axd.us-east.postgresql.dataservices.dev.appdomain.cloud port=5432 dbname=postgres user=$PGUSER password=$PGPASSWORD'"
-                    ],
-                    "type": "cli"
-                },
-                "postgres": {
-                    "composed": [
-                        "postgres://$PGUSER:$PGPASSWORD@5aa314a5-76d9-4440-8e84-faa343d40127.private.axd.us-east.postgresql.dataservices.dev.appdomain.cloud:5432/postgres"
-                    ],
-                    "database": "postgres",
-                    "hosts": [
-                        {
-                            "hostname": "5aa314a5-76d9-4440-8e84-faa343d40127.private.axd.us-east.postgresql.dataservices.dev.appdomain.cloud",
-                            "port": 5432
-                        }
-                    ],
-                    "path": "/postgres",
-                    "port": 5432,
-                    "query_options": {
-                        "sslmode": "require"
-                    },
-                    "scheme": "postgres",
-                    "type": "uri"
-                }
+                "bootstrap_servers": "kafka-0.03ab707f-514a-49ea-959f-ff65d84a8818.private.uhp.ca-mon.eventstreams.dataservices.appdomain.cloud:9093,kafka-1.03ab707f-514a-49ea-959f-ff65d84a8818.private.uhp.ca-mon.eventstreams.dataservices.appdomain.cloud:9093,kafka-2.03ab707f-514a-49ea-959f-ff65d84a8818.private.uhp.ca-mon.eventstreams.dataservices.appdomain.cloud:9093",
+                "rest_url": "https://api.ca-mon.eventstreams.dataservices.cloud.ibm.com/v1/instance/03ab707f-514a-49ea-959f-ff65d84a8818"
             },
             "encryption": {
               "disk": "crn:v1..."
@@ -200,7 +171,7 @@ Example response:
               "version": "1.0.0"
             },
             "virtual_private_endpoints": {
-                    "dns_domain": "private.axd.us-east.postgresql.dataservices.dev.appdomain.cloud",
+                    "dns_domain": "private.axd.us-east.eventstreams.dataservices.dev.appdomain.cloud",
                     "dns_hosts": [
                         "5aa314a5-76d9-4440-8e84-faa343d40127",
                         "*.5aa314a5-76d9-4440-8e84-faa343d40127"
@@ -251,7 +222,7 @@ Example response:
         "resource_bindings_url": "/v2/resource_instances/5aa314a5-76d9-4440-8e84-faa343d40127/resource_bindings",
         "resource_aliases_url": "/v2/resource_instances/5aa314a5-76d9-4440-8e84-faa343d40127/resource_aliases",
         "siblings_url": "",
-        "target_crn": "crn:v1:staging:public:globalcatalog::::deployment:databases-for-postgresql-cdp-dev-standard-deployment-us-east-72d307a5"
+        "target_crn": "crn:v1:staging:public:globalcatalog::::deployment:messagehub-standard-deployment-us-east-72d307a5"
     }
 ]
 ```
@@ -272,14 +243,11 @@ curl -X POST https://resource-controller.cloud.ibm.com/v2/resource_instances -H 
     "name": "my-instance",
     "target": "ca-mon",
     "resource_group": "5c49eabc-f5e8-5881-a37e-2d100a33b3df",
-    "resource_plan_id": "databases-for-postgresql-standard",
+    "resource_plan_id": "messagehub-standard",
     "dataservices": {
-      "resources": {
-        "database": {
-          "storage_gb": 10,
-          "members": 2,
-          "host_flavor": "b3c.8x32.encrypted"
-        }
+      "kafka": {
+        "storage_gb": 2000,
+        "throughput_mb_s": 100
       },
       "encryption": {
         "disk": "crn:v1..."
@@ -293,110 +261,41 @@ curl -X POST https://resource-controller.cloud.ibm.com/v2/resource_instances -H 
 
 Input Parameters
 
-   "dataservices": Object
+  "dataservices": Object
 
-{
+  {
 
-      "resources":  Object
+    "kafka": Object
 
-{
+    {
 
-        "database": Object
+      "storage_gb":  Integer,
 
-{
+      "throughput_mb_s": Integer
 
-          "storage_gb":  Integer,
-
-          "members": Integer,
-
-          "host_flavor": String
-
-      }
-
-      },
-
-      "encryption":  Object
-
-{
-
-        "disk": String
-
-      },
-
-      "version": String,
-
-      "$schema": Object
-
-{
-
-        "version": String
-
-      }
-
-   },
-```
-{: pre}
-
-#### How to scale your database
-{: #api-scale-db}
-
-```sh
-POST /v2/resource_instances
-```
-{: pre}
-
-Example request:
-
-```sh
-curl -X POST https://resource-controller.cloud.ibm.com/v2/resource_instances -H "Authorization: Bearer <IAM token>" -H 'Content-Type: application/json' -d '{
-    "name": "my-instance",
-    "target": "ca-mon",
-    "resource_group": "5c49eabc-f5e8-5881-a37e-2d100a33b3df",
-    "resource_plan_id": "databases-for-postgresql-standard",
-    "dataservices": {
-      "$schema": {
-          "version": "1.0.0"
-      },
-      "resources": {
-          "database": {
-              "host_flavor": "bx2.4x16", <--- UPDATE
-              "members": 1, <--- UPDATE
-              "storage_gb": 10 <--- UPDATE
-          }
-      },
-      "version": "18"
     },
-  }'
 
-Input Parameters
+    "encryption":  Object
 
-   "dataservices": Object
+    {
 
-{
+      "disk": String
 
-      "resources":  Object
+    },
 
-{
+    "version": String,
 
-        "database": Object
+    "$schema": Object
 
-{
+    {
 
-          "storage_gb":  Integer,
+      "version": String
 
-          "members": Integer,
+    }
 
-          "host_flavor": String
-
-      }
-
-      },
-
-}
+  },
 ```
 {: pre}
-
-Get the schema of the database configuration (INFO SEEMS TO BE MISSING)
 
 ## Transition documentation
 {: #api-transition-doc}
@@ -405,24 +304,10 @@ Information you can expect to get back:
 
 - The last task you have conducted is seen under the `last_operation`.
 - Product connection information under connection parameter.
-- Product specific information under the product object (for example postgresql).
+- Product specific information under the product object (for example kafka).
 
 #### Methods not available for MVP
 {: #api-limitations}
-
-- List read-only replica information
-- Resync read-only replica
-- Promote read-only replica to a full deployment
-- Get information about a backup
-- Get earliest point-in-time-recovery timestamp
-- Get the autoscaling configuration from a deployment
-- Set the autoscaling configuration from a deployment
-- Kill connections to a PostgreSQL or EnterpriseDB deployment
-- Sync files uploaded to Elasticsearch deployment
-- Create a new logical replication slot
-- Delete a logical replication slot
-- Discover capability information from a backup
-- Upgrade your database version
 
 Waiting for context-based restrictions (CBR) implementation:
 
@@ -430,27 +315,3 @@ Waiting for context-based restrictions (CBR) implementation:
 - Set the allowlist for a deployment.
 - Add an address or range to the allowlist for a deployment.
 - Delete an address or range from the allowlist of a deployment.
-
-Migrated to the Global Catalog: (NEED INFO TO EXPLAIN WHAT THIS MEANS)
-
-- Discover capability information.
-- Discover capability information from a deployment.
-
-Limitations
-
-- Getting backup information is only available via our UI.
-- List currently available backups from a deployment. (ONLY FROM UI, OR NOT AT ALL?)
-- Listing backups is only available via our UI.
-- Initiate an on-demand backup. (ONLY FROM UI, OR NOT AT ALL?)
-- Creating backups is only available via our UI.
-
-
-- List currently available scaling groups from a deployment: Needs documentation from product detailing all the available host flavors and scaling values associated with out products
-
-- Set scaling values on a specified product. (INFO SEEMS TO BE MISSING)
-
-- Creates a user based on user type. - TBD
-
-- Deletes a user based on user type. - TBD
-
-- Update your database configuration. (INFO SEEMS TO BE MISSING)

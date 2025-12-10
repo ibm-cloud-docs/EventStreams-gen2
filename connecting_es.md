@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-05"
+lastupdated: "2025-12-10"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -117,7 +117,7 @@ Your local terminal session should now be connected to your virtual server. Cont
 ### Update `/etc/hosts` with the IP of the VPE
 {: #update_etchosts}
 
-1. Associate the hostname of each Kafka server with the VPE IP recorded above. 
+1. Associate the hostname of each Kafka server with the VPE IP recorded before. 
 
 2. Open the `/etc/hosts` file with nano and add an entry at the top for each broker.
 
@@ -125,7 +125,7 @@ Your local terminal session should now be connected to your virtual server. Cont
     $ nano etc/hosts
     ```
 
-    The list of brokers can be found in the * bootstrap_servers* field of your service credentials. Entries are of the form: 
+    The list of brokers can be found in the *bootstrap_servers* field of your service credentials. Entries are of the form: 
     
     ```properties
     <VPE IP> kafka-0.<url>.eventstreams.dataservices.appdomain.cloud
@@ -190,7 +190,7 @@ Your local terminal session should now be connected to your virtual server. Cont
     ```
     {: codeblock}
 
-2. Create client.properties file:
+2. Create `client.properties` file:
 
     ```bash
     $ nano client.properties
@@ -200,7 +200,7 @@ Your local terminal session should now be connected to your virtual server. Cont
 ### Use sample configuration properties
 {: #sample_config}
 
-Copy the snippet below into the client.properties file, using your own API key. Save and then exit nano.
+Copy the following snippet into the `client.properties` file, using your own API key (retrieved from the service credential created before). Save and then exit nano.
 
 ```properties
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="<APIKEY>";
@@ -209,15 +209,34 @@ sasl.mechanism=PLAIN
 ```
 {: codeblock}
 
-### Connect from the VSI by creating a topic
+### Connect from the VSI to your service instance
 {: #create_topic}
 
-Your VSI connects using the bootstrap server. To connect, use a bootstrap server address and an API key (if you don’t have one, create an API key.) Copy the command and update the broker address as needed.
+The Kafka download bin directory contains a number of tools for interacting with Kafka. The following shows some examples to create a topic and then produce and consume a message from that topic.
+
+To run the tools requires the bootstrap server address for your service instance, which can be retrieved from the service credential created before.
+
+To create a topic called quickstart-vsi:
 
 ```bash
 $ ./bin/kafka-topics.sh --create --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --partitions 1 --replication-factor 3 --config retention.ms=604800000
 ```
 {: codeblock}
+
+To produce a message to the topic `quickstart-vsi`, run the following, enter some text to send and press return. To quit, type <CTRL> + C.
+
+```bash
+$ ./bin/kafka-console-producer.sh --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --producer.config client.properties
+```
+{: codeblock}
+
+To consume a message from the topic `quickstart-vsi`, run the following. To quit, type <CTRL> + C. Note the `--from-beginning` option will consume all messages on the topic. If this option is omitted, only messages produced after the consumer has been run will be retrieved.
+
+```bash
+./bin/kafka-console-consumer.sh --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --consumer.config client.properties --from-beginning
+```
+{: codeblock}
+
 
 ### Accessing an Enterprise instance from an external network
 {: #private_network_outside_cloud}

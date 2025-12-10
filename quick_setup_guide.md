@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-10"
 
 keywords: quick setup guide
 
@@ -32,12 +32,11 @@ Follow these steps to complete the tutorial: {: ui}
 * [Step 2: Provision an {{site.data.keyword.messagehub}} instance using the console](#provision_instance_ui)
 * [Step 3: Create a topic and partitions using the console](#create_topic_ui)
 * [Step 4: Create a service credential using the console](#create_credential_ui)
-* [Step 5: Produce data using the console](#produce_data_ui)
-* [Step 6: Consume data using the console](#consume_data_ui)
-* [Step 7: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_ui)
-* [Step 8: Connect Activity Tracker](#activity_tracker_ui)
-* [Step 9: (Optional) Use Kafka Connect or ksqlDB](#kafka_connect_ksql)
-* [Step 10: If you need more help](#getting_help)
+* [Step 5: Using your instance to produce and consume data](#produce_data_ui)
+* [Step 6: Connect {{site.data.keyword.monitoringshort}}](#connect_monitoring_ui)
+* [Step 7: Connect Activity Tracker](#activity_tracker_ui)
+* [Step 8: (Optional) Use Kafka Connect or ksqlDB](#kafka_connect_ksql)
+* [Step 9: If you need more help](#getting_help)
 {: ui}
 
 ## Before you begin
@@ -102,7 +101,6 @@ For guidance about the settings that you can modify when creating topics, see [t
 
 After you create topics, you can use the console to [list topics](#list_topic_ui).
 
-
 #### List topics
 {: #list_topic_ui}
 {: ui}
@@ -112,11 +110,9 @@ From your {{site.data.keyword.messagehub}} instance, navigate to **Topics** from
 From the **Topics page**, you can view the following information about your topics: 
 **Name**, **Partitions**, **Retention time**, **Retention size**, **Cleanup policy**, and **Stream landing**.
 
-
 ## Step 4: Create a service credential by using the console
 {: #create_credential_ui}
 {: ui}
-
 
 To allow you to connect to your {{site.data.keyword.messagehub}} instance, create a service key by using the {{site.data.keyword.Bluemix_notm}} console:
 
@@ -127,26 +123,15 @@ To allow you to connect to your {{site.data.keyword.messagehub}} instance, creat
 5. Complete the details for your new credential like a name and role and click **Add**. A new credential appears in the credentials list.
 6. Expand the new credential's section to reveal the details in JSON format.
  
-
-## Step 5: Produce data using the console
+## Step 5: Using your instance to produce and consume data
 {: #produce_data_ui}
 {: ui}
 
-You cannot produce data by using the console. You can produce data using the...
+To connect to {{site.data.keyword.messagehub}, a Virtual Private Endpoint (VPE) for VPC must be created to establish a secure private connection.
 
-<TODO>
+Follow [the instructions to connect to your instance](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting) to create a VPE and run a producer and consumer application to send and recieve data.
 
-
-## Step 6: Consume data using the console
-{: #consume_data_ui}
-{: ui}
-
-You cannot consume data by using the console. You can consume data using the...
-
-<TODO>
-
-
-## Step 7: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the console 
+## Step 6: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the console 
 {: #connect_monitoring_ui}
 {: ui}
 
@@ -160,7 +145,7 @@ For more information about how to use {{site.data.keyword.monitoringshort}} with
 * [Understanding metrics cost information](/docs/EventStreams?topic=EventStreams-metrics#metric_costs){: external}
 
 
-## Step 8: Connect {{site.data.keyword.at_full}} to audit service activity 
+## Step 7: Connect {{site.data.keyword.at_full}} to audit service activity 
 {: #activity_tracker_ui}
 {: ui}
 
@@ -180,7 +165,7 @@ For more information about events specific to {{site.data.keyword.messagehub}}, 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
 
-## Step 9: (Optional) Use Kafka Connect or ksqlDB
+## Step 8: (Optional) Use Kafka Connect or ksqlDB
 {: #kafka_connect_ksql}
 
 ### Kafka Connect
@@ -203,7 +188,7 @@ ksqlDB is a purpose-built database for event streaming. Use it to build end-to-e
 First complete these [setup steps](/docs/EventStreams?topic=EventStreams-ksql_using##kqsldbsteps){: external}. Then the quickest and easiest way to run ksqlDB with {{site.data.keyword.messagehub}} is to use a docker container as described in [ksqlDB quickstart](https://ksqldb.io/quickstart.html){: external}. 
 
 
-## Step 10: Get help
+## Step 9: Get help
 {: #getting_help}
 
 For a general overview of how to get help with {{site.data.keyword.messagehub}} and where to get support, see [Getting help and support](/docs/EventStreams?topic=EventStreams-gettinghelp){: external}.

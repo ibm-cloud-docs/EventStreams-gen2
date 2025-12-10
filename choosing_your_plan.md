@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-10"
 
 keywords: plan, Enterprise, Standard, Lite, pricing, throughput, partitions, tenancy, compliance
 
@@ -78,17 +78,17 @@ The following table summarizes what is supported by the plans:
 | **Private/Public Networking** | Public   | Public |  Both | Private (VPE) |
 | **Scale plan capacity** | No   | No  |  Yes | Future  |
 | **Maximum number of partitions**  | 1 [^tabletext5]  | 100   |3000 - 9000 scales with throughput [^tabletext6] | 3000 |
-| **Maximum retention limits**   | 100 MB for the partition   | 1 GB per partition  | 2 TB - 12 TB of scalable usable storage [^tabletext7] | ??? |
+| **Maximum retention limits**   | 100 MB for the partition   | 1 GB per partition  | 2 TB - 12 TB of scalable usable storage [^tabletext7] | 2 - 6 TB |
 | **Maximum throughput**  | 100 KB per second per partition  |  1 MB per second per partition (20 MB per service instance) | 150 MB/s - 450 MB/s of scalable throughput [^tabletext8] | 50 MB/s Produce \n 50MB/s Consume [^tabletext9]|
 | **Maximum message size**  | 1 MB  | 1 MB   | 1 MB | 1 MB |
-| **Maximum number of connected clients**  | 5   | 500  | 10 000  | ???? |
+| **Maximum number of connected clients**  | 5   | 500  | 10 000  | 10 000 |
 | **Location (region) availability** | Dallas (us-south)  |  **Multizone location (MZR)**   \n Dallas (us-south)   \n Sao Paulo (br-sao)   \n Toronto (ca-tor)   \n Washington (us-east)   \n Frankfurt (eu-de)   \n London (eu-gb)   \n Madrid (eu-es)   \n  Osaka (jp-osa)   \n Sydney (au-syd)   \n Tokyo (jp-tok)|   **Multizone location (MZR)**  \n Dallas (us-south)   \n Sao Paulo (br-sao)   \n Toronto (ca-tor)   \n Washington (us-east)   \n Frankfurt (eu-de)   \n London (eu-gb)   \n Madrid (eu-es)   \n  Osaka (jp-osa)   \n Sydney (au-syd)   \n Tokyo (jp-tok)\n    \n  **Single zone location (SZR)**   \n Chennai (che01)  | Montreal |
 | **APIs supported** |  Kafka API   \n Admin REST API  \n REST Producer API |  Kafka API   \n Admin REST API   \n REST Producer API    |  Kafka API   \n Admin REST API   \n REST Producer API   \n  Schema Registry API  | Kafka API |
 | **Deployment timeframe** | Instantaneous provisioning  | Instantaneous provisioning    | Expect provisioning to take up to 3 hours. As Enterprise has its own dedicated resources for each cluster, it requires more time for provisioning.  | Minutes |
 | **Compliance** |GDPR   \n  Privacy Shield  | GDPR   \n  Privacy Shield   \n  ISO 27001, 27017, 27018, 2701    \n  SOC 1 Type     \n  SOC 2 Type 2   \n  SOC 3   \n  PCI DSS \n ISMAP \n C5  |  GDPR   \n Privacy Shield   \n ISO 27001, 27017, 27018, 2701   \n  SOC 1 Type 2   \n  SOC 2 Type 2   \n  SOC 3   \n  HIPAA ready   \n  PCI DSS  \n ISMAP \n C5 \n IRAP \n ENS \n HITRUST \n ProtectedB | TBA |
-| **Manage security and compliance**  | No  |  No |  Yes | ??? |
+| **Manage security and compliance**  | No  |  No |  Yes | Yes |
 | **IAM address restrictions** | No | Yes | Yes | Future |
-| **IAM token authentication only** | No | No | Yes | ?? |
+| **IAM token authentication only** | No | No | Yes | Yes |
 | **Mirroring** | No | No | Yes | Future |
 {: caption="Plan comparison table" caption-side="bottom"}
 
