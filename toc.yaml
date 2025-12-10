@@ -59,8 +59,6 @@ toc:
       - topicgroup:
           label: Integrating with other services
           topics:
-          - topic: connecting_cos.md
-            navtitle: Connecting to Cloud Object Storage by using Kubernetes
           - topic: connecting_mq.md
             navtitle: Connecting MQ to Event Streams by using Kubernetes
           - watson_platform.md
