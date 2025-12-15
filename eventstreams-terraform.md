@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-09"
+lastupdated: "2025-12-15"
 
 keywords: terraform, schematics, automation, declarative, Event streams
 
@@ -29,14 +29,6 @@ To support a multi-cloud approach, Terraform works with providers. A provider is
 
 Follow [these steps](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/docker-get-started){: external} to install Terraform.
 
-## Terraform references
-{: #eventstreams-terraform-references}
-
-The following references are available to support {{site.data.keyword.messagehub}} customers using Terraform:
-
-- [{{site.data.keyword.messagehub}} Terraform module](https://github.com/terraform-ibm-modules/terraform-ibm-event-streams): Module that supports provisioning and configuring {{site.data.keyword.messagehub}}.
-- [{{site.data.keyword.messagehub}} Terraform examples](https://github.com/IBM-Cloud/terraform-provider-ibm/blob/master/examples/ibm-event-streams/README.md): Shows several {{site.data.keyword.messagehub}} usage scenarios with Terraform including creating an instance, creating a topic, and creating a schema.
-- [Index of Terraform for {{site.data.keyword.messagehub}}]([/docs/EventStreams?topic=EventStreams-kafka_console_tools](/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-resources-datasource-list#ibm-event-streams_rd)): Index of Terraform on {{site.data.keyword.cloud}} resources and data sources.
 
 ## Terraform examples for {{site.data.keyword.messagehub}} Gen2
 {: #eventstreams-terraform-examples}
@@ -49,7 +41,7 @@ The following references are available to support {{site.data.keyword.messagehub
       service           = "messagehub"
       plan              = "enterprise-gen2"
       location          = "ca-mon"
-    
+
       timeouts {
         create = "15m"
         update = "15m"
@@ -65,13 +57,13 @@ The following references are available to support {{site.data.keyword.messagehub
       service           = "messagehub"
       plan              = "enterprise-gen2"
       location          = "ca-mon"
-    
+
       timeouts {
         create = "15m"
         update = "15m"
         delete = "15m"
       }
-    
+
       parameters_json = jsonencode(
         { "dataservices":{"kafka":{"throughput_mb_s":"100","storage_gb":4000}}}
       )
@@ -86,13 +78,13 @@ The following references are available to support {{site.data.keyword.messagehub
       service           = "messagehub"
       plan              = "enterprise-gen2"
       location          = "ca-mon"
-    
+
       timeouts {
         create = "15m"
         update = "15m"
         delete = "15m"
       }
-    
+
       parameters_json = jsonencode(
         {"dataservices": {"encryption":{"disk":"crn:v1:bluemix:public:your-kms-key-crn..."}}}
       )

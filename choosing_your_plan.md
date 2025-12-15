@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-10"
+lastupdated: "2025-12-15"
 
 keywords: plan, Enterprise, Standard, Lite, pricing, throughput, partitions, tenancy, compliance
 
@@ -31,14 +31,14 @@ For information about {{site.data.keyword.messagehub}} plan pricing, see the [ca
 ## Lite plan
 {: #plan_lite}
 
-The Lite plan is free for users who want to try out {{site.data.keyword.messagehub}} or build a proof-of-concept. Do not use the Lite plan for production use. It offers shared access to a multi-tenant {{site.data.keyword.messagehub}} cluster. The Lite plan is only available on Gen 1 (Classic). 
+The Lite plan is free for users who want to try out {{site.data.keyword.messagehub}} or build a proof-of-concept. Do not use the Lite plan for production use. It offers shared access to a multi-tenant {{site.data.keyword.messagehub}} cluster. The Lite plan is only available on Gen 1 (Classic).
 
 ## Standard plan
 {: #plan_standard}
 
-The Standard plan is appropriate if you require event ingest and distribution capabilities but do not require any additional benefits of the Enterprise plan. The Standard plan offers shared access to a multi-tenant {{site.data.keyword.messagehub}} cluster that seamlessly autoscales as you increase the number of partitions you are using for your workload. 
+The Standard plan is appropriate if you require event ingest and distribution capabilities but do not require any additional benefits of the Enterprise plan. The Standard plan offers shared access to a multi-tenant {{site.data.keyword.messagehub}} cluster that seamlessly autoscales as you increase the number of partitions you are using for your workload.
 
-The architecture is highly available by default. The service is distributed across three availability zones, which means that the cluster is resilient to the failure of a single zone or any component within that zone. The Standard plan is only available on Gen 1 {{site.data.keyword.messagehub}} (Classic). 
+The architecture is highly available by default. The service is distributed across three availability zones, which means that the cluster is resilient to the failure of a single zone or any component within that zone. The Standard plan is only available on Gen 1 {{site.data.keyword.messagehub}} (Classic).
 
 ## Enterprise plan
 {: #plan_enterprise}
@@ -47,7 +47,7 @@ The Enterprise plan is appropriate if data isolation, performance, and increased
 The Enterprise plan includes the following features:
 
 - Exclusive access to a single-tenant {{site.data.keyword.messagehub}} service instance deployed in a highly available multi zone region (MZR).
-- Option to provision a single-tenant {{site.data.keyword.messagehub}} service instance in a geographically local but single zone location [(SZR)](/docs/EventStreams?topic=EventStreams-sla#sla_szr).
+- Option to provision a single-tenant {{site.data.keyword.messagehub}} service instance in a geographically local but single zone location [(SZR)](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#sla_szr).
 - Scaling options to customize throughput, storage capacity, or both.
 
 The architecture is highly available when you choose to deploy into a multi-zone region. The service is distributed across three availability zones, which means that the cluster is resilient to the failure of a single zone or any component within that zone.
@@ -97,18 +97,18 @@ The following table summarizes what is supported by the plans:
 
 [^tabletext1]: After 30 days of inactivity, your instance is deleted. (Inactivity is defined as a zero bytes_out metric, even though you might create a partition or produced messages.)
 
-[^tabletext2]: For more information about availability, see [single zone location deployments](/docs/EventStreams?topic=EventStreams-sla#sla_szr).
+[^tabletext2]: For more information about availability, see [single zone location deployments](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#sla_szr).
 
 [^tabletext4]: Only supported on clusters that were created after October 2019.
 
 [^tabletext5]: If you migrate from the Lite to the Standard plan, allow a few minutes for the cached limit of one partition to clear. You can then take advantage of the 100 partition limit for the Standard plan.
 
-[^tabletext6]: This value scales relative to the maximum throughput. For example, if you have a throughput of 150 MB/s the maximum partitions would be 3000, for a throughput of 300 MB/s, 6000 and for 450 MB/s, 9000. This limit is a hard limit for partitions on the Enterprise plan. If you reach this limit, you can no longer create topics. If you want to adjust the number of partitions, you can use the self-service option described in [Scaling Enterprise plan capacity](/docs/EventStreams?topic=EventStreams-ES_scaling_capacity#ES_how_to_scale_capacity){: external}. There is a 3000 partition limit per 2 TB storage with a maximum limit of 18000 partitions with a 12 TB option, which cannot be exceeded.
+[^tabletext6]: This value scales relative to the maximum throughput. For example, if you have a throughput of 150 MB/s the maximum partitions would be 3000, for a throughput of 300 MB/s, 6000 and for 450 MB/s, 9000. This limit is a hard limit for partitions on the Enterprise plan. If you reach this limit, you can no longer create topics. If you want to adjust the number of partitions, you can use the self-service option described in [Scaling Enterprise plan capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity#ES_how_to_scale_capacity){: external}. There is a 3000 partition limit per 2 TB storage with a maximum limit of 18000 partitions with a 12 TB option, which cannot be exceeded.
 
-[^tabletext7]: Maximum message retention (storage) can be specified when the service instance is created. Storage can be later scaled independently as demands increase. The minimum usable storage available is dependent upon the number of capacity units that are configured for the service instance. For more information about capacity options, see [Scaling Event Streams capacity](/docs/EventStreams?topic=EventStreams-ES_scaling_capacity).
+[^tabletext7]: Maximum message retention (storage) can be specified when the service instance is created. Storage can be later scaled independently as demands increase. The minimum usable storage available is dependent upon the number of capacity units that are configured for the service instance. For more information about capacity options, see [Scaling Event Streams capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
 
-[^tabletext8]: Maximum throughput can be specified when the service instance is created. Throughput is expressed as the sum of the number of bytes per second that can be both sent and received in a service instance. Throughput can be later scaled as demands increase. Although throughput scaling is independent of storage, a defined minimum storage amount is required for each tier. For more information about capacity options, see [Scaling Event Streams capacity](/docs/EventStreams?topic=EventStreams-ES_scaling_capacity).
+[^tabletext8]: Maximum throughput can be specified when the service instance is created. Throughput is expressed as the sum of the number of bytes per second that can be both sent and received in a service instance. Throughput can be later scaled as demands increase. Although throughput scaling is independent of storage, a defined minimum storage amount is required for each tier. For more information about capacity options, see [Scaling Event Streams capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
 
-[^tabletext9]: Throughput can be specified when the service instance is created. The throughput achieved can vary according to the configuration of the workload, but for capacity planning, the figure represents the throughput which can be expected to be continually available as a minimim for a typical workload. Although throughput scaling is independent of storage, a defined minimum storage amount is required for each tier. For more information about capacity options, see [Scaling Event Streams capacity](/docs/EventStreams?topic=EventStreams-ES_scaling_capacity).
+[^tabletext9]: Throughput can be specified when the service instance is created. The throughput achieved can vary according to the configuration of the workload, but for capacity planning, the figure represents the throughput which can be expected to be continually available as a minimim for a typical workload. Although throughput scaling is independent of storage, a defined minimum storage amount is required for each tier. For more information about capacity options, see [Scaling Event Streams capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
 
-For more information about limits, see [limits and quotas](/docs/EventStreams?topic=EventStreams-gen2-kafka_quotas).
+For more information about limits, see [limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas).

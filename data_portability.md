@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04" 
+lastupdated: "2025-12-15"
 
 keywords: data portability, data management, operations, compliance, disaster recovery, data ownership, responsibilities
 
@@ -46,7 +46,7 @@ To find out more about responsibility ownership for using {{site.data.keyword.cl
 
 
 
-For more information about your responsibilities when using {{site.data.keyword.messagehub}}, see [Shared responsibilities for {{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-event_streams_responsibilities).
+For more information about your responsibilities when using {{site.data.keyword.messagehub}}, see [Shared responsibilities for {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-event_streams_responsibilities).
 
 ## Data export procedures
 {: #data-portability-procedures}
@@ -55,7 +55,7 @@ For more information about your responsibilities when using {{site.data.keyword.
 
 
 
-All data available within the service can be accessed using the Apache Kafka APIs as described in [Using the Kafka API](/docs/EventStreams?topic=EventStreams-kafka_using). Any data that has exceeded the configured retention will have been deleted and will not be available, as per [Limits and quotas](/docs/EventStreams?topic=EventStreams-kafka_quotas).
+All data available within the service can be accessed using the Apache Kafka APIs as described in [Using the Kafka API](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using). Any data that has exceeded the configured retention will have been deleted and will not be available, as per [Limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas).
 
 To export the configuration of your topics defined within {{site.data.keyword.messagehub}}, use the [Administration REST API](/docs/EventStreams?topic=EventStreams-admin_api). This is not currently available on the Enterprise Gen2 plan.
 
@@ -70,7 +70,7 @@ To export the configuration of your schemas defined within {{site.data.keyword.m
 
 The format of the data exported from the Apache Kafka APIs will be unchanged from when it was submitted.
 
-The format of topic and schema registry configuration is as defined by the respective APIs. 
+The format of topic and schema registry configuration is as defined by the respective APIs.
 
 Schema Registry is not currently available on the Enterprise Gen2 plan.
 {: note}

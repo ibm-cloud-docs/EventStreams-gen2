@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: gen 2, beta
 
@@ -28,7 +28,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: #EventStreams-dec2025}
 {: release-note}
 
-Beta introduciton of Enterprise Gen2 plan
+Beta introduction of Enterprise Gen2 plan
 :   Support for Apache Kafka version 4.1.
 :   Built on VPC and software defined networking.
 :   Available in the Montreal region.

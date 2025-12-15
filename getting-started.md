@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-10"
+lastupdated: "2025-12-15"
 
 keywords: quick setup guide
 
@@ -12,8 +12,8 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Quick setup guide for {{site.data.keyword.messagehub}} for {{site.data.keyword.cloud_notm}}
-{: #quick_setup_guide}
+# Getting started with {{site.data.keyword.messagehub}} for {{site.data.keyword.cloud_notm}}
+{: #getting-started}
 
 [Gen 2]{: tag-purple}
 
@@ -47,7 +47,7 @@ Before you get started, we highly recommend that you read the following informat
 * [Apache Kafka fundamentals](https://developer.ibm.com/articles/event-streams-kafka-fundamentals/?mhsrc=ibmsearch_a&mhq=event%20streams)
 
 
-## Step 1: Select your plan 
+## Step 1: Select your plan
 {: #choose_plan}
 
 {{site.data.keyword.messagehub}} offers different plans according to the generation of the platform, see [Choosing your plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose){: external}. For the Gen2 platform the following plan can be selected.
@@ -60,16 +60,16 @@ Before you get started, we highly recommend that you read the following informat
 {: ui}
 
 1. Log in to the {{site.data.keyword.cloud_notm}} console.
-  
+
 2. Click the [**{{site.data.keyword.messagehub}} service**](https://cloud.ibm.com/catalog/event-streams){: external} in the **Catalog**.
 
 3. Select a Location that supports the Gen2 platform.
-     
+
 4. Select the **Enterprise Gen2 plan** from the **Select a pricing plan** section.
-  
+
 5. Enter a name for your service. You can use the default value.
-  
-6. Click **Create**. The {{site.data.keyword.messagehub}} **Resource list** page opens. 
+
+6. Click **Create**. The {{site.data.keyword.messagehub}} **Resource list** page opens.
 
 7. When your instance has been created, click on the instance name to view more information.
 
@@ -78,12 +78,12 @@ Before you get started, we highly recommend that you read the following informat
 {: #create_topic_ui}
 {: ui}
 
-For guidance about the settings that you can modify when creating topics, see [topic configuration](/docs/EventStreams?topic=EventStreams-kafka_java_api).
+For guidance about the settings that you can modify when creating topics, see [topic configuration](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_java_api).
 
 
 1. From your newly provisioned instance, navigate to **Topics** using the menu on the left.
 2. Click the **Create topic** button and an enter a topic name. Click **Next**. Topic names are restricted to a maximum of 200 characters.
-3. Select the number of partitions. 
+3. Select the number of partitions.
 
     One or more partitions make up a topic. A partition is an ordered list of messages. 1 partition is sufficient for getting started, but production systems often have more.
 
@@ -107,7 +107,7 @@ After you create topics, you can use the console to [list topics](#list_topic_ui
 
 From your {{site.data.keyword.messagehub}} instance, navigate to **Topics** from the menu on the left.
 
-From the **Topics page**, you can view the following information about your topics: 
+From the **Topics page**, you can view the following information about your topics:
 **Name**, **Partitions**, **Retention time**, **Retention size**, **Cleanup policy**, and **Stream landing**.
 
 ## Step 4: Create a service credential by using the console
@@ -119,10 +119,10 @@ To allow you to connect to your {{site.data.keyword.messagehub}} instance, creat
 1. Locate your {{site.data.keyword.messagehub}} service in the **Resource list**.
 2. Click your service tile.
 3. Click **Service credentials**.
-4. Click **New credential**. 
+4. Click **New credential**.
 5. Complete the details for your new credential like a name and role and click **Add**. A new credential appears in the credentials list.
 6. Expand the new credential's section to reveal the details in JSON format.
- 
+
 ## Step 5: Using your instance to produce and consume data
 {: #produce_data_ui}
 {: ui}
@@ -131,21 +131,21 @@ To connect to {{site.data.keyword.messagehub}, a Virtual Private Endpoint (VPE) 
 
 Follow [the instructions to connect to your instance](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting) to create a VPE and run a producer and consumer application to send and recieve data.
 
-## Step 6: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the console 
+## Step 6: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the console
 {: #connect_monitoring_ui}
 {: ui}
 
 You can use {{site.data.keyword.mon_full_notm}} to get operational visibility into the performance and health of your applications, services, and platforms. {{site.data.keyword.mon_full_notm}} provides administrators, DevOps teams, and developers full stack telemetry with advanced features to monitor and troubleshoot, define alerts, and design custom dashboards.
 
 For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.messagehub}}, see:
-* [Opting in to metrics](/docs/EventStreams?topic=EventStreams-metrics#opt_in_metrics){: external}  
-* [Enabling default metrics](/docs/EventStreams?topic=EventStreams-metrics#enabling_default_metrics){: external}
-* [Enabling enhanced metrics](/docs/EventStreams?topic=EventStreams-metrics#opt_in_enhanced_metrics){: external}
-* [Viewing details of available metrics](/docs/EventStreams?topic=EventStreams-metrics#metric_details){: external}
-* [Understanding metrics cost information](/docs/EventStreams?topic=EventStreams-metrics#metric_costs){: external}
+* [Opting in to metrics](/docs/EventStreams-gen2?topic=EventStreams-gen2-metrics#opt_in_metrics){: external}
+* [Enabling default metrics](/docs/EventStreams-gen2?topic=EventStreams-gen2-metrics#enabling_default_metrics){: external}
+* [Enabling enhanced metrics](/docs/EventStreams-gen2?topic=EventStreams-gen2-metrics#opt_in_enhanced_metrics){: external}
+* [Viewing details of available metrics](/docs/EventStreams-gen2?topic=EventStreams-gen2-metrics#metric_details){: external}
+* [Understanding metrics cost information](/docs/EventStreams-gen2?topic=EventStreams-gen2-metrics#metric_costs){: external}
 
 
-## Step 7: Connect {{site.data.keyword.at_full}} to audit service activity 
+## Step 7: Connect {{site.data.keyword.at_full}} to audit service activity
 {: #activity_tracker_ui}
 {: ui}
 
@@ -173,26 +173,26 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 
 Kafka Connect is part of the Apache Kafka project and allows you to connect external systems to Kafka. It consists of a runtime  that can run connectors to copy data to and from a cluster.
 
-For more information, see [Using Kafka Connect with Event Streams](/docs/EventStreams?topic=EventStreams-kafka_connect){: external}.
+For more information, see [Using Kafka Connect with Event Streams](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_connect){: external}.
 
 Kafka Connect is not part of the managed {{site.data.keyword.messagehub}} service.
 
 ### ksqlDB
 {: #ksqldb}
 
-You can use [KSQL](https://github.com/confluentinc/ksql){: external} with the {{site.data.keyword.messagehub}} Enterprise plan for stream processing. 
+You can use [KSQL](https://github.com/confluentinc/ksql){: external} with the {{site.data.keyword.messagehub}} Enterprise plan for stream processing.
 {: shortdesc}
 
 ksqlDB is a purpose-built database for event streaming. Use it to build end-to-end event streaming applications quickly with a purpose-built stream processing database for Apache Kafka.
 
-First complete these [setup steps](/docs/EventStreams?topic=EventStreams-ksql_using##kqsldbsteps){: external}. Then the quickest and easiest way to run ksqlDB with {{site.data.keyword.messagehub}} is to use a docker container as described in [ksqlDB quickstart](https://ksqldb.io/quickstart.html){: external}. 
+First complete these [setup steps](/docs/EventStreams-gen2?topic=EventStreams-gen2-ksql_using){: external}. Then the quickest and easiest way to run ksqlDB with {{site.data.keyword.messagehub}} is to use a docker container as described in [ksqlDB quickstart](https://ksqldb.io/quickstart.html){: external}.
 
 
 ## Step 9: Get help
 {: #getting_help}
 
-For a general overview of how to get help with {{site.data.keyword.messagehub}} and where to get support, see [Getting help and support](/docs/EventStreams?topic=EventStreams-gettinghelp){: external}.
+For a general overview of how to get help with {{site.data.keyword.messagehub}} and where to get support, see [Getting help and support](/docs/EventStreams-gen2?topic=EventStreams-gen2-gettinghelp){: external}.
 
-[FAQs](/docs/EventStreams?topic=EventStreams-faqs){: external} details answers to some of the common questions about {{site.data.keyword.messagehub}}.
+[FAQs](/docs/EventStreams-gen2?topic=EventStreams-gen2-faqs){: external} details answers to some of the common questions about {{site.data.keyword.messagehub}}.
 
-If you're experiencing a problem with {{site.data.keyword.messagehub}}, here's a list of the information you need to gather before you open a case [Reporting a problem to the Event Streams team - Standard and Enterprise plans](/docs/EventStreams?topic=EventStreams-report_problem_enterprise){: external}.
+If you're experiencing a problem with {{site.data.keyword.messagehub}}, here's a list of the information you need to gather before you open a case [Reporting a problem to the Event Streams team - Standard and Enterprise plans](/docs/EventStreams-gen2?topic=EventStreams-gen2-report_problem_enterprise){: external}.

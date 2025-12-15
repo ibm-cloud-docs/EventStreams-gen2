@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-09" 
+lastupdated: "2025-12-15"
 
 keywords: activity , cloud logs
 
@@ -48,7 +48,7 @@ Additional information about topic configuration is logged in the update and del
 {: #message-events}
 
 You can enable message audit events on a per topic basis for {{site.data.keyword.messagehub}} instances that are on the `Enterprise Gen2 plan`.
-Also, see [How to enable message audit events](/docs/EventStreams?topic=EventStreams-at_events#enable-message-events).
+Also, see [How to enable message audit events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events&interface=ui#message-events).
 
 The following table lists the message audit events:
 

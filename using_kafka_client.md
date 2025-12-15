@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: java client, api, admin api, liberty, migrate client, sasl.jaas.config property
 
@@ -23,7 +23,7 @@ subcollection: EventStreams-gen2
 The Java&trade; Kafka API sample is an example producer and consumer that is written in Java, which directly uses the Kafka API. You can run this sample locally or in {{site.data.keyword.Bluemix_short}}.
 {: shortdesc}
 
-For optimal performance with the Java client, you are recommended to use version 2.6.0, or later. For more information, see [known restriction about Java Kafka calls](/docs/EventStreams?topic=EventStreams-restrictions#calls_timeout_problem).
+For optimal performance with the Java client, you are recommended to use version 2.6.0, or later. For more information, see [known restriction about Java Kafka calls](/docs/EventStreams-gen2?topic=EventStreams-gen2-restrictions#calls_timeout_kafka).
 
 The sample code is in the [event-streams-samples GitHub project](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-console-sample){: external}. Although the sample uses the Kafka API to send and receive messages, the sample uses the {{site.data.keyword.messagehub}} Administration API to create the topic it sends messages to and receives messages from.
 
@@ -59,7 +59,7 @@ For an earlier Kafka client, you must use a JAAS configuration file to specify t
 ## Migrating a Kafka client from version 0.9.X or 0.10.X to later client versions
 {: #kafka_migrate}
 
-If you use the Java clients, you can use the publicly available Kafka clients version 0.10 or later. 
+If you use the Java clients, you can use the publicly available Kafka clients version 0.10 or later.
 
 You are encouraged to move from version 0.9.X to the latest version. You can download a Kafka client from [https://kafka.apache.org/downloads](https://kafka.apache.org/downloads){: external}.
 

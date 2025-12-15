@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-05"
+lastupdated: "2025-12-15"
 
 keywords: sla, service level agreement, connectivity, throughput
 
@@ -12,7 +12,7 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Service Level Agreement (SLA) for {{site.data.keyword.messagehub}} availability 
+# Service Level Agreement (SLA) for {{site.data.keyword.messagehub}} availability
 {: #sla}
 
 [Gen 2]{: tag-purple}
@@ -34,7 +34,7 @@ Availability refers to the ability of applications to produce and consume messag
 ## What do you need to consider to achieve this availability?
 {: #sla_availability}
 
-To achieve high levels of availability from the application perspective, you should consider [connectivity](/docs/EventStreams?topic=EventStreams-sla#connectivity), [throughput](/docs/EventStreams?topic=EventStreams-sla#throughput), and [consistency and durability of messages](/docs/EventStreams?topic=EventStreams-sla#message_consistency). Users are responsible for designing their applications to optimize these three elements for their business.
+To achieve high levels of availability from the application perspective, you should consider [connectivity](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#connectivity), [throughput](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#throughput), and [consistency and durability of messages](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#message_consistency). Users are responsible for designing their applications to optimize these three elements for their business.
 
 ### Connectivity
 {: #connectivity}
@@ -61,12 +61,13 @@ Throughput is expressed as the number of bytes per second that can be both sent 
 #### Specific guidance for the Standard plan
 {: #sla_standard_specifics}
 
-For throughput guidance information, see [Limits and quotas - Standard](/docs/EventStreams?topic=EventStreams-kafka_quotas#standard_throughput).
+For throughput guidance information, see [Limits and quotas - Standard](/docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas).
 
 #### Specific guidance for the Enterprise plan
 {: #sla_enterprise_specifics}
 
-For throughput guidance information, see [Limits and quotas - Enterprise](/docs/EventStreams?topic=EventStreams-kafka_quotas#enterprise_throughput).
+For throughput guidance information, see [Limits and quotas - Enterprise](/docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas#enterprise_throughput).
+
 
 #### Measurement
 {: #sla_measurement}
@@ -76,7 +77,7 @@ Instrument applications to be aware of how they are performing. For example, the
 #### Saturation
 {: #sla_saturation}
 
-As the limit of the traffic that can be produced in to the cluster is approached, producers start to be throttled, latency increases, and ultimately errors such as timeout errors occur. Depending on the configuration, message consistency and durability might also be impacted. For more information, see [Consistency and durability of messages](/docs/EventStreams?topic=EventStreams-sla#message_consistency).
+As the limit of the traffic that can be produced in to the cluster is approached, producers start to be throttled, latency increases, and ultimately errors such as timeout errors occur. Depending on the configuration, message consistency and durability might also be impacted. For more information, see [Consistency and durability of messages](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#message_consistency).
 
 ### Consistency and durability of messages
 {: #message_consistency}
@@ -111,6 +112,6 @@ For the highest availability we recommend our high availability Public environme
 
 - An advantage of spreading Kafka across many zones is to minimize the chance of a failure that might bring down an entire cluster. In contrast, there is the small possibility that a single failure might bring down the entire cluster within one zone. In extreme cases there is also the potential of data loss. For example, even if `acks=all` is used by the producers, if all Kafka nodes went down simultaneously, there might be some messages that the brokers had acknowledged receipt for, but the underlying file system had not completed the flush to disk. Potentially, those un-flushed messages might be lost.
 
-For more information, see [message acknowledgments](/docs/EventStreams?topic=EventStreams-producing_messages#message_acknowledgments). In many use cases this is not necessarily an issue. However, if message loss is unacceptable under any circumstance, consider other strategies such as using a multi-availability zone cluster, cross region replication, or producer side message checkpointing.
+For more information, see [message acknowledgments](/docs/EventStreams-gen2?topic=EventStreams-gen2-producing_messages#message_acknowledgments). In many use cases this is not necessarily an issue. However, if message loss is unacceptable under any circumstance, consider other strategies such as using a multi-availability zone cluster, cross region replication, or producer side message checkpointing.
 
 For more information, see [single zone clusters](/docs/containers?topic=containers-regions-and-zones#regions_single_zone) and [multizone clusters](/docs/containers?topic=containers-regions-and-zones#regions_multizone).

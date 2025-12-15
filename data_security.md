@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-11-20"
+lastupdated: "2025-12-15"
 
 keywords: protocols, encryption, data isolation, data retention, data isolation model
 
@@ -43,7 +43,7 @@ For TLS v1.3:
 
 * Additionally, you must use TLS v1.2 or v1.3 in the following cases:
 
-    * To make connections to the Kafka native and REST interfaces. 
+    * To make connections to the Kafka native and REST interfaces.
     * The browser that you use to access the {{site.data.keyword.messagehub}} dashboard must support TLS v1.2 or v1.3.
 
 ## Encryption of message payloads, topic names, and consumer groups
@@ -53,7 +53,7 @@ Message data is encrypted for transmission between {{site.data.keyword.messagehu
 
 Topic names and consumer groups are encrypted for transmission between {{site.data.keyword.messagehub}} and clients as a result of TLS. However, {{site.data.keyword.messagehub}} does not encrypt these values at rest. Therefore, do not use confidential information in your topic names.
 
-For information about compliance on each of the {{site.data.keyword.messagehub}} plans, see [What's supported by the Lite, Standard, and Enterprise plans](/docs/EventStreams?topic=EventStreams-plan_choose#what_is_supported).
+For information about compliance on each of the {{site.data.keyword.messagehub}} plans, see [What's supported by the Lite, Standard, and Enterprise plans](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## Data isolation model
 {: #data_isolation}

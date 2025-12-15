@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-05"
+lastupdated: "2025-12-15"
 
 keywords: limits, quotas, network throughput, retention, consumer groups, schema
 
@@ -45,12 +45,12 @@ For more information, see [Scaling {{site.data.keyword.messagehub}}](/docs/Event
 ### Partitions
 {: #enterprise_partitions}
 
-The maximum number of partitions scales in proportion to the selected throughput. For 100MB/s, 3000 partitions can be used. 
+The maximum number of partitions scales in proportion to the selected throughput. For 100MB/s, 3000 partitions can be used.
 
 ### Retention
 {: #enterprise_retention}
 
-The storage capacity can be selected when the service instance is created, and later scaled as demands increase. Storage capacity is dependent upon the configured throughput capacity. For more information, see [Scaling {{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-ES_scaling_capacity) on storage capacity options.
+The storage capacity can be selected when the service instance is created, and later scaled as demands increase. Storage capacity is dependent upon the configured throughput capacity. For more information, see [Scaling {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity) on storage capacity options.
 
 Storage capacity cannot be scaled down. To move to a lower storage capacity would require creating a new {{site.data.keyword.messagehub}} service instance at the lower capacity unit.
 

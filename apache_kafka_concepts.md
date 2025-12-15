@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: brokers, messages, topics, partitions, replication, replica, producer, consumer, consumer group
 
@@ -37,7 +37,7 @@ Apache Kafka is a distributed messaging system. A Kafka cluster consists of a se
 ## Messages
 {: #kafka_messages}
 
-A message is a unit of data in Kafka. Each message is represented as a record, which comprises two parts: key and value. The key is commonly used for data about the message and the value is the body of the message. Kafka uses the terms record and message interchangeably. 
+A message is a unit of data in Kafka. Each message is represented as a record, which comprises two parts: key and value. The key is commonly used for data about the message and the value is the body of the message. Kafka uses the terms record and message interchangeably.
 
 ## Topics and partitions
 {: #kafka_topics_partitions}
@@ -46,7 +46,7 @@ Each topic is a named stream of messages. A topic is made up of one or more part
 
 If a topic has more than one partition, it allows data to be fed through in parallel to increase throughput by distributing the partitions across the cluster. The number of partitions also influences the balancing of workload among consumers.
 
-For more information, see [Partition leadership](/docs/EventStreams?topic=EventStreams-partition_leadership).
+For more information, see [Partition leadership](/docs/EventStreams-gen2?topic=EventStreams-gen2-partition_leadership).
 
 ![Topics and partitions diagram.](concepts_topics_and_partitions.png "The diagram shows one topic with three partitions that are spread across three brokers."){: caption="The diagram shows one topic with three partitions that are spread across three brokers." caption-side="bottom"}
 
@@ -86,7 +86,7 @@ A consumer is a client application that reads messages from one or more topics a
 
 If the lag increases over time, it is a sign that the consumer is not able to keep up. Over the short term, this is not an issue but eventually the consumer might miss messages if the retention period is exceeded.
 
-For more information, see [Consuming messages](/docs/EventStreams?topic=EventStreams-consuming_messages).
+For more information, see [Consuming messages](/docs/EventStreams-gen2?topic=EventStreams-gen2-producing_messages).
 
 ![Consumers diagram.](concepts_consumers.png "The diagram shows a consumer processing messages from one topic across three brokers."){: caption="The diagram shows a consumer processing messages from one topic across three brokers." caption-side="bottom"}
 

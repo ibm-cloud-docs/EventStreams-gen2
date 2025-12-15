@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: monitoring, metrics
 
@@ -28,7 +28,7 @@ With Kafka, monitoring typically involves various metrics that are related to to
 
 Monitoring your {{site.data.keyword.messagehub}} instance is crucial to ensure optimal functionality and the overall health of your data pipeline. Monitoring your Kafka clients helps to identify early signs of application failure, such as high resource usage, lagging consumers, and bottlenecks. Identifying these warning signs early enables a proactive response to potential issues that minimize downtime and prevent any disruption to business operations.
 
-Kafka clients (producers and consumers) have their own set of metrics to monitor their performance and health. In addition, the {{site.data.keyword.messagehub}} service supports a rich set of metrics produced by the server. For more information, see [Monitoring {{site.data.keyword.messagehub}} service metrics by using {{site.data.keyword.mon_full_notm}}](/docs/EventStreams?topic=EventStreams-metrics).
+Kafka clients (producers and consumers) have their own set of metrics to monitor their performance and health. In addition, the {{site.data.keyword.messagehub}} service supports a rich set of metrics produced by the server. For more information, see [Monitoring {{site.data.keyword.messagehub}} service metrics by using {{site.data.keyword.mon_full_notm}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-metrics).
 
 ## Client metrics to monitor
 {: #what-monitor}

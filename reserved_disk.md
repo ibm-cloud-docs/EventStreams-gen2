@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: reserved disk usage, store data, storage
 
@@ -23,7 +23,7 @@ subcollection: EventStreams-gen2
 Learn how the usable storage of an {{site.data.keyword.messagehub}} instance is used by the topics and partitions that are created and the configuration settings that you apply.
 {: shortdesc}
 
-First of all, it's important to note that the defined storage of an {{site.data.keyword.messagehub}} instance is usable storage. That means that you do not need to worry about storage used by replicas (because all topics have their replication factor set to 3) that is not taken from the usable storage. This keeps things simple and you can plan how to map the retention 
+First of all, it's important to note that the defined storage of an {{site.data.keyword.messagehub}} instance is usable storage. That means that you do not need to worry about storage used by replicas (because all topics have their replication factor set to 3) that is not taken from the usable storage. This keeps things simple and you can plan how to map the retention
 of those messages to storage usage.
 
 ## Understanding how Kafka stores data
@@ -31,7 +31,7 @@ of those messages to storage usage.
 
 Kafka allows users to configure retention limits on topics.
 
-The retention.bytes configuration is the total number of bytes allocated for messages for each partition of the topic. If it is exceeded, Kafka deletes oldest messages. So for example, if you are generally sending in 200 MB a day of messages to a single partition topic, and you want to keep them for 5 days, set retention.bytes to 1 GB (200 MB x 5 days). 
+The retention.bytes configuration is the total number of bytes allocated for messages for each partition of the topic. If it is exceeded, Kafka deletes oldest messages. So for example, if you are generally sending in 200 MB a day of messages to a single partition topic, and you want to keep them for 5 days, set retention.bytes to 1 GB (200 MB x 5 days).
 
 If this was over 10 partitions, then you would set retention.bytes = 100 MB (1 GB / 10 partitions).
 
@@ -51,12 +51,12 @@ More storage is needed per partition for indexes. For each log segment, Kafka al
 
      2 x number.of.log.segments x segment.index.size
 
-where 
+where
 
      number.of.log.segments = floor(retention.bytes/log.segment.size) + 1
-     
+
 ## Managing storage with {{site.data.keyword.messagehub}}
-{: #ES_managing_storage_with_event_streams}     
+{: #ES_managing_storage_with_event_streams}
 
 When doing topic administration operations, such as creating topics, creating partitions, or changing topic configurations, {{site.data.keyword.messagehub}} ensures that enough storage is available to satisfy the operation. To do this, for each topic, {{site.data.keyword.messagehub}} computes the "reserved size" for each topic by using the following method.
 
@@ -66,11 +66,11 @@ For topics that have a `cleanup.policy` setting of `delete`, or `compact, delete
 
      Reserved size = retention.bytes + log.segment.size + (2 x segment.index.size x number.of.log.segments)
 
-where 
+where
 
      number.of.log.segments = floor(retention.bytes/log.segment.size) + 1
 
-The total reserved storage percentage is also displayed in {{site.data.keyword.mon_full_notm}} by the [ibm_eventstreams_instance_reserved_disk_space_percent metric](/docs/EventStreams?topic=EventStreams-metrics#ibm_eventstreams_instance_reserved_disk_space_percent).
+The total reserved storage percentage is also displayed in {{site.data.keyword.mon_full_notm}} by the [ibm_eventstreams_instance_reserved_disk_space_percent metric](//docs/EventStreams-gen2?topic=EventStreams-gen2-metrics#ibm_eventstreams_instance_reserved_disk_space_percent).
 
 Requests to create a new topic, or add partitions to an existing topic are rejected if they would result in the total amount of reserved storage exceeding 90% [^footnote1] of the storage configured for the {{site.data.keyword.messagehub}} instance. Rejected requests receive a PolicyViolation error explaining that the reserved storage limit for the instance has been reached. If the reserved storage limit is reached, you need to either delete topics or increase the amount of storage configured for the instance before further topics can be created.
 
@@ -78,27 +78,27 @@ Requests to create a new topic, or add partitions to an existing topic are rejec
 
 
 The reserved size calculation can change in the future if Kafka storage requirements are updated.
-{: note}  
+{: note}
 
 ## Examples
-{: #ES_managing_storage_with_event_streams_examples}  
+{: #ES_managing_storage_with_event_streams_examples}
 
 A non-obvious effect is that Kafka can reserve more storage than expected depending on your topic configurations. See the following examples.
 
 1. A topic with retention.bytes of 1 GB, and with a log segment size of 512 MB:
 
     With one partition, it would reserve about 1.5 GB of storage.
-   
+ 
     In this case, the reserved size is significantly larger than the retention size.
 
 2. A topic with retention.bytes of 50 GB, and with a log segment size of 512 MB:
 
     With one partition, it would reserve about 50.5 GB of storage.
-    
+
     In this case, the reserved size is very close to the retention size.
 
 3. A topic with retention.bytes of 1 GB, and with a log segment size of 128 MB:
 
     With one partition, it would reserve about 1.1 GB of storage.
-    
+
     In this case, the reserved size is very close to the retention size.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: client, wildcarding, wildcard, policies
 
@@ -25,12 +25,12 @@ subcollection: EventStreams-gen2
 
 Kafka client configured with SASL PLAIN uses an IAM API key as a plain text password in the authentication process, {{site.data.keyword.messagehub}} sends the API key to IAM for verification. When authenticated, this client will keep connected and will not require re-authentication until it is disconnected and wants to re-connect.
 
-Kafka client configured with SASL OAUTHBEARER uses IAM access token in the authentication process, {{site.data.keyword.messagehub}} verifies the token via IAM public key. Because an IAM access token has an expiration time (usually at 1 hour), Kafka client is required to re-generate a new token and go through the authentication process again when previous token is approaching expiration time. This approach provides better security comparing to SASL PLAIN in two ways: 
+Kafka client configured with SASL OAUTHBEARER uses IAM access token in the authentication process, {{site.data.keyword.messagehub}} verifies the token via IAM public key. Because an IAM access token has an expiration time (usually at 1 hour), Kafka client is required to re-generate a new token and go through the authentication process again when previous token is approaching expiration time. This approach provides better security comparing to SASL PLAIN in two ways:
 
-1. The API key always stays at client side to generate the access token and is no longer sent to Kafka brokers over the network, which removes the risk of API key exposure. 
+1. The API key always stays at client side to generate the access token and is no longer sent to Kafka brokers over the network, which removes the risk of API key exposure.
 2. The authentication process happens on a regular basis when the access token is expiring and this minimizes the risk of token exposure.
 
-For more secure authentication, SASL OAUTHBEARER is the only recommended authentication method for Kafka clients. See [Configuring your Kafka API client](/docs/EventStreams?topic=EventStreams-kafka_using#kafka_api_client) how to configure SASL OAUTHBEARER in Kafka clients.
+For more secure authentication, SASL OAUTHBEARER is the only recommended authentication method for Kafka clients. See [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using#kafka_api_client) how to configure SASL OAUTHBEARER in Kafka clients.
 
 Enterprise users have the option to disable SASL PLAIN in their Enterprise instances. Use the following command:
 
@@ -41,7 +41,7 @@ ibmcloud resource service-instance-update <instance-name> -p '{"iam_token_only":
 ## Connecting to {{site.data.keyword.messagehub}}
 {: #connect_message_enterprise }
 
-For more information about how to get a security key credential for an external application, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-connecting).
+For more information about how to get a security key credential for an external application, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting).
 
 ## Managing authorization to your {{site.data.keyword.messagehub}} resources
 {: #security_resources}
@@ -107,7 +107,7 @@ The following tables summarize some common {{site.data.keyword.messagehub}} acti
 ### Cluster requirements
 {: #cluster_actions}
 
-By controlling access to the cluster resource, you can determine which applications and users can connect to the service. In addition to the policies required for the resource types below, access to `ResourceType: Cluster` and a `Role: Reader, Writer, Manager` is required. 
+By controlling access to the cluster resource, you can determine which applications and users can connect to the service. In addition to the policies required for the resource types below, access to `ResourceType: Cluster` and a `Role: Reader, Writer, Manager` is required.
 
 ### Producer actions
 {: #producing_actions}
@@ -150,7 +150,7 @@ The following table describes the role and resource requirements that are needed
 [^tabletext2]: Reader on group is only required if the assign causes the consumer to leave its current group.
 
 ### Administration actions
-{: #administration_actions} 
+{: #administration_actions}
 
 In addition to the policies required for this resource type, access to `ResourceType: Cluster` and a `Role: Reader, Writer, Manager` is required.
 
@@ -171,7 +171,7 @@ In addition to the policies required for this resource type, access to `Resource
 {: caption="Administration actions" caption-side="bottom"}
 
 ### Schema Registry actions
-{: #schema_registry_actions} 
+{: #schema_registry_actions}
 
 With Schema Registry actions, you can alter the schema version, such as create, update, and delete artifact or artifact versions (Enterprise plan only). *Artifact* is the term that {{site.data.keyword.messagehub}} uses to describe related schemas, often associated with and used by a particular Kafka topic. The term *subject* is often used to describe the same concept. For more information, see [Using Event Streams Schema Registry](/docs/EventStreams?topic=EventStreams-ES_schema_registry). In addition to the policies required for this resource type, access to `ResourceType: Cluster` and a `Role: Reader, Writer, Manager` is required.
 

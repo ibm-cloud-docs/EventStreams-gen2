@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: api, frequently asked questions, consumer group, log retention, message size, replication settings
 
@@ -54,38 +54,38 @@ segment.bytes
     Standard: Set to any value between 100 KiB and 512 MiB.
 
 segment.index.bytes
-:   The size of the index that maps offsets to file positions. 
+:   The size of the index that maps offsets to file positions.
 
     **Note:**
     Enterprise: Set to any value between 100 KiB and 1 TiB.
     Standard: Set to any value between 100 KiB and 100 MiB.
 
 segment.ms
-:   The period of time after which Kafka will force the log to roll even if the segment file isn't full. 
+:   The period of time after which Kafka will force the log to roll even if the segment file isn't full.
 
     **Note:**
     Set to any value between 5 minutes and 30 days.
-    
+
  See the following example of default value settings.
- 
+
 ```bash
  Details for topic testit
-Topic name   Internal?   Partition count   Replication factor   
-testit       false       1                 3   
+Topic name   Internal?   Partition count   Replication factor
+testit       false       1                 3
 
 Partition details for topic testit
-Partition ID   Leader   Replicas   In-sync   
-0              1        [1 5 0]    [1 5 0]   
+Partition ID   Leader   Replicas   In-sync
+0              1        [1 5 0]    [1 5 0]
 
 Configuration parameters for topic testit
-Name                  Value   
-cleanup.policy        delete   
-min.insync.replicas   2   
-segment.bytes         536870912   
-retention.ms          86400000   
-segment.ms            604800000   
-retention.bytes       1073741824   
-segment.index.bytes   10485760  
+Name                  Value
+cleanup.policy        delete
+min.insync.replicas   2
+segment.bytes         536870912
+retention.ms          86400000
+segment.ms            604800000
+retention.bytes       1073741824
+segment.index.bytes   10485760
 ```
 {: codeblock}
 
@@ -95,12 +95,12 @@ segment.index.bytes   10485760
 {: faq}
 {: support}
 
-{{site.data.keyword.messagehub}} retains consumer offsets for 7 days. This corresponds to the Kafka configuration offsets.retention.minutes. 
+{{site.data.keyword.messagehub}} retains consumer offsets for 7 days. This corresponds to the Kafka configuration offsets.retention.minutes.
 
-Offset retention is system-wide so you cannot set it at an individual topic level. All consumer groups get only 7 days of stored offsets even if using a topic with a log retention that has been increased to the maximum of 30 days. 
+Offset retention is system-wide so you cannot set it at an individual topic level. All consumer groups get only 7 days of stored offsets even if using a topic with a log retention that has been increased to the maximum of 30 days.
 
-The internal Kafka `__consumer_offsets` topic is visible to you as read-only on the Enterpise plan. 
-You are strongly recommended not to attempt to manage the topic in any way. You cannot access the `__consumer_offsets` topic in any way on the Standard plan. 
+The internal Kafka `__consumer_offsets` topic is visible to you as read-only on the Enterpise plan.
+You are strongly recommended not to attempt to manage the topic in any way. You cannot access the `__consumer_offsets` topic in any way on the Standard plan.
 
 
 ## How can I clean up a consumer group with no consumers?
@@ -110,7 +110,7 @@ You are strongly recommended not to attempt to manage the topic in any way. You 
 
 After consumers have left, a group continues to exist only if it has offsets. Consumer offsets are deleted after 7 days of inactivity. Consequently, a consumer group is deleted when the last committed offset for that group expires.
 
-If you want to explicitly delete a group at a time you choose, you can use the 
+If you want to explicitly delete a group at a time you choose, you can use the
 [deleteConsumerGroups() API](http://kafka.apache.org/23/javadoc/org/apache/kafka/clients/admin/AdminClient.html#deleteConsumerGroups-java.util.Collection){: external}, or the [ibmcloud es group-delete command](/docs/EventStreams?topic=EventStreams-cli_reference#ibmcloud_es_group_delete).
 
 
@@ -128,7 +128,7 @@ create a topic using either the user interface or the
 administration API. The time limit is a minimum of an hour and a
 maximum of 30 days.
 
-For information about restrictions on the settings allowed when you create topics using a Kafka client or Kafka Streams, see [How do I use Kafka APIs to create and delete topics?](/docs/EventStreams?topic=EventStreams-faqs#topic_admin)
+For information about restrictions on the settings allowed when you create topics using a Kafka client or Kafka Streams, see [How do I use Kafka APIs to create and delete topics?](/docs/EventStreams-gen2?topic=EventStreams-gen2-faqs#topic_admin)
 
 ## What is {{site.data.keyword.messagehub}}'s availability behavior?
 {: #availability}
@@ -144,19 +144,19 @@ As part of the regular operation of {{site.data.keyword.messagehub}}, the nodes 
 In some cases, your apps will be aware as the cluster reassigns resources. Write your apps to be resilient
 to these changes and to be able to reconnect and retry operations.
 
-## What is {{site.data.keyword.messagehub}}'s maximum message size? 
+## What is {{site.data.keyword.messagehub}}'s maximum message size?
 {: #max_message_size }
 {: faq}
 
-{{site.data.keyword.messagehub}}'s maximum message size is 1 MB, which is the Kafka default. 
+{{site.data.keyword.messagehub}}'s maximum message size is 1 MB, which is the Kafka default.
 
-## What are {{site.data.keyword.messagehub}}'s replication settings? 
+## What are {{site.data.keyword.messagehub}}'s replication settings?
 {: #replication }
 {: faq}
 
 {{site.data.keyword.messagehub}} is configured to provide strong availability and durability.
 The following configuration settings apply to all topics and cannot be changed:
-* replication.factor = 3 
+* replication.factor = 3
 * min.insync.replicas = 2
 
 ## What are the restrictions and defaults for topics and partitions?
@@ -177,7 +177,7 @@ The following configuration settings apply to all topics and cannot be changed:
 To confirm which type of {{site.data.keyword.messagehub}} plan you've provisioned (Lite, Standard, or Enterprise), complete the following steps:
 1. In the {{site.data.keyword.Bluemix_notm}} console, navigate to the instance of {{site.data.keyword.messagehub}} that you want to check.
 2. Click the **Plan** tab in the navigation pane on the left.
-   The **Current plan** section displays your plan type. 
+   The **Current plan** section displays your plan type.
 
 ## Can I change my {{site.data.keyword.messagehub}} plan using the {{site.data.keyword.Bluemix_notm}} console?
 {: #plan_migrate}
@@ -185,7 +185,7 @@ To confirm which type of {{site.data.keyword.messagehub}} plan you've provisione
 
 Yes, but only if you are moving from the Lite plan to the Standard plan.
 
-1. In the {{site.data.keyword.Bluemix_notm}} console, navigate to the instance of {{site.data.keyword.messagehub}} Lite plan that you want to change. 
+1. In the {{site.data.keyword.Bluemix_notm}} console, navigate to the instance of {{site.data.keyword.messagehub}} Lite plan that you want to change.
 2. Click the **Plan** tab in the navigation pane on the left.
 3. In the **Change pricing plan** section, check the **Standard** box. Click **Upgrade**.
 
@@ -193,7 +193,7 @@ Yes, but only if you are moving from the Lite plan to the Standard plan.
 
    However, this option does not currently work in the {{site.data.keyword.Bluemix_notm}} console for any other combination of plans. For example, if you try a different plan combination, you'll see an error message like the following:
    ```text
-   Could not find VCAP::CloudController::ServicePlan with guid: ibm.eventstreams.standard 
+   Could not find VCAP::CloudController::ServicePlan with guid: ibm.eventstreams.standard
    ```
    {: codeblock}
 
@@ -202,16 +202,16 @@ Yes, but only if you are moving from the Lite plan to the Standard plan.
 {: #plan_compare }
 {: faq}
 
-To find out more information about the different {{site.data.keyword.messagehub}} plans, see [Choosing your plan](/docs/EventStreams?topic=EventStreams-plan_choose).
+To find out more information about the different {{site.data.keyword.messagehub}} plans, see [Choosing your plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose).
 
 ## How do I handle disaster recovery?
 {: #disaster_recovery }
 {: faq}
 {: support}
 
-Currently, it is the responsibility of the user to manage their own {{site.data.keyword.messagehub}} disaster recovery. {{site.data.keyword.messagehub}} data can be replicated between an {{site.data.keyword.messagehub}} instance in one location (region) and another instance in a different location. However, the user is responsible for provisioning a remote {{site.data.keyword.messagehub}} instance and managing the replication. 
+Currently, it is the responsibility of the user to manage their own {{site.data.keyword.messagehub}} disaster recovery. {{site.data.keyword.messagehub}} data can be replicated between an {{site.data.keyword.messagehub}} instance in one location (region) and another instance in a different location. However, the user is responsible for provisioning a remote {{site.data.keyword.messagehub}} instance and managing the replication.
 
-We suggest a tool like Kafka MirrorMaker to replicate data between clusters. For information about how to run MirrorMaker, see 
+We suggest a tool like Kafka MirrorMaker to replicate data between clusters. For information about how to run MirrorMaker, see
 [{{site.data.keyword.messagehub}} kafka-mirrormaker repository](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-mirrormaker){: external}. For an example of the recovery process, see [Using mirroring in a disaster recovery scenario](/docs/EventStreams?topic=EventStreams-disaster_recovery_scenario) .
 
 The user is also responsible for the backup of message payload data. Although this data is replicated across multiple Kafka brokers within a cluster, which protects against the majority of failures, this replication does not cover a location-wide failure. It is recommended good practice for users to back up topic names and the configuration data for those topics.

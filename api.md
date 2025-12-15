@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-10"
+lastupdated: "2025-12-15"
 
 subcollection: event-streams-gen2
 
@@ -26,9 +26,9 @@ The {{site.data.keyword.messagehub}} API generally utilizes the [Resource Contro
 ## Authentication
 {: #api-authentication}
 
-Access to the API uses token authentication, by using the header `Authorization: Bearer <token>`. The token must be [IAM-issued](/apidocs/iam-identity-token-api). You can send in an IAM API key directly as the token or [use the API key to generate an IAM bearer token](docs/account?topic=account-iamtoken_from_apikey).
+Access to the API uses token authentication, by using the header `Authorization: Bearer <token>`. The token must be [IAM-issued](/apidocs/iam-identity-token-api). You can send in an IAM API key directly as the token or [use the API key to generate an IAM bearer token](/docs/account?topic=account-iamtoken_from_apikey).
 
-To call each method, you'll need to be [assigned a role](/docs/cloud-databases?topic=cloud-databases-iam) that includes the required IAM actions. Each method lists the associated action. For more information about IAM actions and how they map to roles, see [Managing access for {{site.data.keyword.cloud}}](/docs/cloud-databases?topic=cloud-databases-iam).
+To call each method, you'll need to be [assigned a role](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-iam) that includes the required IAM actions. Each method lists the associated action. For more information about IAM actions and how they map to roles, see [Managing access for {{site.data.keyword.cloud}}](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-iam).
 
 ## Error handling
 {: #api-error-handling}
@@ -38,7 +38,7 @@ The API uses standard `HTTP` response codes to indicate whether a method complet
 ## Event tracking
 {: #api-event-tracking}
 
-You can monitor API activity within your account by using the [{{site.data.keyword.cloudaccesstraillong}}](docs-draft/cloud-databases-gen2?topic=cloud-databases-gen2-at_events&interface=terraform) service. Whenever an API method is called, an event is generated that you can then track and audit from within Activity Tracker. The specific event type is listed for each individual method.
+You can monitor API activity within your account by using the [{{site.data.keyword.cloudaccesstraillong}}](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-at_events&interface=terraform) service. Whenever an API method is called, an event is generated that you can then track and audit from within Activity Tracker. The specific event type is listed for each individual method.
 
 ## Deployment IDs and CRNs
 {: #api-deployment}

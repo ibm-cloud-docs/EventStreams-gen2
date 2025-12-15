@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: scaling capacity, throughput, storage, scaling
 
@@ -61,7 +61,7 @@ The {{site.data.keyword.Bluemix_notm}} CLI command uses the **service-instance-u
 
 The time required to scale up the {{site.data.keyword.messagehub}} service instance is variable, but under normal circumstances it does not exceed 3 hours. Both throughput and storage require provisioning extra infrastructure.
 
-During this time, the flow of Kafka data is not affected (the scaling operation is nondisruptive). 
+During this time, the flow of Kafka data is not affected (the scaling operation is nondisruptive).
 
 ### Example
 {: #scaleup_example}
@@ -75,28 +75,28 @@ The example then shows how to scale this service instance to 4 TB of storage to 
 * 4 TB of storage capacity for data retention.
 
 1. If you don't already have one, create an {{site.data.keyword.messagehub}} service instance.
-  
+
     a. Log in to the **{{site.data.keyword.Bluemix_notm}} console**.
-    
+
     b. Click the **{{site.data.keyword.messagehub}} service** in the Catalog.
-    
+
     c. Select the **Enterprise plan Gen2** on the service instance page, ensuring that a supported location is selected.
-    
+
     d. Review capacity selections of 100 MB/s throughput and 2 TB storage.
-        
+
     e. Enter a name for your service instance. You can use the default value.
-    
-    f. Click Create. (For information about the amount of time needed to create the service instance, see [Choosing your plan](/docs/EventStreams?topic=EventStreams-plan_choose#what_is_supported)).
+
+    f. Click Create. (For information about the amount of time needed to create the service instance, see [Choosing your plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported)).
 
 2. Log in to the **{{site.data.keyword.Bluemix_notm}} CLI**.
- 
+
       ```sh
       ibmcloud login
       ```
       {: pre}
 
 3. Get the resource name of your {{site.data.keyword.messagehub}} service instance.
-  
+
       ```sh
       ibmcloud resource service-instances
       ```
@@ -105,7 +105,7 @@ The example then shows how to scale this service instance to 4 TB of storage to 
       (You can find the name of your instance in the Name column.)
 
 4. View the current capacity configuration of your instance.
-    
+
       ```sh
       ibmcloud resource service-instance "Event Streams resource instance name" -o JSON
       ```
@@ -121,29 +121,29 @@ The example then shows how to scale this service instance to 4 TB of storage to 
              "storage_gb": 2000,
               "throughput_mb_s": 100,
           },
-       ```         
+       ```
       {: pre}
 
-6. Scale up the service instance from **2 TB storage capacity** to **4 TB storage capacity**. 
-    
+6. Scale up the service instance from **2 TB storage capacity** to **4 TB storage capacity**.
+
     a. Run the following command from the CLI.
-    
+
       ```sh
-      ibmcloud resource service-instance-update "Event Streams resource instance name" -p '{"dataservices":{"kafka":{storage_gb":"4000"}}}' 
+      ibmcloud resource service-instance-update "Event Streams resource instance name" -p '{"dataservices":{"kafka":{storage_gb":"4000"}}}'
       ```
       {: pre}
 
 7. Monitor the update of the service instance.
 
     The scale-up process can take from several minutes to three hours to complete depending on what new resources need to be allocated to the service instance.
-    
+
     You can get the current service instance information by using the following command.
-    
+
       ```sh
-      ibmcloud resource service-instance "Event Streams resource instance name" --output=json 
+      ibmcloud resource service-instance "Event Streams resource instance name" --output=json
       ```
 
-      {: pre}    
+      {: pre}
     Review the `Last Operation` section of the output. The information is continuously updated as the update proceeds. When the scale-up process completed, the last operation information indicates update succeeded or sync succeeded.
 
     Run the command again until success is indicated.

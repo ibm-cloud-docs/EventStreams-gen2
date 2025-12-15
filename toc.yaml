@@ -16,12 +16,12 @@ toc:
       topics:
       - topic: gen2-beta.md
         navtitle: Beta reference
-      - topic: quick_setup_guide.md
+      - topic: getting-started.md
         navtitle: Quick setup guide
       - topic: overview.md
         navtitle: Overview
       - topic: release-notes-gen2.md
-        navtitle: Release notes Gen 2
+        navtitle: Release notes
       - topic: apache_kafka_concepts.md
         navtitle: Apache Kafka concepts
       - topic: use_cases.md
@@ -30,14 +30,13 @@ toc:
   - navgroup:
       id: howto
       topics:
+      - topic: provisioning.md
       - topic: connecting_es.md
         navtitle: Connecting
       - topicgroup:
           label: Administering
           topics:
           - using_admin_kafka_api.md
-          - api.md
-          - cli.md
           - topic: using_kafka_console.md
             navtitle: Using Kafka console tools
           - scaling_capacity.md
@@ -70,21 +69,20 @@ toc:
             navtitle: Data security and privacy
           - topic: security.md
             navtitle: Understanding compliance
-          - topic: private-connections.md
-            navtitle: Virtual Private Endpoints for Gen 2
           - topic: managing_encryption.md
             navtitle: Managing encryption
           - topic: managing_access.md
             navtitle: Managing authentication
-          - restricting_access_enterprise.md
-          - topic: restricting_access_iam.md
-            navtitle: Using IAM IP address access restrictions
           - topic: key-protect.md
             navtitle: Key Protect integration
       - using_kafka_client.md
   - navgroup:
       id: reference
       topics:
+      - topic: api.md
+        navtitle: API reference
+      - topic: cli.md
+        navtitle: CLI reference
       - sla.md
       - topic: responsibilities.md
         navtitle: Understanding your responsibilities

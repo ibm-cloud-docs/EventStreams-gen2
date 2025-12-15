@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: HA for Event Streams, DR for Event Streams, Event Streams recovery time objective, high availability, disaster recovery
 
@@ -100,7 +100,7 @@ The disaster recovery steps must be practiced regularly. As you build your plan,
 | Hardware failure (single point) | {{site.data.keyword.messagehub}} is resilient to a single point of hardware failure within a zone - no configuration required. |
 | Zone failure | An {{site.data.keyword.messagehub}} instance that is deployed in a multi-zone region is resilient to the failure of a single zone - no configuration required.|
 | Data corruption | {{site.data.keyword.messagehub}} does not include any built-in mechanisms to recover from data corruption. You are required to plan for such circumstances as a part of a disaster recovery plan and may need to use a mirroring feature or configure a new instance. |
-| Regional failure | If you configured your {{site.data.keyword.messagehub}} instance in a multi-zone region, a regional disaster is unlikely. If a regional failure does occur, you are required to configure a new instance in another region. For more information, see [Understanding your responsibilities](/docs/EventStreams?topic=EventStreams-event_streams_responsibilities). |
+| Regional failure | If you configured your {{site.data.keyword.messagehub}} instance in a multi-zone region, a regional disaster is unlikely. If a regional failure does occur, you are required to configure a new instance in another region. For more information, see [Understanding your responsibilities](/docs/EventStreams-gen2?topic=EventStreams-gen2-event_streams_responsibilities). |
 {: caption="Disaster recovery scenarios for {{site.data.keyword.messagehub}}" caption-side="bottom"}
 
 
@@ -112,7 +112,7 @@ The disaster recovery steps must be practiced regularly. As you build your plan,
 
 
 
-It is important to understand the management responsibilities and terms and conditions that you have when you use {{site.data.keyword.messagehub}}. The [customer responsibilities](/docs/EventStreams?topic=EventStreams-event_streams_responsibilities) page helps as a starting point to create a plan for high availability and disaster recovery.
+It is important to understand the management responsibilities and terms and conditions that you have when you use {{site.data.keyword.messagehub}}. The [customer responsibilities](/docs/EventStreams-gen2?topic=EventStreams-gen2-event_streams_responsibilities) page helps as a starting point to create a plan for high availability and disaster recovery.
 
 As part of disaster recovery, it is recommended that you grant users and processes the IAM roles and actions with the least privilege required for their work. For more information, see [How can I prevent accidental deletion of services?](/docs/resiliency?topic=resiliency-dr-faq#prevent-accidental-deletion).
 
@@ -132,4 +132,4 @@ All upgrades follow the {{site.data.keyword.IBM_notm}} service best practices an
 Complex changes are enabled and disabled with feature flags to control exposure.
 
 
-Changes that impact customer workloads are detailed in notifications. For more information, see [monitoring notifications and status](/docs/account?topic=account-viewing-cloud-status) for planned maintenance, announcements, and [release notes](/docs/EventStreams?topic=EventStreams-event-streams-relnotes) that impact Event Streams.
+Changes that impact customer workloads are detailed in notifications. For more information, see [monitoring notifications and status](/docs/account?topic=account-viewing-cloud-status) for planned maintenance, announcements, and [release notes](/docs/EventStreams-gen2?topic=EventStreams-gen2-event-streams-relnotes-gen2) that impact Event Streams.

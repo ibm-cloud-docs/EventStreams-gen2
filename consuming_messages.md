@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: messages, consumer, record, offset, rebalancing, consumer group, consumer properties
 
@@ -30,12 +30,12 @@ When a consumer processes a message, the message is not removed from its topic. 
 
 In the programming interfaces, a message is called a record. For example, the Java class org.apache.kafka.clients.consumer.ConsumerRecord is used to represent a message for the consumer API. The terms _record_ and _message_ can be used interchangeably, but essentially a record is used to represent a message.
 
-You might find it useful to read this information along with [producing messages](/docs/EventStreams?topic=EventStreams-producing_messages) in {{site.data.keyword.messagehub}}.
+You might find it useful to read this information along with [producing messages](/docs/EventStreams-gen2?topic=EventStreams-gen2-producing_messages) in {{site.data.keyword.messagehub}}.
 
-## Configuring consumer properties 
+## Configuring consumer properties
 {: #configuring_consumer_properties}
 
-Many configuration settings exist for the consumer that control aspects of its behavior. The following settings are some of the most important ones. 
+Many configuration settings exist for the consumer that control aspects of its behavior. The following settings are some of the most important ones.
 
 | Name     |Description   | Valid values   | Default   |
 |----------|---------|----------|---------|
@@ -81,7 +81,7 @@ Kafka automatically detects failed consumers so that it can reassign partitions 
 
 If the batch of messages that are returned from `Consumer.poll(...)` is large or the processing is time-consuming, the delay before `poll()` is called again can be significant or unpredictable. In some cases, it's necessary to configure a long maximum polling interval so that consumers do not get removed from their groups just because message processing is taking a while. If this mechanism is the only one available, the time it takes to detect a failed consumer is also long.
 
-To make consumer liveness easier to handle, background heartbeating was added in Kafka 0.10.1. The group coordinator expects group members to send it regular heartbeats to indicate that they remain active. 
+To make consumer liveness easier to handle, background heartbeating was added in Kafka 0.10.1. The group coordinator expects group members to send it regular heartbeats to indicate that they remain active.
 A background heartbeat thread runs in the consumer and sends regular heartbeats to the coordinator. If the coordinator does not receive a heartbeat from a group member within the _session timeout_, the coordinator removes the member from the group and starts a rebalance of the group. The session timeout can be much shorter than the maximum polling interval, so that the time it takes to detect a failed consumer can be short, even if message processing takes a long time.
 
 You can configure the maximum polling interval by using the `max.poll.interval.ms` property and the session timeout by using the `session.timeout.ms` property. You don't need to use these settings unless it takes more than 5 minutes to process a batch of messages.
@@ -89,7 +89,7 @@ You can configure the maximum polling interval by using the `max.poll.interval.m
 ## Managing offsets
 {: #managing_offsets}
 
-For each consumer group, Kafka maintains the committed offset for each partition that is consumed. When a consumer processes a message, it doesn't remove it from the partition. 
+For each consumer group, Kafka maintains the committed offset for each partition that is consumed. When a consumer processes a message, it doesn't remove it from the partition.
 Instead, it just updates its current offset by using a process that is called committing the offset.
 
 {{site.data.keyword.messagehub}} retains committed offset information for 7 days.
@@ -97,15 +97,15 @@ Instead, it just updates its current offset by using a process that is called co
 ### What if no existing committed offset exists?
 {: #no_committed_offset}
 
-When a consumer starts and is assigned a partition to consume, it starts at its group's committed offset. 
-If no existing committed offset exists, the consumer can choose whether to start with the earliest, or latest available message based on 
+When a consumer starts and is assigned a partition to consume, it starts at its group's committed offset.
+If no existing committed offset exists, the consumer can choose whether to start with the earliest, or latest available message based on
 the setting of the `auto.offset.reset` property as follows:
 
-* `latest` (the default): Your consumer receives and consumes only messages that arrive after you subscribe. 
+* `latest` (the default): Your consumer receives and consumes only messages that arrive after you subscribe.
     Your consumer has no knowledge of messages that were sent before it subscribed, therefore don't expect that all messages are consumed from a topic.
 * `earliest`: Your consumer consumes all messages from the beginning.
 
-If a consumer fails after processing a message but before committing its offset, the committed offset information does not reflect the processing of the message. 
+If a consumer fails after processing a message but before committing its offset, the committed offset information does not reflect the processing of the message.
 This means that the message is processed again by the next consumer in that group to be assigned the partition.
 
 When committed offsets are saved in Kafka and the consumers are restarted, consumers resume from the point they last stopped at. When a committed offset exists, the `auto.offset.reset` property is not used.
@@ -130,7 +130,7 @@ The committed offset is the offset of the messages from which processing is resu
 The consumer lag for a partition is the difference between the offset of the most recently published message and the consumer's committed offset. In other words, it is the difference between the number of records that have been produced, and the number that have been consumed.
 Although it's usual to have natural variations in the produce and consume rates, the consume rate should not be slower than the produce rate for an extended period.
 
-If you observe that a consumer is processing messages successfully but occasionally appears to jump over a group of messages, it can be a sign that the consumer is not able to keep up. For topics that are not using log compaction, the amount of log space is managed by periodically deleting old log segments. 
+If you observe that a consumer is processing messages successfully but occasionally appears to jump over a group of messages, it can be a sign that the consumer is not able to keep up. For topics that are not using log compaction, the amount of log space is managed by periodically deleting old log segments.
 If a consumer fell so far behind that it is consuming messages in a log segment that is deleted, it will suddenly jump forwards to the start of the next log segment. If it is important that the consumer processes all of the messages, this behavior indicates message loss from the point of view of this consumer.
 
 You can use the `kafka-consumer-groups` tool to see the consumer lag. You can also use the consumer API and the consumer metrics for the same purpose.
@@ -152,7 +152,7 @@ If you are notified with the "on partitions revoked" callback, use a ConsumerReb
 
 These code snippets are at a high level to illustrate the concepts involved. For complete examples, see the {{site.data.keyword.messagehub}} samples in [GitHub](https://github.com/ibm-messaging/event-streams-samples){: external}.
 
-To connect a consumer to {{site.data.keyword.messagehub}}, you need to create service credentials. For information about how to get these credentials, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-connecting).
+To connect a consumer to {{site.data.keyword.messagehub}}, you need to create service credentials. For information about how to get these credentials, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting).
 
 In the consumer code, you first need to build the set of configuration properties. All connections to {{site.data.keyword.messagehub}} are secured by using TLS and user-password authentication, so you need at least these properties. Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with those from your own service credentials:
 
@@ -176,7 +176,7 @@ To consume messages, you also need to specify deserializers for the keys and val
 
 These deserializers must match the serializers used by the producers.
 
-Then, use a KafkaConsumer to consume messages, where each message is represented by a ConsumerRecord. The most common way to consume messages is to put the consumer in a consumer group by setting the group ID, and then call `subscribe()` for a list of topics. 
+Then, use a KafkaConsumer to consume messages, where each message is represented by a ConsumerRecord. The most common way to consume messages is to put the consumer in a consumer group by setting the group ID, and then call `subscribe()` for a list of topics.
 The consumer is assigned some partitions to consume, although if more consumers exist in the group than partitions in the topic, the consumer might not be assigned any partitions. Next, call `poll()` in a loop, receiving a batch of messages to process, where each message is represented by a ConsumerRecord.
 
 ```text
@@ -209,7 +209,7 @@ try {
         System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
         lastOffset = record.offset();
       }
-      // having processed all the records in the above loop, we commit the partition's offset to 1 more than the last offset 
+      // having processed all the records in the above loop, we commit the partition's offset to 1 more than the last offset
       consumer.commitSync(Collections.singletonMap(tp, new OffsetAndMetadata(lastOffset + 1)));
     }
   }
@@ -222,7 +222,7 @@ finally {
 ## Exception handling
 {: #exceptions}
 
-Any robust application that uses the Kafka client needs to handle exceptions for certain expected situations. 
+Any robust application that uses the Kafka client needs to handle exceptions for certain expected situations.
 In some cases, the exceptions are not thrown directly because some methods are asynchronous and deliver their results by using a `Future` or a callback. Check out example code in [GitHub](https://github.com/ibm-messaging/event-streams-samples){: external} that shows complete examples.
 
 Handle the following list of exceptions in your code:

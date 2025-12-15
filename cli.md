@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: event streams, migrating, disk size, memory size, CPU size, resources, cli, postgresql administrator
 
@@ -43,15 +43,28 @@ ibmcloud resource service-instance-create <INSTANCE_NAME> messagehub enterprise-
       "kafka": {
         "throughput_mb_s": 100,
         "storage_gb": 2000
-      },
-      "encryption": {
-         "disk": "crn:v1..."
-      },
-      "$schema": {
-         "version": "1.0.0"
       }
    }
 }'
+```
+{: .pre}
+
+A number of additional options can also be specified in the parameter block.
+
+```
+"dataservices": {
+    "kafka": {
+        "storage_gb": 2000,
+        "throughput_mb_s": 100,
+    },
+    "encryption": {
+        "disk": "crn:v1..."
+    },
+    "options": {
+        "iam_token_only": false,
+        "metrics": ["topic", "partition", "consumers"]
+    }
+},
 ```
 {: .pre}
 
@@ -108,8 +121,3 @@ ibmcloud resource service-key-delete ( NAME | ID ) [-g RESOURCE_GROUP]
 
 Updating a user is not possible for VPC instances.
 {: note}
-
-## Manage IP addresses (Allowlisting)
-{: #cli-allowlisting}
-
-{{site.data.keyword.messagehub}} utilizes context-based restrictions for its allowlisting needs. To manage your IP address via the CLI, see [Context-based restrictions CLI plug-in](/docs/account?topic=account-cbr-plugin).

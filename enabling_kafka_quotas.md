@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-10"
+lastupdated: "2025-12-15"
 
 keywords: quotas, quota implementation, mapping quotas, authorization, client metrics
 
@@ -104,7 +104,7 @@ sasl.mechanism=PLAIN
 ```
 {: codeblock}
 
-For more information, see [Configuring your Kafka API client](https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-kafka_using#kafka_api_client).
+For more information, see [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using#kafka_api_client).
 
 3.  Work with the following usage examples.
 
@@ -262,4 +262,4 @@ class Snippet {
 
 Whenever throughput quotas are updated, an {{site.data.keyword.messagehub}} configuration event is generated, which can be monitored in {{site.data.keyword.cloudaccesstraillong}}.
 
-For more information about configuring {{site.data.keyword.at_short}} events for {{site.data.keyword.messagehub}}, see the [Activity tracker documentation](https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-at_events).
+For more information about configuring {{site.data.keyword.at_short}} events for {{site.data.keyword.messagehub}}, see the [Activity tracker documentation](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events).

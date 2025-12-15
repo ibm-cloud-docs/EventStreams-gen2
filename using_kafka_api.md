@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: api, consumer, producer, admin, streams, connect, client
 
@@ -23,19 +23,19 @@ subcollection: EventStreams-gen2
 Kafka provides a rich set of APIs and clients across a broad range of languages. APIs include core API, Streams API, and Connect API.
 {: shortdesc}
 
-- **Kafka's core API (Consumer, Producer, and Admin API)**  
+- **Kafka's core API (Consumer, Producer, and Admin API)**
     Use to send and receive messages directly from one or more Kafka topics.
     The Kafka Admin client provides a simple interface through the Kafka API for managing Kafka resources. You can create, delete, and manage topics. You can also use the Admin client to manage consumer groups and configurations.
-- **Streams API**  
+- **Streams API**
     A higher-level stream processing API to easily consume, transform, and produce events between topics.
-- **Connect API**  
+- **Connect API**
     A framework that allows reusable or standard integrations to stream events into and out of external systems, such as databases.
 
 The following table summarizes what you can use with {{site.data.keyword.messagehub}}:
 
-|                                              | Enterprise plan Gen2                                                                                                                          | 
+|                                              | Enterprise plan Gen2                                                                                                                          |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Kafka version on cluster**                 | Kafka 4.1                                                                                                                                        | 
+| **Kafka version on cluster**                 | Kafka 4.1                                                                                                                                        |
 | **Minimum recommended Kafka client version** | Kafka 2.6.0, or later                                                                                                                            |
 | **Supported client versions**                | See [Support summary for all recommended clients](/docs/EventStreams-gen2?topic=EventStreams-kafka_using-gen2#client_summary)                              |
 | **Kafka Connect supported**                  | Yes                                                                                                                                              |
@@ -57,7 +57,7 @@ For other languages, run one of the following clients, all of which are tested w
 | Client                                                                                   | Language | Recommended version | Minimum version supported [^tabletext1] | Link to sample                                                                                                                                                                                     |
 | ---------------------------------------------------------------------------------------- | -------- | ------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Official Apache Kafka client:**                                                        |          |                     |                                         |                                                                                                                                                                                                    |
-| [Apache Kafka client](http://kafka.apache.org/downloads)                                 | Java     | 4.1.1, or later     | 2.5.0                                   | [Java console sample](/docs/EventStreams?topic=EventStreams-kafka_java_using) \n \n [Liberty sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-liberty-sample) |
+| [Apache Kafka client](http://kafka.apache.org/downloads)                                 | Java     | 4.1.1, or later     | 2.5.0                                   | [Java console sample](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_java_using) \n \n [Liberty sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-liberty-sample) |
 | **Third-party clients:**                                                                 |          |                     |                                         |                                                                                                                                                                                                    |
 | [confluent-kafka-javascript](https://github.com/confluentinc/confluent-kafka-javascript) | Node.js  | Latest              | 1.0.0                                   |                                                                                                                                                                                                    |
 | [confluent-kafka-python](https://github.com/confluentinc/confluent-kafka-python)         | Python   | Latest              | 1.4.0                                   | [Kafka Python sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-python-console-sample)                                                                              |

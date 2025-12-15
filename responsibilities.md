@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-05"
+lastupdated: "2025-12-15"
 
 keywords: responsibilities, incident, operations, cluster management, security, compliance, infrastructure, disaster recovery, client-side libraries, app orchestration
 
@@ -24,8 +24,8 @@ Learn about the management responsibilities and terms and conditions that you ha
 {: shortdesc}
 
 Review the following sections for the specific responsibilities for you and for {{site.data.keyword.IBM_notm}} when you use {{site.data.keyword.messagehub_full}}. For the overall terms of use, see [{{site.data.keyword.Bluemix}} Terms and Notices](/docs/overview?topic=overview-terms).
-  
-## Incident, operations, and cluster management 
+
+## Incident, operations, and cluster management
 {: #incident_ops_cluster}
 
 | Task | {{site.data.keyword.IBM_notm}} responsibilities | Your responsibilities |
@@ -33,7 +33,7 @@ Review the following sections for the specific responsibilities for you and for 
 |Monitor environment|  {{site.data.keyword.messagehub}} performs continuous review, service improvements, code updates, and operational monitoring. This includes automatic, no downtime upgrades of the environment. |  |
 |High availability|  {{site.data.keyword.messagehub}} provides high availability by multi-zone region deployment  to protect against single points of failure, up to and including a data center loss to achieve the IBM SLA detailed in the {{site.data.keyword.Bluemix}} terms and conditions.  |  |
 |Deploy {{site.data.keyword.messagehub}} environment|  {{site.data.keyword.messagehub}} is deployed with IBM recommended best practice configuration options.  For example, replication factor, minimum in sync replicas, throttling, and rack awareness.  | |
-|Supported client|   | Customer is responsible for maintaining a supported version of the Kafka client. For more information, see [Support summary for all recommended clients](/docs/EventStreams?topic=EventStreams-kafka_using#client_summary).|
+|Supported client|   | Customer is responsible for maintaining a supported version of the Kafka client. For more information, see [Support summary for all recommended clients](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using#client_summary).|
 |Client configuration, deployment, and lifecycle|   | Customer is responsible for managing client configuration, deployment, and lifecycle by following [IBM best practice documentation](/docs/overview?topic=overview-shared-responsibilities#software-packages).|
 |Cluster management|  | Customer is responsible for managing the provided resource capacity of their clusters across their organizational user base. |
 {: caption="Responsibilities for incident, operations, and cluster management" caption-side="bottom"}
@@ -63,12 +63,12 @@ Review the following sections for the specific responsibilities for you and for 
 ## Disaster recovery
 {: #disaster-recovery}
 
-If you configured your {{site.data.keyword.messagehub}} instance in a multi-zone region, a regional disaster is unlikely. However, we recommend that customers plan for such circumstances. If due to such an event, a customer's instance is no longer available (and a remote DR instance was not already set up), the customer should consider configuring a new instance in a new region.  
+If you configured your {{site.data.keyword.messagehub}} instance in a multi-zone region, a regional disaster is unlikely. However, we recommend that customers plan for such circumstances. If due to such an event, a customer's instance is no longer available (and a remote DR instance was not already set up), the customer should consider configuring a new instance in a new region.
 
 | Task | {{site.data.keyword.IBM_notm}} responsibilities | Your responsibilities |
 |----------|-----------------------|--------|
-|Disaster recovery|   | Customer is responsible for maintaining and executing a disaster recovery plan if the service is lost. The plan might include provisioning a new cluster in a new region if a disaster occurs and restoring any configuration or data to that cluster, or, pre-provisioning a cluster in another region and using the {{site.data.keyword.messagehub}} [Mirroring feature](/docs/EventStreams?topic=EventStreams-event_streams_responsibilities#mirroring_responsibilities).|
-|Mirroring|   | Customer can use the {{site.data.keyword.messagehub}} [Mirroring feature](/docs/EventStreams?topic=EventStreams-event_streams_responsibilities#mirroring_responsibilities), or choose to manage their own mirroring solution.|
+|Disaster recovery|   | Customer is responsible for maintaining and executing a disaster recovery plan if the service is lost. The plan might include provisioning a new cluster in a new region if a disaster occurs and restoring any configuration or data to that cluster, or, pre-provisioning a cluster in another region and using the {{site.data.keyword.messagehub}} [Mirroring feature](/docs/EventStreams-gen2?topic=EventStreams-gen2-event_streams_responsibilities#disaster-recovery).|
+|Mirroring|   | Customer can use the {{site.data.keyword.messagehub}} [Mirroring feature](/docs/EventStreams-gen2?topic=EventStreams-gen2-event_streams_responsibilities#disaster-recovery), or choose to manage their own mirroring solution.|
 |Message payload data backup|   | The customer is also responsible for the backup of message payload data. Although this data is replicated across multiple Kafka brokers within a cluster, which protects against most failures, this replication does not cover a location-wide failure.|
 |Topic name and data backup|   | It is recommended good practice that a customer stores their topic names and configuration data for those topics in the same repository as their application source code. This way the topics can be restored into a new cluster if a disaster occurs. |
 |Schema Registry|   | It is recommended good practice that a customer stores their schema in the same repository as their application source code. This way the schema can be restored into a new cluster if a disaster occurs. |

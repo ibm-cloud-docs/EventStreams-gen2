@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-15"
 
 keywords: console tools, console producer, console consumer, consumer groups
 
@@ -23,84 +23,146 @@ subcollection: EventStreams-gen2
 Apache Kafka comes with various console tools for simple administration and messaging operations. You can use many of them with {{site.data.keyword.messagehub}}, although {{site.data.keyword.messagehub}} does not permit connection to its KRaft cluster. 
 {: shortdesc}
 
-These console tools are in the `bin` directory of your Kafka download. You can download a client from [Apache Kafka downloads](http://kafka.apache.org/downloads){: external}.
+### Download the console tools
+{: #download_tools}
 
-For an example of how to run and connect these tools, see [Connecting to Kafka](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting).
+The console tools are distributed as part of the Kafka binary download and can be downloaded from the [Apache Kafka downloads](http://kafka.apache.org/downloads){: external}. The most recent supported release is recommended.
 
-To provide the SASL credentials to these tools, create a properties file based on the following example:
+For example, to download version 4.1.1 to a Linux machine:
 
-```config
-    sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="USER" password="PASSWORD";
-    security.protocol=SASL_SSL
-    sasl.mechanism=PLAIN
-    ssl.protocol=TLSv1.2
-    ssl.enabled.protocols=TLSv1.2
-    ssl.endpoint.identification.algorithm=HTTPS
+```bash
+$ wget https://downloads.apache.org/kafka/4.1.1/kafka_2.13-4.1.1.tgz
 ```
 {: codeblock}
 
-Replace USER and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
+Extract what you’ve downloaded and change directory:
 
+```bash
+$ tar -xzf kafka_2.13-4.1.1.tgz
+$ cd kafka_2.13-4.1.1/
+```
+{: codeblock}
+
+These console tools are in the `bin` directory.
+
+### Install Java
+{: #install_java}
+
+Install java with the following commands:
+
+```bash
+$ sudo apt update
+$ sudo apt install openjdk-17-jdk
+```
+{: codeblock}
+
+Next, you can verify the installation:
+
+```bash
+$ java -version
+```
+{: codeblock}
+
+### Create a `client.properties` file
+{: #create_properties}
+
+Create a properties file with the information needed to connect to your instance.
+
+```bash
+$ nano client.properties
+```
+{: codeblock}
+
+Copy the following snippet into the `client.properties` file and edit with your details. 
+
+```properties
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="<API_KEY>";
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+```
+{: codeblock}
+
+Replace the API_KEY variable in the snippet with the value from your {{site.data.keyword.messagehub}} **Service credentials** tab in the {{site.data.keyword.cloud_notm}} console.
+
+Save and then exit nano.
+
+## Topics
+{: #topics_tool}
+
+To create a topic:
+
+```bash
+$ ./bin/kafka-topics.sh --create --topic <TOPIC_NAME> --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --partitions 1 --replication-factor 3 --config retention.ms=604800000
+```
+{: codeblock}
+
+Replace the variables in the example with your own values:
+
+- BOOTSTRAP_SERVERS with the value from your {{site.data.keyword.messagehub}} **Service credentials** tab in the {{site.data.keyword.cloud_notm}} console.
+- TOPIC_NAME with the name of the topic to be created.
+
+The topics tool can also be used to find out information about your topics and their configuration in an existing service instance.
+
+```bash
+./bin/kafka-topics.sh --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --describe
+
+Topic:sample-topic	PartitionCount:3	ReplicationFactor:3	 Configs:min.insync.replicas=2,unclean.leader.election.enable=true,retention.bytes=1073741824,segment.bytes=536870912,retention.ms=86400000
+    Topic: sample-topic    Partition: 0    Leader: 0    Replicas: 0,2,1    Isr: 0,2,1
+    Topic: sample-topic    Partition: 1    Leader: 1    Replicas: 1,2,0	   Isr: 0,2,1
+    Topic: sample-topic    Partition: 2    Leader: 2    Replicas: 2,1,0	   Isr: 0,2,1
+Topic:testtopic	 PartitionCount:1	 ReplicationFactor:3	Configs:min.insync.replicas=2,unclean.leader.election.enable=true,retention.bytes=1073741824,segment.bytes=536870912,retention.ms=86400000
+    Topic: testtopic    Partition: 0    Leader: 0    Replicas: 0,2,1   Isr: 0,2
+```
+{: codeblock}
+
+From the sample, you can see that topic `sample-topic` has three partitions and a replication factor of three. The example also shows which broker the leader of each partitions is on and which replicas are in sync (`Isr`). For example, the leader of partition `0` is on broker `0`, the followers are on brokers `2` and `1` and all three replicas are in sync. If you look at the second topic `testtopic`, it has only one partition, which is replicated on brokers `0`, `2`, and `1` but the in-sync replica list shows only `0` and `2`. This means that the follower on broker `1` is falling behind and is therefore not in the `Isr` list. 
 
 ## Console producer
 {: #console_producer}
 
-You can use the Kafka console producer tool with {{site.data.keyword.messagehub}}. You must provide a list of brokers and SASL credentials.
-
-After you created the properties file, you can run the console producer in a terminal as follows:
+To produce a message to a topic, run the following command. A prompt will be shown where some text can be entered and sent by pressing return. To quit, type <CTRL> + C.
 
 ```bash
-   kafka-console-producer.sh --broker-list BOOTSTRAP_ENDPOINTS --producer.config CONFIG_FILE --topic TOPIC_NAME
+$ ./bin/kafka-console-producer.sh --topic <TOPIC_NAME> --bootstrap-server <BOOTSTRAP_SERVERS> --producer.config client.properties
 ```
 {: codeblock}
 
-Replace the following variables in the example with your own values:
+Replace the variables in the example with your own values:
 
-- BOOTSTRAP_ENDPOINTS with the value from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
-- CONFIG_FILE with the path of the configuration file. 
-
-You can use many of the other options of this tool, except for those that require access to ZooKeeper.
+- BOOTSTRAP_SERVERS with the value from your {{site.data.keyword.messagehub}} **Service credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
+- TOPIC_NAME with the name of the topic to be created.
 
 ## Console consumer
 {: #console_consumer}
 
-You can use the Kafka console consumer tool with {{site.data.keyword.messagehub}}. You must provide a bootstrap server and SASL credentials.
-
-After you created the properties file as described previously, run the console consumer in a terminal as follows:
+To consume a message from a topic, run the following. To quit, type <CTRL> + C. Note that the `--from-beginning` option will consume all messages on the topic. If this option is omitted, only messages produced after the consumer was run will be retrieved.
 
 ```bash
-   kafka-console-consumer.sh --bootstrap-server BOOTSTRAP_ENDPOINTS --consumer.config CONFIG_FILE --topic TOPIC_NAME 
+$ ./bin/kafka-console-consumer.sh --topic <TOPIC_NAME> --bootstrap-server <BOOTSTRAP_SERVERS> --consumer.config client.properties --from-beginning
 ```
 {: codeblock}
 
-Replace the following variables in the example with your own values:
+Replace the variables in the example with your own values:
 
-- BOOTSTRAP_ENDPOINTS with the value from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console. 
-- CONFIG_FILE with the path of the configuration file. 
-
-You can use many of the other options of this tool, except for those that require access to ZooKeeper.
+- BOOTSTRAP_SERVERS with the value from your {{site.data.keyword.messagehub}} **Service credentials** tab in the {{site.data.keyword.cloud_notm}} console.
+- TOPIC_NAME with the name of the topic to be created.
 
 ## Consumer groups
 {: #consumer_groups_tool}
 
-You can use the Kafka consumer groups tool with {{site.data.keyword.messagehub}}. Because {{site.data.keyword.messagehub}} does not permit connection to its ZooKeeper cluster, some of the options are not available.
-
-After you created the properties file as described previously, run the consumer groups tools in a terminal. For example, you can list the consumer groups as follows:
+You can use the Kafka consumer groups tool with {{site.data.keyword.messagehub}}. 
 
 ```bash
-   kafka-consumer-groups.sh --bootstrap-server BOOTSTRAP_ENDPOINTS --command-config CONFIG_FILE --list --timeout 60000
+$ ./bin/kafka-consumer-groups.sh --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --list --timeout 60000
 ```
 {: codeblock}
 
-Replace the following variables in the example with your own values:
+Replace the BOOTSTRAP_SERVERS variable in the example with the value from your {{site.data.keyword.messagehub}} **Service credentials** tab in the {{site.data.keyword.cloud_notm}} console.
 
-- BOOTSTRAP_ENDPOINTS with the value from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
-- CONFIG_FILE with the path of the configuration file.
-
-Using this tool, you can also display details like the current positions of the consumers, their lag, and client-id for each partition for a group. For example:
+Using this tool, you can also display details, such as the current positions of the consumers, their lag, and client-id for each partition for a group. For example:
 
 ```bash
-   kafka-consumer-groups.sh --bootstrap-server BOOTSTRAP_ENDPOINTS --command-config CONFIG_FILE --describe --group GROUP --timeout 60000
+$ kafka-consumer-groups.sh --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --describe --group <GROUP> --timeout 60000
 ```
 {: codeblock}
 
@@ -116,31 +178,7 @@ consumer-group-1   foo        2          212          
 ```
 {: codeblock}
 
-From the example, you can see consumer group `consumer-group-1` has two consumer members that consume messages from topic `foo` with three partitions. It also shows that the consumer `client-1-abc` that is consuming from partition `0` is three messages behind because the current offset of the consumer is `264` but the offset of the last message on partition `0` is `267`. 
-
-## Topics
-{: #topics_tool}
-
-You can use the **kafka-topics** tool with {{site.data.keyword.messagehub}}. Ensure that you use V2.8 of the tool, because it does not require Zookeeper access.
-
-A scenario where you might want to use **kafka-topics** is to find out information about your topics and their configuration in an existing cluster so that you can re-create them in a new cluster. You can use the information that is output from **kafka-topics** to create the same named topics in the new cluster. For more information about how to create topics, see [Using the administration Kafka Java client API](/docs/EventStreams?topic=EventStreams-kafka_java_api) or the 
-[ibmcloud es topic-create command](/docs/EventStreams?topic=EventStreams-cli_reference#ibmcloud_es_topic-create). Alternatively, you can also use the IBM {{site.data.keyword.messagehub}} console.
-
-See the following sample output from running the **kafka-topics** tool:
-
-```bash
-   bin/kafka-topics.sh --bootstrap-server kafka03-prod01.messagehub.services.us-south.bluemix.net:9093 --command-config vcurr_dal06.properties --describe
-
-Topic:sample-topic	PartitionCount:3	ReplicationFactor:3	 Configs:min.insync.replicas=2,unclean.leader.election.enable=true,retention.bytes=1073741824,segment.bytes=536870912,retention.ms=86400000
-    Topic: sample-topic    Partition: 0    Leader: 0    Replicas: 0,2,1    Isr: 0,2,1
-    Topic: sample-topic    Partition: 1    Leader: 1    Replicas: 1,2,0	   Isr: 0,2,1
-    Topic: sample-topic    Partition: 2    Leader: 2    Replicas: 2,1,0	   Isr: 0,2,1
-Topic:testtopic	 PartitionCount:1	 ReplicationFactor:3	Configs:min.insync.replicas=2,unclean.leader.election.enable=true,retention.bytes=1073741824,segment.bytes=536870912,retention.ms=86400000
-    Topic: testtopic    Partition: 0    Leader: 0    Replicas: 0,2,1   Isr: 0,2
-```
-{: codeblock}
-
-From the sample, you can see that topic `sample-topic` has three partitions and a replication factor of three. The example also shows which broker the leader of each partitions is on and which replicas are in sync (`Isr`). For example, the leader of partition `0` is on broker `0`, the followers are on brokers `2` and `1` and all three replicas are in sync. If you look at the second topic `testtopic`, it has only one partition, which is replicated on brokers `0`, `2`, and `1` but the in-sync replica list shows only `0` and `2`. This means the follower on broker `1` is falling behind and is therefore not in the `Isr` list. 
+From the example, you can see that consumer group `consumer-group-1` has two consumer members that consume messages from topic `foo` with three partitions. It also shows that the consumer `client-1-abc` that is consuming from partition `0` is three messages behind because the current offset of the consumer is `264` but the offset of the last message on partition `0` is `267`. 
 
 ## Kafka Streams reset
 {: #kafka_streams_reset}
@@ -150,12 +188,11 @@ You can use this tool with {{site.data.keyword.messagehub}} to reset the process
 For example:
 
 ```bash
-   kafka-streams-application-reset.sh --bootstrap-servers BOOTSTRAP_ENDPOINTS --config-file CONFIG_FILE --application-id APP_ID
+./bin/kafka-streams-application-reset.sh --bootstrap-servers <BOOTSTRAP_SERVERS> --config-file client.properties --application-id <APP_ID>
 ```
 {: codeblock}
 
 Replace the following variables in the example with your own values:
 
-- BOOTSTRAP_ENDPOINTS with the value from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console. 
-- CONFIG_FILE with the path of the configuration file. 
+- BOOTSTRAP_SERVERS with the value from your {{site.data.keyword.messagehub}} **Service credentials** tab in the {{site.data.keyword.Bluemix_notm}} console. 
 - APP_ID with your Streams application ID.

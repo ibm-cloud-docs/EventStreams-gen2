@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-10"
+lastupdated: "2025-12-15"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -33,7 +33,7 @@ To enable an application deployed in an {{site.data.keyword.vpc_full}} to access
 ### Creating a service credential
 {: #create_a_service_credential}
 
-All plans use [IAM](/docs/account?topic=account-overview){: external} for authentication. You don't need to understand IAM to get started but some knowledge is recommended if you want to secure your {{site.data.keyword.messagehub}} service. For more information, see [Managing access to your {{site.data.keyword.messagehub}} resources](/docs/EventStreams?topic=EventStreams-security). To complete the following steps and be authorized to create topics, your application must have a Manager access role. By default, the owner of the account that contains the service instance has this role.
+All plans use [IAM](/docs/account?topic=account-overview){: external} for authentication. You don't need to understand IAM to get started but some knowledge is recommended if you want to secure your {{site.data.keyword.messagehub}} service. For more information, see [Managing access to your {{site.data.keyword.messagehub}} resources](/docs/EventStreams-gen2?topic=EventStreams-gen2-security). To complete the following steps and be authorized to create topics, your application must have a Manager access role. By default, the owner of the account that contains the service instance has this role.
 
 A service credential enables an API key to be created with the required access role. To create a service credential by using the {{site.data.keyword.cloud_notm}} console, complete the following steps.
 
@@ -67,6 +67,11 @@ To create a service key by using the {{site.data.keyword.cloud_notm}} CLI, compl
     ```
     {: codeblock}
 
+## Connect from a VSI
+{: #connect_from_VPE}
+
+The following information shows the steps needed to connect to a VPE from an application running on a VSI.
+
 ### Create an {{site.data.keyword.vpc_short}}
 {: #create_a_vpc}
 
@@ -78,7 +83,7 @@ Keep resources in the same region to avoid issues.
 ### Create an SSH key
 {: #create_a_ssh_key}
 
-1. [Create an SSH key](https://cloud.ibm.com/infrastructure/compute/sshKeys) in the same region as the VPC.
+1. [Create an SSH key](https://cloud.ibm.com/infrastructure/compute/sshKeys){: external} in the same region as the VPC.
 
 2. Once your key is ready, move it to the .ssh directory on your local machine to follow best practices for secure SSH key management.
 
@@ -92,12 +97,12 @@ Keep resources in the same region to avoid issues.
 ### Create a Virtual Server Instance (VSI) in the VPC
 {: #create_a_vsi}
 
-[Create a VSI](https://cloud.ibm.com/infrastructure/compute/vs) in the same region, select your VPC, choose *Ubuntu Linux* for operating system. (You can use the smallest profile.)
+[Create a VSI](https://cloud.ibm.com/infrastructure/compute/vs){: external} in the same region, select your VPC, choose *Ubuntu Linux* for operating system. (You can use the smallest profile.)
 
 ### Reserve a floating IP for your VSI
 {: #create_a_floatingip}
 
-[Reserve a floating IP address](https://cloud.ibm.com/infrastructure/network/floatingIPs). Make sure the correct region and zone is selected, and bind it to the VSI created in the previous step.
+[Reserve a floating IP address](https://cloud.ibm.com/infrastructure/network/floatingIPs){: external}. Make sure the correct region and zone is selected, and bind it to the VSI created in the previous step.
 
 ### Log in to your VSI
 {: #login_to_vsi}
@@ -114,131 +119,12 @@ $ ssh -i ~/.ssh/<NAME OF THE SSH KEY> root@<FLOATING IP ADDRESS>
 
 Your local terminal session should now be connected to your virtual server. Continue using this session for the next steps.
 
-### Update `/etc/hosts` with the IP of the VPE
-{: #update_etchosts}
+### Install and use the Kafka console tools
+{: #install_tools}
 
-1. Associate the hostname of each Kafka server with the VPE IP recorded before. 
+The following steps show how to [install and use the console tools](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_console_tools) to create a topic and then produce and consume a message.
 
-2. Open the `/etc/hosts` file with nano and add an entry at the top for each broker.
-
-    ```bash
-    $ nano etc/hosts
-    ```
-
-    The list of brokers can be found in the *bootstrap_servers* field of your service credentials. Entries are of the form: 
-    
-    ```properties
-    <VPE IP> kafka-0.<url>.eventstreams.dataservices.appdomain.cloud
-    <VPE IP> kafka-1.<url>.eventstreams.dataservices.appdomain.cloud
-    <VPE IP> kafka-2.<url>.eventstreams.dataservices.appdomain.cloud
-    ```
-    {: codeblock}
-    
-    For example:
-    
-    ```properties
-    a.b.c.d kafka-0.uuid.private.uhp.ca-mon.eventstreams.dataservices.appdomain.cloud
-    a.b.c.d kafka-1.uuid.private.uhp.ca-mon.eventstreams.dataservices.appdomain.cloud
-    a.b.c.d kafka-2.uuid.private.uhp.ca-mon.eventstreams.dataservices.appdomain.cloud
-    ```
-    {: codeblock}
-
-3. Exist and close nano.
-
-### Install java to your VSI
-{: #install_java}
-
-1. Install java with the following commands:
-
-    ```bash
-    $ sudo apt update
-    $ sudo apt install openjdk-17-jdk
-    ```
-    {: codeblock}
-
-2. Next, you can verify the installation:
-
-    ```bash
-    $ java -version
-    ```
-    {: codeblock}
-
-### Add Kafka to your VSI
-{: #add_kafka_to_vsi}
-
-1. Download Kafka with the following command:
-
-    ```bash
-    $ wget https://downloads.apache.org/kafka/4.1.1/kafka_2.13-4.1.1.tgz
-    ```
-    {: codeblock}
-
-2. Extract what you’ve downloaded:
-
-    ```bash
-    $ tar -xzf kafka_2.13-4.1.1.tgz
-    ```
-    {: codeblock}
-
-### Create the client.properties file
-{: #create_properties_file}
-
-1. Change into the folder:
-
-    ```bash
-    $ cd kafka_2.13-4.1.1/
-    ```
-    {: codeblock}
-
-2. Create `client.properties` file:
-
-    ```bash
-    $ nano client.properties
-    ```
-    {: codeblock}
-
-### Use sample configuration properties
-{: #sample_config}
-
-Copy the following snippet into the `client.properties` file, using your own API key (retrieved from the service credential created before). Save and then exit nano.
-
-```properties
-sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="<APIKEY>";
-security.protocol=SASL_SSL
-sasl.mechanism=PLAIN
-```
-{: codeblock}
-
-### Connect from the VSI to your service instance
-{: #create_topic}
-
-The Kafka download bin directory contains a number of tools for interacting with Kafka. The following shows some examples to create a topic and then produce and consume a message from that topic.
-
-To run the tools requires the bootstrap server address for your service instance, which can be retrieved from the service credential created before.
-
-To create a topic called quickstart-vsi:
-
-```bash
-$ ./bin/kafka-topics.sh --create --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --partitions 1 --replication-factor 3 --config retention.ms=604800000
-```
-{: codeblock}
-
-To produce a message to the topic `quickstart-vsi`, run the following, enter some text to send and press return. To quit, type <CTRL> + C.
-
-```bash
-$ ./bin/kafka-console-producer.sh --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --producer.config client.properties
-```
-{: codeblock}
-
-To consume a message from the topic `quickstart-vsi`, run the following. To quit, type <CTRL> + C. Note the `--from-beginning` option will consume all messages on the topic. If this option is omitted, only messages produced after the consumer has been run will be retrieved.
-
-```bash
-./bin/kafka-console-consumer.sh --topic quickstart-vsi --bootstrap-server <BOOTSTRAP_SERVERS> --consumer.config client.properties --from-beginning
-```
-{: codeblock}
-
-
-### Accessing an Enterprise instance from an external network
+## Accessing an Enterprise instance from an external network
 {: #private_network_outside_cloud}
 
 Solutions such as [Direct Link 2.0](https://cloud.ibm.com/docs/dl){: external} or [Transit Gateway](https://cloud.ibm.com/docs/transit-gateway?topic=transit-gateway-about){: external} can be utilized to establish a connection between an external network, such as an on-premise data center or Classic infrastructure, and the {{site.data.keyword.cloud_notm}} VPE. However, when dealing with workloads operating on an external network, it is essential to consider additional factors to ensure a successful connection to Kafka. Note that these considerations do not apply to HTTP workloads.
