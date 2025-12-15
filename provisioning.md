@@ -35,7 +35,7 @@ The [Enterprise Gen 2 plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan
 
 1. Log in to the {{site.data.keyword.cloud_notm}} console.
 
-2. In the **Catalog**, select the **[{{site.data.keyword.messagehub}} service]**(https://cloud.ibm.com/catalog/event-streams){: external}.
+2. In the **Catalog**, select the [**{{site.data.keyword.messagehub}} service**](https://cloud.ibm.com/catalog/event-streams){: external}.
 
 3. Select a **Location** that supports the Gen 2 platform.
 
