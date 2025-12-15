@@ -157,4 +157,4 @@ Replace the variables with your own values:
 - NAME - replace with the name to use for the service credential.
 - ROLE_NAME - replace with the name of the IAM role for the service credential (MANAGER, WRITER, or READER].
 
-For more information, see [using Terraform](docs-draft/EventStreams-gen2?topic=EventStreams-gen2-eventstreams-terraform).
+For more information, see [using Terraform](/docs/EventStreams-gen2?topic=EventStreams-gen2-eventstreams-terraform).
