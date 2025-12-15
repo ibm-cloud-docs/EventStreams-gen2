@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025
-lastupdated: "2025-12-10"
+lastupdated: "2025-12-15"
 
 subcollection: event-streams-gen2
 
@@ -52,6 +52,9 @@ Authorize {{site.data.keyword.keymanagementserviceshort}} for use with {{site.da
 
 If the service authorization is not present before provisioning your deployment with a key, the provision fails.
 
+If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. Restrictions applied for {{site.data.keyword.keymanagementserviceshort}} key rings are currently not supported.
+{: .important}
+
 ## Granting service authorization in the CLI
 {: #granting-service-auth-cli}
 {: cli}
@@ -65,6 +68,9 @@ bx iam authorization-policy-create messagehub kms "Reader,AuthorizationDelegator
 
 If the service authorization is not present before provisioning your deployment with a key, the provision fails.
 
+If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. Restrictions applied for {{site.data.keyword.keymanagementserviceshort}} key rings are currently not supported.
+{: .important}
+
 ## Granting service authorization via the REST API
 {: #granting-service-auth-api}
 {: api}
@@ -75,7 +81,7 @@ For a full API reference, see  the [IAM Policy Management API](https://cloud.ibm
 {: note}
 
 ```bash
-curl -X POST 'https://iam.cloud.ibm.com/v1/policies' -H 'Authorization: Bearer $TOKEN' -H 'Content-Type: application/json' -d '{
+curl -X POST 'https://iam.cloud.ibm.com/v1/policies' -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' -d '{
   "type": "authorization",
   "subjects": [
       {
@@ -120,6 +126,9 @@ curl -X POST 'https://iam.cloud.ibm.com/v1/policies' -H 'Authorization: Bearer $
 {: codeblock}
 
 If the service authorization is not present before provisioning your deployment with a key, the provision fails.
+
+If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. Restrictions applied for {{site.data.keyword.keymanagementserviceshort}} key rings are currently not supported.
+{: .important}
 
 ## Using the {{site.data.keyword.keymanagementserviceshort}} key
 {: #key-using}
