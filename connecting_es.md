@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-16"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -138,10 +138,10 @@ For more information, see [Accessing a VPE externally from a VPC](/docs/vpc?topi
 ## What to do next
 {: #after_connecting}
 
-Now you have connection and credential information, you can choose a Kafka client. For more information, see [Using the Kafka API](/docs/EventStreams-gen2?topic=EventStreams-kafka_using).
+Now you have connection and credential information, you can choose a Kafka client. For more information, see [Using the Kafka API](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using).
 
 ## Further Information
 {: #further_info}
 
-- [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-kafka_using#kafka_api_client). 
-- [Restricting network access](/docs/EventStreams-gen2?topic=EventStreams-restrict_access).
+- [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using#kafka_api_client). 
+- [Restricting network access](/docs/EventStreams?topic=EventStreams-restrict_access).

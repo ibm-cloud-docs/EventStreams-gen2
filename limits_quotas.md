@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-16"
 
 keywords: limits, quotas, network throughput, retention, consumer groups, schema
 
@@ -13,7 +13,7 @@ subcollection: EventStreams-gen2
 {{site.data.keyword.attribute-definition-list}}
 
 # How {{site.data.keyword.messagehub}} uses limits and quotas
-{: #kafka_quotas
+{: #kafka_quotas}
 
 [Gen 2]{: tag-purple}
 

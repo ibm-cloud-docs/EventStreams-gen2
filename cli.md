@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-16"
 
 keywords: event streams, migrating, disk size, memory size, CPU size, resources, cli, postgresql administrator
 
@@ -20,7 +20,7 @@ subcollection: event-streams-gen2
 {{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
 {: beta}
 
-To interact with {{site.data.keyword.messagehub}} on Gen 2 via the CLI you must utilize the IBM Cloud Resource Controller's CLI. For more information, see the [General {{site.data.keyword.messagehub}} CLI (ibmcloud) commands](docs/cli?topic=cli-ibmcloud_cli).
+To interact with {{site.data.keyword.messagehub}} on Gen 2 via the CLI you must utilize the IBM Cloud Resource Controller's CLI. For more information, see the [General {{site.data.keyword.messagehub}} CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli).
 
 The {{site.data.keyword.messagehub}} plugin supports only Gen 1 instances. For Gen 2 instances, use the Resource Controller CLI.
 {: note}

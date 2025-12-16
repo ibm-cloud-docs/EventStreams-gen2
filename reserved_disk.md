@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-16"
 
 keywords: reserved disk usage, store data, storage
 
@@ -70,7 +70,7 @@ where
 
      number.of.log.segments = floor(retention.bytes/log.segment.size) + 1
 
-The total reserved storage percentage is also displayed in {{site.data.keyword.mon_full_notm}} by the [ibm_eventstreams_instance_reserved_disk_space_percent metric](//docs/EventStreams-gen2?topic=EventStreams-gen2-metrics#ibm_eventstreams_instance_reserved_disk_space_percent).
+The total reserved storage percentage is also displayed in {{site.data.keyword.mon_full_notm}} by the [ibm_eventstreams_instance_reserved_disk_space_percent metric](/docs/EventStreams-gen2?topic=EventStreams-gen2-metrics#ibm_eventstreams_instance_reserved_disk_space_percent).
 
 Requests to create a new topic, or add partitions to an existing topic are rejected if they would result in the total amount of reserved storage exceeding 90% [^footnote1] of the storage configured for the {{site.data.keyword.messagehub}} instance. Rejected requests receive a PolicyViolation error explaining that the reserved storage limit for the instance has been reached. If the reserved storage limit is reached, you need to either delete topics or increase the amount of storage configured for the instance before further topics can be created.
 
