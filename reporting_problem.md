@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-16"
 
 keywords: reporting a problem, problem report
 
@@ -27,18 +27,18 @@ If you need help from the {{site.data.keyword.messagehub}} team, gather all the 
 {: shortdesc}
 
 1. What is the CRN ID of the {{site.data.keyword.messagehub}} service that you use? You can provide this ID by pasting the full {{site.data.keyword.Bluemix_notm}} console URL after you click the service, or by pasting the output from the following CLI command:
-2. 
+2.
     ```sh
     ibmcloud resource service-instance NAME
     ```
     {: codeblock}
-    
+
 2. When did the problem first occur (specifically time, date, and time zone)? How long did your app run before the problem occurred?
 3. Is the problem still occurring? Can you replicate it?
 4. Which Kafka client does your application use? What are the version details?
-5. What are your client configuration details? We need to know your producer and consumer settings, so list any nondefault options that you passed to your producer or consumer. 
+5. What are your client configuration details? We need to know your producer and consumer settings, so list any nondefault options that you passed to your producer or consumer.
 6. Do you have application log snippets that display the problem?
 7. What is the issue that you are seeing? Which topics, client IDs, group IDs, and transaction IDs are affected?
 8. What impact does the problem have on your service?
 
-You can provide the information that you gathered to IBM in a support ticket by [creating a support case](/docs/get-support?topic=get-support-open-case){: external}.
+You can provide the information that you gathered to IBM in a support ticket by [creating a support case](/docs/account?topic=account-open-case){: external}.

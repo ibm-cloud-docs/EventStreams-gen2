@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-16"
 
 keywords: scaling capacity, throughput, storage, scaling
 
@@ -33,7 +33,7 @@ The scaling of throughput is currently not supported.
 
 The throughput capacity represents the minimum throughput that can be expected to be continually available across the service instance assuming typical workloads. It also takes into account operational procedures and failure modes, such as the loss of an availability zone. Throughput is divided equally between produce and consume traffic. At any individual point in time, a higher throughput selected may be achievable but cannot be relied on to be continually available.
 
-The minimum throughput option available is 100MB/s, divided into 50MB/s for produce workload and 50MB/s for consume workload. Scaling throughput is currently not supported. For more information on capacity recommendations and limitations, see [limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas#limits_enterprise). Although throughput scaling is independent of storage, for each tier a defined minimum of storage amount is required. 
+The minimum throughput option available is 100MB/s, divided into 50MB/s for produce workload and 50MB/s for consume workload. Scaling throughput is currently not supported. For more information on capacity recommendations and limitations, see [limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas). Although throughput scaling is independent of storage, for each tier a defined minimum of storage amount is required. 
 
 ## Storage capacity
 {: #ES_storage_capacity}
