@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-16"
 
 keywords: api, consumer, producer, admin, streams, connect, client
 
@@ -37,7 +37,7 @@ The following table summarizes what you can use with {{site.data.keyword.message
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Kafka version on cluster**                 | Kafka 4.1                                                                                                                                        |
 | **Minimum recommended Kafka client version** | Kafka 2.6.0, or later                                                                                                                            |
-| **Supported client versions**                | See [Support summary for all recommended clients](/docs/EventStreams-gen2?topic=EventStreams-kafka_using-gen2#client_summary)                              |
+| **Supported client versions**                | See [Support summary for all recommended clients](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using)                              |
 | **Kafka Connect supported**                  | Yes                                                                                                                                              |
 | **Kafka Streams supported**                  | Yes                                                                                                                                              |
 | **ksqlDB supported**                         | Yes                                                                                                                                              |
@@ -72,14 +72,14 @@ For other languages, run one of the following clients, all of which are tested w
 ### Connecting your client to {{site.data.keyword.messagehub}}
 {: #connect_client}
 
-For information about how to configure your Java client to connect to {{site.data.keyword.messagehub}}, see [Configuring your client](/docs/EventStreams-gen2?topic=EventStreams-kafka_using#kafka_api_client).
+For information about how to configure your Java client to connect to {{site.data.keyword.messagehub}}, see [Configuring your client](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using#kafka_api_client).
 
 ## Configuring your Kafka API client
 {: #kafka_api_client}
 
 To establish a connection, clients must be configured to use SASL PLAIN or SASL OAUTHBEARER over TLSv1.2 at a minimum and to require a username, and a list of the bootstrap servers. TLSv1.2 ensures that connections are encrypted and validates the authenticity of the brokers (to prevent man-in-the-middle attacks). SASL enforces authentication on all connections.
 
-To retrieve the username, password, and list of bootstrap servers, a service credentials object, or service key is required for the service instance. For more information about creating these objects, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-connecting).
+To retrieve the username, password, and list of bootstrap servers, a service credentials object, or service key is required for the service instance. For more information about creating these objects, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting).
 
 ### Using SASL PLAIN
 {: #using_sasl_plain}
