@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-16"
+lastupdated: "2025-12-17"
 
 keywords: getting help, getting support, troubleshooting
 
@@ -25,4 +25,4 @@ If you have problems or questions while you use {{site.data.keyword.messagehub}}
 
 * To check the status of the {{site.data.keyword.Bluemix_notm}} platform and resources, go to the [Status page](https://cloud.ibm.com/status){: external}.
 * Review the dedicated [Stack Overflow](https://stackoverflow.com/questions/tagged/ibm-eventstreams){: external} to see whether other users ran into the same problem. When you use the forum to ask a question, tag your question with "ibm-cloud" and "ibm-eventstreams" so that it is seen by the {{site.data.keyword.Bluemix_notm}} development team. Your question gets answered either by a member of the {{site.data.keyword.messagehub}} development team or by the wider community.
-* If you still need help from the {{site.data.keyword.messagehub}} team, ensure that you gather all the information required as detailed in [Reporting a problem to the {{site.data.keyword.messagehub}} team - Standard and Enterprise plans](/docs/EventStreams-gen2?topic=EventStreams-gen2-report_problem_enterprise). There you find guidance about opening a support case for {{site.data.keyword.messagehub}}. For more information about severities and response times, see [Creating support cases](/docs/account?topic=account-open-case){: external} or [Escalating support cases](/docs/get-support?topic=get-support-escalation){: external}.
+* If you still need help from the {{site.data.keyword.messagehub}} team, ensure that you gather all the information required as detailed in [Reporting a problem to the {{site.data.keyword.messagehub}} team - Standard and Enterprise plans](/docs/EventStreams-gen2?topic=EventStreams-gen2-report_problem_enterprise). There you find guidance about opening a support case for {{site.data.keyword.messagehub}}. For more information about severities and response times, see [Creating support cases](/docs/account?topic=account-open-case){: external} or [Escalating support cases](/docs/account?topic=account-managing-support-cases&interface=ui#escalation){: external}.

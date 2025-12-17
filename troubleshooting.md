@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-17"
 
 keywords: troubleshooting, question, problem
 
@@ -59,7 +59,7 @@ If you have an Apache Kafka application that is unable to connect to a topic or 
   Connection to broker-0-93g2bbjd0pz8ghkj.kafka.svc08.us-south.eventstreams.cloud.ibm.com port 9093 [tcp/*] succeeded!
   ```
 
-  An nc command timeout means that the network where your client application is running could not connect to the broker addresses. It could be caused by a  number of reasons, such as firewall rules, calico network policies, and service mesh setup. Work with your network administrator to get netcat working. If the service instance is on the Enterprise plan and the cluster has a private-only service endpoint, check if your client application’s IPs were added to the IP allowlist or CBR rules. For more information, see [Restricting network access](/docs/EventStreams-gen2?topic=EventStreams-gen2-restrict_access).
+  An nc command timeout means that the network where your client application is running could not connect to the broker addresses. It could be caused by a  number of reasons, such as firewall rules, calico network policies, and service mesh setup. Work with your network administrator to get netcat working. If the service instance is on the Enterprise plan and the cluster has a private-only service endpoint, check if your client application’s IPs were added to the IP allowlist or CBR rules. For more information, see [Restricting network access](/docs/EventStreams?topic=EventStreams-restrict_access).
 
 - Connection reset or client disconnected. This may not necessarily be a network issue, rather than an application level issue.
 
@@ -78,8 +78,8 @@ HTTP error codes apply to REST APIs, including [Admin REST](/apidocs/event-strea
 | 403 | Not authorized to perform the operation. The API key used is missing a certain role. The ID that was used to create the resource key does not have an IAM policy. For more information, see [Managing authentication to your Event Streams instances](/docs/EventStreams-gen2?topic=EventStreams-gen2-security). | Forbidden. The token that you have provided does not have sufficient permissions to produce to a topic. Check if you have provided the token with the required access role. For more information, see [Managing authentication to your Event Streams instances](/docs/EventStreams-gen2?topic=EventStreams-gen2-security). | Forbidden. The client is not authorized to perform this request. The service ID is not authorized to access a schema resource. For more information, see [Managing authentication to your Event Streams instances](/docs/EventStreams-gen2?topic=EventStreams-gen2-security). |
 | 404 | Not found. Unable to find the topic with the topic name you specified. {{site.data.keyword.messagehub}} set `auto.create.topics.enable` to `false`, thus the topic must be explicitly created before using it. | Not found. The topic does not exist. {{site.data.keyword.messagehub}} set `auto.create.topics.enable` to `false`, thus topic must be explicitly created before producing message to it. | Not found. Either the registry does not contain a schema with the specified schema ID, or the schema identified by the schema ID does not contain a version corresponding to the specified version number, or the schema is not configured with the specified type of rule. |
 | 415 |  | Unsupported media type. |  |
-| 422 | Semantically invalid request. You have a malformed request. If you receive this error when you try to create a new topic, it might be due to the maximum number of allowed partitions for your plan. For more information, see [How Event Streams uses limits and quotas for verifying the limits](docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas). |  |  |
-| 503 | Service unavailable. The request failed due to {{site.data.keyword.messagehub}} brokers being unavailable. An error occurred while handling the request. The service is unavailable. If you receive this error when creating a new topic fails, verify the [limits and quotas](docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas). |Service unavailable. The request failed due to {{site.data.keyword.messagehub}} brokers being unavailable.  |  |
+| 422 | Semantically invalid request. You have a malformed request. If you receive this error when you try to create a new topic, it might be due to the maximum number of allowed partitions for your plan. For more information, see [How Event Streams uses limits and quotas for verifying the limits](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas). |  |  |
+| 503 | Service unavailable. The request failed due to {{site.data.keyword.messagehub}} brokers being unavailable. An error occurred while handling the request. The service is unavailable. If you receive this error when creating a new topic fails, verify the [limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas). |Service unavailable. The request failed due to {{site.data.keyword.messagehub}} brokers being unavailable.  |  |
 {: caption="HTTP error codes for REST APIs and how to fix them" caption-side="bottom"}
 
 The Kafka API is a TCP-based API. For more information, refer to its [protocol guide](https://kafka.apache.org/protocol.html#protocol_error_codes) regarding the error codes.

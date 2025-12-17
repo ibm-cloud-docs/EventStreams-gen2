@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-17"
 
 keywords: plan, Enterprise, Standard, Lite, pricing, throughput, partitions, tenancy, compliance
 
@@ -111,4 +111,4 @@ The following table summarizes what is supported by the plans:
 
 [^tabletext9]: Throughput can be specified when the service instance is created. The throughput achieved can vary according to the configuration of the workload, but for capacity planning, the figure represents the throughput which can be expected to be continually available as a minimim for a typical workload. Although throughput scaling is independent of storage, a defined minimum storage amount is required for each tier. For more information about capacity options, see [Scaling Event Streams capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
 
-For more information about limits, see [limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas).
+For more information about limits, see [limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas).

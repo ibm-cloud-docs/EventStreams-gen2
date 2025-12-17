@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-17"
 
 keywords: sla, service level agreement, connectivity, throughput
 
@@ -61,12 +61,12 @@ Throughput is expressed as the number of bytes per second that can be both sent 
 #### Specific guidance for the Standard plan
 {: #sla_standard_specifics}
 
-For throughput guidance information, see [Limits and quotas - Standard](/docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas).
+For throughput guidance information, see [Limits and quotas - Standard](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas).
 
 #### Specific guidance for the Enterprise plan
 {: #sla_enterprise_specifics}
 
-For throughput guidance information, see [Limits and quotas - Enterprise](/docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas#enterprise_throughput).
+For throughput guidance information, see [Limits and quotas - Enterprise](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas#limits_enterprise).
 
 
 #### Measurement
