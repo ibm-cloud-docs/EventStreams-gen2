@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "title": "IBM Event Streams for IBM Cloud",
+  "title": "IBM Event Streams for IBM Cloud Gen 2",
   "introduction": "Event Streams for IBM Cloud is a fully managed Kafka service, optimized to help you build intelligent applications that react to events in real time.",
   "product_page": "https://www.ibm.com/products/event-streams",
   "console_page": "/eventstreams-provisioning/6a7f4e38-f218-48ef-9dd2-df408747568e/create",
