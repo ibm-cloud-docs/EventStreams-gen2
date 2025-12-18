@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-18"
 
 keywords: ksqlDB, ksql
 
@@ -107,8 +107,6 @@ Complete the following steps to get set up. When complete, you can run all queri
     listeners=http://localhost:8088
     security.protocol=SASL_SSL
     sasl.mechanism=PLAIN
-    ssl.protocol=TLSv1.2
-    ssl.enabled.protocols=TLSv1.2
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="PASSWORD";
     ksql.sink.replications.default=3
     ```

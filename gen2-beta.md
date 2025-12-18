@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025
-lastupdated: "2025-11-27"
+lastupdated: "2025-12-18"
 
 keywords: gen 2, beta
 
@@ -31,7 +31,7 @@ subcollection: event-streams-gen2
 
 For more information, see [IBM Cloud Lifecycle phases](/docs/service-framework?topic=service-framework-lifecycle).
 
-## When can i join the beta?
+## When can I join the beta?
 {: #gen2-beta-when}
 
 - Stage 1: Closed Beta – allowlisted for select internal teams only.

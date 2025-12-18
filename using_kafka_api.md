@@ -96,8 +96,6 @@ bootstrap.servers=${BOOTSTRAP_ENDPOINTS}
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="${USERNAME}" password="${PASSWORD}";
 security.protocol=SASL_SSL
-ssl.protocol=TLSv1.2
-ssl.enabled.protocols=TLSv1.2
 ssl.endpoint.identification.algorithm=HTTPS
 ```
 {: codeblock}

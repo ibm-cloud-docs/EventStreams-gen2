@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-18"
 
 keywords: asl.jaas.config
 
@@ -34,8 +34,6 @@ See the following example:
     props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
     props.put("security.protocol","SASL_SSL");
     props.put("sasl.mechanism","PLAIN");
-    props.put("ssl.protocol","TLSv1.2");
-    props.put("ssl.enabled.protocols","TLSv1.2");
     props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"USERNAME\" password=\"PASSWORD\";");
 ```
 {: codeblock}

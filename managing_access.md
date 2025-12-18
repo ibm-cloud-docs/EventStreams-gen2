@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-18"
 
 keywords: client, wildcarding, wildcard, policies
 
@@ -35,7 +35,8 @@ For more secure authentication, SASL OAUTHBEARER is the only recommended authent
 Enterprise users have the option to disable SASL PLAIN in their Enterprise instances. Use the following command:
 
 ```sh
-ibmcloud resource service-instance-update <instance-name> -p '{"iam_token_only":true}'
+ibmcloud resource service-instance-update <instance-name> -p'{"dataservices":{"options":{"iam_token_only":true}}}'
+ 
 ```
 
 ## Connecting to {{site.data.keyword.messagehub}}
@@ -169,114 +170,3 @@ In addition to the policies required for this resource type, access to `Resource
 | Incrementally alter topic configurations. | Manager |  |  |
 | Remove members from consumer group. |  | Reader |  |
 {: caption="Administration actions" caption-side="bottom"}
-
-### Schema Registry actions
-{: #schema_registry_actions}
-
-With Schema Registry actions, you can alter the schema version, such as create, update, and delete artifact or artifact versions (Enterprise plan only). *Artifact* is the term that {{site.data.keyword.messagehub}} uses to describe related schemas, often associated with and used by a particular Kafka topic. The term *subject* is often used to describe the same concept. For more information, see [Using Event Streams Schema Registry](/docs/EventStreams?topic=EventStreams-ES_schema_registry). In addition to the policies required for this resource type, access to `ResourceType: Cluster` and a `Role: Reader, Writer, Manager` is required.
-
-| Schema Registry actions | Schema  |
-| --- | --- |
-| Get latest artifact. | Reader |
-| List versions. | Reader |
-| Get version. | Reader |
-| Get metadata by content. | Reader  |
-| Get metadata. | Reader |
-| Get version metadata. | Reader |
-| Get the schema string identified by the input ID.  | Reader |
-| Retrieve only the schema identified by the input ID. | Reader |
-| Get the subject-version pairs identified by the input ID. | Reader |
-| Get a list of versions registered under the specified subject. | Reader |
-| Get artifact compatibility rule. | Reader |
-| Get a specific version of the schema registered under this subject. | Reader |
-| Get the schema for the specified version of this subject. | Reader |
-| Register a new schema under the specified subject (if version already exists). | Reader |
-| Check if a schema has already been registered under the specified subject. | Reader|
-| Get a list of IDs of schemas that reference the schema with the given subject and version.  | Reader |
-| Test input schema against a particular version of a subject’s schema for compatibility. | Reader |
-| Perform a compatibility check on the schema against one or more versions in the subject. | Reader |
-| Get compatibility level for a subject. | Reader |
-| Register a new schema under the specified subject (if version is to be created). | Writer |
-| Create artifact. | Writer  |
-| Update artifact. | Writer  |
-| Disable artifact. |  Writer |
-| Create version. | Writer  |
-| Delete version. | Manager  |
-| Update artifact state. | Manager  |
-| Update version state. | Manager  |
-| Delete artifact. | Manager  |
-| Create artifact compatibility rule. | Manager  |
-| Update artifact compatibility rule. | Manager  |
-| Update compatibility level for the specified subject. | Manager  |
-| Delete artifact compatibility rule. | Manager  |
-| Deletes the specified subject and its associated compatibility level if registered. | Manager  |
-| Delete a specific version of the schema registered under this subject. | Manager |
-| Delete the specified subject-level compatibility level config and reverts to the global default. | Manager  |
-| Update the global compatibility rule. [^tabletext3] |  |
-| Update the global compatibility level. [^tabletext4] |  |
-{: caption="Schema Registry actions" caption-side="bottom"}
-
-[^tabletext3]: You do not need access to the schema resource, instead Manager access on the cluster resource is required.
-[^tabletext4]: You do not need access to the schema resource, instead Manager access on the cluster resource is required.
-
-### Schema Registry compatibility actions
-{: #schema_registry_compatibility_actions}
-
-For interoperation with existing applications, the {{site.data.keyword.messagehub}} Schema Registry supports a subset of the [Confluent Schema Registry API v7.2](https://docs.confluent.io/platform/current/schema-registry/develop/api.html). To perform these actions, you need the following resource level access.
-
-| Schema Registry compatibility actions | Schema  |
-| --- | --- |
-| Get the schema string identified by the input ID. | Reader |
-| Retrieves only the schema identified by the input ID. | Reader |
-| Get the schema types that are registered with Schema Registry. |  |
-| Get the subject-version pairs identified by the input ID. | Reader |
-| Get a list of registered subjects. |  |
-| Get a list of versions registered under the specified subject. | Reader |
-| Deletes the specified subject and its associated compatibility level if registered. | Manager |
-| Get a specific version of the schema registered under this subject. | Reader |
-| Get the schema for the specified version of this subject. | Reader |
-| Register a new schema under the specified subject. | Reader/Writer [^tabletext5] |
-| Check if a schema has already been registered under the specified subject. | Reader |
-| Deletes a specific version of the schema registered under this subject. | Manager |
-| Get a list of IDs of schemas that reference the schema with the given subject and version. | Reader |
-| Test input schema against a particular version of a subject’s schema for compatibility. | Reader |
-| Perform a compatibility check on the schema against one or more versions in the subject. | Reader |
-| Update global compatibility level. [^tabletext6] |  |
-| Get global compatibility level. |  |
-| Update compatibility level for the specified subject. | Manager |
-| Get compatibility level for a subject. | Reader |
-| Deletes the specified subject-level compatibility level config and reverts to the global default. | Manager |
-{: caption="Compatibility actions table" caption-side="bottom"}
-
-[^tabletext5]: Reader if the version already exists, Writer if the version is to be created by the API call.
-[^tabletext6]: You do not need access to the schema resource, instead Manager access on the cluster resource is required.
-
-## Managing access to the Schema Registry
-{: #managing_access_schemas}
-
-The authorization model for the Schema Registry uses the same style of policies that are described in the [Managing authorization to your {{site.data.keyword.messagehub}} resources](#security_resources) section of this document.
-
-### IAM resources
-{: #iam_resources}
-
-With the new `schema` IAM resource type, it is possible to create policies that control access by using varying degrees of granularity, as in the following examples.
-
-- A specific schema.
-- A set of schemas selected by a wildcard expression.
-- All of the schemas stored by an instance of IBM {{site.data.keyword.messagehub}}.
-- All of the schemas stored by all of the instances of IBM {{site.data.keyword.messagehub}} in an account.
-
-{{site.data.keyword.messagehub}} already has the concept of a cluster resource type. It is used to control all access to the service instance, with the minimum role of Reader being required to access any Kafka or HTTPS endpoint. This use of the cluster resource type is also applied to the Schema Registry whereby a minimum role of Reader is required to access the registry.
-
-### Example authorization scenarios
-{: #example_authorization_scenarios}
-
-The following table describes some examples of scenarios for interacting with the {{site.data.keyword.messagehub}} Schema Registry, together with the roles that are required by the actors involved. The process of managing schemas is handled separately to deploying applications. So policies are required for both the service ID that manages schemas in the registry and the application that connects to the registry.
-
-Scenario | Person or process role | Person or process resource| Application role | Application resource
---- | --- | --- | --- | ---
- New schema versions are placed into the registry by a person or process that is separate from the applications that use the schemas.| `Reader`  \n `Writer`| `cluster`  \n `schema` | `Reader`  \n `Reader` | `cluster`   \n `schema`
-Adding a schema to the registry needs to specify a nondefault rule that controls how versions of the schema are allowed to evolve. |`Reader`  \n `Manager` | `cluster`  \n `schema` | Not applicable |  Not applicable
-Schemas are managed alongside the application code that uses the schema. New schema versions are created at the point that an application tries to use the new schema version. | Not applicable | Not applicable | `Reader`  \n `Writer`| `cluster`  \n `schema`
-The global default rule that controls schema evolution is changed. | `Manager` | `cluster` | Not applicable | Not applicable
-{: caption="Examples of authorization scenarios" caption-side="bottom"}

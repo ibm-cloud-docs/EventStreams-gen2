@@ -43,8 +43,6 @@ You must provide the bootstrap servers and SASL credentials information in the w
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="USER" password="PASSWORD";
     security.protocol=SASL_SSL
     sasl.mechanism=PLAIN
-    ssl.protocol=TLSv1.2
-    ssl.enabled.protocols=TLSv1.2
     ssl.endpoint.identification.algorithm=HTTPS
 ```
 {: codeblock}
@@ -61,8 +59,6 @@ The following example lists the properties that you must provide in your propert
     producer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="USER" password="PASSWORD";
     producer.security.protocol=SASL_SSL
     producer.sasl.mechanism=PLAIN
-    producer.ssl.protocol=TLSv1.2
-    producer.ssl.enabled.protocols=TLSv1.2
     producer.ssl.endpoint.identification.algorithm=HTTPS
 ```
 {: codeblock}
@@ -79,8 +75,6 @@ The following example lists the properties that you must provide in your propert
     consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="USER" password="PASSWORD";
     consumer.security.protocol=SASL_SSL
     consumer.sasl.mechanism=PLAIN
-    consumer.ssl.protocol=TLSv1.2
-    consumer.ssl.enabled.protocols=TLSv1.2
     consumer.ssl.endpoint.identification.algorithm=HTTPS
 ```
 {: codeblock}
@@ -97,8 +91,6 @@ You must provide the bootstrap servers and SASL credentials information in the p
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="USER" password="PASSWORD";
     security.protocol=SASL_SSL
     sasl.mechanism=PLAIN
-    ssl.protocol=TLSv1.2
-    ssl.enabled.protocols=TLSv1.2
     ssl.endpoint.identification.algorithm=HTTPS
 ```
 {: codeblock}
@@ -111,8 +103,6 @@ If you want to use a source connector, you must also specify the SSL and SASL co
     producer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="USER" password="PASSWORD";
     producer.security.protocol=SASL_SSL
     producer.sasl.mechanism=PLAIN
-    producer.ssl.protocol=TLSv1.2
-    producer.ssl.enabled.protocols=TLSv1.2
     producer.ssl.endpoint.identification.algorithm=HTTPS
 ```
 {: codeblock}
@@ -123,8 +113,6 @@ If you want to use a sink connector, you must also specify the SSL and SASL conf
     consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="USER" password="PASSWORD";
     consumer.security.protocol=SASL_SSL
     consumer.sasl.mechanism=PLAIN
-    consumer.ssl.protocol=TLSv1.2
-    consumer.ssl.enabled.protocols=TLSv1.2
     consumer.ssl.endpoint.identification.algorithm=HTTPS
 ````
 {: codeblock}

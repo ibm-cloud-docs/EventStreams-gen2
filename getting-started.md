@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-17"
+lastupdated: "2025-12-18"
 
 keywords: quick setup guide
 
@@ -108,7 +108,7 @@ After you create topics, you can use the console to [list topics](#list_topic_ui
 From your {{site.data.keyword.messagehub}} instance, navigate to **Topics** from the menu on the left.
 
 From the **Topics page**, you can view the following information about your topics:
-**Name**, **Partitions**, **Retention time**, **Retention size**, **Cleanup policy**, and **Stream landing**.
+**Name**, **Partitions**, **Retention time**, **Retention size**, and **Cleanup policy**.
 
 ## Step 4: Create a service credential by using the console
 {: #create_credential_ui}
@@ -194,4 +194,4 @@ For a general overview of how to get help with {{site.data.keyword.messagehub}} 
 
 [FAQs](/docs/EventStreams-gen2?topic=EventStreams-gen2-faqs){: external} details answers to some of the common questions about {{site.data.keyword.messagehub}}.
 
-If you're experiencing a problem with {{site.data.keyword.messagehub}}, here's a list of the information you need to gather before you open a case [Reporting a problem to the Event Streams team - Standard and Enterprise plans](/docs/EventStreams-gen2?topic=EventStreams-gen2-report_problem_enterprise){: external}.
+If you're experiencing a problem with {{site.data.keyword.messagehub}}, here's a list of the information you need to gather before you open a case [Reporting a problem to the Event Streams team - Enterprise Gen 2 plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-report_problem_enterprise){: external}.
