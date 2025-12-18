@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-18"
 
 keywords: HA for Event Streams, DR for Event Streams, Event Streams recovery time objective, high availability, disaster recovery
 
@@ -27,9 +27,6 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.messagehub_full}} is a global service and you can find the available region and data center locations in the [Service and infrastructure availability by location](/docs/overview?topic=overview-services_region) documentation. As a global service, {{site.data.keyword.messagehub}}} fulfills the defined [Service Level Objectives (SLO)](/docs/resiliency?topic=resiliency-slo) using the Enterprise Gen2 plans. **N.B. during Beta no SLOs apply**. The SLO is not a warranty and {{site.data.keyword.IBM}} will not issue credits for failure to meet an objective.
 
-## High availability architecture
-{: #ha-architecture}
-
 
 
 ### High availability features
@@ -46,20 +43,10 @@ subcollection: EventStreams-gen2
 {: caption="HA features for {{site.data.keyword.messagehub}}" caption-side="bottom"}
 
 
-## Disaster recovery architecture
-{: #disaster-recovery-intro}
 
 
 
-NEED disaster recovery architecture diagram! DESIGN TEAM
-
-
-
-
-### Disaster recovery features
-{: #dr-features}
-
-The Enterprose Gen2 initial release does not support Mirroring as a managed feature, although you can set up your own Kafka Mirroring solution.
+-->
 
 
 
@@ -67,24 +54,9 @@ The Enterprose Gen2 initial release does not support Mirroring as a managed feat
 | -------------- | -------------- | -------------- |
 | Mirroring | Mirroring for cluster replication | {{site.data.keyword.messagehub}} Enterprose Gne2 initial release does not provide provides a mirroring feature, however a customer can choose to manager their own mirroring solution to enable messages to be continuously copied into a second instance. |
 {: caption="DR features for {{site.data.keyword.messagehub}}" caption-side="bottom"}
+-->
 
-#### Mirroring for {{site.data.keyword.messagehub}}
-{: #dr-feature-1}
 
-Mirroring enables messages in one {{site.data.keyword.messagehub}} service instance to be continuously copied to a second instance. Application resilience can be improved by using mirroring, so if the first service instance becomes unavailable, applications can reconnect to the second instance and continue their normal operation.
-
-GREY THIS SECTION OUT or REMOVE UNTIL SUPPORTED???
-
-This feature is part of the fully managed service and can only be used between service instances that use the {{site.data.keyword.messagehub}} Enterprise plan.
-
-1. Features of mirroring:
-- Mirror topics, message data, and consumer group offsets between two {{site.data.keyword.messagehub}} service instances, which can be provisioned in different {{site.data.keyword.cloud}} accounts.
-- SLA of 99.99% availability, consistent with the {{site.data.keyword.messagehub}} service.
-- Can be monitored using {{site.data.keyword.monitoringlong}}.
-2. Limitations of mirroring:
-- Unidirectional: Data can only be mirrored in one direction at a time between a pair of service instances. This means that mirroring offers an "active-passive" style of high availability, not an "active-active" style.
-- Asynchronous: Messages must be successfully produced to the source instance before they can be mirrored to the target instance. This means that when a failure occurs, some message data may be lost.
-- At-least-once message consumption: When a consumer moves between instances, it may need to reprocess messages that it has already processed.-->
 
 
 
