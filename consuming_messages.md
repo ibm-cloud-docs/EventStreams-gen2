@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-18"
 
 keywords: messages, consumer, record, offset, rebalancing, consumer group, consumer properties
 
@@ -50,7 +50,7 @@ Many configuration settings exist for the consumer that control aspects of its b
 |max.poll.interval.ms |The maximum time interval between polls before the consumer leaves the group. | 1,... | 300000 (5 minutes) |
 {: caption="Configuring consumer properties" caption-side="top"}
 
-Many more configuration settings are available, but read the [Apache Kafka documentation](http://kafka.apache.org/documentation/){: external} before you start to experiment with them.
+Many more configuration settings are available, but read the [Apache Kafka documentation](https://kafka.apache.org/){: external} before you start to experiment with them.
 
 ## Consumer groups
 {: #consumer_groups}

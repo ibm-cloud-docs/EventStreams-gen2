@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-18"
 
 keywords: java client, api, admin api, liberty, migrate client, sasl.jaas.config property
 
@@ -52,7 +52,7 @@ If you use a Kafka client at 0.10.2.1 or later, you can use the `sasl.jaas.confi
 
 `USERNAME` and `PASSWORD` are the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in {{site.data.keyword.Bluemix_notm}}.
 
-If you use `sasl.jaas.config`, clients that run in the same JVM can use different credentials. For more information, see [Configuring Kafka clients](http://kafka.apache.org/documentation/#security_sasl_plain_clientconfig){: external}.
+If you use `sasl.jaas.config`, clients that run in the same JVM can use different credentials. For more information, see [Configuring Kafka clients](https://kafka.apache.org/){: external}.
 
 For an earlier Kafka client, you must use a JAAS configuration file to specify the credentials. This mechanism is less convenient, therefore use the `sasl.jaas.config` property instead.
 
@@ -61,7 +61,7 @@ For an earlier Kafka client, you must use a JAAS configuration file to specify t
 
 If you use the Java clients, you can use the publicly available Kafka clients version 0.10 or later.
 
-You are encouraged to move from version 0.9.X to the latest version. You can download a Kafka client from [https://kafka.apache.org/downloads](https://kafka.apache.org/downloads){: external}.
+You are encouraged to move from version 0.9.X to the latest version. You can download a Kafka client from [https://kafka.apache.org/downloads](https://kafka.apache.org/community/downloads/){: external}.
 
 ### Migrating a Kafka client to version 0.10.2.X or later versions
 {: #kafka_migrate_later}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-18"
 
 keywords: brokers, messages, topics, partitions, replication, replica, producer, consumer, consumer group
 
@@ -104,4 +104,4 @@ If more partitions than consumers exist in a group, some consumers have multiple
 ## More information
 {: #kafka_information}
 
-For more information, see [Apache Kafka documentation](http://kafka.apache.org/documentation.html){: external}.
+For more information, see [Apache Kafka documentation](https://kafka.apache.org/){: external}.

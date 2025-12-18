@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-18"
 
 keywords: resiliency, cluster resiliency, availability, data corruption, deletion, data management, disaster recovery, responsibilities
 
@@ -35,7 +35,7 @@ All {{site.data.keyword.messagehub}} plans can recover a deleted instance within
 ### 2. Application/client configuration
 {: #resiliency_clientconfig}
 
-Applying these parameters to your applications can significantly improve resiliency and optimize resource usage. These settings are a guidance and ultimately should be traded off against your application needs. The [open source Apache Kafka documentation](https://kafka.apache.org/documentation/) provides a more detailed explanation into these parameters and their importance.
+Applying these parameters to your applications can significantly improve resiliency and optimize resource usage. These settings are a guidance and ultimately should be traded off against your application needs. The [open source Apache Kafka documentation](https://kafka.apache.org/) provides a more detailed explanation into these parameters and their importance.
 
 | Setting | Explanation |
 |----------|-----------------------|

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-17"
+lastupdated: "2025-12-18"
 
 keywords: troubleshooting, question, problem
 
@@ -82,7 +82,7 @@ HTTP error codes apply to REST APIs, including [Admin REST](/apidocs/event-strea
 | 503 | Service unavailable. The request failed due to {{site.data.keyword.messagehub}} brokers being unavailable. An error occurred while handling the request. The service is unavailable. If you receive this error when creating a new topic fails, verify the [limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas). |Service unavailable. The request failed due to {{site.data.keyword.messagehub}} brokers being unavailable.  |  |
 {: caption="HTTP error codes for REST APIs and how to fix them" caption-side="bottom"}
 
-The Kafka API is a TCP-based API. For more information, refer to its [protocol guide](https://kafka.apache.org/protocol.html#protocol_error_codes) regarding the error codes.
+The Kafka API is a TCP-based API. For more information, refer to its [protocol guide](https://kafka.apache.org/) regarding the error codes.
 
 ## Unable to create a Kafka topic
 {: #unable_create_kafka_topic}

@@ -46,7 +46,7 @@ Many configuration settings exist for the producer. You can control aspects of t
 |request.timeout.ms     | The maximum amount of time the producer waits for a response to a request. If the response is not received before the timeout elapses, the request is retried, or fails if the number of retries was exhausted.| 0,...  | 30000 (30 seconds) |
 {: caption="Producer configuration settings" caption-side="top"}
 
-Many more configuration settings are available, but ensure that you read the [Apache Kafka documentation](http://kafka.apache.org/documentation/){: external} thoroughly before you experiment with them.
+Many more configuration settings are available, but ensure that you read the [Apache Kafka documentation](https://kafka.apache.org/){: external} thoroughly before you experiment with them.
 
 ## Partitioning
 {: #partitioning}

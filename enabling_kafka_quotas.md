@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-18"
 
 keywords: quotas, quota implementation, mapping quotas, authorization, client metrics
 
@@ -29,7 +29,7 @@ Kafka quotas enforce limits on produce and consume requests to control the broke
 If left unconstrained, it is possible for a small number of consumers or producers to monopolize the available network throughput for your service instance.
 
 Kafka brokers support quotas that enforce rate limits to prevent clients saturating the network or monopolizing broker resources. For more information, see the
-[Apache Kafka documentation](https://kafka.apache.org/documentation/#design_quotas).
+[Apache Kafka documentation](https://kafka.apache.org/).
 
 Kafka quotas can be configured to limit network bandwidth usage, Kafka measures this throughput in bytes per second. If throughput over a 30 second window is found to
 exceed a configured quota, Kafka calculates a sufficient delay to bring throughput within the quota limit.
@@ -59,7 +59,7 @@ The Java client also exposes throttling information with the following per-broke
 
 The {{site.data.keyword.messagehub_full}} Enterprise plan allows the use of the Kafka API to set and describe quotas.
 
-With reference to the [Kafka documentation on quotas](https://kafka.apache.org/documentation/#quotas), only throughput quota types ("producer_byte_rate" and "consumer_byte_rate" quota types) applied to the "user" entity (or the "default user") are supported. 
+With reference to the [Kafka documentation on quotas](https://kafka.apache.org/), only throughput quota types ("producer_byte_rate" and "consumer_byte_rate" quota types) applied to the "user" entity (or the "default user") are supported. 
 
 The "client-id" entity, the "request", and the "controller-mutation" quota types are not supported as user-settable quotas. In {{site.data.keyword.messagehub}}, an authenticated user identity is represented by an {{site.data.keyword.iamlong}} service ID. Because Kafka quotas are applied per {{site.data.keyword.iamshort}} service ID, a single quota can be shared by a group of API keys, if these all belong to the same {{site.data.keyword.iamshort}} service ID.
 

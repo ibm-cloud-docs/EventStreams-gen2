@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-16"
+lastupdated: "2025-12-18"
 
 keywords: api, consumer, producer, admin, streams, connect, client
 
@@ -57,7 +57,7 @@ For other languages, run one of the following clients, all of which are tested w
 | Client                                                                                   | Language | Recommended version | Minimum version supported [^tabletext1] | Link to sample                                                                                                                                                                                     |
 | ---------------------------------------------------------------------------------------- | -------- | ------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Official Apache Kafka client:**                                                        |          |                     |                                         |                                                                                                                                                                                                    |
-| [Apache Kafka client](http://kafka.apache.org/downloads)                                 | Java     | 4.1.1, or later     | 2.5.0                                   | [Java console sample](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_java_using) \n \n [Liberty sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-liberty-sample) |
+| [Apache Kafka client](https://kafka.apache.org/community/downloads/)                                 | Java     | 4.1.1, or later     | 2.5.0                                   | [Java console sample](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_java_using) \n \n [Liberty sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-liberty-sample) |
 | **Third-party clients:**                                                                 |          |                     |                                         |                                                                                                                                                                                                    |
 | [confluent-kafka-javascript](https://github.com/confluentinc/confluent-kafka-javascript) | Node.js  | Latest              | 1.0.0                                   |                                                                                                                                                                                                    |
 | [confluent-kafka-python](https://github.com/confluentinc/confluent-kafka-python)         | Python   | Latest              | 1.4.0                                   | [Kafka Python sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-python-console-sample)                                                                              |

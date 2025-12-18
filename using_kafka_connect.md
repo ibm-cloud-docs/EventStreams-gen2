@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-18"
 
 keywords: stand-alone, source connector, sink connector, distributed worker
 
@@ -23,10 +23,10 @@ subcollection: EventStreams-gen2
 Kafka Connect is part of the Apache Kafka project and allows connecting external systems to Kafka. It consists of a runtime that can run [connectors](https://ibm.github.io/event-automation/connectors/) to copy data to and from a cluster. Its main characteristics are:
 {: shortdesc}
 
-- Scalability: It can easily scale from a single worker to many. 
+- Scalability: It can easily scale from a single worker to many.
 - Reliability: It automatically manages offsets and the lifecycle of connectors.
 - Extensibility: The community built connectors for most popular systems. {{site.data.keyword.IBM}} has connectors for [MQ](/docs/EventStreams?topic=EventStreams-mq_connector) and [Cloud Object Storage](/docs/EventStreams?topic=EventStreams-cos_connector).
- 
+
 You can use Kafka Connect with {{site.data.keyword.messagehub_full}} and can run the workers inside or outside {{site.data.keyword.cloud}}. {{site.data.keyword.IBM_notm}} has an extensive list of over 50 connectors that are supported either by {{site.data.keyword.IBM_notm}} or the community. You find these connectors in the [connector catalog](https://ibm.github.io/event-automation/connectors/).
 
 Kafka Connect can run in either stand-alone or distributed mode. Stand-alone mode is intended for testing and temporary connections between systems. Distributed mode is more appropriate for production use. The configuration required to use {{site.data.keyword.messagehub}} with these two modes is slightly different.
@@ -151,4 +151,4 @@ For example, you can use the following key-value pairs in your properties file:
 
 Consider reducing the number of partitions if you are making only light use of Kafka Connect.
 
-For more information about Kafka Connect, see [Kafka Connect overview](http://kafka.apache.org/documentation/#connect_overview){: external}.
+For more information about Kafka Connect, see [Kafka Connect overview](https://kafka.apache.org/){: external}.

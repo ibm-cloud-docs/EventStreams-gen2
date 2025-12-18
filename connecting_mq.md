@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-04"
+lastupdated: "2025-12-18"
 
 keywords: MQ bridge, connect configuration
 
@@ -31,13 +31,13 @@ The {{site.data.keyword.IBM_notm}} MQ Source Connector connects to an {{site.dat
 
 Ensure you have the following software and services installed:
 
-* An {{site.data.keyword.messagehub}} instance - Standard or Enterprise plan. 
-* An instance of [{{site.data.keyword.IBM_notm}} MQ on Cloud](/docs/mqcloud?topic=mqcloud-getting_started){: external} or [{{site.data.keyword.IBM_notm}} MQ Version 8](https://www.ibm.com/support/pages/downloading-ibm-mq-80){: external}, or later. 
-   
+* An {{site.data.keyword.messagehub}} instance - Standard or Enterprise plan.
+* An instance of [{{site.data.keyword.IBM_notm}} MQ on Cloud](/docs/mqcloud?topic=mqcloud-getting_started){: external} or [{{site.data.keyword.IBM_notm}} MQ Version 8](https://www.ibm.com/support/pages/downloading-ibm-mq-80){: external}, or later.
+
    You can configure the {{site.data.keyword.IBM_notm}} MQ Connector to authenticate with {{site.data.keyword.IBM_notm}} MQ by using a user identifier and password. We recommend that you grant the following permissions only to the identity associated with an instance of the MQ bridge:
    * CONNECT authority. The {{site.data.keyword.IBM_notm}} MQ Connector must be able to connect to the MQ queue manager.
    * GET authority for the queue that the {{site.data.keyword.IBM_notm}} MQ Connector is configured to consume from.
-* An {{site.data.keyword.containershort}} cluster. You can provision one for testing purposes at no cost. 
+* An {{site.data.keyword.containershort}} cluster. You can provision one for testing purposes at no cost.
 
     You also need CLI access to your cluster. For more information, see
  [Setting up the CLI and API](/docs/containers?topic=containers-cli-install).
@@ -68,7 +68,7 @@ Clone the following two repositories that contain the required files:
 
 2. Then, run the following commands.
 
-    To create a secret, run the following command: 
+    To create a secret, run the following command:
 
     ```go
     kubectl create secret generic connect-distributed-config --from-file=connect-distributed.properties
@@ -76,7 +76,7 @@ Clone the following two repositories that contain the required files:
     {: codeblock}
 
     To create a configmap, run the following command:
-    
+
     ```go
     kubectl create configmap connect-log4j-config --from-file=connect-log4j.properties
     ```
@@ -107,7 +107,7 @@ kubectl port-forward service/kafkaconnect-service 8083
 Keep the terminal that you used for port forwarding open, and use another terminal for the next steps.
 
 The Connect REST API is then available at `http://localhost:8083`. If you want more information about the API, see
-[Kafka Connect REST Interface](http://kafka.apache.org/documentation/#connect_rest){: external}.
+[Kafka Connect REST Interface](https://kafka.apache.org/){: external}.
 
 So, you now have the Kafka Connect runtime that is deployed and running in {{site.data.keyword.containershort}}. Next, let's configure and start the {{site.data.keyword.IBM_notm}} MQ Connector.
 
@@ -129,13 +129,13 @@ QUEUE_MANAGER
 :   Required. Name of the source IBM MQ queue manager.
 
 QUEUE
-:   Required. Name of the source IBM MQ queue. 
+:   Required. Name of the source IBM MQ queue.
 
 CHANNEL_NAME
 :   Required (unless you're using bindings or a CCDT file). Name of the server-connection channel.
 
 CONNECTION_NAME_LIST
-:   Required (unless you're using bindings or a CCDT file). A list of one or more host(port) pairs for connecting to the queue manager. Separate entries with a comma. 
+:   Required (unless you're using bindings or a CCDT file). A list of one or more host(port) pairs for connecting to the queue manager. Separate entries with a comma.
 
 
 ## Step 7. Start the connector with its configuration
@@ -148,10 +148,10 @@ curl -X POST -H "Content-Type: application/json" http://localhost:8083/connector
 ```
 {: codeblock}
 
-## Step 8. Monitor your connector 
+## Step 8. Monitor your connector
 {: #step8_monitor_connector_mq}
 
-You can check your connector by going to the following address: 
+You can check your connector by going to the following address:
 
 `http://localhost:8083/connectors/mq-source/status`
 

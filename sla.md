@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-17"
+lastupdated: "2025-12-18"
 
 keywords: sla, service level agreement, connectivity, throughput
 
@@ -44,14 +44,14 @@ Because of the dynamic nature of the cloud, applications must expect connection 
 #### Retries
 {: #sla_retries}
 
-Kafka clients provide reconnect logic, but you must explicitly enable reconnects for producers. For more information, see the [`retries` property](http://kafka.apache.org/documentation.html#producerconfigs){: external}. Connections are remade within 60 seconds.
+Kafka clients provide reconnect logic, but you must explicitly enable reconnects for producers. For more information, see the [`retries` property](https://kafka.apache.org/){: external}. Connections are remade within 60 seconds.
 
 #### Duplicates
 {: #sla_duplicates}
 
 Enabling retries might result in duplicate messages. Depending on when a connection is lost, the producer might not be able to determine if a message was successfully processed by the server and therefore must send the message again when reconnected. Design applications to expect duplicate messages.
 
-If duplicates cannot be tolerated, you can use the `idempotent` producer feature (from Kafka 1.1) to prevent duplicates during retries. For more information, see the [`enable.idempotence` property](http://kafka.apache.org/documentation.html#producerconfigs){: external}.
+If duplicates cannot be tolerated, you can use the `idempotent` producer feature (from Kafka 1.1) to prevent duplicates during retries. For more information, see the [`enable.idempotence` property](https://kafka.apache.org/){: external}.
 
 ### Throughput
 {: #throughput}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-18"
 
 keywords: console tools, console producer, console consumer, consumer groups
 
@@ -20,13 +20,13 @@ subcollection: EventStreams-gen2
 {{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
 {: beta}
 
-Apache Kafka comes with various console tools for simple administration and messaging operations. You can use many of them with {{site.data.keyword.messagehub}}, although {{site.data.keyword.messagehub}} does not permit connection to its KRaft cluster. 
+Apache Kafka comes with various console tools for simple administration and messaging operations. You can use many of them with {{site.data.keyword.messagehub}}, although {{site.data.keyword.messagehub}} does not permit connection to its KRaft cluster.
 {: shortdesc}
 
 ### Download the console tools
 {: #download_tools}
 
-The console tools are distributed as part of the Kafka binary download and can be downloaded from the [Apache Kafka downloads](http://kafka.apache.org/downloads){: external}. The most recent supported release is recommended.
+The console tools are distributed as part of the Kafka binary download and can be downloaded from the [Apache Kafka downloads](https://kafka.apache.org/community/downloads/){: external}. The most recent supported release is recommended.
 
 For example, to download version 4.1.1 to a Linux machine:
 
@@ -73,7 +73,7 @@ $ nano client.properties
 ```
 {: codeblock}
 
-Copy the following snippet into the `client.properties` file and edit with your details. 
+Copy the following snippet into the `client.properties` file and edit with your details.
 
 ```properties
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="<API_KEY>";
@@ -115,7 +115,7 @@ Topic:testtopic	 PartitionCount:1	 ReplicationFactor:3	Configs:min.insync.replic
 ```
 {: codeblock}
 
-From the sample, you can see that topic `sample-topic` has three partitions and a replication factor of three. The example also shows which broker the leader of each partitions is on and which replicas are in sync (`Isr`). For example, the leader of partition `0` is on broker `0`, the followers are on brokers `2` and `1` and all three replicas are in sync. If you look at the second topic `testtopic`, it has only one partition, which is replicated on brokers `0`, `2`, and `1` but the in-sync replica list shows only `0` and `2`. This means that the follower on broker `1` is falling behind and is therefore not in the `Isr` list. 
+From the sample, you can see that topic `sample-topic` has three partitions and a replication factor of three. The example also shows which broker the leader of each partitions is on and which replicas are in sync (`Isr`). For example, the leader of partition `0` is on broker `0`, the followers are on brokers `2` and `1` and all three replicas are in sync. If you look at the second topic `testtopic`, it has only one partition, which is replicated on brokers `0`, `2`, and `1` but the in-sync replica list shows only `0` and `2`. This means that the follower on broker `1` is falling behind and is therefore not in the `Isr` list.
 
 ## Console producer
 {: #console_producer}
@@ -150,7 +150,7 @@ Replace the variables in the example with your own values:
 ## Consumer groups
 {: #consumer_groups_tool}
 
-You can use the Kafka consumer groups tool with {{site.data.keyword.messagehub}}. 
+You can use the Kafka consumer groups tool with {{site.data.keyword.messagehub}}.
 
 ```bash
 $ ./bin/kafka-consumer-groups.sh --bootstrap-server <BOOTSTRAP_SERVERS> --command-config client.properties --list --timeout 60000
@@ -166,7 +166,7 @@ $ kafka-consumer-groups.sh --bootstrap-server <BOOTSTRAP_SERVERS> --command-conf
 ```
 {: codeblock}
 
-Replace GROUP in the example with the group name that you want to retrieve details for. 
+Replace GROUP in the example with the group name that you want to retrieve details for.
 
 See the following sample output from running the **kafka-consumer-groups** tool:
 
@@ -178,7 +178,7 @@ consumer-group-1   foo        2          212          
 ```
 {: codeblock}
 
-From the example, you can see that consumer group `consumer-group-1` has two consumer members that consume messages from topic `foo` with three partitions. It also shows that the consumer `client-1-abc` that is consuming from partition `0` is three messages behind because the current offset of the consumer is `264` but the offset of the last message on partition `0` is `267`. 
+From the example, you can see that consumer group `consumer-group-1` has two consumer members that consume messages from topic `foo` with three partitions. It also shows that the consumer `client-1-abc` that is consuming from partition `0` is three messages behind because the current offset of the consumer is `264` but the offset of the last message on partition `0` is `267`.
 
 ## Kafka Streams reset
 {: #kafka_streams_reset}
@@ -194,5 +194,5 @@ For example:
 
 Replace the following variables in the example with your own values:
 
-- BOOTSTRAP_SERVERS with the value from your {{site.data.keyword.messagehub}} **Service credentials** tab in the {{site.data.keyword.Bluemix_notm}} console. 
+- BOOTSTRAP_SERVERS with the value from your {{site.data.keyword.messagehub}} **Service credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
 - APP_ID with your Streams application ID.
