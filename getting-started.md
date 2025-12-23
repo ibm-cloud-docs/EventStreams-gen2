@@ -2,9 +2,9 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-18"
+lastupdated: "2025-12-23"
 
-keywords: quick setup guide
+keywords: getting started
 
 subcollection: EventStreams-gen2
 
@@ -12,7 +12,7 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting started with {{site.data.keyword.messagehub}} for {{site.data.keyword.cloud_notm}}
+# Getting started with {{site.data.keyword.messagehub}} for {{site.data.keyword.monitoringlong_notm}}
 {: #getting-started}
 
 [Gen 2]{: tag-purple}
@@ -61,7 +61,7 @@ Before you get started, we highly recommend that you read the following informat
 
 1. Log in to the {{site.data.keyword.cloud_notm}} console.
 
-2. Search for **{{site.data.keyword.messagehub}}** in the [**Catalog**](https://cloud.ibm.com/catalog/) and click on the **{{site.data.keyword.messagehub}}** tile {: external}.
+2. Search for **{{site.data.keyword.messagehub}}** in the [**Catalog**](https://cloud.ibm.com/catalog/){: external} and click on the **{{site.data.keyword.messagehub}}** tile.
 
 3. Select a Location that supports the Gen2 platform.
 
@@ -127,11 +127,11 @@ To allow you to connect to your {{site.data.keyword.messagehub}} instance, creat
 {: #produce_data_ui}
 {: ui}
 
-To connect to {{site.data.keyword.messagehub}, a Virtual Private Endpoint (VPE) for VPC must be created to establish a secure private connection.
+To connect to {{site.data.keyword.messagehub}}, a Virtual Private Endpoint (VPE) for VPC must be created to establish a secure private connection.
 
 Follow [the instructions to connect to your instance](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting) to create a VPE and run a producer and consumer application to send and recieve data.
 
-## Step 6: Connect {{site.data.keyword.mon_full_notm}} for operational visibility by using the console
+## Step 6: Connect {{site.data.keyword.monitoringlong_notm}} for operational visibility by using the console
 {: #connect_monitoring_ui}
 {: ui}
 
