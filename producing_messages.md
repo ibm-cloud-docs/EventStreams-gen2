@@ -144,9 +144,6 @@ Properties props = new Properties();
  props.put("sasl.jaas.config", "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"USER\" password=\"PASSWORD\";");
  props.put("security.protocol", "SASL_SSL");
  props.put("sasl.mechanism", "PLAIN");
- props.put("ssl.protocol", "TLSv1.2");
- props.put("ssl.enabled.protocols", "TLSv1.2");
- props.put("ssl.endpoint.identification.algorithm", "HTTPS");
 ```
 
 To send messages, you also need to specify serializers for the keys and values, for example:

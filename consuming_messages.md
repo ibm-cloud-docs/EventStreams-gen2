@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-12-18"
+lastupdated: "2025-12-23"
 
 keywords: messages, consumer, record, offset, rebalancing, consumer group, consumer properties
 
@@ -162,9 +162,6 @@ Properties props = new Properties();
  props.put("sasl.jaas.config", "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"USER\" password=\"PASSWORD\";");
  props.put("security.protocol", "SASL_SSL");
  props.put("sasl.mechanism", "PLAIN");
- props.put("ssl.protocol", "TLSv1.2");
- props.put("ssl.enabled.protocols", "TLSv1.2");
- props.put("ssl.endpoint.identification.algorithm", "HTTPS");
 ```
 
 To consume messages, you also need to specify deserializers for the keys and values, as in the following example.
