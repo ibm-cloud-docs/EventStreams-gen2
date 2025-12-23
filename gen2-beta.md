@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025
-lastupdated: "2025-12-18"
+lastupdated: "2025-12-23"
 
 keywords: gen 2, beta
 
@@ -26,10 +26,23 @@ subcollection: event-streams-gen2
 - {{site.data.keyword.cloud}} SLA does not apply.
 - Visibility and access: Beta will start as closed (invite-only) in stages 1 and 2, and become public in stage 3.
 - Billing: Beta services are not billable.
-- Feature gaps: {{site.data.keyword.messagehub}} Beta plans will not include key features, including Bring Your Own Key (BYOK) and context-based restrictions.
+- Feature gaps: {{site.data.keyword.messagehub}} Beta plans will not include context-based restrictions.
 - Lifecycle: Beta instances will be removed at the end of the program, and {{site.data.keyword.messagehub}} can remove instances at any point if too many instances are provisioned by a single user.
 
 For more information, see [IBM Cloud Lifecycle phases](/docs/service-framework?topic=service-framework-lifecycle).
+
+## What capabilities are supported? 
+{: #es-beta-inscope}
+
+- Montreal region only
+- [Private only connectivity via VPE](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting)
+- [BYOK via Key Protect integration](/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_encryption)
+- [Customer metrics and logs](/docs/EventStreams-gen2?topic=EventStreams-gen2-metrics)
+- [Integration with Activity Tracker](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events)
+- Provisioning via {{site.data.keyword.cloud_notm}} UI, CLI, or Terraform
+- Instance management via UI and Resource Controller API and CLI
+
+For more information on the comparison of existing plans and the new Gen 2 beta plan, see [Choosing your paln](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose). 
 
 ## When can I join the beta?
 {: #gen2-beta-when}
@@ -41,14 +54,14 @@ For more information, see [IBM Cloud Lifecycle phases](/docs/service-framework?t
 ## Requesting access
 {: #gen2-beta-access}
 
-- Stage 1: By invite only. Join the Slack channel **#cds-gen2-beta** and request access.
+- Stage 1: By invite only. Join the Slack channel **#cds-beta-adopters** and request access.
 - Stage 2: No request needed – Gen 2 plans are visible to internal teams via the UI.
 - Stage 3: Sales teams request access for customers via slack channel #cds-gen2-beta with customer name, customer email, and requested service(s).
 
 ## Receiving support and providing feedback
 {: #gen2-beta-support}
 
-- Stages 1 and 2: Join the Slack channel **#cds-gen2-beta**.
+- Stages 1 and 2: Join the Slack channel **#cds-beta-adopters**.
 - Stage 3: Follow the standard process of raising a [support ticket](/https://cloud.ibm.com/unifiedsupport/supportcenter).
 
 ## Beta transition timeline 
