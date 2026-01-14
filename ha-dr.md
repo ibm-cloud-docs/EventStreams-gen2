@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-12-18"
+  years: 2026
+lastupdated: "2026-01-14"
 
 keywords: HA for Event Streams, DR for Event Streams, Event Streams recovery time objective, high availability, disaster recovery
 
@@ -27,7 +27,10 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.messagehub_full}} is a global service and you can find the available region and data center locations in the [Service and infrastructure availability by location](/docs/overview?topic=overview-services_region) documentation. As a global service, {{site.data.keyword.messagehub}}} fulfills the defined [Service Level Objectives (SLO)](/docs/resiliency?topic=resiliency-slo) using the Enterprise Gen2 plans. **N.B. during Beta no SLOs apply**. The SLO is not a warranty and {{site.data.keyword.IBM}} will not issue credits for failure to meet an objective.
 
+## High availability architecture
+{: #ha-architecture}
 
+![Architecture](images/EventStreams_high_availability.svg){: caption="Event Streams architecture" caption-side="bottom"}
 
 ### High availability features
 {: #ha-features}
@@ -43,10 +46,12 @@ subcollection: EventStreams-gen2
 {: caption="HA features for {{site.data.keyword.messagehub}}" caption-side="bottom"}
 
 
+## Disaster recovery architecture
+{: #disaster-recovery-intro}
 
 
 
--->
+![Architecture](images/EventStreams_disaster_recovery.svg){: caption="Event Streams restore architecture" caption-side="bottom"}
 
 
 
