@@ -98,7 +98,6 @@ toc:
       - topic: service-dependency.md
         navtitle: Service dependency map
       - reserved_disk.md
-      - setting_up_app_vpn.md
       - topic: eventstreams-terraform.md
         navtitle: Terraform reference
       - topicgroup:
