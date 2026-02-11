@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-12-15"
+  years: 2026
+lastupdated: "2026-02-11"
 
 keywords: monitoring, metrics, cost, billing, opting in
 
@@ -104,6 +104,7 @@ The following tables describe the specific metrics that are provided by {{site.d
 | [Number of topics](#ibm_eventstreams_instance_topics) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Number of offline partitions](#ibm_eventstreams_kafka_offline_partitions) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Number of under in-sync replica partitions](#ibm_eventstreams_kafka_under_minisr_partitions) |   ![Checkmark icon](../icons/checkmark-icon.svg) |
+{: caption="Service metrics available by service plan" caption-side="bottom"}
 
 ## Enhanced service metrics available with topic enabled
 {: #metrics-topic}
