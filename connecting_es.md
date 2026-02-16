@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-12-16"
+  years: 2026
+lastupdated: "2026-02-16"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -75,7 +75,7 @@ The following information shows the steps needed to connect to a VPE from an app
 ### Create an {{site.data.keyword.vpc_short}}
 {: #create_a_vpc}
 
-Set up a Virtual Private Cloud in your region and turn on SSH access. [Create your VPC](https://cloud.ibm.com/infrastructure/network/vpcs){: external}
+Set up a Virtual Private Cloud in your region. Make sure to select 'Allow SSH' in the options for the VPC before creating. [Create your VPC](https://cloud.ibm.com/infrastructure/network/vpcs){: external}
 
 Keep resources in the same region to avoid issues.
 {: note}
@@ -97,12 +97,18 @@ Keep resources in the same region to avoid issues.
 ### Create a Virtual Server Instance (VSI) in the VPC
 {: #create_a_vsi}
 
-[Create a VSI](https://cloud.ibm.com/infrastructure/compute/vs){: external} in the same region, select your VPC, choose *Ubuntu Linux* for operating system. (You can use the smallest profile.)
+[Create a VSI](https://cloud.ibm.com/infrastructure/compute/vs){: external} in the same region, make sure to:
+- Choose *Ubuntu Linux* for operating system. (You can use the smallest profile.)
+- Select the SSH Key created above.
+- Select the VPC created above.
 
 ### Reserve a floating IP for your VSI
 {: #create_a_floatingip}
 
 [Reserve a floating IP address](https://cloud.ibm.com/infrastructure/network/floatingIPs){: external}. Make sure the correct region and zone is selected, and bind it to the VSI created in the previous step.
+
+This enables the VSI to be connected to from the internet. If required, the security group associated with the VSI can be modified to only allow connections from specific IP addresses, for example, the specific IP address of the machine you connect from.
+{: important}
 
 ### Log in to your VSI
 {: #login_to_vsi}
