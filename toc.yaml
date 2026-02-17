@@ -19,7 +19,7 @@ toc:
       - topicgroup:
           label: Getting started
           topics:
-          - include: ../EventStreams/getting-started.md
+          - include: ../EventStreams/getting_started.md
             navtitle: Gen 1
           - topic: getting-started.md
             navtitle: Gen 2
