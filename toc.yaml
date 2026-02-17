@@ -39,7 +39,7 @@ toc:
       - choosing_your_plan.md
       - link:
           label: Documentation Gen 1
-          href: /docs/EventStreams
+          href: /EventStreams
   - navgroup:
       id: howto
       topics:
