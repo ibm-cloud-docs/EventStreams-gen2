@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2025
-lastupdated: "2025-12-15"
+  years: 2026
+lastupdated: "2026-02-17"
 
 keywords: gen 2, beta
 
@@ -13,7 +13,7 @@ content-type: release-note
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Release notes for {{site.data.keyword.messagehub}} Gen 2
+# Release notes Gen 2
 {: #event-streams-relnotes-gen2}
 
 [Gen 2]{: tag-purple}

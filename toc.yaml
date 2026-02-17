@@ -6,7 +6,7 @@ toc:
     audience: service
     href: /docs/EventStreams-gen2/
     path: EventStreams-gen2
-    label: Event Streams
+    label: Event Streams Gen 2
     version: 2
     console-page: /catalog/services/event-streams
     product-page: https://www.ibm.com/products/event-streams
@@ -16,17 +16,30 @@ toc:
       topics:
       - topic: gen2-beta.md
         navtitle: Beta reference
-      - topic: getting-started.md
-        navtitle: Quick setup guide
+      - topicgroup:
+          label: Getting started
+          topics:
+          - include: ../EventStreams/getting-started.md
+            navtitle: Gen 1
+          - topic: getting-started.md
+            navtitle: Gen 2
       - topic: overview.md
         navtitle: Overview
-      - topic: release-notes-gen2.md
-        navtitle: Release notes
+      - topicgroup:
+          label: Release notes
+          topics:
+          - include: ../EventStreams/release-notes.md
+            navtitle: Gen 1
+          - topic: release-notes-gen2.md
+            navtitle: Gen 2
       - topic: apache_kafka_concepts.md
         navtitle: Apache Kafka concepts
       - topic: use_cases.md
         navtitle: Apache Kafka use cases
       - choosing_your_plan.md
+      - link:
+          label: Documentation Gen 1
+          href: /docs/EventStream
   - navgroup:
       id: howto
       topics:

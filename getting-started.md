@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-12-23"
+  years: 2026
+lastupdated: "2026-02-17"
 
 keywords: getting started
 
@@ -12,7 +12,7 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting started with {{site.data.keyword.messagehub}} for {{site.data.keyword.monitoringlong_notm}}
+# Getting started Gen 2
 {: #getting-started}
 
 [Gen 2]{: tag-purple}
