@@ -134,7 +134,7 @@ toc:
   - navgroup:
       id: help
       topics:
-      - faq.md
+      - faq_gen2.md
       - topicgroup:
           label: Troubleshooting
           topics:
