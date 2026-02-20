@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-18"
+lastupdated: "2026-02-20"
 
 keywords: gen 2, generation 2, vpc, classic, migration, differences, enterprise, kafka 4.1, private endpoints
 
@@ -33,10 +33,10 @@ Frequently asked questions about {{site.data.keyword.messagehub}} Gen 2 (VPC) an
 The key differences include:
 
 - **Platform**: Gen 2 runs on VPC with software-defined networking, while Classic runs on IBM's original platform.
-- **Kafka Version**: Gen 2 uses Kafka 4.1, Classic uses Kafka 3.8.
+- **Kafka version**: Gen 2 uses Kafka 4.1, Classic uses Kafka 3.8.
 - **Networking**: Gen 2 supports private endpoints only (VPE), Classic supports both public and private endpoints.
-- **Plans Available**: Gen 2 only offers Enterprise plan, Classic offers Lite, Standard, and Enterprise plans.
-- **Compute Model**: Gen 2 provides isolated compute hosting with single-tenant virtual machines and dedicated storage bandwidth.
+- **Plans available**: Gen 2 only offers Enterprise plan, Classic offers Lite, Standard, and Enterprise plans.
+- **Compute model**: Gen 2 provides isolated compute hosting with single-tenant virtual machines and dedicated storage bandwidth.
 - **Regions**: Gen 2 is currently available only in Montreal (ca-mon) as a single-campus MZR, Classic is available in multiple regions worldwide.
 
 ## Which plan should I choose - Gen 2 Enterprise or Classic Enterprise?
