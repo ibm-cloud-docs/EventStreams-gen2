@@ -17,16 +17,18 @@ toc:
       - topic: gen2-beta.md
         navtitle: Beta reference
       - topic: getting-started.md
+        navtitle: Getting started
       - topic: overview.md
         navtitle: Overview
       - topic: release-notes-gen2.md
+        navtitle: Release notes
       - topic: apache_kafka_concepts.md
         navtitle: Apache Kafka concepts
       - topic: use_cases.md
         navtitle: Apache Kafka use cases
       - choosing_your_plan.md
       - topicgroup:
-          label: Documentation for Gen 1
+          label: Documentation Gen 1
           topics:
           - include: ../EventStreams/getting-started.md
             navtitle: Getting started Gen 1
