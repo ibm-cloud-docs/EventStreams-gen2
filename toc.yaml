@@ -16,30 +16,25 @@ toc:
       topics:
       - topic: gen2-beta.md
         navtitle: Beta reference
-      - topicgroup:
-          label: Getting started
-          topics:
-          - include: ../EventStreams/getting-started.md
-            navtitle: Gen 1
-          - topic: getting-started.md
-            navtitle: Gen 2
+      - topic: getting-started.md
       - topic: overview.md
         navtitle: Overview
-      - topicgroup:
-          label: Release notes
-          topics:
-          - include: ../EventStreams/release-notes.md
-            navtitle: Gen 1
-          - topic: release-notes-gen2.md
-            navtitle: Gen 2
+      - topic: release-notes-gen2.md
       - topic: apache_kafka_concepts.md
         navtitle: Apache Kafka concepts
       - topic: use_cases.md
         navtitle: Apache Kafka use cases
       - choosing_your_plan.md
-      - link:
-          label: Documentation Gen 1
-          href: https://cloud.ibm.com/docs/EventStreams
+      - topicgroup:
+          label: Documentation for Gen 1
+          topics:
+          - include: ../EventStreams/getting-started.md
+            navtitle: Getting started Gen 1
+          - include: ../EventStreams/release-notes.md
+            navtitle: Release notes Gen 1
+          - link:
+              label: Documentation for Gen 1
+              href: https://cloud.ibm.com/docs/EventStreams
   - navgroup:
       id: howto
       topics:

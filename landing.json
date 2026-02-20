@@ -8,31 +8,31 @@
     "links": [
       {
         "title": "Getting started",
-        "href": "/docs/EventStreams?topic=EventStreams-getting-started"
+        "href": "/docs/EventStreams-gen2?topic=EventStreams-gen2-getting-started"
       },
       {
         "title": "Overview",
-        "href": "/docs/EventStreams?topic=EventStreams-about"
+        "href": "/docs/EventStreams-gen2?topic=EventStreams-gen2-about"
       },
       {
-        "title": "Restricting network access",
-        "href": "/docs/EventStreams?topic=EventStreams-restrict_access"
+        "title": "FAQ for Event Streams Gen 2",
+        "href": "/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-faq"
       },
       {
         "title": "Connecting to Event Streams",
-        "href": "/docs/EventStreams?topic=EventStreams-connecting"
+        "href": "/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting"
       },
       {
         "title": "Managing encryption",
-        "href": "/docs/EventStreams?topic=EventStreams-managing_encryption"
+        "href": "/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_encryption"
       },
       {
-        "title": "Using the Kafka API",
-        "href": "/docs/EventStreams?topic=EventStreams-kafka_using"
+        "title": "Event Streams API",
+        "href": "/docs/EventStreams-gen2?topic=EventStreams-gen2-api"
       },
       {
-        "title": "Consuming messages",
-        "href": "/docs/EventStreams?topic=EventStreams-consuming_messages"
+        "title": "Documentation for Gen 1",
+        "href": "https://cloud.ibm.com/docs/EventStreams"
       }
     ]
   },
@@ -59,20 +59,12 @@
     "view_more": "/docs/EventStreams?topic=EventStreams-event-streams-relnotes",
     "tiles": [
       {
-        "date": "October 2024",
-        "title": "Terraform Updates"
+        "date": "February 2026",
+        "title": "Enterprise Gen 2 plan GA"
       },
       {
-        "date": "September 2024",
-        "title": "Schema Registry commands in CLI plugin v2.6.0"
-      },
-      {
-        "date": "September 2024",
-        "title": "Reserved disk space percentage per topic metric available"
-      },
-      {
-        "date": "March 2024",
-        "title": "Apache Kafka update"
+        "date": "December 2025",
+        "title": "Beta introduction of Enterprise Gen 2 plan"
       }
     ]
   }
