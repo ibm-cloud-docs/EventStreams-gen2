@@ -28,12 +28,12 @@ toc:
         navtitle: Apache Kafka use cases
       - choosing_your_plan.md
       - topicgroup:
-          label: Documentation Gen 1
+          label: Gen 1 (Classic)
           topics:
           - include: ../EventStreams/getting-started.md
-            navtitle: Getting started Gen 1
+            navtitle: Getting started (Gen 1)
           - include: ../EventStreams/release-notes.md
-            navtitle: Release notes Gen 1
+            navtitle: Release notes (Gen 1)
           - link:
               label: Documentation for Gen 1
               href: https://cloud.ibm.com/docs/EventStreams
