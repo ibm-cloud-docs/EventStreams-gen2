@@ -27,16 +27,6 @@ toc:
       - topic: use_cases.md
         navtitle: Apache Kafka use cases
       - choosing_your_plan.md
-      - topicgroup:
-          label: Gen 1 (Classic)
-          topics:
-          - include: ../EventStreams/getting-started.md
-            navtitle: Getting started (Gen 1)
-          - include: ../EventStreams/release-notes.md
-            navtitle: Release notes (Gen 1)
-          - link:
-              label: Documentation for Gen 1
-              href: https://cloud.ibm.com/docs/EventStreams
   - navgroup:
       id: howto
       topics:
@@ -87,6 +77,9 @@ toc:
   - navgroup:
       id: reference
       topics:
+      - link:
+          label: Gen 1 docs
+          href: https://cloud.ibm.com/docs/EventStreams
       - topic: api.md
         navtitle: API reference
       - topic: cli.md
