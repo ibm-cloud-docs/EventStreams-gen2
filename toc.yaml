@@ -14,8 +14,6 @@ toc:
   - navgroup:
       id: learn
       topics:
-      - topic: gen2-beta.md
-        navtitle: Beta reference
       - topic: getting-started.md
         navtitle: Getting started
       - topic: overview.md
