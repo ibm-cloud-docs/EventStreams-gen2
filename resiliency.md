@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-12-18"
+  years: 2026
+lastupdated: "2026-02-26"
 
 keywords: resiliency, cluster resiliency, availability, data corruption, deletion, data management, disaster recovery, responsibilities
 
@@ -16,9 +16,6 @@ subcollection: EventStreams-gen2
 {: #resiliency}
 
 [Gen 2]{: tag-purple}
-
-{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
-{: beta}
 
 By default, {{site.data.keyword.messagehub}} instances are built with resiliency, with numerous safeguards to prevent loss of availability or data. All instances are replicated across 3 brokers in addition to automated failover for maximum availability. In addition, {{site.data.keyword.messagehub}} is responsible for managing resource utilisation and instance limits across the estate as well as proactively monitoring (for example, of in-sync replicas and disk space utilization) to ensure high availability and data durability out of the box. {{site.data.keyword.messagehub}} proactively manages the security and compliance of customer clusters through threat detection and vulnerability scanning and guarantees an SLA of up to 99.99% for MZRs. [Understanding your responsibilities when you use {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-event_streams_responsibilities) highlights customer responsibilities which include backup of message payload data and instance data including topic names, data and schema registry data if this is required.
 
