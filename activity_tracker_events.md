@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-12-15"
+  years: 2026
+lastupdated: "2026-02-26"
 
 keywords: activity , cloud logs
 
@@ -16,9 +16,6 @@ subcollection: EventStreams-gen2
 {: #at_events}
 
 [Gen 2]{: tag-purple}
-
-{{site.data.keyword.messagehub}} Gen 2 is currently in Beta. Beta offerings are provided exclusively for evaluation and testing purposes. They are not covered by warranties, SLAs, or support, and are not intended for production use. {{site.data.keyword.ibm}} strongly recommends avoiding non-GA features in production environments. [Learn more here.](/link to beta reference page)
-{: beta}
 
 Use the {{site.data.keyword.logs_full}} service to track how users and applications interact with the {{site.data.keyword.messagehub}} service on the various {{site.data.keyword.messagehub}} service plans in {{site.data.keyword.cloud}}.
 {: shortdesc}
