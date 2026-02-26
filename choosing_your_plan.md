@@ -46,6 +46,7 @@ The Enterprise plan includes the following features:
 - Exclusive access to a single-tenant {{site.data.keyword.messagehub}} service instance deployed in a highly available multi zone region (MZR).
 - Option to provision a single-tenant {{site.data.keyword.messagehub}} service instance in a geographically local but single zone location [(SZR)](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#sla_szr).
 - Scaling options to customize throughput, storage capacity, or both.
+- The broadest possible set of compliance certifications, regions and features including public endpoint connectivity, Managed Schema Registry and Mirroring capabilities.
 
 The architecture is highly available when you choose to deploy into a multi-zone region. The service is distributed across three availability zones, which means that the cluster is resilient to the failure of a single zone or any component within that zone.
 
@@ -54,9 +55,13 @@ The architecture is highly available when you choose to deploy into a multi-zone
 
 The Enterprise Gen2 plan is appropriate if data isolation, performance, and increased retention are important considerations.
 
-Built on {{site.data.keyword.IBM}}’s latest platform, using highly secure software-defined networking and ideal for cloud-native applications. Currently only available in select regions with support for private endpoints and isolated compute hosting. This environment is ideal for modern applications that demand advanced networking and secure, software-defined isolation.
+Built on {{site.data.keyword.IBM}}’s latest platform, using highly secure software-defined networking and ideal for modern cloud-native applications. The Enterprise Gen2 plan includes the following features:
 
-The isolated compute hosting model provides a Kafka cluster per service instance which runs on single-tenant virtual machines and storage, providing hypervisor-level isolation and dedicated storage bandwidth. This model is ideal for workloads that demand consistent performance, security, and compliance.
+- Modern VPC-based software defined networking with private-only connectivity via VPE
+- Hypervisor-level isolation with dedicated storage bandwidth
+- Latest Kafka 4.1 features
+
+Currently only available in select regions with support for private endpoints and Isolated Compute hosting. The Isolated Compute hosting model provides a Kafka cluster per service instance which runs on single-tenant virtual machines and storage, providing hypervisor-level isolation and dedicated storage bandwidth. This model is ideal for workloads that demand consistent performance and security.
 
 ## What is supported by the Lite, Standard, Enterprise and Enterprise Gen2  plans
 {: #what_is_supported}
