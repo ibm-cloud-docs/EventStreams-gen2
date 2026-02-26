@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-12-23"
+  years: 2026
+lastupdated: "2026-02-26"
 
 keywords: messages, consumer, record, offset, rebalancing, consumer group, consumer properties
 
@@ -15,9 +15,6 @@ subcollection: EventStreams-gen2
 # Consuming messages
 {: #consuming_messages}
 [Gen 2]{: tag-purple}
-
-{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
-{: beta}
 
 A consumer is an application that consumes streams of messages from Kafka topics. A consumer can subscribe to one or more topics or partitions. This information focuses on the Java™ programming interface that is part of the Apache Kafka project. The concepts apply to other languages too, but the names are sometimes a little different.
 {: shortdesc}
