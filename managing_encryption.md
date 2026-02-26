@@ -75,7 +75,7 @@ Complete the following steps to provision your {{site.data.keyword.messagehub}} 
 2. Create an authorization policy to allow the {{site.data.keyword.messagehub}} service to access the key management service instance as a Reader. For more information, see [Using authorizations to grant access between services](/docs/account?topic=account-serviceauth){: external}.
 3. Create or import a root key into your key management service instance.
 4. Retrieve the Cloud Resource Name (CRN) of the key by using the **View CRN** option in the key management service instance GUI.
-5. Provision an instance of [{{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta). This feature is supported on the Enterprise plan only.
+5. Provision an instance of {{site.data.keyword.messagehub}}. This feature is supported on the Enterprise plan only.
 
 If provisioning through {{site.data.keyword.Bluemix}} console, select a key management service instance and then select a root key from the instance.
 

@@ -37,9 +37,6 @@ The minimum throughput option available is 100MB/s, divided into 50MB/s for prod
 
 Storage capacity is the amount of storage that is allocated in the service instance for retention of message data. Storage figures are quoted in decimal (base 10), for example, 2 TB represents 2x10^12 Bytes. Storage capacity can be scaled up, independent of throughput capacity, when data retention is important for your architecture. Storage capacity cannot be scaled down.
 
-Gen 2 Beta limitation: Storage capacity scaling is not yet supported.
-{: important}
-
 {{site.data.keyword.messagehub}} stores three replicas of your data to ensure the highest level of resilience across three availability zones. When you select 2 TB of storage with {{site.data.keyword.messagehub}}, it is equivalent to deploying 6 TB of storage, if you are running your own Apache Kafka cluster with the same replication policy enabled.
 
 ## How to scale capacity
