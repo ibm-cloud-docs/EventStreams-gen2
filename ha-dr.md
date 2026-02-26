@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-02"
+lastupdated: "2026-02-26"
 
 keywords: HA for Event Streams, DR for Event Streams, Event Streams recovery time objective, high availability, disaster recovery
 
@@ -18,9 +18,6 @@ subcollection: EventStreams-gen2
 {: #eventstreams-ha-dr}
 
 [Gen 2]{: tag-purple}
-
-{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
-{: beta}
 
 [High availability](#x2284708){: term} (HA) is the ability for a service to remain operational and accessible in the presence of unexpected failures. [Disaster recovery](#x2113280){: term} is the process of recovering the service instance to a working state.
 {: shortdesc}

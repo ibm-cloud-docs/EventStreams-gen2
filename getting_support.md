@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-12-17"
+  years: 2026
+lastupdated: "2026-02-26"
 
 keywords: getting help, getting support, troubleshooting
 
@@ -16,9 +16,6 @@ subcollection: EventStreams-gen2
 {: #gettinghelp}
 
 [Gen 2]{: tag-purple}
-
-{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
-{: beta}
 
 If you have problems or questions while you use {{site.data.keyword.messagehub}}, go directly to the [{{site.data.keyword.Bluemix}} Support page](https://{DomainName}/unifiedsupport/supportcenter) to review featured FAQs, view cloud status, or post questions on Stack Overflow. Or, open a support case.
 {: shortdesc}
