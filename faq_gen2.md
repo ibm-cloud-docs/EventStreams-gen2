@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-20"
+lastupdated: "2026-02-26"
 
 keywords: gen 2, generation 2, vpc, classic, migration, differences, enterprise, kafka 4.1, private endpoints
 
@@ -35,9 +35,9 @@ The key differences include:
 - **Platform**: Gen 2 runs on VPC with software-defined networking, while Classic runs on IBM's original platform.
 - **Kafka version**: Gen 2 uses Kafka 4.1, Classic uses Kafka 3.8.
 - **Networking**: Gen 2 supports private endpoints only (VPE), Classic supports both public and private endpoints.
-- **Plans available**: Gen 2 only offers Enterprise plan, Classic offers Lite, Standard, and Enterprise plans.
+- **Plans available**: Gen 2 offers Enterprise plan, Classic offers Lite, Standard, and Enterprise plans.
 - **Compute model**: Gen 2 provides isolated compute hosting with single-tenant virtual machines and dedicated storage bandwidth.
-- **Regions**: Gen 2 is currently available only in Montreal (ca-mon) as a single-campus MZR, Classic is available in multiple regions worldwide.
+- **Regions**: Gen 2 is currently available only in selected regions.
 
 ## Which plan should I choose - Gen 2 Enterprise or Classic Enterprise?
 {: #faq-which-plan}
@@ -55,8 +55,7 @@ Choose Classic Enterprise if you need:
 - Public endpoint connectivity
 - Managed Schema Registry (not yet available in Gen 2)
 - Mirroring capabilities (not yet available in Gen 2)
-- Deployment in regions other than Montreal
-- IAM address restrictions (not yet available in Gen 2)
+- Deployment in the broadest set of regions
 - Established compliance certifications (Gen 2 certifications are pending)
 
 ## What APIs and tools are supported in Gen 2?
@@ -90,10 +89,11 @@ No, the {{site.data.keyword.messagehub}} CLI plugin only supports Gen 1 (Classic
 Gen 2 Enterprise currently offers:
 
 - **Throughput**: 100 MB/s (50 MB/s producing and 50 MB/s consuming) as continuously available minimum for typical workloads
-- **Storage**: 2 TB of usable storage
-- **Partitions**: ???Charlie??? (Classic Enterprise scales from 3000-9000 partitions based on throughput)
+- **Storage**: 2/4/6 TB of usable storage
+- **Partitions**: 3000 partitions
+- **Connections**: 1000 connected applications
 
-Throughput scaling is planned for a future release. The throughput figure represents the minimum that can be expected continuously, accounting for operational actions and failure modes. Up to 30% more may be possible in normal operation but should not be assumed for capacity planning.
+Throughput scaling is planned for a future release.
 {: note}
 
 ## What features from Classic are not yet available in Gen 2?
@@ -104,8 +104,7 @@ The following features are planned for future releases:
 
 - Managed Schema Registry
 - Mirroring capabilities
-- Capacity scaling (throughput and storage)
-- IAM address restrictions
+- Capacity scaling (throughput as well as storage)
 - Context-based restrictions (CBR)
 - Multiple region availability
 - Admin REST API and REST Producer API
@@ -135,7 +134,7 @@ Gen 2 supports **private endpoints only** via Virtual Private Endpoints (VPE). P
 {: #faq-compliance}
 {: faq}
 
-??? Charlie??? I think this will be all the same for GA, right???Gen 2 is a new plan and certifications are pending. Classic Enterprise has extensive compliance certifications including GDPR, Privacy Shield, ISO 27001/27017/27018/27701, SOC 1/2/3, HIPAA ready, PCI DSS, ISMAP, C5, IRAP, ENS, HITRUST, and ProtectedB. If specific compliance requirements are critical for your use case, you should continue using Classic Enterprise until Gen 2 certifications are completed.
+Equivalent certifications as Classic are pending, including GDPR, Privacy Shield, ISO 27001/27017/27018/27701, SOC 1/2/3, HIPAA ready, PCI DSS, ISMAP, C5, IRAP, ENS, HITRUST, and ProtectedB. If specific compliance requirements are critical for your use case, you should continue using Classic Enterprise until Gen 2 certifications are completed.
 
 ## How is pricing different between Gen 2 and Classic?
 {: #faq-pricing}
@@ -153,13 +152,15 @@ Gen 2 uses Apache Kafka 4.1, while Classic uses Kafka 3.8. This means Gen 2 incl
 {: #faq-scaling}
 {: faq}
 
-??? Charlie - I think this is not correct for GA, right??? Capacity scaling for throughput and storage is planned for a future release. Currently, Gen 2 instances are provisioned with fixed capacity (100 MB/s throughput and 2 TB storage). If you need different capacity levels, you would need to provision a new instance. Note that like Classic, throughput and storage capacity cannot be scaled down - you would need to create a new instance at the lower capacity.
+Capacity scaling for storage is supported for 2/4/6 TB. Note that like Classic, storage capacity cannot be scaled down - you would need to create a new instance at the lower capacity.
+
+Scaling for throughput is planned for a future release. Currently, Gen 2 instances are provisioned with a fixed throughput capacity (100 MB/s throughput). 
 
 ## What are the partition limits in Gen 2?
 {: #faq-partitions}
 {: faq}
 
-??? Charlie - info for Gen 2 here??? In Classic Enterprise, partitions scale with throughput (3000 partitions for 150 MB/s, 6000 for 300 MB/s, and 9000 for 450 MB/s).
+A maximum of 3000 partitions can be created.
 
 ## Can I use Kafka Connect and Kafka Streams with Gen 2?
 {: #faq-kafka-tools}
@@ -177,18 +178,13 @@ The maximum message size is 1 MB, consistent across all {{site.data.keyword.mess
 {: #faq-connections}
 {: faq}
 
-Gen 2 Enterprise supports:
-
-- Maximum concurrently active Kafka clients: 10,000
-- Maximum concurrent connections: 100,000
-
-These limits match Classic Enterprise and are significantly higher than Classic Standard (500 active clients, 3000 connections) and Lite (5 active clients).
+Gen 2 Enterprise supports a maximum of 1000 concurrently active Kafka clients.
 
 ## Where can I provision Gen 2 instances?
 {: #faq-regions}
 {: faq}
 
-Gen 2 is currently available only in the **Montreal (ca-mon)** region as a single-campus multi-zone region (SC-MZR). Classic plans are available in multiple regions including Dallas, São Paulo, Toronto, Washington, Frankfurt, London, Madrid, Osaka, Sydney, Tokyo, and Chennai (SZR for Enterprise only).
+Gen 2 is currently available only in selected regions. For a list of the currently supported regions, see [Choosing a plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose).
 
 ## What encryption options are available in Gen 2?
 {: #faq-encryption}
