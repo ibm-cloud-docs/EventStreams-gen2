@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-18"
+lastupdated: "2026-02-26"
 
 keywords: getting started
 
@@ -16,9 +16,6 @@ subcollection: EventStreams-gen2
 {: #getting-started}
 
 [Gen 2]{: tag-purple}
-
-{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
-{: beta}
 
 This tutorial guides you through the steps to quickly start using {{site.data.keyword.messagehub}} by provisioning an instance, creating a topic and a credential, and then producing and consuming data. Additionally, you'll learn how to connect {{site.data.keyword.mon_full}} and {{site.data.keyword.at_full}}, and optionally how to use Kafka Connect or ksqlDB. Finally, you'll also find out how to get help with {{site.data.keyword.messagehub}}.
 {: shortdesc}
