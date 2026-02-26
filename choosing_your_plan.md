@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-23"
+lastupdated: "2026-02-26"
 
 keywords: plan, Enterprise, Standard, Lite, pricing, throughput, partitions, tenancy, compliance
 
@@ -16,9 +16,6 @@ subcollection: EventStreams-gen2
 {: #plan_choose}
 
 [Gen 2]{: tag-purple}
-
-{{site.data.keyword.messagehub_full}} Gen 2 is currently in Beta. The Beta plan is provided exclusively for evaluation and testing purposes. It is not covered by warranties, SLAs, or support, and is not intended for production use. For more information, see the  [Beta reference](/docs/EventStreams-gen2?topic=EventStreams-gen2-gen2-beta).
-{: beta}
 
 {{site.data.keyword.messagehub}} is available as Lite plan, Standard plan, and Enterprise plan depending on your requirements.
 {: shortdesc}
