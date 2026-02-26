@@ -1,0 +1,136 @@
+toc:
+  properties:
+    subcollection: EventStreams-gen2
+    service-name: messagehub
+    category: integration
+    audience: service
+    href: /docs/EventStreams-gen2/
+    path: EventStreams-gen2
+    label: Event Streams Gen 2
+    version: 2
+    console-page: /catalog/services/event-streams
+    product-page: https://www.ibm.com/products/event-streams
+  entries:
+  - navgroup:
+      id: learn
+      topics:
+      - topic: overview_gen1_gen2.md
+      - topic: getting-started.md
+        navtitle: Getting started
+      - topic: overview.md
+        navtitle: Overview
+      - topic: release-notes-gen2.md
+        navtitle: Release notes
+      - topic: apache_kafka_concepts.md
+        navtitle: Apache Kafka concepts
+      - topic: use_cases.md
+        navtitle: Apache Kafka use cases
+      - choosing_your_plan.md
+  - navgroup:
+      id: howto
+      topics:
+      - topic: provisioning.md
+      - topic: connecting_es.md
+        navtitle: Connecting
+      - topicgroup:
+          label: Administering
+          topics:
+          - using_admin_kafka_api.md
+          - topic: using_kafka_console.md
+            navtitle: Using Kafka console tools
+          - scaling_capacity.md
+          - enabling_kafka_quotas.md
+      - topicgroup:
+          label: Developing apps
+          topics:
+          - using_kafka_api.md
+          - producing_messages.md
+          - consuming_messages.md
+          - topic: partition_leadership.md
+            navtitle: Partition leadership
+          - topic: using_kafka_connect.md
+            navtitle: Using Kafka Connect
+          - topic: using_kafka_streams.md
+            navtitle: Using Kafka Streams
+          - topic: using_ksqldb.md
+            navtitle: Using ksqldb
+      - topicgroup:
+          label: Integrating with other services
+          topics:
+          - topic: connecting_mq.md
+            navtitle: Connecting MQ to Event Streams by using Kubernetes
+          - watson_platform.md
+          - streaming_cloud_logs.md
+      - topicgroup:
+          label: Enhancing security
+          topics:
+          - topic: data_security.md
+            navtitle: Data security and privacy
+          - topic: managing_encryption.md
+            navtitle: Managing encryption
+          - topic: managing_access.md
+            navtitle: Managing authentication
+          - topic: key-protect.md
+            navtitle: Key Protect integration
+      - using_kafka_client.md
+  - navgroup:
+      id: reference
+      topics:
+      - link:
+          label: Gen 1 docs
+          href: https://cloud.ibm.com/docs/EventStreams
+      - topic: api.md
+        navtitle: API reference
+      - topic: cli.md
+        navtitle: CLI reference
+      - sla.md
+      - topic: responsibilities.md
+        navtitle: Understanding your responsibilities
+      - topic: ha-dr.md
+        navtitle: Understanding high availability and disaster recovery
+      - topic: resiliency.md
+        navtitle: Maximizing resiliency for your instance
+      - topic: data_portability.md
+        navtitle: Understanding data portability
+      - topic: limits_quotas.md
+        navtitle: Limits and quotas
+      - activity_tracker_events.md
+      - monitoring.md
+      - kafka_client_metrics.md
+      - topic: service-dependency.md
+        navtitle: Service dependency map
+      - reserved_disk.md
+      - topic: eventstreams-terraform.md
+        navtitle: Terraform reference
+      - topicgroup:
+          label: Related links
+          topics:
+          - link:
+              label: Event Streams Java Kafka sample
+              href: https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-console-sample
+          - link:
+              label: Apache Kafka client downloads
+              href: https://kafka.apache.org/downloads
+          - link:
+              label: IBM Event Streams on ibm.com
+              href: https://www.ibm.com/products/event-streams
+          - link:
+              label: IBM Cloud pricing information
+              href: https://cloud.ibm.com/docs/billing-usage?topic=billing-usage-cost#cost
+          - link:
+              label: Apache Kafka documentation
+              href: http://kafka.apache.org/documentation.html
+  - navgroup:
+      id: help
+      topics:
+      - faq_gen2.md
+      - topicgroup:
+          label: Troubleshooting
+          topics:
+          - topic: getting_support.md
+            navtitle: Getting help and support
+          - topic: known_restrictions.md
+            navtitle: Known restrictions
+          - troubleshooting.md
+          - topic: reporting_problem.md
+            navtitle: Reporting a problem
