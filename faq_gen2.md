@@ -17,6 +17,8 @@ content-type: faq
 # FAQ for {{site.data.keyword.messagehub}} Gen 2
 {: #gen2-faq}
 
+[Gen 2]{: tag-purple}
+
 Frequently asked questions about {{site.data.keyword.messagehub}} Gen 2 (VPC) and how it differs from the Classic (Gen 1) version. To find all of the FAQs for {{site.data.keyword.cloud}}, see our [FAQ library](/docs/faqs).
 {: shortdesc}
 
