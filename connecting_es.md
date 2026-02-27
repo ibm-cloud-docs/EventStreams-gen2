@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-16"
+lastupdated: "2026-02-27"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -98,7 +98,7 @@ Keep resources in the same region to avoid issues.
 {: #create_a_vsi}
 
 [Create a VSI](https://cloud.ibm.com/infrastructure/compute/vs){: external} in the same region, make sure to:
-- Choose *Ubuntu Linux* for operating system. (You can use the smallest profile.)
+- Choose **Ubuntu Linux** for operating system. (You can use the smallest profile.)
 - Select the SSH Key created above.
 - Select the VPC created above.
 
