@@ -25,19 +25,19 @@ The following page covers all {{site.data.keyword.messagehub_full}} plans includ
 
 For information about {{site.data.keyword.messagehub}} plan pricing, see the [catalog](https://cloud.ibm.com/catalog){: external}. Search for `{{site.data.keyword.messagehub}}`, then click the {{site.data.keyword.messagehub}} tile to go to the provisioning page.
 
-## Lite plan
+## Lite plan (Gen 1)
 {: #plan_lite}
 
 The Lite plan is free for users who want to try out {{site.data.keyword.messagehub}} or build a proof-of-concept. Do not use the Lite plan for production use. It offers shared access to a multi-tenant {{site.data.keyword.messagehub}} cluster. The Lite plan is only available on Gen 1 (Classic).
 
-## Standard plan
+## Standard plan (Gen 1)
 {: #plan_standard}
 
 The Standard plan is appropriate if you require event ingest and distribution capabilities but do not require any additional benefits of the Enterprise plan. The Standard plan offers shared access to a multi-tenant {{site.data.keyword.messagehub}} cluster that seamlessly autoscales as you increase the number of partitions you are using for your workload.
 
 The architecture is highly available by default. The service is distributed across three availability zones, which means that the cluster is resilient to the failure of a single zone or any component within that zone. The Standard plan is only available on Gen 1 {{site.data.keyword.messagehub}} (Classic).
 
-## Enterprise plan
+## Enterprise plan (Gen 1)
 {: #plan_enterprise}
 
 The Enterprise plan is appropriate if data isolation, performance, and increased retention are important considerations.
@@ -50,7 +50,7 @@ The Enterprise plan includes the following features:
 
 The architecture is highly available when you choose to deploy into a multi-zone region. The service is distributed across three availability zones, which means that the cluster is resilient to the failure of a single zone or any component within that zone.
 
-## Enterprise Gen2 plan
+## Enterprise plan (Gen2)
 {: #plan_enterprise_gen2}
 
 The Enterprise Gen2 plan is appropriate if data isolation, performance, and increased retention are important considerations.
@@ -63,7 +63,7 @@ Built on {{site.data.keyword.IBM}}’s latest platform, using highly secure soft
 
 Currently only available in select regions with support for private endpoints and Isolated Compute hosting. The Isolated Compute hosting model provides a Kafka cluster per service instance which runs on single-tenant virtual machines and storage, providing hypervisor-level isolation and dedicated storage bandwidth. This model is ideal for workloads that demand consistent performance and security.
 
-## What is supported by the Lite, Standard, Enterprise and Enterprise Gen2  plans
+## What is supported by the Lite, Standard, Enterprise and Enterprise Gen2 plans
 {: #what_is_supported}
 
 The following table summarizes what is supported by the plans:
