@@ -26,7 +26,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 {{site.data.keyword.messagehub}} Gen 2 now availabe in Chennai
-: {{site.data.keyword.messagehub}} Gen 2 is now also available in Chennai - Airtel (in-che), in addition to Montreal (ca-mon). For more information, see [Location availability{{site.data.keyword.databases-for-postgresql}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
+: {{site.data.keyword.messagehub}} Gen 2 is now also available in Chennai - Airtel (in-che), in addition to Montreal (ca-mon). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## 26 February 2026
 {: #EventStreams-26feb2026}
