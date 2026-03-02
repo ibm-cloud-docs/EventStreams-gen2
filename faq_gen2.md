@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-03-02"
 
 keywords: gen 2, generation 2, vpc, classic, migration, differences, enterprise, kafka 4.1, private endpoints
 
@@ -117,7 +117,7 @@ The following features are planned for future releases:
 
 Direct migration is not currently supported. To move from Classic to Gen 2, you would need to:
 
-1. Provision a new Gen 2 instance in Montreal.
+1. Provision a new Gen 2 instance in Montreal or Chennai.
 2. Set up VPE connectivity for private networking.
 3. Reconfigure your applications to use the new Kafka bootstrap servers.
 4. Migrate your data using Kafka tools or custom applications.
