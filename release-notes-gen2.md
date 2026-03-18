@@ -32,10 +32,6 @@ Deprecation of {{site.data.keyword.hscrypto}}
 {: #EventStreams-02mar2026}
 {: release-note}
 
-## 02 March 2026
-{: #EventStreams-02mar2026}
-{: release-note}
-
 {{site.data.keyword.messagehub}} Gen 2 now availabe in Chennai
 : {{site.data.keyword.messagehub}} Gen 2 is now also available in Chennai - Airtel (in-che), in addition to Montreal (ca-mon). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
