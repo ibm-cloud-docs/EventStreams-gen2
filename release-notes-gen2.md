@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-03-02"
+lastupdated: "2026-03-18"
 
 keywords: gen 2, beta
 
@@ -20,6 +20,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.messagehub}} Gen 2 that are grouped by month and year. Release notes are available for a minimum of three years.
 {: shortdesc}
+
+## 19 March 2026
+{: #EventStreams-19mar2026}
+{: release-note}
+
+Deprecation of {{site.data.keyword.hscrypto}}
+: {{site.data.keyword.cloud}} is changing dedicated key management services from {{site.data.keyword.hscrypto}} to {{site.data.keyword.keymanagementservicelong}} Dedicated. {{site.data.keyword.hscrypto}} (HPCS) will reach End of Life (EOL) in Q1 2027 and will no longer be supported for use with this service after that time. For more information on how to migrate your encryption keys, see [Migrating from Hyper Protect Crypto Services (HPCS) to Key Protect Dedicated (KP-ST)](/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_encryption#migrating_hpcs_to_kp).
 
 ## 02 March 2026
 {: #EventStreams-02mar2026}

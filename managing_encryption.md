@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-03-27"
 
 keywords: BYOK, encryption, customer-managed encryption, customer-managed key, access to data, rotating key, rotate key
 
@@ -20,7 +20,11 @@ subcollection: EventStreams-gen2
 By default, message payload data in {{site.data.keyword.messagehub_full}} is encrypted at rest by using a randomly generated key. Although this default encryption model provides at-rest security, you might need a higher level of control. For these use cases, {{site.data.keyword.messagehub}} supports customer-managed encryption with the following {{site.data.keyword.cloud}} key management services:
 
 - {{site.data.keyword.keymanagementservicefull}} (Bring Your Own Key - BYOK) helps you provision encrypted keys for apps across {{site.data.keyword.cloud_notm}} services. As you manage the lifecycle of your keys, you benefit from knowing that your keys are secured by FIPS 140-2 Level three certified cloud-based hardware security modules (HSMs) that protect against the theft of information. For more information about using {{site.data.keyword.keymanagementserviceshort}}, see the [Getting Started tutorial](/docs/key-protect?topic=key-protect-getting-started-tutorial){: external}.
-- {{site.data.keyword.hscrypto}} (Keep Your Own Key - KYOK) is a single-tenant, dedicated HSM that is controlled by you. The service is built on FIPS 140-2 Level 4-certified hardware, the highest offered by any cloud provider in the industry. For more information about using {{site.data.keyword.hscrypto}}, see the [Getting Started tutorial](/docs/hs-crypto?topic=hs-crypto-get-started){: external}.
+
+- {{site.data.keyword.hscrypto}} (Keep Your Own Key - KYOK) is a single-tenant, dedicated HSM that is controlled by you. The service is built on FIPS 140-2 Level 4-certified hardware, the highest offered by any cloud provider in the industry. Note that {{site.data.keyword.hscrypto}} is deprecated.
+
+{{site.data.keyword.cloud}} is transitioning the dedicated key management services from {{site.data.keyword.hscrypto}} to {{site.data.keyword.keymanagementservicelong}} Dedicated. Migrate existing {{site.data.keyword.hscrypto}} (HPCS) root keys to {{site.data.keyword.keymanagementservicelong}} Dedicated (Single Tenant) before HPCS End of Life (EOL) on March 20, 2027 to ensure continued service availability. After that date any remaining instances will be terminated. To ensure continued service availability and support, you must migrate all existing HPCS root keys to {{site.data.keyword.keymanagementservicelong_notm}} Dedicated (Single Tenant) before the EOL date. [Learn how to migrate your root keys](#migrating_hpcs_to_kp). 
+{: deprecated}
 
 These services allow the use of a customer-provided key to control encryption. By disabling or deleting this key, you can prevent any further access to the data that is stored by the service, because it is no longer possible to decrypt it.
 {: shortdesc}
@@ -127,3 +131,32 @@ An activity tracker event is generated to report the action. For more informatio
 {: #stop_customer_encryption}
 
 After you enable customer-managed encryption, it is not possible to disable it. Instead, you must delete the service instance and create a new instance.
+
+## Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST)
+{: #migrating_hpcs_to_kp}
+
+During the migration from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP‑ST), the following occurs:
+
+- Each KMS instance maintains its own unique root keys. Migration involves re‑associating the service with a new {{site.data.keyword.keymanagementservicelong}} Dedicated root key.
+- Existing data encryption keys (DEKs) are securely re‑wrapped.
+- During the transition, both {{site.data.keyword.hscrypto}} to Service and {{site.data.keyword.keymanagementserviceshort}} to Service access policies must remain in place. 
+- Encrypted data is not re‑encrypted or moved.
+- Service availability is maintained.
+
+### Pre-requisites
+{: #migrating_hpcs_to_kp_prereqs}
+
+Before starting the migration, ensure you have:
+
+- A {{site.data.keyword.keymanagementserviceshort}} Dedicated (Single Tenant) instance.
+- A root key created in that {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP‑ST) instance.
+- Permissions to manage keys and service access policies.
+
+### Migration steps
+{: #migrating_hpcs_to_kp_steps}
+
+1. Identify the existing {{site.data.keyword.hscrypto}} root key in use. The key must exist in an {{site.data.keyword.hscrypto}} instance and the service must already have access to it.
+1. Create or select a {{site.data.keyword.keymanagementserviceshort}} Dedicated root key. The key must be in the appropriate {{site.data.keyword.keymanagementserviceshort}} Dedicated (Single Tenant) instance and accessible to the service.
+1. Create a migration intent linking the two keys. The migration intent maps the current {{site.data.keyword.hscrypto}} key (source) to the new {{site.data.keyword.keymanagementserviceshort}} Dedicated key (target). For more information on {{site.data.keyword.keymanagementserviceshort}} migration, see [here](/docs/key-protect?topic=key-protect-migrate-st#migrate-hpcs-usage). 
+1. Allow 1-2 business days for the migration to be executed. {{site.data.keyword.messagehub}} securely re‑associates and re-wraps DEKs where applicable, without re‑encrypting or moving data.
+1. Verify migration completion. The service must now reference the {{site.data.keyword.keymanagementserviceshort}} ST root key. {{site.data.keyword.keymanagementserviceshort}} ST root key should be visible and active and the {{site.data.keyword.hscrypto}} association should be removed. 

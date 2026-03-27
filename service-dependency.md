@@ -1,12 +1,13 @@
 ---
 
 copyright:
-  years: 2024, 2025
-lastupdated: "2025-09-15"
+  years: 2024, 2026
+lastupdated: "2026-03-17"
 
 keywords:
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
+
 
 ---
 
@@ -15,7 +16,7 @@ subcollection: EventStreams
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Service dependency map for IBM Event Streams for IBM Cloud
+# Service dependency map for IBM Event Streams for IBM Cloud Gen 2
 {: #service-dependencies}
 
 If a service depends on other {{site.data.keyword.cloud_notm}} services, there can be impacts if any of the dependent services are having issues. The dependency severity indicates the impact to the service when the dependency is down.
@@ -33,103 +34,107 @@ Medium
 Minimal
 :   When the dependency is down, the main service features are not impacted.
 
-The following table provides the dependency listing of this service following a standard deployment.
+
+
+## Data plane for VPC
+{: #data-plane-for-vpc}
+
+The following dependencies apply to the following deployment locations: Montreal (ca-mon).
 
 
 |Dependencies|Dependency impacts|Customer provided|Control or data plane|Location of dependency|
 |:---|:---|:---|:---|:---|
-| IBM Cloud Block Storage | Availability, Change management, Disaster recovery, Instance control, Security compliance | No | Both |  Same data center  |
-| IBM Cloud Object Storage (IaaS) | Availability, Change management, Disaster recovery, Instance control | No | Both |  Same region  |
-| IBM Cloud Classic Infrastructure Resource Management | Change management, Instance control | No | Both |  [Global](/docs/resiliency?topic=resiliency-ha-redundancy#global-platform)  |
-| IBM Cloudant for IBM Cloud | Availability, Change management, Disaster recovery, Instance control | No | Both |  Same region  |
-| IBM Cloud Public IP Address Management | Change management, Instance control | No | Both |  [Global](/docs/resiliency?topic=resiliency-ha-redundancy#global-platform)  |
-| IBM Cloud Kubernetes Service and Red Hat OpenShift on IBM Cloud | Availability, Change management, Disaster recovery, Instance control, Security compliance | No | Both |  Same region  |
-| IBM Cloud Object Storage | Availability, Change management, Disaster recovery, Instance control | No | Both |  Same region  |
-| IBM Cloud Identity and Access Management | Access management, Availability, Change management, Instance control, Security compliance | No | Both |  [Global](/docs/resiliency?topic=resiliency-ha-redundancy#global-platform)  |
-| IBM Cloud Classic DNS Servers | Availability, Change management, Instance control | No | Both |  Same data center  |
-| IBM Cloud Service Endpoints | Availability, Change management, Disaster recovery, Instance control, Security compliance | No | Both |  Same data center  |
+| {{site.data.keyword.iamlong}} | Access management, Availability, Change management, Instance control, Security compliance | No | vpc-data-plane |  ca-mon  |
+| vpc-block-storage | Availability | No | vpc-data-plane |  ca-mon  |
+| Common Data Platform | Availability, Change management, configuration-management, Instance control, Operations, Security compliance | No | vpc-data-plane |  ca-mon  |
 {: row-headers}
-{: caption="IBM Event Streams for IBM Cloud service dependency information - Critical dependencies" caption-side="top"}
+{: caption="IBM Event Streams for IBM Cloud Gen 2 - Data plane for VPC service dependency information - Critical dependencies" caption-side="top"}
 {: tab-title="Critical dependencies"}
-{: tab-group="service-dependency-data-for-messagehub"}
+{: tab-group="service-dependency-data-for-messagehub-gen2-Data-plane-for-VPC"}
 {: class="comparison-tab-table"}
-{: #critical-deps}
-{: summary="Use the buttons for the dependency level to change the context of the table. This table has row and column headers. The row headers details about the dependency. The column headers identify the dependency. To understand the details about each dependency, navigate to the row to find the dependency that you need more information about interested in."}
+{: #critical-deps-data-plane-for-vpc}
+{: summary="Use the buttons for the dependency level to change the context of the table. This table has row and column headers. The row headers detail the specific dependent service. The column headers identify the details about the dependency and its impact. To understand the details about each dependency, navigate to the row to find the dependency that you need more information about interested in."}
 
-|Dependencies|Dependency impacts|Customer provided|Control or data plane|Location of dependency|
-|:---|:---|:---|:---|:---|
-| PagerDuty | Availability, Change management, Operations, Security compliance | No | Both |  [Global](/docs/resiliency?topic=resiliency-ha-redundancy#global-platform)  |
-| IBM Cloud Classic NTP Servers | Availability, Change management, Instance control | No | Both |  Same data center  |
-| IBM Cloud Container Registry | Availability, Change management, Disaster recovery, Instance control | No | Both |  Same region  |
-| IBM Cloud CLI  | Instance control | No | Both |  [Global](/docs/resiliency?topic=resiliency-ha-redundancy#global-platform)  |
-| IBM Cloud Internet Services | Availability, Security compliance | No | Both |  [Global](/docs/resiliency?topic=resiliency-ha-redundancy#global-platform)  |
-| IBM Cloud Global Resource Catalog | Change management, Instance control | No | Both |  [Global](/docs/resiliency?topic=resiliency-ha-redundancy#global-platform)  |
-| IBM Key Protect for IBM Cloud | Availability, Change management, Disaster recovery, Instance control, Security compliance | No | Both |  Same region  |
-| IBM GitHub Enterprise | Availability, Change management, Instance control, Security compliance | No | Both |  [Global](/docs/resiliency?topic=resiliency-ha-redundancy#global-platform)  |
-| IBM Cloud Console | Instance control | No | Both |  [Global](/docs/resiliency?topic=resiliency-ha-redundancy#global-platform)  |
-| IBM Cloud Secrets Manager | Availability, Change management, Disaster recovery, Instance control, Security compliance | No | Both |  Same region  |
-{: row-headers}
-{: caption="IBM Event Streams for IBM Cloud service dependency information - Significant dependencies" caption-side="top"}
-{: tab-title="Significant dependencies"}
-{: tab-group="service-dependency-data-for-messagehub"}
-{: class="comparison-tab-table"}
-{: #significant-deps}
-{: summary="Use the buttons for the dependency level to change the context of the table. This table has row and column headers. The row headers details about the dependency. The column headers identify the dependency. To understand the details about each dependency, navigate to the row to find the dependency that you need more information about interested in."}
 
-This table can be used to answer the following questions:
+## Understanding service dependency data
+{: #understand-dependency-data}
 
-- **What is the expected impact to the functions described?** Each severity tab in the table indicates the impact that your provisioned service might encounter if the dependency were to go offline. This means that the dependency high availability and disaster recovery influences the severity of the impact and therefore is used for general guidance to help you understand potential issues that might arise if the dependency was impacted by an incident.
 
-   Services that are regional are not impacted by a severe outage of a single availability zone because of the failover that is built in to default to another zone. For these occurrences, there might be a slight performance impact, if any, while the system fails over to the other location. This also applies to global services where the impact is lowered even more as it can fail over to other regions if necessary. This reduces the frequency at which these items might have the impact that is shown.
-   {: note}
 
-- **What services does my service depend on?** The Dependencies column lists the services. These are the major service to service dependencies including major internal dependencies that might not be visible externally.
+If you have any questions about the service dependency data as you review the service dependency information in the tables, you can refer to the following FAQ:
 
-- **What function does the dependency impact?** Functions include access management, availability, change management, configuration management, customer responsibility, disaster recovery, instance control, none, operations or security compliance. If the dependency goes offline, these functions might be impacted. Definitions for each available values are as follows:
+### What is the expected impact to the functions described?
+{: #expected-impact}
 
-   access management
-   :   Authentication, authorization and governance of the customer users access to the service and service instances.
+Each severity tab in the table indicates the impact that your provisioned service might encounter if the dependency were to go offline. This means that the dependency high availability and disaster recovery influences the severity of the impact and therefore is used for general guidance to help you understand potential issues that might arise if the dependency was impacted by an incident.
 
-   availability
-   :   Availability of the service and service instances.
+Services that are regional are not impacted by a severe outage of a single zone because of the failover that is built in to default to another zone. For these occurrences, there might be a slight performance impact, if any, while the system fails over to the other location. This also applies to global services where the impact is lowered even more as it can fail over to other regions if necessary. This reduces the frequency at which these items might have the impact that is shown.
+{: note}
 
-   change management
-   :   Deployment, upgrade, patch, and so on of the service and service instances.
+### What services does my service depend on?
+{: #dependent-services}
 
-   configuration management
-   :   Deployment, upgrade, patch, and so on of the service and service instances.
+The **Dependencies** column lists the services. These are the major service to service dependencies including major internal dependencies that might not be visible externally.
 
-   customer responsibility
-   :   Functions provides by customers to support specific service and service instances function. For example: {{site.data.keyword.keymanagementservicefull_notm}} instances provided by customer to support service BYOK encryption.
+### What function does the dependency impact?
+{: #function-impact}
 
-   disaster recovery
-   :   Backup, recovery, restart of the service and service instances in case of disruption.
+Functions include access management, availability, change management, configuration management, customer responsibility, disaster recovery, instance control, operations, security compliance, or none. If the dependency goes offline, these functions might be impacted. Definitions for each available value are as follows:
 
-   instance control
-   :   Creation, deletion, start, stop actions on lifecycle of the service instances.
+Access management
+:   Authentication, authorization, and governance of the customer users access to the service and service instances.
 
-   none
-   :   No function impacted.
+Availability
+:   Availability of the service and service instances.
 
-   operations
-   :   Monitoring, troubleshooting, etc of the service and service instances.
+Change management
+:   Deployment, upgrade, patch, and so on, of the service and service instances.
 
-   security compliance
-   :   Vulnerability management and other security and compliance management of the service and service instances.
+Configuration management
+:   Deployment, upgrade, patch, and so on, of the service and service instances.
 
-- The **Customer provided** column will show if there is any dependency that has been provided by the customer to enable specific functionality. (for example: To properly configure and set up using BYOK into a service, the customer would provision a service like {{site.data.keyword.keymanagementservicefull_notm}}. But there may be other examples like this.) For details on how to enable the features and which services you need to provision, please see the documentation on the service.
+Customer responsibility
+:   Functions provided by customers to support specific service and service instances function. For example, {{site.data.keyword.keymanagementservicefull_notm}} instances provided by customer to support service BYOK encryption.
 
-- **Where do dependency services need to be deployed regarding my service?** In the Location of dependency column you can view if the dependency is located in the same region or deployed to a specific data center. You can use this data with the data in the Control or data plane column for a quick reference to identify if your data leaves the region or not in a standard setup.
+Disaster recovery
+:   Backup, recovery, restart of the service and service instances in the case of a disruption.
 
-   To find where your service can be deployed, see [Service and infrastructure availability by location](/docs/overview?topic=overview-services_region).
+Instance control
+:   Creation, deletion, start, stop actions on the lifecycle of the service instances.
 
-   The table shows a standard cloud deployment. If a special deployment is used like Fedramp or other region-bound deployment models, the data might differ from the details available in the table. Refer to the specific deployment that you are using for that information.
-   {: note}
+Operations
+:   Monitoring, troubleshooting, and so on, of the service and service instances.
 
-- **Where are the separate control plane and data plane located, if applicable?** Sometimes, the dependency might have a separate control plane and data plane. In these cases, there are separate lines that show the location in relation to the deployed customer instance of the service where these will be provisioned. The lines might have different impacts and different functions. See the Control or data plane column to understand what possible impact this type of outage might have.
+Security compliance
+:   Vulnerability management and other security and compliance management of the service and service instances.
 
-   Same region means that the dependent services are in the same region as the provisioned instance. Other values might show data center or region names if the service must be used from a specific region, a specific availability zone, or set of availability zones. If a service is tied to a specific region or site, and the region goes offline, the service might go offline as well. It is recommended that you go through the high availability and disaster recovery documentation of the dependency to determine if there are any steps that you should take to mitigate these types of risks.
+None
+:   No function impacted.
 
+### What does customer provided mean for dependencies?
+{: #customer-provided-dep}
+
+The **Customer provided** column reports if there is any dependency that has been provided by the customer to enable specific functionality. One such example is to properly configure and set up using BYOK into a service, the customer would provision a service like {{site.data.keyword.keymanagementservicefull_notm}}. For more information about how to enable the features and which services you need to provision, see the documentation for the service.
+
+### Where do dependency services need to be deployed regarding my service?
+{: #deploy-dependencies}
+
+In the **Location of dependency** column, you can view if the dependency is located in the same region or deployed to a specific data center. You can use this data with the data in the **Control or data plane** column for a quick reference to identify if your data leaves the region or not in a standard setup.
+
+To find where your service can be deployed, see [Service and infrastructure availability by location](/docs/overview?topic=overview-services_region).
+
+The table shows a standard cloud deployment. If a special deployment is used like FedRAMP or other region-bound deployment models, the data might differ from the details available in the table. Refer to the specific deployment that you are using for that information.
+{: note}
+
+### Where are the separate control plane and data plane located, if applicable?
+{: #separate-plans}
+
+Sometimes, the dependency might have a separate control plane and data plane. In these cases, there are separate lines that show the location in relation to the deployed customer instance of the service where these will be provisioned. The lines might have different impacts and different functions. See the **Control or data plane** column to understand what possible impact this type of outage might have.
+
+`Same region` means that the dependent services are in the same region as the provisioned instance. Other values might show `data center` or region names if the service must be used from a specific region, a specific zone, or set of zones. If a service is tied to a specific region or site, and the region goes offline, the service might go offline as well. It is recommended that you go through the high availability and disaster recovery documentation of the dependency to determine if there are any steps that you should take to mitigate these types of risks.
+
+## Additional resources
+{: #additional-resources}
 
 For more information about the policies that are related to the services, you can refer to the following resources:
 
