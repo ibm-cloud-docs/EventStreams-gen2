@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-03-18"
+lastupdated: "2026-03-27"
 
 keywords: gen 2, beta
 
@@ -21,12 +21,13 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.messagehub}} Gen 2 that are grouped by month and year. Release notes are available for a minimum of three years.
 {: shortdesc}
 
-## 19 March 2026
-{: #EventStreams-19mar2026}
+## 27 March 2026
+{: #EventStreams-27mar2026}
 {: release-note}
 
 Deprecation of {{site.data.keyword.hscrypto}}
-: {{site.data.keyword.cloud}} is changing dedicated key management services from {{site.data.keyword.hscrypto}} to {{site.data.keyword.keymanagementservicelong}} Dedicated. {{site.data.keyword.hscrypto}} (HPCS) will reach End of Life (EOL) in Q1 2027 and will no longer be supported for use with this service after that time. For more information on how to migrate your encryption keys, see [Migrating from Hyper Protect Crypto Services (HPCS) to Key Protect Dedicated (KP-ST)](/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_encryption#migrating_hpcs_to_kp).
+: {site.data.keyword.cloud}} is transitioning its dedicated key management offering from {{site.data.keyword.hscrypto}} to {{site.data.keyword.keymanagementservicelong}} Dedicated (Single Tenant). As part of this transition, {{site.data.keyword.hscrypto}} will reach **End of Life (EOL) on March 20, 2027**. After this date, the service will no longer be supported, and any remaining instances will be terminated.
+To ensure continued service availability and support, you must migrate all existing HPCS root keys to {site.data.keyword.keymanagementservicelong_notm}} Dedicated (Single Tenant) before the EOL date. For more information on how to migrate your encryption keys, see [Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST)](/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_encryption#migrating_hpcs_to_kp).
 
 ## 02 March 2026
 {: #EventStreams-02mar2026}
