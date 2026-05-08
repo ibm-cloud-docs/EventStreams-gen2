@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-05-08"
 
 keywords: monitoring, metrics, cost, billing, opting in
 
@@ -92,12 +92,19 @@ The following tables describe the specific metrics that are provided by {{site.d
 
 | Metric name | Enterprise Gen2 |
 |-----------|--------|
+| [Authentication failures](#ibm_eventstreams_kafka_authentication_failure_total) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | | |
 | [Consume message conversion time](#ibm_eventstreams_instance_consume_conversions_time_quantile) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Inactive consumer groups](#ibm_eventstreams_instance_inactive_consumergroups) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
+| [Instance bytes in per second](#ibm_eventstreams_instance_bytes_in_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |
+| [Instance bytes out per second](#ibm_eventstreams_instance_bytes_out_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Number of partitions](#ibm_eventstreams_instance_partitions) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Produce message conversion time](#ibm_eventstreams_instance_produce_conversions_time_quantile) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
+| [IAM ID bytes in per second](#ibm_eventstreams_iam_id_bytes_in_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | | |
+| [IAM ID bytes out per second](#ibm_eventstreams_iam_id_bytes_out_per_second) |  ![Checkmark icon](../icons/checkmark-icon.svg) |   |   |
 | [Rebalancing consumer groups](#ibm_eventstreams_instance_rebalancing_consumergroups) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Stable consumer groups](#ibm_eventstreams_instance_stable_consumergroups) |   ![Checkmark icon](../icons/checkmark-icon.svg) |
+| [Topic bytes in per second](#ibm_eventstreams_instance_topic_bytes_in_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |
+| [Topic bytes out per second](#ibm_eventstreams_instance_topic_bytes_out_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) |![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Number of topics](#ibm_eventstreams_instance_topics) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Number of offline partitions](#ibm_eventstreams_kafka_offline_partitions) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Number of under in-sync replica partitions](#ibm_eventstreams_kafka_under_minisr_partitions) |   ![Checkmark icon](../icons/checkmark-icon.svg) |
@@ -121,6 +128,21 @@ The following tables describe the specific metrics that are provided by {{site.d
 
 This information is useful for detecting if the distribution of message activity across the partitions in a topic is unbalanced and if the number of partitions a topic is scaled appropriately.
 
+### Authentication failures
+{: #ibm_eventstreams_kafka_authentication_failure_total}
+
+This metric tracks the total number of authentication failures.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_kafka_authentication_failure_total`|
+| `Metric Type` | `counter` |
+| `Value Type`  | `none` |
+| `Segment By` | `Service instance, Service instance name` |
+{: caption="Authentication failures metric metadata" caption-side="bottom"}
+
+A value of 0 is expected under normal conditions. A nonzero value indicates that one or more clients are attempting to connect using invalid credentials. Verify that all clients are configured with correct authentication credentials and that no outdated or revoked credentials are in use.
+
 ### Consume message conversion time
 {: #ibm_eventstreams_instance_consume_conversions_time_quantile}
 
@@ -136,6 +158,36 @@ Indicates that the accumulated time spent performing message conversion from cli
 
 Ideally zero, as nonzero indicates that clients are experiencing more latency because of using an older protocol level. Those clients are down-level and must be upgraded. Ensure that all clients are at the latest levels.
 
+### IAM ID bytes in per second
+{: #ibm_eventstreams_iam_id_bytes_in_per_second}
+
+This metric tracks the rate of data, in bytes per second, that is sent to the service by each IAM ID.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_iam_id_bytes_in_per_second`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `byte` |
+| `Segment By` | `Service instance name, IBM IAM Id, Service instance` |
+{: caption="IAM ID bytes in per second metric metadata" caption-side="bottom"}
+
+Use this metric to monitor usage patterns and identify trends in data ingestion across IAM IDs. Higher than expected values for a specific IAM ID can indicate disproportionate throughput usage. Compare activity across IAM IDs to understand traffic distribution and detect anomalies. This metric can also help inform decisions about rate limits or quotas if certain IAM IDs consistently consume more throughput than intended.
+
+### IAM ID bytes out per second
+{: #ibm_eventstreams_iam_id_bytes_out_per_second}
+
+This metric tracks the rate of data, in bytes per second, that is sent from the service to each IAM ID.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_iam_id_bytes_out_per_second`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `byte` |
+| `Segment By` | `Service instance name, IBM IAM Id, Service instance` |
+{: caption="IAM ID bytes out per second metric metadata" caption-side="bottom"}
+
+Use this metric to monitor usage patterns and track how data is distributed to IAM IDs. Higher than expected values for a specific IAM ID can indicate disproportionate data consumption. Compare activity across IAM IDs to understand traffic patterns and identify potential anomalies. This metric can also help inform decisions about rate limits or quotas if certain IAM IDs consistently consume more outbound throughput than intended.
+
 ### Inactive consumer groups
 {: #ibm_eventstreams_instance_inactive_consumergroups}
 
@@ -150,6 +202,37 @@ The number of inactive consumer groups in an {{site.data.keyword.messagehub}} in
 {: caption="Inactive consumer groups metric metadata" caption-side="bottom"}
 
 This is for information only and is not an issue. Spikes indicate that a set of consumer groups stopped sending messages.
+
+### Instance bytes in per second
+{: #ibm_eventstreams_instance_bytes_in_per_second}
+
+This metric tracks the rate of data, in bytes per second, that is produced to an {{site.data.keyword.messagehub}} instance.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_instance_bytes_in_per_second`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `byte` |
+| `Segment By` | `Service instance, Service instance name` |
+{: caption="Instance bytes in per second metric metadata" caption-side="bottom"}
+
+Use this metric to monitor data ingestion rates and identify trends in client-produced throughput.
+Compare observed values against the recommended limits for your plan and instance to ensure that your workload remains within supported thresholds. For more information, see [{{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-plan_choose){: external}.
+
+### Instance bytes out per second
+{: #ibm_eventstreams_instance_bytes_out_per_second}
+
+This metric tracks the rate of data, in bytes per second, that is consumed from an {{site.data.keyword.messagehub}} instance.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_instance_bytes_out_per_second`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `byte` |
+| `Segment By` | `Service instance, Service instance name` |
+{: caption="Instance bytes out per second metric metadata" caption-side="bottom"}
+
+This is for information to help you monitor trends in your usage of how many incoming or outgoing MB/s your clients are transferring to and from your cluster. To determine what the recommended limits for your plan and instance are, see [{{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-plan_choose){: external}.
 
 ### Message rate per partition
 {: #ibm_eventstreams_instance_message_rate_per_partition}
@@ -266,6 +349,36 @@ The number of stable consumer groups in an {{site.data.keyword.messagehub}} inst
 {: caption="Stable consumer groups metric metadata" caption-side="bottom"}
 
 Use along with rebalancing consumer groups. If this is consistently zero and rebalancing high, then it indicates a cluster problem. If this is nonzero and rebalancing high, it indicates a consumer group issue.
+
+### Topic bytes in per second
+{: #ibm_eventstreams_instance_topic_bytes_in_per_second}
+
+This metric tracks the rate of data, in bytes per second, that is produced to each topic.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_instance_topic_bytes_in_per_second`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `byte` |
+| `Segment By` | `Service instance, IBM {{site.data.keyword.messagehub}} Kafka topic, Service instance name` |
+{: caption="Topic bytes in per second metric metadata" caption-side="bottom"}
+
+Use this metric to monitor data ingestion at the topic level and identify trends in producer activity. Compare throughput across topics to detect imbalances and potential anomalies.
+
+### Topic bytes out per second
+{: #ibm_eventstreams_instance_topic_bytes_out_per_second}
+
+This metric tracks the rate of data, in bytes per second, that is consumed from each topic.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_instance_topic_bytes_out_per_second`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `byte` |
+| `Segment By` | `Service instance, IBM {{site.data.keyword.messagehub}} Kafka topic, Service instance name` |
+{: caption="Topic bytes out per second metric metadata" caption-side="bottom"}
+
+Use this metric to monitor data consumption at the topic level and understand how throughput is distributed across consumers. Compare activity across topics to identify bottlenecks, imbalances, or anomalies.
 
 ### Topic size
 {: #ibm_eventstreams_instance_topic_size}
