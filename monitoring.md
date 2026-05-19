@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-05-08"
+lastupdated: "2026-05-18"
 
 keywords: monitoring, metrics, cost, billing, opting in
 
@@ -97,6 +97,7 @@ The following tables describe the specific metrics that are provided by {{site.d
 | [Inactive consumer groups](#ibm_eventstreams_instance_inactive_consumergroups) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Instance bytes in per second](#ibm_eventstreams_instance_bytes_in_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Instance bytes out per second](#ibm_eventstreams_instance_bytes_out_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |
+| [Instance utilization](#ibm_eventstreams_instance_utilization) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Number of partitions](#ibm_eventstreams_instance_partitions) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Produce message conversion time](#ibm_eventstreams_instance_produce_conversions_time_quantile) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [IAM ID bytes in per second](#ibm_eventstreams_iam_id_bytes_in_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | | |
@@ -233,6 +234,23 @@ This metric tracks the rate of data, in bytes per second, that is consumed from 
 {: caption="Instance bytes out per second metric metadata" caption-side="bottom"}
 
 This is for information to help you monitor trends in your usage of how many incoming or outgoing MB/s your clients are transferring to and from your cluster. To determine what the recommended limits for your plan and instance are, see [{{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-plan_choose){: external}.
+
+### Instance utilization
+{: #ibm_eventstreams_instance_utilization}
+
+The level of utilization of an {{site.data.keyword.messagehub}} instance. This is a numeric value between zero and two (inclusive):
+
+- `0` indicates that the workload being processed by this instance is within the capacity of the instance. More precisely, the utilization level is under 80%.
+- `1` indicates that the workload being processed by this instance is approaching the capacity limit for the instance. Review whether it is appropriate to scale the service instance. More precisely, the utilization level is over 80% and under 95%.
+- `2` indicates the workload being processed by this instance is at the capacity limit for the instance. As a result of this, messaging latency might increase. Review whether it is appropriate to scale the service instance. More precisely, the utilization level is over 95%.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_instance_utilization`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `none` |
+| `Segment By` | `Service instance, Service instance name` |
+{: caption="Instance utilization metric metadata" caption-side="bottom"}
 
 ### Message rate per partition
 {: #ibm_eventstreams_instance_message_rate_per_partition}
