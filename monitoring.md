@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-05-18"
+lastupdated: "2026-05-20"
 
 keywords: monitoring, metrics, cost, billing, opting in
 
@@ -103,12 +103,14 @@ The following tables describe the specific metrics that are provided by {{site.d
 | [IAM ID bytes in per second](#ibm_eventstreams_iam_id_bytes_in_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | | |
 | [IAM ID bytes out per second](#ibm_eventstreams_iam_id_bytes_out_per_second) |  ![Checkmark icon](../icons/checkmark-icon.svg) |   |   |
 | [Rebalancing consumer groups](#ibm_eventstreams_instance_rebalancing_consumergroups) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
+| [Reserved disk space percentage](#ibm_eventstreams_instance_reserved_disk_space_percent) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Stable consumer groups](#ibm_eventstreams_instance_stable_consumergroups) |   ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Topic bytes in per second](#ibm_eventstreams_instance_topic_bytes_in_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Topic bytes out per second](#ibm_eventstreams_instance_topic_bytes_out_per_second) | ![Checkmark icon](../icons/checkmark-icon.svg) |![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Number of topics](#ibm_eventstreams_instance_topics) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Number of offline partitions](#ibm_eventstreams_kafka_offline_partitions) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Number of under in-sync replica partitions](#ibm_eventstreams_kafka_under_minisr_partitions) |   ![Checkmark icon](../icons/checkmark-icon.svg) |
+| [Used disk space percentage](#ibm_eventstreams_instance_utilised_disk_space_percent) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 {: caption="Service metrics available by service plan" caption-side="bottom"}
 
 ## Enhanced service metrics available with topic enabled
@@ -353,6 +355,21 @@ The number of rebalancing consumer groups in an {{site.data.keyword.messagehub}}
 
 While it is expected that this figure is occasionally >0 (as broker restarts happen frequently,) sustained high levels suggest that consumers might be restarting frequently and leaving or rejoining the consumer groups. Check you client logs.
 
+### Reserved disk space percentage
+{: #ibm_eventstreams_instance_reserved_disk_space_percent}
+
+Shows the percentage of reserved disk space that is required if all partitions are fully utilized.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_instance_reserved_disk_space_percent`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `percent` |
+| `Segment By` | `Service instance, Service instance name` |
+{: caption="Reserved disk space percentage metric metadata" caption-side="bottom"}
+
+Shows the percentage of disk space that would be used if data reaches the configured retention limits.
+
 ### Stable consumer groups
 {: #ibm_eventstreams_instance_stable_consumergroups}
 
@@ -410,6 +427,21 @@ Total disk size currently being used by partitions of a topic e.g if a topic has
 | `Value Type`  | `none` |
 | `Segment By` | `Service instance, Service instance name, IBM {{site.data.keyword.messagehub}} Kafka topic` |
 {: caption="Topic size metric metadata" caption-side="bottom"}
+
+### Used disk space percentage
+{: #ibm_eventstreams_instance_utilised_disk_space_percent}
+
+Shows the percentage of disk space that is currently in use.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_instance_utilised_disk_space_percent`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `percent` |
+| `Segment By` | `Service instance, Service instance name` |
+{: caption="Used disk space percentage metric metadata" caption-side="bottom"}
+
+Provides informational insight to help you monitor usage trends over time.
 
 ## Attributes for Segmentation
 {: attributes}
