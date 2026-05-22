@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-05-20"
+lastupdated: "2026-05-22"
 
 keywords: monitoring, metrics, cost, billing, opting in
 
@@ -131,6 +131,17 @@ The following tables describe the specific metrics that are provided by {{site.d
 
 This information is useful for detecting if the distribution of message activity across the partitions in a topic is unbalanced and if the number of partitions a topic is scaled appropriately.
 
+## Enhanced service metrics available with quotas enabled
+{: #metrics-quotas}
+
+| Metric name | Enterprise | Lite | Standard |
+|-----------|--------|--------|--------|
+| [IAM ID bytes in quota used percentage](#ibm_eventstreams_iam_id_bytes_in_quota_used_percentage) |  ![Checkmark icon](../icons/checkmark-icon.svg) | | |
+| [IAM ID bytes out quota used percentage](#ibm_eventstreams_iam_id_bytes_out_quota_used_percentage) |  ![Checkmark icon](../icons/checkmark-icon.svg) | | |
+{: caption="Metrics available for quotas" caption-side="bottom"}
+
+Kafka quotas use sampling to determine how long clients should be paused before they can send or receive more data. For unpredictable workloads, or configurations that result in quota decisions being made using only a few samples, the percentage quota used metric could go above 100%.
+
 ### Authentication failures
 {: #ibm_eventstreams_kafka_authentication_failure_total}
 
@@ -176,6 +187,23 @@ This metric tracks the rate of data, in bytes per second, that is sent to the se
 
 Use this metric to monitor usage patterns and identify trends in data ingestion across IAM IDs. Higher than expected values for a specific IAM ID can indicate disproportionate throughput usage. Compare activity across IAM IDs to understand traffic distribution and detect anomalies. This metric can also help inform decisions about rate limits or quotas if certain IAM IDs consistently consume more throughput than intended.
 
+### IAM ID bytes in quota used percentage
+{: #ibm_eventstreams_iam_id_bytes_in_quota_used_percentage}
+
+The percentage of bytes in quota used per IAM ID.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_iam_id_bytes_in_quota_used_percentage`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `percent` |
+| `Segment By` | `Service instance name, IBM IAM ID, Service instance` |
+{: caption="IAM ID bytes in quota used percentage metric metadata" caption-side="bottom"}
+
+This metric is for information to help you monitor trends in your usage, particularly if any IAM IDs are producing close to their quota limits.
+
+Quota metrics might sometimes exceed 100%. Kafka quotas use sampling and are applied asynchronously. For some workloads, especially where data is sent in large batches, this might result in small deviations from the limit.
+
 ### IAM ID bytes out per second
 {: #ibm_eventstreams_iam_id_bytes_out_per_second}
 
@@ -190,6 +218,23 @@ This metric tracks the rate of data, in bytes per second, that is sent from the 
 {: caption="IAM ID bytes out per second metric metadata" caption-side="bottom"}
 
 Use this metric to monitor usage patterns and track how data is distributed to IAM IDs. Higher than expected values for a specific IAM ID can indicate disproportionate data consumption. Compare activity across IAM IDs to understand traffic patterns and identify potential anomalies. This metric can also help inform decisions about rate limits or quotas if certain IAM IDs consistently consume more outbound throughput than intended.
+
+### IAM ID bytes out quota used percentage
+{: #ibm_eventstreams_iam_id_bytes_out_quota_used_percentage}
+
+The percentage of bytes out quota used per IAM ID.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_iam_id_bytes_out_quota_used_percentage`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `percent` |
+| `Segment By` | `Service instance name, IBM IAM ID, Service instance` |
+{: caption="IAM ID bytes out quota used percentage metric metadata" caption-side="bottom"}
+
+This metric is for information to help you monitor trends in your usage, particularly if any IAM IDs are consuming close to their quota limits.
+
+Quota metrics might sometimes exceed 100%. Kafka quotas use sampling and are applied asynchronously. For some workloads, especially where data is sent in large batches, this might result in small deviations from the limit.
 
 ### Inactive consumer groups
 {: #ibm_eventstreams_instance_inactive_consumergroups}
