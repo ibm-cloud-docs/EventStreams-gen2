@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-03-17"
+lastupdated: "2026-06-02"
 
 keywords:
 
@@ -34,19 +34,16 @@ Medium
 Minimal
 :   When the dependency is down, the main service features are not impacted.
 
-
-
 ## Data plane for VPC
 {: #data-plane-for-vpc}
 
-The following dependencies apply to the following deployment locations: Montreal (ca-mon).
-
+The following dependencies apply to the following deployment locations: Montreal (ca-mon),  Chennai - Airtel (in-che), and  Mumbai (in-mum).
 
 |Dependencies|Dependency impacts|Customer provided|Control or data plane|Location of dependency|
 |:---|:---|:---|:---|:---|
-| {{site.data.keyword.iamlong}} | Access management, Availability, Change management, Instance control, Security compliance | No | vpc-data-plane |  ca-mon  |
-| vpc-block-storage | Availability | No | vpc-data-plane |  ca-mon  |
-| Common Data Platform | Availability, Change management, configuration-management, Instance control, Operations, Security compliance | No | vpc-data-plane |  ca-mon  |
+| {{site.data.keyword.iamlong}} | Access management, Availability, Change management, Instance control, Security compliance | No | vpc-data-plane |  ca-mon   /n  in-che   /n  in-mum   |
+| vpc-block-storage | Availability | No | vpc-data-plane |  ca-mon   /n  in-che   /n  in-mum |
+| Common Data Platform | Availability, Change management, configuration-management, Instance control, Operations, Security compliance | No | vpc-data-plane |  ca-mon   /n  in-che   /n  in-mum   |
 {: row-headers}
 {: caption="IBM Event Streams for IBM Cloud Gen 2 - Data plane for VPC service dependency information - Critical dependencies" caption-side="top"}
 {: tab-title="Critical dependencies"}
@@ -58,8 +55,6 @@ The following dependencies apply to the following deployment locations: Montreal
 
 ## Understanding service dependency data
 {: #understand-dependency-data}
-
-
 
 If you have any questions about the service dependency data as you review the service dependency information in the tables, you can refer to the following FAQ:
 
