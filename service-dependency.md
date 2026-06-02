@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-03-17"
+lastupdated: "2026-06-02"
 
 keywords:
 
@@ -34,13 +34,10 @@ Medium
 Minimal
 :   When the dependency is down, the main service features are not impacted.
 
-
-
 ## Data plane for VPC
 {: #data-plane-for-vpc}
 
 The following dependencies apply to the following deployment locations: Montreal (ca-mon).
-
 
 |Dependencies|Dependency impacts|Customer provided|Control or data plane|Location of dependency|
 |:---|:---|:---|:---|:---|
@@ -58,8 +55,6 @@ The following dependencies apply to the following deployment locations: Montreal
 
 ## Understanding service dependency data
 {: #understand-dependency-data}
-
-
 
 If you have any questions about the service dependency data as you review the service dependency information in the tables, you can refer to the following FAQ:
 
