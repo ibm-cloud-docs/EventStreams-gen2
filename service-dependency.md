@@ -37,7 +37,7 @@ Minimal
 ## Data plane for VPC
 {: #data-plane-for-vpc}
 
-The following dependencies apply to the following deployment locations: Montreal (ca-mon).
+The following dependencies apply to the following deployment locations: Montreal (ca-mon),  Chennai - Airtel (in-che), and  Mumbai (in-mum).
 
 |Dependencies|Dependency impacts|Customer provided|Control or data plane|Location of dependency|
 |:---|:---|:---|:---|:---|
