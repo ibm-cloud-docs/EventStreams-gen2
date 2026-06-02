@@ -41,9 +41,9 @@ The following dependencies apply to the following deployment locations: Montreal
 
 |Dependencies|Dependency impacts|Customer provided|Control or data plane|Location of dependency|
 |:---|:---|:---|:---|:---|
-| {{site.data.keyword.iamlong}} | Access management, Availability, Change management, Instance control, Security compliance | No | vpc-data-plane |  ca-mon  |
-| vpc-block-storage | Availability | No | vpc-data-plane |  ca-mon  |
-| Common Data Platform | Availability, Change management, configuration-management, Instance control, Operations, Security compliance | No | vpc-data-plane |  ca-mon  |
+| {{site.data.keyword.iamlong}} | Access management, Availability, Change management, Instance control, Security compliance | No | vpc-data-plane |  ca-mon   /n  in-che   /n  in-mum   |
+| vpc-block-storage | Availability | No | vpc-data-plane |  ca-mon   /n  in-che   /n  in-mum |
+| Common Data Platform | Availability, Change management, configuration-management, Instance control, Operations, Security compliance | No | vpc-data-plane |  ca-mon   /n  in-che   /n  in-mum   |
 {: row-headers}
 {: caption="IBM Event Streams for IBM Cloud Gen 2 - Data plane for VPC service dependency information - Critical dependencies" caption-side="top"}
 {: tab-title="Critical dependencies"}
