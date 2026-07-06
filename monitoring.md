@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-05-22"
+lastupdated: "2026-06-05"
 
 keywords: monitoring, metrics, cost, billing, opting in
 
@@ -118,6 +118,8 @@ The following tables describe the specific metrics that are provided by {{site.d
 
 | Metric name |Enterprise Gen2 |
 |-----------|--------|
+| [Maximum partition retention percentage](#ibm_eventstreams_instance_max_partition_retention_percent) | ![Checkmark icon](../icons/checkmark-icon.svg) |
+| [Reserved disk space percentage per topic](#ibm_eventstreams_instance_reserved_disk_space_per_topic_percent) | ![Checkmark icon](../icons/checkmark-icon.svg) |
 | [Topic size](#ibm_eventstreams_instance_topic_size) |  ![Checkmark icon](../icons/checkmark-icon.svg) |
 {: caption="Metrics available for topic" caption-side="bottom"}
 
@@ -141,6 +143,14 @@ This information is useful for detecting if the distribution of message activity
 {: caption="Metrics available for quotas" caption-side="bottom"}
 
 Kafka quotas use sampling to determine how long clients should be paused before they can send or receive more data. For unpredictable workloads, or configurations that result in quota decisions being made using only a few samples, the percentage quota used metric could go above 100%.
+
+## Enhanced service metrics available with consumers enabled
+{: #metrics-consumers}
+
+| Metric name |Enterprise Gen2 |
+|-----------|--------|
+| [Consumer groups lag](#ibm_eventstreams_instance_consumer_groups_lag) | ![Checkmark icon](../icons/checkmark-icon.svg) |
+{: caption="Metrics available for consumers" caption-side="bottom"}
 
 ### Authentication failures
 {: #ibm_eventstreams_kafka_authentication_failure_total}
@@ -251,6 +261,24 @@ The number of inactive consumer groups in an {{site.data.keyword.messagehub}} in
 
 This is for information only and is not an issue. Spikes indicate that a set of consumer groups stopped sending messages.
 
+### Consumer groups lag
+{: #ibm_eventstreams_instance_consumer_groups_lag}
+
+Consumer group lag indicates the lag for each consumer group across topic partitions in an Event Streams instance.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_instance_consumer_groups_lag`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `none` |
+| `Segment By` | `Service instance, Service instance name, IBM Event Streams Kafka topic, IBM Event Streams Kafka partition, IBM Event Streams Consumer Group` |
+{: caption="Consumer groups lag metric metadata" caption-side="bottom"}
+
+An increasing lag can indicate that consumers in the group are not keeping up with the rate at which messages are produced. If a lag continues to grow, consider scaling the number of consumers processing messages for the group.
+
+It is normal for this metric to fluctuate when viewed over short time periods because of sampling and batch processing effects.
+{: note}
+
 ### Instance bytes in per second
 {: #ibm_eventstreams_instance_bytes_in_per_second}
 
@@ -298,6 +326,19 @@ The level of utilization of an {{site.data.keyword.messagehub}} instance. This i
 | `Value Type`  | `none` |
 | `Segment By` | `Service instance, Service instance name` |
 {: caption="Instance utilization metric metadata" caption-side="bottom"}
+
+### Maximum partition retention percentage
+{: #ibm_eventstreams_instance_max_partition_retention_percent}
+
+Maximum partition retention percentage indicates how much of the configured retention size is used by the partition with the most data in a topic. For example, if a topic has a retention size of 10 GB, and one partition contains 6 GB while another contains 4 GB, the metric is 60%. This metric helps you identify whether a single partition is approaching its retention limit, which can trigger log segment deletion or affect performance.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_instance_max_partition_retention_percent`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `percent` |
+| `Segment By` | `Service instance, Service instance name, IBM {{site.data.keyword.messagehub}} Kafka topic` |
+{: caption="Maximum partition retention percentage metric metadata" caption-side="bottom"}
 
 ### Message rate per partition
 {: #ibm_eventstreams_instance_message_rate_per_partition}
@@ -459,6 +500,19 @@ This metric tracks the rate of data, in bytes per second, that is consumed from 
 {: caption="Topic bytes out per second metric metadata" caption-side="bottom"}
 
 Use this metric to monitor data consumption at the topic level and understand how throughput is distributed across consumers. Compare activity across topics to identify bottlenecks, imbalances, or anomalies.
+
+### Reserved disk space percentage per topic
+{: #ibm_eventstreams_instance_reserved_disk_space_per_topic_percent}
+
+Reserved disk usage percentage indicates how much disk space is required for each topic if all allocated partitions are fully used. This metric represents the percentage of reserved disk space required for each topic when all partitions are fully utilized. Use this metric to plan disk capacity for Event Streams and to identify topics that are over-provisioned and reserving more disk space than necessary.
+
+| Metadata | Description |
+|----------|-------------|
+| `Metric Name` | `ibm_eventstreams_instance_reserved_disk_space_per_topic_percent`|
+| `Metric Type` | `gauge` |
+| `Value Type`  | `percent` |
+| `Segment By` | `Service instance, Service instance name, IBM {{site.data.keyword.messagehub}} Kafka topic` |
+{: caption="Reserved disk space percentage per topic metric metadata" caption-side="bottom"}
 
 ### Topic size
 {: #ibm_eventstreams_instance_topic_size}
