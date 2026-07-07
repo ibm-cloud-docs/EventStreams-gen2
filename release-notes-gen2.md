@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-02"
+lastupdated: "2026-07-07"
 
 keywords: gen 2, beta
 
@@ -20,6 +20,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.messagehub}} Gen 2 that are grouped by month and year. Release notes are available for a minimum of three years.
 {: shortdesc}
+
+## 6 July 2026
+{: #EventStreams-06jul2026}
+{: release-note}
+
+{{site.data.keyword.messagehub}} Gen 2 is now availabe in Frankfurt
+: {{site.data.keyword.messagehub}} Gen 2 is now also available in Frankfurt (eu-de), in addition to Chennai - Airtel (in-che), Montreal (ca-mon), and Mumbai (in-mum). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## 01 June 2026
 {: #EventStreams-01jun2026}
