@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-07-20"
+lastupdated: "2026-09-06"
 
 keywords: gen 2, beta
 
@@ -25,21 +25,21 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: #EventStreams-20jul2026}
 {: release-note}
 
-{{site.data.keyword.messagehub}} Gen 2 is now availabe in Washington DC
+{{site.data.keyword.messagehub}} Gen 2 is now available in Washington DC
 : {{site.data.keyword.messagehub}} Gen 2 is now also available in Washington DC (us-east), in addition to Chennai - Airtel (in-che), Montreal (ca-mon), Mumbai (in-mum), and Frankfurt (eu-de). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## 6 July 2026
 {: #EventStreams-06jul2026}
 {: release-note}
 
-{{site.data.keyword.messagehub}} Gen 2 is now availabe in Frankfurt
+{{site.data.keyword.messagehub}} Gen 2 is now available in Frankfurt
 : {{site.data.keyword.messagehub}} Gen 2 is now also available in Frankfurt (eu-de), in addition to Chennai - Airtel (in-che), Montreal (ca-mon), and Mumbai (in-mum). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## 01 June 2026
 {: #EventStreams-01jun2026}
 {: release-note}
 
-{{site.data.keyword.messagehub}} Gen 2 now availabe in Mumbai
+{{site.data.keyword.messagehub}} Gen 2 now available in Mumbai
 : {{site.data.keyword.messagehub}} Gen 2 is now also available in Mumbai (in-mum), in addition to Chennai - Airtel (in-che) and Montreal (ca-mon). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## 27 March 2026
@@ -54,7 +54,7 @@ To ensure continued service availability and support, you must migrate all exist
 {: #EventStreams-02mar2026}
 {: release-note}
 
-{{site.data.keyword.messagehub}} Gen 2 now availabe in Chennai
+{{site.data.keyword.messagehub}} Gen 2 now available in Chennai
 : {{site.data.keyword.messagehub}} Gen 2 is now also available in Chennai - Airtel (in-che), in addition to Montreal (ca-mon). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## 26 February 2026
