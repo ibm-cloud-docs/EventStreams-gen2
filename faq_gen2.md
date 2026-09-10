@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-07-20"
+lastupdated: "2026-09-10"
 
 keywords: gen 2, generation 2, vpc, classic, migration, differences, enterprise, kafka 4.1, private endpoints
 
@@ -117,7 +117,7 @@ The following features are planned for future releases:
 
 Direct migration is not currently supported. To move from Classic to Gen 2, you would need to:
 
-1. Provision a new Gen 2 instance in Montreal, Chennai, Mumbai, Frankfurt, or Washington DC.
+1. Provision a new Gen 2 instance in Montreal, Chennai, Mumbai, Frankfurt, Washington DC, Sydney, or Madrid.
 2. Set up VPE connectivity for private networking.
 3. Reconfigure your applications to use the new Kafka bootstrap servers.
 4. Migrate your data using Kafka tools or custom applications.
@@ -156,7 +156,7 @@ Gen 2 uses Apache Kafka 4.1, while Classic uses Kafka 3.8. This means Gen 2 incl
 
 Capacity scaling for storage is supported for 2/4/6 TB. Note that like Classic, storage capacity cannot be scaled down - you would need to create a new instance at the lower capacity.
 
-Scaling for throughput is planned for a future release. Currently, Gen 2 instances are provisioned with a fixed throughput capacity (100 MB/s throughput). 
+Scaling for throughput is planned for a future release. Currently, Gen 2 instances are provisioned with a fixed throughput capacity (100 MB/s throughput).
 
 ## What are the partition limits in Gen 2?
 {: #faq-partitions}
