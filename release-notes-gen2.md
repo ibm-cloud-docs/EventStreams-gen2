@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-09-06"
+lastupdated: "2026-09-10"
 
 keywords: gen 2, beta
 
@@ -20,6 +20,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.messagehub}} Gen 2 that are grouped by month and year. Release notes are available for a minimum of three years.
 {: shortdesc}
+
+## 10 September 2026
+{: #EventStreams-10sep2026}
+{: release-note}
+
+{{site.data.keyword.messagehub}} Gen 2 is now available in Sydney and Madrid
+: {{site.data.keyword.messagehub}} Gen 2 is now also available in Sydney (au-syd) and Madrid (eu-es). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## 20 July 2026
 {: #EventStreams-20jul2026}
@@ -62,7 +69,7 @@ To ensure continued service availability and support, you must migrate all exist
 {: release-note}
 
 {{site.data.keyword.messagehub}} Gen 2
-: {{site.data.keyword.messagehub}} Gen 2 is now available, offering the same fully managed Event Streams engine on newer VPC‑based infrastructure with improved security and networking. [Try {{site.data.keyword.messagehub}} Gen 2 now](/docs/EventStreams-gen2?topic=EventStreams-gen2-provisioning).
+: {{site.data.keyword.messagehub}} Gen 2 is now available, offering the same fully managed {{site.data.keyword.messagehub}} engine on newer VPC‑based infrastructure with improved security and networking. [Try {{site.data.keyword.messagehub}} Gen 2 now](/docs/EventStreams-gen2?topic=EventStreams-gen2-provisioning).
 
 ## December 2025
 {: #EventStreams-dec2025}
