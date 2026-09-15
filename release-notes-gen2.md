@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-09-10"
+lastupdated: "2026-09-15"
 
 keywords: gen 2, beta
 
@@ -20,6 +20,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.messagehub}} Gen 2 that are grouped by month and year. Release notes are available for a minimum of three years.
 {: shortdesc}
+
+## 15 September 2026
+{: #EventStreams-15sep2026}
+{: release-note}
+
+{{site.data.keyword.messagehub}} Gen 2 is now available in Dallas and London
+: {{site.data.keyword.messagehub}} Gen 2 is now also available in Dallas (us-south) and London (eu-gb). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## 10 September 2026
 {: #EventStreams-10sep2026}
