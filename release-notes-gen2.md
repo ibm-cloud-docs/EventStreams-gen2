@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-09-15"
+lastupdated: "2026-09-17"
 
 keywords: gen 2, beta
 
@@ -21,8 +21,8 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.messagehub}} Gen 2 that are grouped by month and year. Release notes are available for a minimum of three years.
 {: shortdesc}
 
-## 15 September 2026
-{: #EventStreams-15sep2026}
+## 17 September 2026
+{: #EventStreams-17sep2026}
 {: release-note}
 
 {{site.data.keyword.messagehub}} Gen 2 is now available in Dallas and London
