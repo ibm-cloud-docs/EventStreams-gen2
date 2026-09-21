@@ -1,8 +1,8 @@
----
+``---
 
 copyright:
   years: 2026
-lastupdated: "2026-02-27"
+lastupdated: "2026-09-21"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -15,7 +15,7 @@ subcollection: EventStreams-gen2
 # Connecting to {{site.data.keyword.messagehub}}
 {: #connecting}
 
-To connect to {{site.data.keyword.messagehub}}, a {{site.data.keyword.vpe_full}} must be created to establish a secure private connection. Credentials must then be created to authenticate with IAM. For applications not running within VPC, additional networking setup is required.
+To connect to {{site.data.keyword.messagehub}}, a {{site.data.keyword.vpe_full}} gateway must be created to establish a secure private connection. Credentials must then be created to authenticate with IAM. For applications not running within VPC, additional networking setup is required.
 
 The following information gives an overview of the steps required, using the example of a Kafka client application running on a VPC VSI, but could be applied to any of the VPC application platforms. For apps running externally to a VPC, further information is provided for the additional steps required.
 {: #shortdesc}
@@ -23,11 +23,11 @@ The following information gives an overview of the steps required, using the exa
 ### Creating a VPE
 {: #create_VPE}
 
-To enable an application deployed in an {{site.data.keyword.vpc_full}} to access your Enterprise instance over the private network, a virtual private endpoint (VPE) must be created in the VPC.
+To enable an application deployed in an {{site.data.keyword.vpc_full}} to access your Enterprise instance over the private network, a virtual private endpoint (VPE) gateway must be created in the VPC.
 
 1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon and select **VPC infrastructure** > **Network** > **Virtual private endpoint gateways**.
-2. Create a VPE for your {{site.data.keyword.messagehub}} instance by using the guidance in [About virtual private endpoint gateways](/docs/vpc?topic=vpc-about-vpe){: external}. 
-3. After you create your VPE, it might take a few minutes for the new VPE and pDNS to complete the process and begin working for your VPC. Completion is confirmed when you see an IP address set in the [details view](/docs/vpc?topic=vpc-vpe-viewing-details-of-an-endpoint-gateway&interface=ui){: external} of the VPE.
+2. Create a VPE gateway for your {{site.data.keyword.messagehub}} instance by using the guidance in [About virtual private endpoint gateways](/docs/vpc?topic=vpc-about-vpe){: external}. 
+3. After you create your VPE gateway, it might take a few minutes for the new VPE and pDNS to complete the process and begin working for your VPC. Completion is confirmed when you see an IP address set in the [details view](/docs/vpc?topic=vpc-vpe-viewing-details-of-an-endpoint-gateway&interface=ui){: external} of the VPE.
 4. Take a note of this VPE IP address.
 
 ### Creating a service credential
@@ -70,7 +70,7 @@ To create a service key by using the {{site.data.keyword.cloud_notm}} CLI, compl
 ## Connect from a VSI
 {: #connect_from_VPE}
 
-The following information shows the steps needed to connect to a VPE from an application running on a VSI.
+The following information shows the steps needed to connect to a VPE gateway from an application running on a VSI.
 
 ### Create an {{site.data.keyword.vpc_short}}
 {: #create_a_vpc}
@@ -133,7 +133,7 @@ The following steps show how to [install and use the console tools](/docs/EventS
 ## Accessing an Enterprise instance from an external network
 {: #private_network_outside_cloud}
 
-Solutions such as [Direct Link 2.0](https://cloud.ibm.com/docs/dl){: external} or [Transit Gateway](https://cloud.ibm.com/docs/transit-gateway?topic=transit-gateway-about){: external} can be utilized to establish a connection between an external network, such as an on-premise data center or Classic infrastructure, and the {{site.data.keyword.cloud_notm}} VPE. However, when dealing with workloads operating on an external network, it is essential to consider additional factors to ensure a successful connection to Kafka. Note that these considerations do not apply to HTTP workloads.
+Solutions such as [Direct Link 2.0](https://cloud.ibm.com/docs/dl){: external} or [Transit Gateway](https://cloud.ibm.com/docs/transit-gateway?topic=transit-gateway-about){: external} can be utilized to establish a connection between an external network, such as an on-premise data center or Classic infrastructure, and the {{site.data.keyword.cloud_notm}} VPE gateway. However, when dealing with workloads operating on an external network, it is essential to consider additional factors to ensure a successful connection to Kafka. Note that these considerations do not apply to HTTP workloads.
 
 The private endpoint details allocated to your instance (as described in the service key) must be resolvable and routable from the network that the workload is running in. It is not possible to specify alternative hostname entries in the workload's `bootstrap.servers` properties as a way to route traffic from the external network.
 
