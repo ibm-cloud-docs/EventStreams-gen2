@@ -1,4 +1,4 @@
-``---
+---
 
 copyright:
   years: 2026
@@ -20,15 +20,15 @@ To connect to {{site.data.keyword.messagehub}}, a {{site.data.keyword.vpe_full}}
 The following information gives an overview of the steps required, using the example of a Kafka client application running on a VPC VSI, but could be applied to any of the VPC application platforms. For apps running externally to a VPC, further information is provided for the additional steps required.
 {: #shortdesc}
 
-### Creating a VPE
+### Creating a VPE gateway
 {: #create_VPE}
 
 To enable an application deployed in an {{site.data.keyword.vpc_full}} to access your Enterprise instance over the private network, a virtual private endpoint (VPE) gateway must be created in the VPC.
 
 1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon and select **VPC infrastructure** > **Network** > **Virtual private endpoint gateways**.
 2. Create a VPE gateway for your {{site.data.keyword.messagehub}} instance by using the guidance in [About virtual private endpoint gateways](/docs/vpc?topic=vpc-about-vpe){: external}. 
-3. After you create your VPE gateway, it might take a few minutes for the new VPE and pDNS to complete the process and begin working for your VPC. Completion is confirmed when you see an IP address set in the [details view](/docs/vpc?topic=vpc-vpe-viewing-details-of-an-endpoint-gateway&interface=ui){: external} of the VPE.
-4. Take a note of this VPE IP address.
+3. After you create your VPE gateway, it might take a few minutes for the new VPE gateway and pDNS to complete the process and begin working for your VPC. Completion is confirmed when you see an IP address set in the [details view](/docs/vpc?topic=vpc-vpe-viewing-details-of-an-endpoint-gateway&interface=ui){: external} of the VPE gateway.
+4. Take a note of this VPE gateway IP address.
 
 ### Creating a service credential
 {: #create_a_service_credential}
@@ -146,7 +146,7 @@ For more information, see [Accessing a VPE externally from a VPC](/docs/vpc?topi
 
 Now you have connection and credential information, you can choose a Kafka client. For more information, see [Using the Kafka API](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using).
 
-## Further Information
+## Further information
 {: #further_info}
 
 - [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using#kafka_api_client). 
