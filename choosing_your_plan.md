@@ -71,7 +71,7 @@ The following table summarizes what is supported by the plans:
 |   | Lite plan  |  Standard plan |  Enterprise plan  | Enterprise Gen2 plan  |
 |---|---|---|---|---|
 | **Tenancy**  | Multi-tenant   | Multi-tenant  | Single-tenant | Single-tenant |
-| **Availability zones**   |  3  |   3  |3    \n  (1 in single-zone locations)   | 3 |
+| **Availability zones**   |  3  |   3  |3 (1 in single-zone   \n locations)   | 3 |
 | **Availability**  |  99.99 % [^tabletext1] |  99.99 % | 99.99 %  (99.9 % in   \n  single-zone locations) [^tabletext2]  | 99.99 % |
 | **Kafka version on cluster**  | Kafka 3.8 | Kafka 3.8  | Kafka 3.8 | Kafka 4.1 |
 | **Kafka Connect and Kafka Streams supported**  | No |  Yes | Yes  | Yes  |
@@ -83,8 +83,8 @@ The following table summarizes what is supported by the plans:
 | **Private/Public Networking** | Public   | Public |  Both | Private (VPE) |
 | **Scale plan capacity** | No   | No  |  Yes | Future release |
 | **Maximum number of partitions**  | 1 [^tabletext5]  | 100   |3000 - 9000 scales with throughput [^tabletext6] | 3000 |
-| **Maximum retention limits**   | 100 MB for the partition   | 1 GB per partition  | 2 TB - 12 TB of scalable usable storage [^tabletext7] | 2 TB of usable storage |
-| **Maximum throughput**  | 100 KB per second per partition  |  1 MB per second per partition (20 MB per service instance) | 150 MB/s - 450 MB/s of scalable throughput [^tabletext8] | 100 MB/s (50 MB/s Produce \n 50MB/s Consume) [^tabletext9]|
+| **Maximum retention limits**   | 100 MB for the partition   | 1 GB per partition  | 2 TB - 12 TB of scalable   \n usable storage [^tabletext7] | 2 TB of usable storage |
+| **Maximum throughput**  | 100 KB per second per partition  |  1 MB per second per partition (20 MB per service instance) | 150 MB/s - 450 MB/s   \n of scalable throughput [^tabletext8] | 100 MB/s (50 MB/s Produce \n 50MB/s Consume) [^tabletext9]|
 | **Maximum message size**  | 1 MB  | 1 MB   | 1 MB | 1 MB |
 | **Maximum number of connected clients**  | 5   | 500  | 10 000  | 1000 |
 | **Location (region) availability** | Dallas (us-south)  |  **Multizone location (MZR)**   \n Dallas (us-south)   \n Sao Paulo (br-sao)   \n Toronto (ca-tor)   \n Washington (us-east)   \n Frankfurt (eu-de)   \n London (eu-gb)   \n Madrid (eu-es)   \n  Osaka (jp-osa)   \n Sydney (au-syd)   \n Tokyo (jp-tok)|   **Multizone location (MZR)**  \n Dallas (us-south)   \n Sao Paulo (br-sao)   \n Toronto (ca-tor)   \n Washington (us-east)   \n Frankfurt (eu-de)   \n London (eu-gb)   \n Madrid (eu-es)   \n  Osaka (jp-osa)   \n Sydney (au-syd)   \n Tokyo (jp-tok)\n    \n  **Single-zone location (SZR)**   \n Chennai (che01)  | **Multizone location (MZR)**   \n Dallas (us-south)   \n Frankfurt (eu-de)   \n London (eu-gb)   \n Madrid (eu-es)   \n Osaka (jp-osa)   \n São Paulo (br-sao)   \n Sydney (au-syd)   \n Tokyo (jp-tok)   \n Toronto (ca-tor)   \n Washington (us-east)\n    \n  **Single-campus MZR (SC-MZR)**   \n  Chennai - Airtel (in-che)   \n Montreal (ca-mon)   \n Mumbai (in-mum) |
