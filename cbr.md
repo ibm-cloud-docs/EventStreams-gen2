@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-10-05"
+lastupdated: "2026-10-06"
 
 keywords: event streams cbr, context-based restrictions, gen2
 
@@ -11,9 +11,6 @@ subcollection: EventStreams-gen2
 ---
 
 {{site.data.keyword.attribute-definition-list}}
-
-Support for context-based restrictions in Gen2 is currently available in the au-syd region, with further regions being rolled out.
-{: .important}
 
 This document outlines the process for using context-based restrictions to protect your {{site.data.keyword.messagehub}} resources. Use this document to prepare your resources for context-based restrictions. 
 
