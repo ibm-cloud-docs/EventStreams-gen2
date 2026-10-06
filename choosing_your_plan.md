@@ -44,7 +44,7 @@ The Enterprise plan is appropriate if data isolation, performance, and increased
 The Enterprise plan includes the following features:
 
 - Exclusive access to a single-tenant {{site.data.keyword.messagehub}} service instance deployed in a highly available multi zone region (MZR).
-- Option to provision a single-tenant {{site.data.keyword.messagehub}} service instance in a geographically local but single zone location [(SZR)](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#sla_szr).
+- Option to provision a single-tenant {{site.data.keyword.messagehub}} service instance in a geographically local but single-zone location [(SZR)](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#sla_szr).
 - Scaling options to customize throughput, storage capacity, or both.
 - The broadest possible set of compliance certifications, regions and features including public endpoint connectivity, Managed Schema Registry and Mirroring capabilities.
 
@@ -71,8 +71,8 @@ The following table summarizes what is supported by the plans:
 |   | Lite plan  |  Standard plan |  Enterprise plan  | Enterprise Gen2 plan  |
 |---|---|---|---|---|
 | **Tenancy**  | Multi-tenant   | Multi-tenant  | Single-tenant | Single-tenant |
-| **Availability zones**   |  3  |   3  |3    \n   (1 in single zone locations)   | 3 |
-| **Availability**  |  99.99 % [^tabletext1] |  99.99 % | 99.99 %  (99.9 % in single zone locations) [^tabletext2]  | 99.99 % |
+| **Availability zones**   |  3  |   3  |3    \n  (1 in single-zone locations)   | 3 |
+| **Availability**  |  99.99 % [^tabletext1] |  99.99 % | 99.99 %  (99.9 % in   \n  single-zone locations) [^tabletext2]  | 99.99 % |
 | **Kafka version on cluster**  | Kafka 3.8 | Kafka 3.8  | Kafka 3.8 | Kafka 4.1 |
 | **Kafka Connect and Kafka Streams supported**  | No |  Yes | Yes  | Yes  |
 | **Managed Schema Registry supported**  | No |  No |  Yes |  Future release |
@@ -99,7 +99,7 @@ The following table summarizes what is supported by the plans:
 
 [^tabletext1]: After 30 days of inactivity, your instance is deleted. (Inactivity is defined as a zero bytes_out metric, even though you might create a partition or produced messages.)
 
-[^tabletext2]: For more information about availability, see [single zone location deployments](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#sla_szr).
+[^tabletext2]: For more information about availability, see [single-zone location deployments](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#sla_szr).
 
 [^tabletext4]: Only supported on clusters that were created after October 2019.
 
