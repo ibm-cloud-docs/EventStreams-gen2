@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-09-17"
+lastupdated: "2026-10-06"
 
 keywords: gen 2, beta
 
@@ -20,6 +20,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.messagehub}} Gen 2 that are grouped by month and year. Release notes are available for a minimum of three years.
 {: shortdesc}
+
+## 30 September 2026
+{: #EventStreams-30sep2026}
+{: release-note}
+
+{{site.data.keyword.messagehub}} Gen 2 is now available in all VPC multizone regions
+: You can now deploy {{site.data.keyword.messagehub}} Gen 2 in all supported {{site.data.keyword.cloud}} VPC multizone regions (MZRs). This release adds support for Toronto (ca-tor), Tokyo (jp-tok), Osaka (jp-osa), and Sao Paulo (br-sao). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## 17 September 2026
 {: #EventStreams-17sep2026}

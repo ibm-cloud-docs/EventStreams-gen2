@@ -73,6 +73,8 @@ toc:
             navtitle: Managing encryption
           - topic: managing_access.md
             navtitle: Managing authentication
+          - topic: cbr.md
+            navtitle: Context-based restrictions
           - topic: key-protect.md
             navtitle: Key Protect integration
       - using_kafka_client.md
