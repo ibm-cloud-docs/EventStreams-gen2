@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026
-lastupdated: "2026-10-06"
+  years: 2025, 2026
+lastupdated: "2026-10-08"
 
 keywords: plan, Enterprise, Standard, Lite, pricing, throughput, partitions, tenancy, compliance
 
@@ -66,6 +66,9 @@ Currently only available in select regions with support for private endpoints an
 ## What is supported by the Lite, Standard, Enterprise and Enterprise Gen2 plans
 {: #what_is_supported}
 
+As {{site.data.keyword.messagehub}} Gen 2 evolves, additional capabilities will be introduced over time. Some differences from Gen 1 are architectural by design. For more information, see [Architectural differences and known limitation](docs/EventStreams-gen2?topic=EventStreams-gen2-eventstreams-gen1-vs-gen2-differences-limitations). 
+{: note}
+
 The following table summarizes what is supported by the plans:
 
 |   | Lite plan  |  Standard plan |  Enterprise plan  | Enterprise Gen2 plan  |
@@ -92,7 +95,7 @@ The following table summarizes what is supported by the plans:
 | **Deployment timeframe** | Instantaneous provisioning  | Instantaneous provisioning    | Expect provisioning to  \n  take up to 3 hours.   \n As Enterprise has   \n its own dedicated   \n resources for each   \n cluster, it requires   \n  more time for   \n provisioning.  | Typical: Minutes |
 | **Compliance** |GDPR   \n  Privacy Shield  | GDPR   \n  Privacy Shield   \n  ISO 27001, 27017,  \n 27018, 2701    \n  SOC 1 Type   \n  SOC 2 Type 2   \n  SOC 3   \n  PCI DSS \n ISMAP \n C5  |  GDPR   \n Privacy Shield   \n ISO 27001, 27017,  \n 27018, 2701   \n  SOC 1 Type 2   \n  SOC 2 Type 2   \n  SOC 3   \n  HIPAA ready   \n  PCI DSS  \n ISMAP \n C5 \n IRAP \n ENS \n HITRUST \n ProtectedB | New plan – pending certification |
 | **Manage security and compliance**  | No  |  No |  Yes | Yes |
-| **IAM address restrictions** | No | Yes | Yes | Future release |
+| **Context-based restrictions (CBR)** | No | Yes | Yes | Yes |
 | **IAM token authentication only** | No | No | Yes | Yes |
 | **Mirroring** | No | No | Yes | Future release |
 {: caption="Plan comparison table" caption-side="bottom"}
