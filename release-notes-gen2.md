@@ -1,9 +1,9 @@
 ---
 copyright:
-  years: 2026
+  years: 2025, 2026
 lastupdated: "2026-10-08"
 
-keywords: gen 2, beta
+keywords: gen 2
 
 subcollection: event-streams-gen2
 
@@ -27,6 +27,14 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 
 Enhanced Bring Your Own Key (BYOK) experience in the provisioning UI
  : The provisioning experience now includes an updated encryption configuration component for customer-managed encryption keys through {{site.data.keyword.keymanagementservicefull}}. This update provides a more consistent key management experience during deployment creation. Learn more about [{{site.data.keyword.keymanagementserviceshort}} integration](/docs/EventStreams-gen2?topic=EventStreams-gen2-key-protect&interface=ui) or provision a new [{{site.data.keyword.messagehub}} Gen 2 deployment](https://cloud.ibm.com/eventstreams-provisioning/6a7f4e38-f218-48ef-9dd2-df408747568e/create) with customer-managed encryption enabled.
+
+
+## 06 October 2026
+{: #EventStreams-gen2-06Oct2026}
+{: release-note}
+
+Context-based restrictions (CBR) support now available
+:  You can now use context-based restrictions (CBR) to restrict access to {{site.data.keyword.messagehub}} resources based on network context, such as IP addresses, VPCs, and {{site.data.keyword.cloud}} services. For more information, see [Managing access with context-based restrictions](/docs/EventStreams-gen2?topic=EventStreams-gen2-cbr&interface=ui).
 
 ## 30 September 2026
 {: #EventStreams-gen2-30sep2026}
