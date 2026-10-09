@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-10-06"
+lastupdated: "2026-10-09"
 
 keywords: event streams cbr, context-based restrictions, gen2
 
@@ -315,11 +315,3 @@ resource "ibm_cbr_rule" "cbr_rule" {
 }
 ```
 {: pre}
-
-### Verifying your rule
-{: #rules-ui-verify}
-
-To verify that your rule is applied, go to the {{site.data.keyword.cloud}} Dashboard and select the relevant instance from your *Resource List*. Within **Recent Tasks**, you see your rule's status.
-
-The task of creating or modifying a rule goes into your instance's task queue. Depending on workload, it might take some time for your rule enforcement to complete.
-{: .note}
