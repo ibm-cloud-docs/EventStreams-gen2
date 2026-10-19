@@ -17,6 +17,7 @@ toc:
       - topic: overview_gen1_gen2.md
       - topic: getting-started.md
         navtitle: Getting started
+      - limitations.md
       - topic: overview.md
         navtitle: Overview
       - topic: release-notes-gen2.md
