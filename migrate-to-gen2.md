@@ -2,9 +2,9 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-10-19"
+lastupdated: "2026-10-27"
 
-keywords: event streams migration, gen1 to gen2, classic infrastructure, vpc, drain and switch, migration hub, private endpoints, kafka, topics, producers, consumers
+keywords: event streams migration, gen1 to gen2, classic infrastructure, vpc, drain and switch, private endpoints, kafka, topics, producers, consumers
 
 subcollection: event-streams-gen2
 
@@ -19,17 +19,17 @@ content-type: tutorial
 
 [Gen 2]{: tag-purple}
 
-Use this tutorial to migrate your {{site.data.keyword.messagehub}} deployment from Gen 1 (Classic) to Gen 2 (VPC) by using the Migration hub in the {{site.data.keyword.cloud_notm}} console.
+Use this tutorial to migrate your {{site.data.keyword.messagehub}} deployment from Gen 1 (Classic) to Gen 2 (VPC).
 {: shortdesc}
 
 This tutorial applies to both the Standard and Enterprise plans. Both plans follow the same drain and switch migration process.
 
-The Migration hub guides you through provisioning the Gen 2 instance and setting up network access. The drain and switch cutover — stopping producers, draining consumers, and restarting on Gen 2 — requires coordinated action across all application teams. Plan the cutover window carefully before you start.
+The drain and switch cutover — stopping producers, draining consumers, and restarting on Gen 2 — requires coordinated action across all application teams. Plan the cutover window carefully before you start.
 
 ## Key considerations before you begin
 {: #key-considerations}
 
-Review these points before you start the migration wizard.
+Review these points before you start the migration.
 
 ### Drain and switch overview
 {: #drain-and-switch-explained}
@@ -47,7 +47,7 @@ There is a planned downtime window during steps 2 through 4. Duration depends on
 ### Topic configuration
 {: #topic-config-responsibility}
 
-The Migration hub provisions the Gen 2 instance and assists with network setup. Topic names, partition counts, retention policies, replication factors, and any custom topic configurations must be recreated on the Gen 2 instance before the cutover begins. The wizard does not replicate topic configurations automatically.
+Topic names, partition counts, retention policies, replication factors, and any custom topic configurations must be recreated on the Gen 2 instance before the cutover begins. Topic configurations are not replicated automatically.
 
 Recreate all topic configurations on Gen 2 and validate them before stopping producers on Gen 1.
 {: important}
@@ -82,14 +82,14 @@ Keep these points in mind when planning your migration:
 * Complete a full inventory of all producer and consumer applications and their consumer groups before starting. Every application that connects to Gen 1 needs its connection string updated.
 * Recreate all topic configurations on the Gen 2 instance before the cutover window.
 * Coordinate the cutover window with all teams that own producer and consumer applications.
-* Gen 2 supports private endpoints only. Plan your VPE gateway and any VPN or VSI connectivity before you start the wizard.
+* Gen 2 supports private endpoints only. Plan your VPE gateway and any VPN or VSI connectivity before you start the migration.
 * Schedule the cutover during a low-traffic period to minimize the volume of messages that consumers need to drain.
 * Test the procedure end to end in a non-production environment first.
 
 ## Before you begin
 {: #prereqs}
 
-Confirm the following before you start the wizard:
+Confirm the following before you start the migration:
 
 * You have a Gen 1 {{site.data.keyword.messagehub}} deployment to migrate.
 * You have access to provision a Gen 2 deployment in the target account, resource group, and region.
@@ -115,50 +115,37 @@ The drain and switch migration provisions a new Gen 2 instance, then coordinates
 
 * [Phase 1: Prepare and provision](#ds-phase-1)
 
-   * [Step 1: Select migration path](#ds-select-path)
-   * [Step 2: Assess Gen 1](#ds-assess-gen1)
-   * [Step 3: Create Gen 2 instance](#ds-provision-gen2)
+   * [Step 1: Assess Gen 1](#ds-assess-gen1)
+   * [Step 2: Provision the Gen 2 instance](#ds-provision-gen2)
 
 * [Phase 2: Configure and cut over](#ds-phase-2)
 
-   * [Step 4: Set network access](#ds-set-network-access)
-   * [Step 5: Cut over](#ds-cutover)
-   * [Step 6: Finish migration](#ds-finish-migration)
+   * [Step 3: Set network access](#ds-set-network-access)
+   * [Step 4: Cut over](#ds-cutover)
+   * [Step 5: Finish migration](#ds-finish-migration)
 
 ### Phase 1: Prepare and provision
 {: #ds-phase-1}
 
 Phase 1 covers the preparation and provisioning steps required before the cutover can begin.
 
-#### Step 1: Select migration path
-{: #ds-select-path}
-{: step}
-
-Open the Migration hub in the {{site.data.keyword.cloud_notm}} console. Under **Data services**, select **Eligible data instances** to see the Gen 1 Classic deployments in your account that are ready to migrate. Find your {{site.data.keyword.messagehub}} instance, click **Open wizard**, then select **Drain and switch** and click **Start**.
-
-#### Step 2: Assess Gen 1
+#### Step 1: Assess Gen 1
 {: #ds-assess-gen1}
 {: step}
 
-After you select the drain and switch path, the wizard runs an automated assessment of your Gen 1 source deployment and surfaces any configuration items and contextual information about what changes between Gen 1 and Gen 2. Review these before proceeding.
-
-Use this step to confirm your preparation is complete:
+Review your Gen 1 source deployment and confirm your preparation is complete before provisioning Gen 2:
 
 * All topic configurations are documented.
 * All producer and consumer applications are inventoried.
 * The cutover window is confirmed with all application teams.
 
-After you address any flagged items, **Refresh** to update the assessment results. When the assessment is clear, click **Next: Create Gen 2** to continue.
-
-#### Step 3: Create Gen 2 instance
+#### Step 2: Provision the Gen 2 instance
 {: #ds-provision-gen2}
 {: step}
 
-This step provisions a new Gen 2 (VPC) {{site.data.keyword.messagehub}} instance. No messages or topic configurations are transferred from Gen 1 automatically.
+Provision a new Gen 2 (VPC) {{site.data.keyword.messagehub}} instance. No messages or topic configurations are transferred from Gen 1 automatically.
 
-The wizard shows a **Preview {{site.data.keyword.messagehub}} on Gen 2** summary with the proposed configuration. Fields marked **Changed** highlight differences from the Gen 1 source.
-
-Click **Edit configurations** to adjust the Gen 2 settings before provisioning begins. The edit panel shows your Gen 1 resource allocation for reference and lets you configure:
+When provisioning, configure the following:
 
 * **Location and platform**: Target region. Platform is locked to Gen 2.
 * **Service details**: Instance name, resource group, and tags.
@@ -167,9 +154,9 @@ Click **Edit configurations** to adjust the Gen 2 settings before provisioning b
 Size the Gen 2 instance to match or exceed the Gen 1 source throughput and storage capacity.
 {: note}
 
-After you confirm, the wizard starts provisioning and a progress bar tracks completion. While the Gen 2 instance provisions, use this time to recreate all topic configurations on the new instance.
+While the Gen 2 instance provisions, use this time to recreate all topic configurations on the new instance.
 
-Recreate all topics on the Gen 2 instance before proceeding to the next step. The wizard does not replicate topic configurations automatically.
+Recreate all topics on the Gen 2 instance before proceeding to the next step. Topic configurations are not replicated automatically.
 {: important}
 
 ### Phase 2: Configure and cut over
@@ -177,21 +164,19 @@ Recreate all topics on the Gen 2 instance before proceeding to the next step. Th
 
 Phase 2 covers network access setup, the drain and switch cutover, and finishing the migration.
 
-#### Step 4: Set network access
+#### Step 3: Set network access
 {: #ds-set-network-access}
 {: step}
 
-Configure private connectivity to the Gen 2 (VPC) instance before cutover. All connection types require a Virtual Private Endpoint (VPE) gateway for private access to the Gen 2 deployment.
-
-Click **Open VPE gateway** to create the gateway from the VPC networking console. **Refresh** after setup to confirm the configuration is detected by the wizard.
+Configure private connectivity to the Gen 2 (VPC) instance before cutover. All connection types require a Virtual Private Endpoint (VPE) gateway for private access to the Gen 2 deployment. Create the gateway from the [{{site.data.keyword.cloud_notm}} VPC networking console](https://cloud.ibm.com/infrastructure/provision/endpointGateway){: external}.
 
 Validate that all producer and consumer applications can reach the Gen 2 instance through the VPE before starting the cutover. Application connectivity issues discovered during the cutover window extend downtime.
 {: tip}
 
-The VPE gateway is required. The **Next: Cutover** button is not available until this step is complete.
+The VPE gateway must be in place before you begin the cutover.
 {: important}
 
-#### Step 5: Cut over
+#### Step 4: Cut over
 {: #ds-cutover}
 {: step}
 
@@ -216,7 +201,7 @@ Do not switch connections until all consumer groups have fully drained. Switchin
 ##### Stage 3: Update connection strings
 {: #ds-update-connections}
 
-Update all producer and consumer application configurations to use the Gen 2 (VPC) connection details. The wizard provides the Gen 2 bootstrap server addresses, credentials, and SSL configuration for reference.
+Update all producer and consumer application configurations to use the Gen 2 (VPC) connection details. Retrieve the Gen 2 bootstrap server addresses, credentials, and SSL configuration from the service credentials of your new Gen 2 instance.
 
 Gen 2 uses Let's Encrypt TLS certificates. Update any certificate validation or trust store configuration in your applications accordingly.
 {: note}
@@ -241,15 +226,15 @@ After applications are running, verify the following:
 * No unexpected errors or lag is present.
 * Message throughput is consistent with expectations.
 
-#### Step 6: Finish migration
+#### Step 5: Finish migration
 {: #ds-finish-migration}
 {: step}
 
-After producers and consumers are confirmed to be operating correctly on Gen 2, click **Next: Finish migration** to complete the workflow.
+After producers and consumers are confirmed to be operating correctly on Gen 2, the migration cutover is complete.
 
-The Finish migration screen shows a summary of both instances. Additional metrics are available through IBM Cloud Monitoring.
+Additional metrics are available through IBM Cloud Monitoring.
 
-After finishing, the Gen 1 instance remains available. Verify Gen 2 stability and confirm no applications are still connected to Gen 1 before decommissioning. Allow a minimum observation period of seven days before deleting the Gen 1 instance.
+The Gen 1 instance remains available after cutover. Verify Gen 2 stability and confirm no applications are still connected to Gen 1 before decommissioning. Allow a minimum observation period of seven days before deleting the Gen 1 instance.
 
 Continue to [Post-migration tasks](#post-migration) to wrap up.
 
