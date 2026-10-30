@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-10-30"
 
 subcollection: event-streams-gen2
 
@@ -49,7 +49,7 @@ Authorize {{site.data.keyword.keymanagementserviceshort}} for use with {{site.da
 
 If the service authorization is not present before provisioning your deployment with a key, the provision fails.
 
-If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. Restrictions applied for {{site.data.keyword.keymanagementserviceshort}} key rings are currently not supported.
+If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. 
 {: .important}
 
 ## Granting service authorization in the CLI
@@ -65,7 +65,7 @@ bx iam authorization-policy-create messagehub kms "Reader,AuthorizationDelegator
 
 If the service authorization is not present before provisioning your deployment with a key, the provision fails.
 
-If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. Restrictions applied for {{site.data.keyword.keymanagementserviceshort}} key rings are currently not supported.
+If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. 
 {: .important}
 
 ## Granting service authorization via the REST API
@@ -124,7 +124,7 @@ curl -X POST 'https://iam.cloud.ibm.com/v1/policies' -H "Authorization: Bearer $
 
 If the service authorization is not present before provisioning your deployment with a key, the provision fails.
 
-If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. Restrictions applied for {{site.data.keyword.keymanagementserviceshort}} key rings are currently not supported.
+If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. 
 {: .important}
 
 ## Using the {{site.data.keyword.keymanagementserviceshort}} key
@@ -221,7 +221,44 @@ And one for the {{site.data.keyword.block_storage_is_full}} volume, where the de
 
 IAM/{{site.data.keyword.keymanagementserviceshort}} does not stop you from removing the policy between the key and {{site.data.keyword.block_storage_is_short}} (the second example), but doing so can make your topics/partitions unrestorable.
 
-### Common pitfalls
+## Using {{site.data.keyword.hscrypto}} (HPCS)
+{: #hpcs-integration}
+
+For approved {{site.data.keyword.messagehub}} Gen 2 deployments, you can use [{{site.data.keyword.hscrypto}}](/docs/hs-crypto) instead of {{site.data.keyword.keymanagementserviceshort}}. The integration follows the standard BYOK process described on this page with the following differences:
+
+1. **Target service in IAM authorization:**
+
+   When granting service authorization, select **{{site.data.keyword.hscrypto}}** (or `hs-crypto` in the CLI/API) as the target service instead of `kms`. Retain the **Reader** role and ensure **Enable authorizations to be delegated** (`AuthorizationDelegator`) is selected.
+
+2. **Key CRN in provisioning:**
+
+   Supply the full {{site.data.keyword.hscrypto}} root key CRN (starting with `crn:v1:bluemix:public:hs-crypto:...` instead of `kms`) in your provisioning payload:
+
+   * **CLI / API:** Pass the CRN using the `dataservices.encryption.disk` parameter:
+
+     ```json
+     "dataservices": {
+       "encryption": {
+         "disk": "crn:v1:bluemix:public:hs-crypto:<REGION>:a/<ACCOUNT-ID>:<HPCS-INSTANCE-ID>:key:<KEY-ID>"
+       }
+     }
+     ```
+     {: pre}
+
+   * **Terraform (`ibm_resource_instance`):** Pass the {{site.data.keyword.hscrypto}} key CRN inside the `parameters` block:
+
+     ```hcl
+     parameters = {
+       "dataservices" = {
+         "encryption" = {
+           "disk" = "crn:v1:bluemix:public:hs-crypto:<REGION>:a/<ACCOUNT-ID>:<HPCS-INSTANCE-ID>:key:<KEY-ID>"
+         }
+       }
+     }
+     ```
+     {: pre}
+
+## Common pitfalls
 {: #common-pitfalls}
 
 Be careful when removing keys and authorizations. If you have multiple deployments that use the same keys, it is possible to inadvertently destroy data to **all** of those deployments by revoking the delegation authorization. If possible, do not use the same key for multiple deployments.
