@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-10-27"
+lastupdated: "2026-10-30"
 
 keywords: event streams migration, gen1 to gen2, classic infrastructure, vpc, drain and switch, private endpoints, kafka, topics, producers, consumers
 
@@ -232,7 +232,7 @@ After applications are running, verify the following:
 
 After producers and consumers are confirmed to be operating correctly on Gen 2, the migration cutover is complete.
 
-Additional metrics are available through IBM Cloud Monitoring.
+Additional metrics are available through {{site.data.keyword.monitoringfull}}.
 
 The Gen 1 instance remains available after cutover. Verify Gen 2 stability and confirm no applications are still connected to Gen 1 before decommissioning. Allow a minimum observation period of seven days before deleting the Gen 1 instance.
 
