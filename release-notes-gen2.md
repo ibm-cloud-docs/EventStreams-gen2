@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025, 2026
-lastupdated: "2026-10-30"
+lastupdated: "2026-11-02"
 
 keywords: gen 2
 
@@ -21,7 +21,12 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.messagehub}} Gen 2 that are grouped by month and year. Release notes are available for a minimum of three years.
 {: shortdesc}
 
+## 2 November 2026
+{: #EventStreams-gen2-02nov2026}
+{: release-note}
 
+{{site.data.keyword.messagehub}} Gen 1 to Gen 2 migration is now generally available  
+:  Migration from Gen 1 (Classic) to Gen 2 (VPC) is now available for {{site.data.keyword.messagehub}}. You can migrate by using the drain-and-switch migration process, which provisions a new Gen 2 deployment, recreates topic configurations, and coordinates the cutover of producer and consumer applications from Gen 1 to Gen 2. For more information, see [Migrating {{site.data.keyword.messagehub}} from Gen 1 to Gen 2](/docs/EventStreams-gen2?topic=EventStreams-gen2-event-streams-relnotes-gen2).
 
 ## 7 October 2026
 {: #EventStreams-gen2-017oct2026}
