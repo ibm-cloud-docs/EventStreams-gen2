@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: console tools, console producer, console consumer, consumer groups
 
@@ -12,13 +12,15 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Using Kafka console tools with {{site.data.keyword.messagehub}}
+# Using Kafka console tools with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #kafka_console_tools}
 
 [Gen 2]{: tag-purple}
 
-Apache Kafka comes with various console tools for simple administration and messaging operations. You can use many of them with {{site.data.keyword.messagehub}}, although {{site.data.keyword.messagehub}} does not permit connection to its KRaft cluster.
+Learn how to use Apache Kafka console tools for administration and messaging operations with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}.
 {: shortdesc}
+
+Apache Kafka comes with various console tools for simple administration and messaging operations. You can use many of them with {{site.data.keyword.messagehub}}, although {{site.data.keyword.messagehub}} does not permit connection to its KRaft cluster.
 
 ### Download the console tools
 {: #download_tools}

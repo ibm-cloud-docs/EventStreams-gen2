@@ -1,22 +1,24 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-07-24"
+  years: 2025, 2026
+lastupdated: "2026-11-04"
 
 keywords: java client, api, settings, create topics, delete topics
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Using the administration Kafka Java client API
+# Administering Kafka with Java client API on {{site.data.keyword.cloud_notm}}
 {: #kafka_java_api}
 
-If you use a Kafka client version 0.11 or later, or Kafka Streams version 0.10.2.0 or later, you can use APIs to create and delete topics. We put some restrictions on the settings that are allowed when you create topics. See the following settings that you can modify.
+Use Kafka client version 0.11 or later to create and delete topics with Java API on {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} including administration API.
 {: shortdesc}
+
+If you use a Kafka client version 0.11 or later, or Kafka Streams version 0.10.2.0 or later, you can use APIs to create and delete topics. We put some restrictions on the settings that are allowed when you create topics. See the following settings that you can modify.
 
 cleanup.policy
 :   Set to `delete` (default), `compact` or `delete,compact`.
@@ -50,4 +52,3 @@ segment.ms
 
     Enterprise plan only. Set to any value between 5 minutes and 30 days.
     {: note}
-

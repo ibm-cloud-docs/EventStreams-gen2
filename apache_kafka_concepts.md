@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: brokers, messages, topics, partitions, replication, replica, producer, consumer, consumer group
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Learning Apache Kafka concepts
+# Understanding Apache Kafka: Distributed streaming concepts
 {: #apache_kafka}
 
 [Gen 2]{: tag-purple}
 
-Apache Kafka is a distributed streaming platform used by many companies for numerous batch workloads, as well as real-time data integration, and data streaming use cases.
+Learn about Apache Kafka, a distributed streaming platform used for batch workloads, real-time data integration, and data streaming use cases on {{site.data.keyword.cloud_notm}}.
 {: shortdesc}
 
 ![Kafka architecture diagram.](kafka_overview.png "The diagram shows a Kafka architecture. A producer is feeding into a Kafka topic over three partitions and the messages are then subscribed to by consumers."){: caption="The diagram shows a Kafka architecture." caption-side="bottom"}

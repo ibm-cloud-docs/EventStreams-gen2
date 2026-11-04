@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: HA for Event Streams, DR for Event Streams, Event Streams recovery time objective, high availability, disaster recovery
 
@@ -14,13 +14,15 @@ subcollection: EventStreams-gen2
 
 
 
-# Understanding high availability and disaster recovery for {{site.data.keyword.messagehub}}
+# Ensuring high availability and disaster recovery for {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #eventstreams-ha-dr}
 
 [Gen 2]{: tag-purple}
 
-[High availability](#x2284708){: term} (HA) is the ability for a service to remain operational and accessible in the presence of unexpected failures. [Disaster recovery](#x2113280){: term} is the process of recovering the service instance to a working state.
+Learn about high availability and disaster recovery for {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud_notm}}, including architecture and features for maintaining service continuity.
 {: shortdesc}
+
+[High availability](#x2284708){: term} (HA) is the ability for a service to remain operational and accessible in the presence of unexpected failures. [Disaster recovery](#x2113280){: term} is the process of recovering the service instance to a working state.
 
 {{site.data.keyword.messagehub_full}} is a global service and you can find the available region and data center locations in the [Service and infrastructure availability by location](/docs/overview?topic=overview-services_region) documentation. As a global service, {{site.data.keyword.messagehub}}} fulfills the defined [Service Level Objectives (SLO)](/docs/resiliency?topic=resiliency-slo) using the Enterprise Gen2 plans. The SLO is not a warranty and {{site.data.keyword.IBM}} will not issue credits for failure to meet an objective.
 
@@ -106,4 +108,4 @@ All upgrades follow the {{site.data.keyword.IBM_notm}} service best practices an
 Complex changes are enabled and disabled with feature flags to control exposure.
 
 
-Changes that impact customer workloads are detailed in notifications. For more information, see [monitoring notifications and status](/docs/account?topic=account-viewing-cloud-status) for planned maintenance, announcements, and [release notes](/docs/EventStreams-gen2?topic=EventStreams-gen2-event-streams-relnotes-gen2) that impact Event Streams.
+Changes that impact customer workloads are detailed in notifications. For more information, see [monitoring notifications and status](/docs/support?topic=support-viewing-status) for planned maintenance, announcements, and [release notes](/docs/EventStreams-gen2?topic=EventStreams-gen2-event-streams-relnotes-gen2) that impact Event Streams.

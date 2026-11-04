@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: ksqlDB, ksql
 
@@ -12,31 +12,30 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Using ksqlDB with {{site.data.keyword.messagehub}}
+# Stream processing with ksqlDB on {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #ksql_using}
 
 [Gen 2]{: tag-purple}
 
-You can use [KSQL](https://github.com/confluentinc/ksql){: external} with {{site.data.keyword.messagehub}} for stream processing. 
+Use ksqlDB with {{site.data.keyword.messagehub}} for stream processing on {{site.data.keyword.cloud_notm}}. Learn how to set up and run ksqlDB for event streaming applications.
 {: shortdesc}
 
-ksqlDB is a purpose-built database for event streaming. Use it to build end-to-end event streaming applications quickly with a purpose-built stream processing database for Apache Kafka.
+ksqlDB is an event streaming database built on Apache Kafka that enables you to build stream processing applications by using familiar SQL syntax.
 
-The quickest and easiest way to run ksqlDB with {{site.data.keyword.messagehub}} is to use a docker container as described in [ksqlDB quickstart](https://ksqldb.io/quickstart.html). 
+You can run ksqlDB with {{site.data.keyword.messagehub}} by using Docker as described in the [ksqlDB quickstart](https://www.confluent.io/product/ksqldb/){: external}.
 
-Because ksqlDB needs to create a topic with an unlimited `retention.ms` setting, you can use only ksqlDB with the Enterprise plan.
+Because ksqlDB requires topics with an unlimited `retention.ms` setting, you can use ksqlDB only with the Enterprise plan.
 {: important}
 
-Complete the following steps to get set up. When complete, you can run all queries that are listed in the [ksqlDB Quick Start Guide](https://ksqldb.io/quickstart.html#quickstart-content){: external}. {: #kqsldbsteps}
+Complete the following steps to configure ksqlDB. When configuration is complete, you can run the queries described in the [ksqlDB Quick Start Guide](https://www.confluent.io/product/ksqldb/#quickstart-content){: external}.
 
-1. Use the {{site.data.keyword.messagehub}} dashboard in the {{site.data.keyword.Bluemix_notm}} console to create a topic called `_confluent-ksql-default__command_topic` with a single partition and the default retention period.
+1. In the {{site.data.keyword.cloud_notm}} console, navigate to your {{site.data.keyword.messagehub}} instance and create a topic named `_confluent-ksql-default__command_topic` with one partition and the default retention period.
 
-2. If you want to run ksqlDB in docker container, follow these steps:
+2. To run ksqlDB in a Docker container:
    
-    a. Create `docker-compose.yml` file with the following contents:
+    a. Create a `docker-compose.yml` file with the following configuration:
     
-    ```text
-    ---
+    ```yaml
     version: '2'
 
     services:
@@ -65,61 +64,67 @@ Complete the following steps to get set up. When complete, you can run all queri
         entrypoint: /bin/sh
         tty: true
     ```
+    {: codeblock}
     
-    Where BOOTSTRAP_SERVERS and PASSWORD are the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in {{site.data.keyword.Bluemix_notm}}.
+    Replace `<BOOTSTRAP_SERVERS>` and `<PASSWORD>` with the connection values from your service credential.
 
-    b. From the directory that you created the file, run the following command to start ksqlDB server.
+    b. From the directory containing the file, start the ksqlDB server:
     
-    ```text
-    docker-compose up
+    ```sh
+    docker-compose up -d
     ```
+    {: pre}
 
-    c. Run the following command to connect to the ksqlDB server and start an interactive command-line interface (CLI) session. 
+    c. Connect to the ksqlDB server and launch an interactive CLI session:
     
-    ```text
+    ```sh
     docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
     ```
+    {: pre}
 
-3. If you are not running ksqlDB in docker container, then follow these steps:
+3. To run ksqlDB natively from source:
  
     a. Clone the ksqlDB repository:
     
-    ```text
-    git clone https://github.com/confluentinc/ksql
+    ```sh
+    git clone https://github.com/confluentinc/ksql.git
     ```
+    {: pre}
 
-    b. Navigate to the ksqlDB directory and compile the code. 
+    b. Navigate to the repository directory and compile the project:
     
-    ```text
+    ```sh
     cd ksql
     mvn clean install -Dmaven.test.skip=true
     ```
+    {: pre}
     
-    c. Create an {{site.data.keyword.messagehub}} ksqlDB configuration file.
-
-    For example:
+    c. Create an {{site.data.keyword.messagehub}} ksqlDB configuration file (for example, `config/ibm-eventstreams.properties`):
     
-    ```text
-    bootstrap.servers=BOOTSTRAP_SERVERS
+    ```properties
+    bootstrap.servers=<BOOTSTRAP_SERVERS>
     listeners=http://localhost:8088
     security.protocol=SASL_SSL
     sasl.mechanism=PLAIN
-    sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="PASSWORD";
+    sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="<PASSWORD>";
     ksql.sink.replications.default=3
     ```
+    {: codeblock}
     
-    Where BOOTSTRAP_SERVERS and PASSWORD are the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in {{site.data.keyword.Bluemix_notm}}.
+    Replace `<BOOTSTRAP_SERVERS>` and `<PASSWORD>` with your service credential values.
 
-    d. Start ksqlDB server by using the following command:
+    d. Start the ksqlDB server:
     
-    ```text
+    ```sh
     ./bin/ksql-server-start ./config/ibm-eventstreams.properties
     ```
+    {: pre}
     
-    e. Start ksqlDB CLI by using the following command:
+    e. Start the ksqlDB CLI:
     
-    ```text
+    ```sh
     ./bin/ksql
     ```
+    {: pre}
 
-When you complete these steps, you can run all queries that are listed in the [ksqlDB Quick Start Guide](https://ksqldb.io/quickstart.html#quickstart-content){: external}.
+When you complete these steps, you can run stream processing queries in ksqlDB.

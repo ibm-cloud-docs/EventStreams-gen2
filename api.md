@@ -2,59 +2,68 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
-subcollection: event-streams-gen2
+subcollection: EventStreams-gen2
 
-keywords: api
+keywords: api, resource controller, rest api, event streams api
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
 
-# {{site.data.keyword.messagehub}} API
+# Using the {{site.data.keyword.messagehub}} API on {{site.data.keyword.cloud_notm}}
 {: #api}
 
 [Gen 2]{: tag-purple}
 
-The {{site.data.keyword.messagehub}} API generally utilizes the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#intro) for operation purposes. Use this API document to work with your data services.
+Learn about the {{site.data.keyword.messagehub}} API on {{site.data.keyword.cloud_notm}}, including authentication, error handling, and available methods for managing your data services.
+{: shortdesc}
+
+The {{site.data.keyword.messagehub}} API uses the [Resource Controller API](/docs/apis/resource-controller/resource-controller#intro) for lifecycle management operations. Use this reference to manage your service instances programmatically.
 {: note}
 
 ## Authentication
 {: #api-authentication}
 
-Access to the API uses token authentication, by using the header `Authorization: Bearer <token>`. The token must be [IAM-issued](/apidocs/iam-identity-token-api). You can send in an IAM API key directly as the token or [use the API key to generate an IAM bearer token](/docs/account?topic=account-iamtoken_from_apikey).
+Access to the API requires token authentication by using the `Authorization: Bearer <token>` header. The token must be IAM-issued. You can provide an IAM API key directly as the token or [generate an IAM bearer token](/docs/iam?topic=iam-iamtoken_from_apikey) from your API key.
 
-To call each method, you'll need to be [assigned a role](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-iam) that includes the required IAM actions. Each method lists the associated action. For more information about IAM actions and how they map to roles, see [Managing access for {{site.data.keyword.cloud}}](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-iam).
+To call API methods, you must be assigned a role with the required IAM actions. For more information about IAM actions and how they map to roles, see [Managing access to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_access).
 
 ## Error handling
 {: #api-error-handling}
 
-The API uses standard `HTTP` response codes to indicate whether a method completed successfully. A `200` response always indicates success. A `4xx` type response is some sort of failure, and a `500` type response usually indicates an internal system error. Any of these responses might be accompanied by a JSON formatted body that contains more detailed error information.
+The API uses standard HTTP response codes to indicate request outcomes:
+
+- `200 OK` or `201 Created`: The request succeeded.
+- `4xx`: A client error occurred, such as invalid parameters or insufficient permissions.
+- `500`: An internal system error occurred.
+
+Responses can include a JSON response body with detailed error messages.
 
 ## Event tracking
 {: #api-event-tracking}
 
-You can monitor API activity within your account by using the [{{site.data.keyword.cloudaccesstraillong}}](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-at_events&interface=terraform) service. Whenever an API method is called, an event is generated that you can then track and audit from within Activity Tracker. The specific event type is listed for each individual method.
+You can monitor API activity in your account by using the [{{site.data.keyword.cloudaccesstraillong}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events) service. When you invoke an API method, an event is generated that you can track and audit in Activity Tracker.
 
 ## Deployment IDs and CRNs
 {: #api-deployment}
 
-Deployment IDs are CRNs on the Cloud Data Services platform. When you use the CRN, remember to URL encode the CRN value as it might include the forward-slash (/) %2F character.
+Deployment IDs are Cloud Resource Names (CRNs). When you use a CRN in API request paths, URL-encode the CRN value because it contains forward slash (`/`) characters (`%2F`).
 
-Example: The following CRN
+Example CRN:
 
-```sh
-   crn:v1:bluemix:public:messagehub:us-south:a/274074dce64e9c423ffc238516c755e1:29caf0e7-120f-4da8-9551-3abf57ebcfc7::
-   ```
-{: pre}
+```text
+crn:v1:bluemix:public:messagehub:us-south:a/274074dce64e9c423ffc238516c755e1:29caf0e7-120f-4da8-9551-3abf57ebcfc7::
+```
+{: codeblock}
 
-becomes as follows when URL encoded.
+URL-encoded CRN:
 
-```sh
-   crn%3Av1%3Abluemix%3Apublic%3Amessagehubs%3Aus-south%3Aa%2F274074dce64e9c423ffc238516c755e1%3A29caf0e7-120f-4da8-9551-3abf57ebcfc7::
-   ```
-{: pre}
+```text
+crn%3Av1%3Abluemix%3Apublic%3Amessagehub%3Aus-south%3Aa%2F274074dce64e9c423ffc238516c755e1%3A29caf0e7-120f-4da8-9551-3abf57ebcfc7::
+```
+{: codeblock}
 
 
 ## Pagination
@@ -115,17 +124,17 @@ Access Tags:
 #### Get deployment information
 {: #api-methods-get-deployment}
 
-Gets the full data that is associated with a deployment. This data includes the ID, name, database type, and version.
+Retrieve the complete data associated with a deployment, including the ID, name, plan, connection details, and configuration.
 
 ```sh
-GET /v2/resource_instances/{id}`
+GET /v2/resource_instances/{id}
 ```
 {: pre}
 
 Example request:
 
 ```sh
-curl -X GET https://resource-controller.cloud.ibm.com/v2/resource_instances/8d7af921-b136-4078-9666-081bd8470d94 -H "Authorization: Bearer <IAM token>" \
+curl -X GET https://resource-controller.cloud.ibm.com/v2/resource_instances/8d7af921-b136-4078-9666-081bd8470d94 -H "Authorization: Bearer <IAM token>"
 ```
 {: pre}
 
@@ -225,18 +234,23 @@ Example response:
 ```
 {: pre}
 
-#### How to manage and update your database configuration
+#### Provision and configure a service instance
 {: #api-manage-config}
 
+Create and configure a new {{site.data.keyword.messagehub}} service instance.
+
 ```sh
-POST /v2/resource_instances`
+POST /v2/resource_instances
 ```
 {: pre}
 
 Example request:
 
 ```sh
-curl -X POST https://resource-controller.cloud.ibm.com/v2/resource_instances -H "Authorization: Bearer <IAM token>" -H 'Content-Type: application/json' -d '{
+curl -X POST https://resource-controller.cloud.ibm.com/v2/resource_instances \
+  -H "Authorization: Bearer <IAM token>" \
+  -H "Content-Type: application/json" \
+  -d '{
     "name": "my-instance",
     "target": "ca-mon",
     "resource_group": "5c49eabc-f5e8-5881-a37e-2d100a33b3df",
@@ -253,62 +267,47 @@ curl -X POST https://resource-controller.cloud.ibm.com/v2/resource_instances -H 
       "$schema": {
         "version": "1.0.0"
       }
-    },
-  }'
-
-Input Parameters
-
-  "dataservices": Object
-
-  {
-
-    "kafka": Object
-
-    {
-
-      "storage_gb":  Integer,
-
-      "throughput_mb_s": Integer
-
-    },
-
-    "encryption":  Object
-
-    {
-
-      "disk": String
-
-    },
-
-    "version": String,
-
-    "$schema": Object
-
-    {
-
-      "version": String
-
     }
-
-  },
+  }'
 ```
 {: pre}
 
-## Transition documentation
-{: #api-transition-doc}
+### Input parameters
+{: #api-input-parameters}
 
-Information you can expect to get back:
+The request body for configuring a service instance supports the following properties:
 
-- The last task you have conducted is seen under the `last_operation`.
-- Product connection information under connection parameter.
-- Product specific information under the product object (for example kafka).
+`dataservices` (object)
+:   Service-specific configuration object.
 
-#### Methods not available for MVP
-{: #api-limitations}
+`dataservices.kafka` (object)
+:   Kafka configuration parameters.
 
-Waiting for context-based restrictions (CBR) implementation:
+`dataservices.kafka.storage_gb` (integer)
+:   Configured storage capacity in gigabytes.
 
-- Retrieve the allowlisted addresses and ranges for a deployment.
-- Set the allowlist for a deployment.
-- Add an address or range to the allowlist for a deployment.
-- Delete an address or range from the allowlist of a deployment.
+`dataservices.kafka.throughput_mb_s` (integer)
+:   Configured throughput allocation in megabytes per second.
+
+`dataservices.encryption.disk` (string)
+:   CRN of the customer-managed key used for disk encryption.
+
+`dataservices.version` (string)
+:   Data services platform version.
+
+## Response properties
+{: #api-response-properties}
+
+The API returns JSON objects with the following key fields:
+
+`last_operation` (object)
+:   Indicates the status of the most recent lifecycle task, such as provisioning or scaling.
+
+`connection` (object)
+:   Contains connection parameters, including bootstrap servers and REST URLs.
+
+`dataservices` (object)
+:   Contains service-specific information, such as Kafka capacity and encryption settings.
+
+`virtual_private_endpoints` (object)
+:   Lists private DNS domains, host mappings, and allocated IP endpoints across availability zones.

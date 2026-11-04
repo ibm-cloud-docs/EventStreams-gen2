@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: reserved disk usage, store data, storage
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Understanding reserved disk usage
+# Managing reserved disk space in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} 
 {: #ES_understanding_reserved_disk_usage}
 
 [Gen 2]{: tag-purple}
 
-Learn how the usable storage of an {{site.data.keyword.messagehub}} instance is used by the topics and partitions that are created and the configuration settings that you apply.
+Understand how {{site.data.keyword.messagehub}} uses usable storage for topics and partitions, and how configuration settings impact disk usage on {{site.data.keyword.cloud_notm}} including reserved disk usage.
 {: shortdesc}
 
 First of all, it's important to note that the defined storage of an {{site.data.keyword.messagehub}} instance is usable storage. That means that you do not need to worry about storage used by replicas (because all topics have their replication factor set to 3) that is not taken from the usable storage. This keeps things simple and you can plan how to map the retention

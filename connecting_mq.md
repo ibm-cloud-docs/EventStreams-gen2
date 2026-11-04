@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: MQ bridge, connect configuration
 
@@ -12,13 +12,15 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Connecting {{site.data.keyword.IBM}} MQ to {{site.data.keyword.messagehub}} by using the Kubernetes service
+# Connect {{site.data.keyword.IBM_notm}} MQ to {{site.data.keyword.messagehub}} using {{site.data.keyword.containerlong_notm}}
 {: #mq_connector}
 
 [Gen 2]{: tag-purple}
 
-Get the Kafka Connect runtime to run in an {{site.data.keyword.containerlong}} cluster. Then, start the {{site.data.keyword.IBM_notm}} MQ Source Connector to copy messages from an {{site.data.keyword.IBM_notm}} MQ source queue to a destination Kafka topic in {{site.data.keyword.messagehub}}.
+Learn how to run Kafka Connect in an {{site.data.keyword.containerlong}} cluster and use the {{site.data.keyword.IBM_notm}} MQ Source Connector to copy messages from {{site.data.keyword.IBM_notm}} MQ to {{site.data.keyword.messagehub}}.
 {: shortdesc}
+
+Get the Kafka Connect runtime to run in an {{site.data.keyword.containerlong}} cluster. Then, start the {{site.data.keyword.IBM_notm}} MQ Source Connector to copy messages from an {{site.data.keyword.IBM_notm}} MQ source queue to a destination Kafka topic in {{site.data.keyword.messagehub}}.
 
 The {{site.data.keyword.IBM_notm}} MQ Source Connector connects to an {{site.data.keyword.IBM_notm}} MQ queue manager and consumes MQ message data from an MQ queue. The Connector converts each MQ message into a Kafka record and sends the message to an {{site.data.keyword.messagehub}} Kafka topic.
 

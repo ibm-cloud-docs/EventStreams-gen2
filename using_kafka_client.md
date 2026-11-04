@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: java client, api, admin api, liberty, migrate client, sasl.jaas.config property
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Using the Kafka Java client
+# Using the Kafka Java client with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #kafka_java_using}
 
 [Gen 2]{: tag-purple}
 
-The Java&trade; Kafka API sample is an example producer and consumer that is written in Java, which directly uses the Kafka API. You can run this sample locally or in {{site.data.keyword.Bluemix_short}}.
+Learn how to use the Kafka Java client with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including sample code and configuration details for optimal performance.
 {: shortdesc}
 
 For optimal performance with the Java client, you are recommended to use version 2.6.0, or later. For more information, see [known restriction about Java Kafka calls](/docs/EventStreams-gen2?topic=EventStreams-gen2-restrictions#calls_timeout_kafka).
@@ -26,7 +26,7 @@ The sample code is in the [event-streams-samples GitHub project](https://github.
 
 For more information about the setup and running of the sample, see the [README.md](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-console-sample){: external}.
 
-For a detailed walkthrough of how to run the sample, see [Getting started with {{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-getting-started#getting_started_steps).
+For a detailed walkthrough of how to run the sample, see [Getting started with {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-getting-started).
 
 ## How to use, download, and run the {{site.data.keyword.runtime_liberty_notm}} sample
 {: #liberty_sample}

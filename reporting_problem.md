@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: reporting a problem, problem report
 
@@ -12,16 +12,15 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Reporting a problem to the {{site.data.keyword.messagehub}} team - Standard and Enterprise plans
+# Reporting issues for Standard and Enterprise plans in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #report_problem_enterprise}
 
 [Gen 2]{: tag-purple}
 
-If you encounter a problem with {{site.data.keyword.messagehub}}, first check the [{{site.data.keyword.Bluemix_notm}} status page](https://cloud.ibm.com/status?selected=status){: external}.
+Encountering issues with {{site.data.keyword.messagehub}} on Standard or Enterprise plans? Check the {{site.data.keyword.cloud_notm}} status page and report problems to the {{site.data.keyword.messagehub}} team.
 {: shortdesc}
 
 If you need help from the {{site.data.keyword.messagehub}} team, gather all the following information. The more information that you can provide upfront, the more efficiently the team can help with the problem:
-{: shortdesc}
 
 1. What is the CRN ID of the {{site.data.keyword.messagehub}} service that you use? You can provide this ID by pasting the full {{site.data.keyword.Bluemix_notm}} console URL after you click the service, or by pasting the output from the following CLI command:
 2.
@@ -38,4 +37,4 @@ If you need help from the {{site.data.keyword.messagehub}} team, gather all the 
 7. What is the issue that you are seeing? Which topics, client IDs, group IDs, and transaction IDs are affected?
 8. What impact does the problem have on your service?
 
-You can provide the information that you gathered to IBM in a support ticket by [creating a support case](/docs/account?topic=account-open-case){: external}.
+You can provide the information that you gathered to IBM in a support ticket by [creating a support case](/docs/support?topic=support-open-case).

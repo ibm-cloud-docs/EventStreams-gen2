@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: stand-alone, source connector, sink connector, distributed worker
 
@@ -12,13 +12,15 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Using Kafka Connect with {{site.data.keyword.messagehub}}
+# Integrating Kafka Connect with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #kafka_connect}
 
 [Gen 2]{: tag-purple}
 
-Kafka Connect is part of the Apache Kafka project and allows connecting external systems to Kafka. It consists of a runtime that can run [connectors](https://ibm.github.io/event-automation/connectors/) to copy data to and from a cluster. Its main characteristics are:
+Learn how to use Kafka Connect with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} for seamless data integration between external systems and Kafka clusters.
 {: shortdesc}
+
+Kafka Connect is part of the Apache Kafka project and allows connecting external systems to Kafka. It consists of a runtime that can run [connectors](https://ibm.github.io/event-automation/connectors/) to copy data to and from a cluster. Its main characteristics are:
 
 - Scalability: It can easily scale from a single worker to many.
 - Reliability: It automatically manages offsets and the lifecycle of connectors.
@@ -29,7 +31,8 @@ You can use Kafka Connect with {{site.data.keyword.messagehub_full}} and can run
 Kafka Connect can run in either stand-alone or distributed mode. Stand-alone mode is intended for testing and temporary connections between systems. Distributed mode is more appropriate for production use. The configuration required to use {{site.data.keyword.messagehub}} with these two modes is slightly different.
 
 ## Stand-alone worker configuration
-{: #standalone_worker notoc}
+{: #standalone_worker}
+{: notoc}
 
 The stand-alone worker does not use any internal topics. Instead, it uses a file for storing offset information.
 
@@ -47,7 +50,8 @@ You must provide the bootstrap servers and SASL credentials information in the w
 Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
 
 ### Source connector
-{: #source_connector notoc}
+{: #source_connector}
+{: notoc}
 
 The following example lists the properties that you must provide in your properties file:
 
@@ -79,7 +83,8 @@ The following example lists the properties that you must provide in your propert
 Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
 
 ## Distributed worker configuration
-{: #distributed_worker notoc}
+{: #distributed_worker}
+{: notoc}
 
 You must provide the bootstrap servers and SASL credentials information in the properties file that you supply when you start the Kafka Connect distributed workers. The following example lists the properties that you must provide in your properties file:
 

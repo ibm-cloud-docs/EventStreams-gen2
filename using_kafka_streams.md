@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: asl.jaas.config
 
@@ -12,13 +12,15 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Using Kafka Streams with {{site.data.keyword.messagehub}}
+# Processing data with Kafka Streams on {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #kafka_streams}
 
 [Gen 2]{: tag-purple}
 
-Kafka Streams is a stream processing library that is part of the Apache Kafka project. It simplifies building applications that process and analyze data in Kafka. 
+Learn how to use Kafka Streams with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} to process and analyze data in Kafka topics.
 {: shortdesc}
+
+Kafka Streams is a stream processing library that is part of the Apache Kafka project. It simplifies building applications that process and analyze data in Kafka.
 
 The topic APIs work with {{site.data.keyword.messagehub}} with no setup required. Specify your SASL credentials by using ```sasl.jaas.config``` or a JAAS file and set ```replication.factor``` to 3.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: troubleshooting, question, problem
 
@@ -12,90 +12,74 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Troubleshooting {{site.data.keyword.messagehub}}
+# Troubleshoot {{site.data.keyword.messagehub}} issues on {{site.data.keyword.cloud_notm}}
 {: #troubleshooting}
 
 [Gen 2]{: tag-purple}
 
-Use the troubleshooting tips to learn how to troubleshoot issues with {{site.data.keyword.messagehub_full}}.
+Learn how to resolve common issues with {{site.data.keyword.messagehub_full}}, including network-related problems and troubleshooting tips.
 {: shortdesc}
 
 ## Network related issues
 {: #network_related}
 
-If you have an Apache Kafka application that is unable to connect to a topic or unable to consume from or produce to a topic due to network issues, it could be manifested in following different ways.
+If an Apache Kafka client cannot connect or produce and consume records, review the following troubleshooting steps:
 
-- Unable to resolve host. Use nslookup or dig to check if the broker address could be resolved. If nslookup or dig fails, check your DNS server. Normally, the public endpoint resolves to three public IPs, as in the following examples.
+- **Unable to resolve host**: Use `nslookup` or `dig` to check whether the broker DNS hostname resolves. If hostname resolution fails, verify your VPC DNS resolver configuration. A private endpoint resolves to allocated IP addresses across your VPC subnets.
 
+    ```sh
+    nslookup kafka-0-mh-int-pipe-mzr-cse-kjh.private.us-south.messagehub.test.appdomain.cloud
     ```
-    $ nslookup broker-0-93g2bbjd0pz8ghkj.kafka.svc08.us-south.eventstreams.cloud.ibm.com
-    Server:		172.31.255.241
-    Address:	172.31.255.241#53
-    Non-authoritative answer:
-    broker-0-93g2bbjd0pz8ghkj.kafka.svc08.us-south.eventstreams.cloud.ibm.com	canonical name = kafka.svc08.us-south.eventstreams.cloud.ibm.com.
-    Name:	kafka.svc08.us-south.eventstreams.cloud.ibm.com
-    Address: 169.48.243.82
-    Name:	kafka.svc08.us-south.eventstreams.cloud.ibm.com
-    Address: 169.61.217.150
-    Name:	kafka.svc08.us-south.eventstreams.cloud.ibm.com
-    Address: 52.117.238.34
+    {: pre}
+
+- **Connection timeout**: Use `nc` (netcat) to test TCP connectivity to port 9093 on the broker hostname:
+
+    ```sh
+    nc -zv kafka-0-mh-int-pipe-mzr-cse-kjh.private.us-south.messagehub.test.appdomain.cloud 9093
     ```
+    {: pre}
 
-    Private endpoint resolves to three private IPs that start with 166.9.
+    A timeout indicates that network firewalls, security groups, or routing policies are blocking traffic on port 9093. Ensure your VPC security groups and subnet network ACLs permit outbound and inbound TCP traffic on port 9093.
 
-    ```
-    $ nslookup kafka-0-mh-int-pipe-mzr-cse-kjh.private.us-south.messagehub.test.appdomain.cloud
-    Server:		172.31.255.241
-    Address:	172.31.255.241#53
-    ```
+- **Connection reset or client disconnect**: During scheduled maintenance windows, brokers undergo rolling restarts. A properly configured Kafka client automatically reconnects to an alternate broker without interrupting message processing. If your client disconnects for an extended period, verify that your client retry and timeout settings follow recommended guidelines. For more information, see [Using Kafka Java client](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_java_using).
 
--  Connection timeout. Use netcat (nc) to check the connectivity to the broker.
-
-  ```
-  $ nc -zv broker-0-93g2bbjd0pz8ghkj.kafka.svc08.us-south.eventstreams.cloud.ibm.com 9093
-  Connection to broker-0-93g2bbjd0pz8ghkj.kafka.svc08.us-south.eventstreams.cloud.ibm.com port 9093 [tcp/*] succeeded!
-  ```
-
-  An nc command timeout means that the network where your client application is running could not connect to the broker addresses. It could be caused by a  number of reasons, such as firewall rules, calico network policies, and service mesh setup. Work with your network administrator to get netcat working. If the service instance is on the Enterprise plan and the cluster has a private-only service endpoint, check if your client application’s IPs were added to the IP allowlist or CBR rules. For more information, see [Restricting network access](/docs/EventStreams?topic=EventStreams-restrict_access).
-
-- Connection reset or client disconnected. This may not necessarily be a network issue, rather than an application level issue.
-
-   During the maintenance window, brokers and proxies are restarted in a rolling manner and the Kafka client may see disconnect exception. With the correct configuration, the Kafka client reconnects to a different broker immediately, so that availability is not affected. If your application experiences a disconnect for an extended period of time, share your Kafka client library version, client configuration, and logs with debug enabled, and we will review and suggest appropriate values to configure the client to be resilient to broker restart. For supported Kafka client libraries, refer to the [list of recommended clients](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_java_using). 
-
-   If the issue still persists, raise a [support ticket](/docs/EventStreams-gen2?topic=EventStreams-gen2-report_problem_enterprise) for further investigation.
+If issues persist, open a [support case](/docs/EventStreams-gen2?topic=EventStreams-gen2-report_problem_enterprise).
 
 ## HTTP error codes for REST APIs and how to fix them
 {: #http_error_codes}
 
-HTTP error codes apply to REST APIs, including [Admin REST](/apidocs/event-streams/adminrest), [REST Producer](/apidocs/event-streams/restproducer), and [Schema Registry](/apidocs/event-streams/restproducer_v2).
+HTTP error codes apply to REST APIs, including [Admin REST](/docs/apis/event-streams/adminrest), [REST Producer](/docs/apis/event-streams/restproducer), and [Schema Registry](/docs/apis/event-streams/restproducer_v2).
 
-| HTTP error code  | Admin REST  | REST Producer  | Schema Registry  |
-| --- | --- | --- |--- |
-| 400 | Bad request - not a valid request. Correct your request. | Bad request - not a valid request. This error might be caused by a malformed payload, or unsupported key type or exceeded key/message size. | Bad request - not a valid request. Correct your request. |
-| 403 | Not authorized to perform the operation. The API key used is missing a certain role. The ID that was used to create the resource key does not have an IAM policy. For more information, see [Managing authentication to your Event Streams instances](/docs/EventStreams-gen2?topic=EventStreams-gen2-security). | Forbidden. The token that you have provided does not have sufficient permissions to produce to a topic. Check if you have provided the token with the required access role. For more information, see [Managing authentication to your Event Streams instances](/docs/EventStreams-gen2?topic=EventStreams-gen2-security). | Forbidden. The client is not authorized to perform this request. The service ID is not authorized to access a schema resource. For more information, see [Managing authentication to your Event Streams instances](/docs/EventStreams-gen2?topic=EventStreams-gen2-security). |
-| 404 | Not found. Unable to find the topic with the topic name you specified. {{site.data.keyword.messagehub}} set `auto.create.topics.enable` to `false`, thus the topic must be explicitly created before using it. | Not found. The topic does not exist. {{site.data.keyword.messagehub}} set `auto.create.topics.enable` to `false`, thus topic must be explicitly created before producing message to it. | Not found. Either the registry does not contain a schema with the specified schema ID, or the schema identified by the schema ID does not contain a version corresponding to the specified version number, or the schema is not configured with the specified type of rule. |
-| 415 |  | Unsupported media type. |  |
-| 422 | Semantically invalid request. You have a malformed request. If you receive this error when you try to create a new topic, it might be due to the maximum number of allowed partitions for your plan. For more information, see [How Event Streams uses limits and quotas for verifying the limits](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas). |  |  |
-| 503 | Service unavailable. The request failed due to {{site.data.keyword.messagehub}} brokers being unavailable. An error occurred while handling the request. The service is unavailable. If you receive this error when creating a new topic fails, verify the [limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas). |Service unavailable. The request failed due to {{site.data.keyword.messagehub}} brokers being unavailable.  |  |
-{: caption="HTTP error codes for REST APIs and how to fix them" caption-side="bottom"}
+| HTTP error code | Admin REST | REST Producer | Schema Registry |
+| --- | --- | --- | --- |
+| 400 | Bad request. The request payload or syntax is invalid. | Bad request. The message payload is malformed or exceeds maximum message size (1 MB). | Bad request. The schema definition payload is invalid. |
+| 403 | Forbidden. The IAM token lacks the required permissions. For more information, see [Managing access](/docs/EventStreams-gen2?topic=EventStreams-gen2-security). | Forbidden. The IAM identity lacks Writer permissions on the topic. | Forbidden. The IAM identity lacks access to the schema resource. |
+| 404 | Not found. The requested topic does not exist. Automatic topic creation is disabled. | Not found. The target topic does not exist. | Not found. The specified schema ID or version does not exist. |
+| 415 | Not applicable. | Unsupported media type. Ensure `Content-Type` is set to `application/json`. | Unsupported media type. |
+| 422 | Unprocessable entity. The request exceeds partition or configuration limits. For more information, see [Limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas). | Not applicable. | Unprocessable entity. Schema validation failed. |
+| 503 | Service unavailable. Temporary broker unavailability. Retry with backoff. | Service unavailable. Temporary broker unavailability. Retry with backoff. | Service unavailable. |
+{: caption="HTTP error codes for REST APIs" caption-side="bottom"}
 
-The Kafka API is a TCP-based API. For more information, refer to its [protocol guide](https://kafka.apache.org/) regarding the error codes.
+The Kafka native client API uses TCP protocol error codes. For more information, see the [Apache Kafka protocol guide](https://kafka.apache.org/protocol.html){: external}.
 
 ## Unable to create a Kafka topic
 {: #unable_create_kafka_topic}
 
 If you are not able to create topics, it might be due to the following reasons:
 
-- You do not have the [Administration role on the cluster](/docs/EventStreams-gen2?topic=EventStreams-gen2-security#security_resources).
-- There is insufficient disk space. Check how the [disk space is reserved according to the topic configuration](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_understanding_reserved_disk_usage). To solve this issue, delete unused topics and update topic's config `retention.ms` and `retention.bytes` to be smaller. For the Enterprise instance, scale the clusters. For more information see [Scaling Enterprise plan capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
+- Your identity lacks Manager or Administrator permissions on the cluster resource. For more information, see [Managing access](/docs/EventStreams-gen2?topic=EventStreams-gen2-security).
+- Storage capacity is exhausted. To resolve this issue, delete unused topics or decrease `retention.ms` and `retention.bytes`. For Enterprise instances, scale storage capacity as described in [Scaling Enterprise plan capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
 
-## Error "Failed to send message"
+## Error: "Failed to send message"
 {: #error_failed_send_message}
 
-An Event Streams target returns an error, and you are unable to send events to it.  When you view the logs, the error is "Failed to send message", and the entry contains information such as the following:
+When producer applications cannot send records to {{site.data.keyword.messagehub}}, logs can report:
 
-> "Failed to send message","error":"kafka server: Request was for a topic or partition that does not exist on this broker","reason":"invalid_or_unreachable_topic"
+```text
+"Failed to send message", "error": "kafka server: Request was for a topic or partition that does not exist on this broker", "reason": "invalid_or_unreachable_topic"
+```
+{: codeblock}
 
-The error can occur if the topic has not been created or has been deleted, or if you are sending data to a broker that is not the current leader for the topic partition. Leadership of topic partitions can change over time, because if a broker if offline for any reason, leadership of its partitions gets moved to other brokers until it recovers.
+This error occurs when the destination topic does not exist, or when the client produces to a broker that is not the partition leader. If a broker goes offline, partition leadership transitions to another broker in the replica set.
 
-To resolve the problem, verify that the topic exists. With the correct configuration, the Kafka client refreshes the metadata or reconnects to a different broker quickly, so that this type of error situation often recovers on its own. If the issue is persistent, [contact Cloud Support](/docs/EventStreams-gen2?topic=EventStreams-gen2-gettinghelp) for problem investigation.
+To resolve the problem, verify that the target topic exists. Ensure your Kafka producer client refreshes metadata (`metadata.max.age.ms`) and reconnects to the new partition leader. If the issue persists, open an [IBM Cloud support case](/docs/EventStreams-gen2?topic=EventStreams-gen2-gettinghelp).

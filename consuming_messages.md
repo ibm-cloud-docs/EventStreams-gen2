@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: messages, consumer, record, offset, rebalancing, consumer group, consumer properties
 
@@ -12,11 +12,11 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Consuming messages
+# Consuming messages from Kafka topics with Event Streams
 {: #consuming_messages}
 [Gen 2]{: tag-purple}
 
-A consumer is an application that consumes streams of messages from Kafka topics. A consumer can subscribe to one or more topics or partitions. This information focuses on the Java™ programming interface that is part of the Apache Kafka project. The concepts apply to other languages too, but the names are sometimes a little different.
+Learn how to consume messages from Kafka topics using a consumer application with Event Streams, including configuration settings and best practices.
 {: shortdesc}
 
 When a consumer connects to Kafka, it makes an initial bootstrap connection. This connection can be to any of the servers in the cluster. The consumer requests the partition and leadership information about the topic that it wants to consume from. Then, the consumer establishes another connection to the partition leader and can consume messages. These actions happen automatically internally when your consumer connects to the Kafka cluster.
@@ -145,7 +145,8 @@ When consumers are added to or removed from a group, a group rebalance takes pla
 If you are notified with the "on partitions revoked" callback, use a ConsumerRebalanceListener to manually commit offsets (if you are not using auto-commit) and to pause further processing until notified of the successful rebalance by using the "on partition assigned" callback.
 
 ## Code snippets
-{: #consumer_code_snippets notoc}
+{: #consumer_code_snippets}
+{: notoc}
 
 These code snippets are at a high level to illustrate the concepts involved. For complete examples, see the {{site.data.keyword.messagehub}} samples in [GitHub](https://github.com/ibm-messaging/event-streams-samples){: external}.
 

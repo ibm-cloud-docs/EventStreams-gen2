@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: provision, create, cli, vpc, service key
 
@@ -12,19 +12,20 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Provisioning
+# Provisioning {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #provisioning}
 
 [Gen 2]{: tag-purple}
 
-Provision an {{site.data.keyword.messagehub}} deployment through the [catalog](https://cloud.ibm.com/catalog){: external}, the CLI or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs){: external}.
+Learn how to provision {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} using the console, CLI, or Terraform. Get started with the Enterprise Gen 2 plan for isolated and secure workloads.
+{: shortdesc}
 
 ## Step 1: Select your plan
 {: #choose_plan}
 
-{{site.data.keyword.messagehub}} offers different plans according to the generation of the platform, see [Choosing your plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose){: external}. For the Gen2 platform, the [Enterprise Gen 2 plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose) can be selected.
+{{site.data.keyword.messagehub}} offers plans based on platform generation. For more information, see [Choosing your plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose).
 
-The [Enterprise Gen 2 plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose) offers pay-as-you-go access to an isolated single-tenant {{site.data.keyword.messagehub}} service running on the Gen2 (VPC) platform. In addition to a selection of throughput and storage options, this plan also offers user-managed encryption private endpoints and meets a higher number of regulatory compliance standards. The Enterprise Gen2 plan is the best choice if data isolation, scalability, security, guaranteed performance, and increased retention are important considerations.
+The [Enterprise Gen 2 plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose) provides dedicated single-tenant {{site.data.keyword.messagehub}} service instances on the VPC platform. In addition to scalable throughput and storage options, this plan offers customer-managed encryption and private endpoints. The Enterprise Gen 2 plan is ideal for workloads where data isolation, security, performance, and extended retention are essential.
 
 ## Step 2: Provision using the console
 {: #provision_instance_ui}
@@ -32,11 +33,11 @@ The [Enterprise Gen 2 plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan
 
 1. Log in to the {{site.data.keyword.cloud_notm}} console.
 
-2. In the [**Catalog**,](https://cloud.ibm.com/catalog), search for `{{site.data.keyword.messagehub}}`, then click the {{site.data.keyword.messagehub}} tile to go to the provisioning page.
+2. In the [**Catalog**](https://cloud.ibm.com/catalog){: external}, search for `{{site.data.keyword.messagehub}}`, then click the {{site.data.keyword.messagehub}} tile to open the provisioning page.
 
 3. Select a **Location** that supports the Gen 2 platform.
 
-4. From the **Select a pricing plan** section, select the **Enterprise Gen 2 plan** .
+4. In the **Select a pricing plan** section, select the **Enterprise Gen 2 plan**.
 
 5. Enter a name for your service. You can use the default value.
 
@@ -60,21 +61,21 @@ To allow you to connect to your {{site.data.keyword.messagehub}} instance, creat
 {: #provision-with-cli}
 {: cli}
 
-Before provisioning, follow the instructions provided in the documentation to install the [{{site.data.keyword.cloud_notm}} CLI tool](/docs/cli?topic=cli-install-ibmcloud-cli){: external}.
+Before you provision an instance, install the [{{site.data.keyword.cloud_notm}} CLI tool](/docs/cli?topic=cli-install-ibmcloud-cli).
 
-1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API key (`ibmcloud --apikey key or @key_file`) to authenticate. For more information about how to log in by using the CLI, see [General CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login){: external} under `ibmcloud login`.
+1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated ID, log in with a one-time passcode (`ibmcloud login --sso`) or an API key (`ibmcloud login --apikey <key>`). For more information, see [General CLI commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login).
 
       ```sh
       ibmcloud login
       ```
       {: pre}
 
-2. You can create an instance by using the following command:
+2. Run the following command to create an instance:
 
     ```sh
     ibmcloud resource service-instance-create <NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> -g <RESOURCE_GROUP>
     ```
-    {: .pre}
+    {: pre}
 
 Example command for {{site.data.keyword.messagehub}}:
 
@@ -94,7 +95,7 @@ ibmcloud resource service-instance-create <NAME> messagehub enterprise-gen2 ca-m
    }
 }'
 ```
-{: .pre}
+{: pre}
 
 ## Step 3: Create a service credential using the CLI
 {: #create_credential_cli}
@@ -103,55 +104,55 @@ ibmcloud resource service-instance-create <NAME> messagehub enterprise-gen2 ca-m
 To create a service credential:
 
 ```sh
-ibmcloud resource service-key-create NAME [ROLE_NAME] --instance-name SERVICE_INSTANCE_NAME
+ibmcloud resource service-key-create <NAME> [<ROLE_NAME>] --instance-name <SERVICE_INSTANCE_NAME>
 ```
-{: .pre}
+{: pre}
 
-Replace the variables with your own values:
+Replace the variables with your values:
 
-- NAME - replace with the name to use for the service credential.
-- ROLE_NAME - replace with the name of the IAM role for the service credential (MANAGER, WRITER, or READER].
-- SERVICE_INSTANCE_NAME - replace with the name of the service instance the service credential is to be associated with.
+- `<NAME>`: The name of the service credential.
+- `<ROLE_NAME>`: The IAM role for the credential (`Manager`, `Writer`, or `Reader`).
+- `<SERVICE_INSTANCE_NAME>`: The name of the service instance.
 
-For more information, see [using the CLI](/docs/EventStreams-gen2?topic=EventStreams-gen2-cli-reference).
+For more information, see [Getting started with CLI](/docs/EventStreams-gen2?topic=EventStreams-gen2-cli-reference).
 
 ## Step 2: Provisioning using Terraform
 {: #provision-with-terraform}
 {: terraform}
 
-To create an {{site.data.keyword.messagehub}} instance with default provisioning parameters:
+To create an {{site.data.keyword.messagehub}} instance with Terraform:
 
-```tf
+```hcl
 resource "ibm_resource_instance" "es_instance_1" {
-  name              = "my_es_instance_1"
-  service           = "messagehub"
-  plan              = "enterprise-gen2"
-  location          = "ca-mon"
+  name     = "my_es_instance_1"
+  service  = "messagehub"
+  plan     = "enterprise-gen2"
+  location = "ca-mon"
 
   timeouts {
     create = "15m"
     update = "15m"
     delete = "15m"
   }
+}
 ```
+{: codeblock}
 
 ## Step 3: Create a service credential using Terraform
 {: #create_credential_terraform}
 {: terraform}
 
-To create a service credential:
+To create a service credential with Terraform:
 
-```tf
+```hcl
 resource "ibm_resource_key" "serviceKey" {
-  name                  = "NAME"
-  role                  = "ROLE_NAME"
-  resource_instance_id  = "${ibm_resource_instance.es_instance_1.id}"
+  name                 = "my-service-key"
+  role                 = "Writer"
+  resource_instance_id = ibm_resource_instance.es_instance_1.id
 }
 ```
+{: codeblock}
 
-Replace the variables with your own values:
-
-- NAME - replace with the name to use for the service credential.
-- ROLE_NAME - replace with the name of the IAM role for the service credential (MANAGER, WRITER, or READER].
+Replace the configuration values with your desired credential name and role (`Manager`, `Writer`, or `Reader`).
 
 For more information, see [using Terraform](/docs/EventStreams-gen2?topic=EventStreams-gen2-eventstreams-terraform).

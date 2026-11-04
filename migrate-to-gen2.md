@@ -2,11 +2,11 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-02"
+lastupdated: "2026-11-04"
 
 keywords: event streams migration, gen1 to gen2, classic infrastructure, vpc, drain and switch, private endpoints, kafka, topics, producers, consumers
 
-subcollection: event-streams-gen2
+subcollection: EventStreams-gen2
 
 content-type: tutorial
 
@@ -14,12 +14,12 @@ content-type: tutorial
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Migrating {{site.data.keyword.messagehub}} from Gen 1 to Gen 2
+# Migrate {{site.data.keyword.messagehub}} from Gen 1 to Gen 2 on {{site.data.keyword.cloud_notm}}
 {: #migrating-event-streams-gen1-to-gen2}
 
 [Gen 2]{: tag-purple}
 
-Use this tutorial to migrate your {{site.data.keyword.messagehub}} deployment from Gen 1 (Classic) to Gen 2 (VPC).
+Learn how to migrate your {{site.data.keyword.messagehub}} deployment from Gen 1 to Gen 2 by using the drain and switch process on {{site.data.keyword.cloud_notm}}.
 {: shortdesc}
 
 This tutorial applies to both the Standard and Enterprise plans. Both plans follow the same drain and switch migration process.
@@ -42,12 +42,12 @@ Drain and switch is a coordinated cutover approach for message streaming workloa
 4. Producer and consumer connection strings are updated to point to Gen 2.
 5. Message flow resumes on Gen 2.
 
-There is a planned downtime window during steps 2 through 4. Duration depends on how quickly your consumers drain the remaining Gen 1 messages and how long your application deployments take to restart with the new connection details.
+A planned downtime window occurs during steps 2 through 4. The duration depends on how quickly consumers drain remaining Gen 1 messages and the time required to restart applications with updated connection details.
 
 ### Topic configuration
 {: #topic-config-responsibility}
 
-Topic names, partition counts, retention policies, replication factors, and any custom topic configurations must be recreated on the Gen 2 instance before the cutover begins. Topic configurations are not replicated automatically.
+Topic names, partition counts, retention policies, and replication factors must be recreated on the Gen 2 instance before the cutover begins. Topic configurations are not transferred automatically.
 
 Recreate all topic configurations on Gen 2 and validate them before stopping producers on Gen 1.
 {: important}
@@ -55,16 +55,16 @@ Recreate all topic configurations on Gen 2 and validate them before stopping pro
 ### Migration risks
 {: #migration-risks}
 
-Complete each stage of the drain and switch in order to avoid the following risks:
+Complete each stage of the drain and switch in sequence to avoid the following risks:
 
 Message loss
-:   Stopping producers before consumers have fully drained Gen 1 may result in unprocessed messages not being processed.
+:   Stopping producers before consumers fully drain Gen 1 can result in unprocessed messages being lost or skipped.
 
 Duplicate processing
-:   If consumer offsets are not correctly initialized on Gen 2, messages may be processed more than once.
+:   If consumer offsets are not initialized correctly on Gen 2, messages can be processed more than once.
 
-Rollback difficulty
-:   After consumers have drained Gen 1 messages, rolling back to Gen 1 is not straightforward.
+Rollback complexity
+:   After consumers drain Gen 1 messages and producers write to Gen 2, rolling back to Gen 1 requires manual offset reconciliation.
 
 Test the full drain and switch procedure in a non-production environment before scheduling a production cutover.
 {: important}

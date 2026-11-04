@@ -2,35 +2,38 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
-keywords: event streams, migrating, disk size, memory size, CPU size, resources, cli, postgresql administrator
+keywords: event streams, cli, resource controller, service instance, provisioning, service keys
 
-subcollection: event-streams-gen2
+subcollection: EventStreams-gen2
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
 
-# {{site.data.keyword.messagehub}} CLI
+# Getting started with {{site.data.keyword.messagehub}} CLI on {{site.data.keyword.cloud_notm}}
 {: #cli-reference}
 
 [Gen 2]{: tag-purple}
 
-To interact with {{site.data.keyword.messagehub}} on Gen 2 via the CLI you must utilize the IBM Cloud Resource Controller's CLI. For more information, see the [General {{site.data.keyword.messagehub}} CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli).
+Learn how to interact with {{site.data.keyword.messagehub}} on Gen 2 by using the {{site.data.keyword.cloud_notm}} Resource Controller CLI, including creating instances and managing credentials.
+{: shortdesc}
 
-The {{site.data.keyword.messagehub}} plugin supports only Gen 1 instances. For Gen 2 instances, use the Resource Controller CLI.
+To interact with {{site.data.keyword.messagehub}} on Gen 2 by using the CLI, use the {{site.data.keyword.cloud_notm}} Resource Controller CLI. For more information, see [General IBM Cloud CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli).
+
+The {{site.data.keyword.messagehub}} plug-in supports only Gen 1 instances. For Gen 2 instances, use the Resource Controller CLI.
 {: note}
 
-## Getting started - Create an instance
+## Creating an instance
 {: #cli-create}
 
-You can create an instance by using the following command:
+To create an instance, run the following command:
 
 ```sh
 ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> -g <RESOURCE_GROUP>
 ```
-{: .pre}
+{: pre}
 
 Example command for {{site.data.keyword.messagehub}}:
 
@@ -44,77 +47,79 @@ ibmcloud resource service-instance-create <INSTANCE_NAME> messagehub enterprise-
    }
 }'
 ```
-{: .pre}
+{: pre}
 
-A number of additional options can also be specified in the parameter block.
+You can specify additional parameters in the configuration block:
 
-```
-"dataservices": {
+```json
+{
+  "dataservices": {
     "kafka": {
-        "storage_gb": 2000,
-        "throughput_mb_s": 100,
+      "storage_gb": 2000,
+      "throughput_mb_s": 100
     },
     "encryption": {
-        "disk": "crn:v1..."
+      "disk": "crn:v1:bluemix:public:kms:us-south:a/..."
     },
     "options": {
-        "iam_token_only": false,
-        "metrics": ["topic", "partition", "consumers"]
+      "iam_token_only": false,
+      "metrics": ["topic", "partition", "consumers"]
     }
-},
+  }
+}
 ```
-{: .pre}
+{: codeblock}
 
-## Getting information about your instance
+## Retrieving instance details
 {: #cli-getting-info}
 
-You can get instance information using the following command:
+To retrieve instance details in JSON format, run the following command:
 
 ```sh
 ibmcloud resource service-instance <INSTANCE_NAME> -o JSON
 ```
-{: .pre}
+{: pre}
 
-## Update your instance
+## Updating an instance
 {: #cli-update-instance}
 
-To update your instance (this includes operations, such as scaling and modifying other parts of your service), use the following command:
+To update your instance, such as scaling throughput or storage capacity, run the following command:
 
 ```sh
 ibmcloud resource service-instance-update <INSTANCE_NAME> -p '<{FIELDS_TO_UPDATE}>'
 ```
-{: .pre}
+{: pre}
 
-Example of full updates for {{site.data.keyword.messagehub}}:
+Example update command for {{site.data.keyword.messagehub}}:
 
 ```sh
-ibmcloud resource service-instance-update <INSTANCE_NAME> -p'{
+ibmcloud resource service-instance-update <INSTANCE_NAME> -p '{
    "dataservices":{
       "kafka": {
-         "throughput_mb_s": 100, <------ Change to the value you desire
-         "storage_gb": 4000 <------ Change to the value you desire
-      },
+         "throughput_mb_s": 100,
+         "storage_gb": 4000
+      }
    }
 }'
 ```
-{: .pre}
+{: pre}
 
-## Manage users
+## Managing service credentials
 {: #cli-manage-users}
 
-To create a user:
+To create a service credential:
 
 ```sh
-ibmcloud resource service-key-create NAME [ROLE_NAME] ( --instance-id SERVICE_INSTANCE_ID | --instance-name SERVICE_INSTANCE_NAME) [--service-id SERVICE_ID]
+ibmcloud resource service-key-create <NAME> [<ROLE_NAME>] ( --instance-id <SERVICE_INSTANCE_ID> | --instance-name <SERVICE_INSTANCE_NAME>) [--service-id <SERVICE_ID>]
 ```
-{: .pre}
+{: pre}
 
-To delete a user:
+To delete a service credential:
 
 ```sh
-ibmcloud resource service-key-delete ( NAME | ID ) [-g RESOURCE_GROUP]
+ibmcloud resource service-key-delete ( <NAME> | <ID> ) [-g <RESOURCE_GROUP>]
 ```
-{: .pre}
+{: pre}
 
-Updating a user is not possible for VPC instances.
+Updating service credentials is not supported for VPC instances.
 {: note}

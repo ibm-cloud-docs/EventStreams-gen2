@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: limits, quotas, network throughput, retention, consumer groups, schema
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# How {{site.data.keyword.messagehub}} uses limits and quotas
+# Understanding {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} limits and quotas
 {: #kafka_quotas}
 
 [Gen 2]{: tag-purple}
 
-{{site.data.keyword.messagehub}} uses quotas to control the resources, such as network bandwidth, that a service can consume. The types and levels of quotas depend on the plan being used.
+Learn how {{site.data.keyword.messagehub}} uses quotas to control resources like network bandwidth on {{site.data.keyword.cloud_notm}}, and understand the limits based on your plan.
 {: shortdesc}
 
 ## Enterprise plan
@@ -26,34 +26,34 @@ subcollection: EventStreams-gen2
 ### Network throughput
 {: #enterprise_throughput}
 
-The figure represents the minumim throughput that can be expected to be continually available for a typical workload and should be used for capacity planning. It takes in to account the possible impact of operational actions, such as internal updates or failure modes (for example, the loss of an availability zone). In normal operation, up to 30% more may be possible, but should not be assumed to be continuously available. The maximum achievable throughput can also vary according to the configuration of the workload.
+Throughput represents the sum of bytes per second that can be sent (produced) and received (consumed) in a service instance.
 
-| Throughput (continously available) |
-|------------------------------------|
-|100 MB/s (50 MB/s producing and 50 MB/s consuming)|
-{: caption="Network throughput capacity on Enterprise Gen2" caption-side="top"}
+Enterprise Gen 2 provides a baseline allocation of 100 MB/s (50 MB/s producing and 50 MB/s consuming). This represents the minimum continuously available throughput for a typical workload during normal operations and availability zone failovers.
 
-Throughput is expressed as the number of bytes per second that can be both sent and received in a service instance. This capacity can be selected when the service instance is created.
-
-Throughput capacity cannot be scaled down. To move to a lower throughput capacity would require creating a new {{site.data.keyword.messagehub}} service instance at the lower capacity unit.
+Throughput capacity cannot be scaled down after provisioning. To reduce throughput capacity, you must create a new {{site.data.keyword.messagehub}} service instance.
 
 For more information, see [Scaling {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
 
 ### Partitions
 {: #enterprise_partitions}
 
-The maximum number of partitions scales in proportion to the selected throughput. For 100MB/s, 3000 partitions can be used.
+The maximum number of partitions scales with your allocated capacity. For a standard 100 MB/s Enterprise Gen 2 instance, you can create up to 3000 partitions across all topics.
 
-### Retention
+### Retention and storage
 {: #enterprise_retention}
 
-The storage capacity can be selected when the service instance is created, and later scaled as demands increase. Storage capacity is dependent upon the configured throughput capacity. For more information, see [Scaling {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity) on storage capacity options.
+You select storage capacity when provisioning the instance (2 TB, 4 TB, or 6 TB) and can scale storage upward as demands increase.
 
-Storage capacity cannot be scaled down. To move to a lower storage capacity would require creating a new {{site.data.keyword.messagehub}} service instance at the lower capacity unit.
+Storage capacity cannot be scaled down. To reduce storage capacity, you must provision a new instance with lower capacity and migrate your data. For more information, see [Scaling {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
 
 ### Other limits
 {: #enterprise_limits}
 
-* Maximum message size: 1 MB
-* Maximum concurrently active Kafka clients: 10,000
-* Maximum concurrent connections: 100,000
+Maximum message size
+:   1 MB per message.
+
+Maximum concurrently active Kafka clients
+:   1000 connected client applications.
+
+Maximum concurrent network connections
+:   10,000 connections.

@@ -1,11 +1,11 @@
 ---
 copyright:
   years: 2025, 2026
-lastupdated: "2026-11-02"
+lastupdated: "2026-11-04"
 
 keywords: gen 2
 
-subcollection: event-streams-gen2
+subcollection: EventStreams-gen2
 
 content-type: release-note
 
@@ -13,12 +13,12 @@ content-type: release-note
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Release notes for {{site.data.keyword.messagehub}} Gen 2
+# {{site.data.keyword.messagehub}} Gen 2 release notes: Latest updates and enhancements
 {: #event-streams-relnotes-gen2}
 
 [Gen 2]{: tag-purple}
 
-Use these release notes to learn about the latest updates to {{site.data.keyword.messagehub}} Gen 2 that are grouped by month and year. Release notes are available for a minimum of three years.
+Stay up-to-date with the latest {{site.data.keyword.messagehub}} Gen 2 updates, enhancements, and new features, grouped by month and year.
 {: shortdesc}
 
 ## 2 November 2026

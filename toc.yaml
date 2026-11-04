@@ -15,9 +15,11 @@ toc:
       id: learn
       topics:
       - topic: overview_gen1_gen2.md
+        navtitle: Comparing Gen 1 and Gen 2
       - topic: getting-started.md
         navtitle: Getting started
-      - limitations.md
+      - topic: limitations.md
+        navtitle: Architectural differences and feature parity
       - topic: overview.md
         navtitle: Overview
       - topic: release-notes-gen2.md
@@ -26,7 +28,8 @@ toc:
         navtitle: Apache Kafka concepts
       - topic: use_cases.md
         navtitle: Apache Kafka use cases
-      - choosing_your_plan.md
+      - topic: choosing_your_plan.md
+        navtitle: Choosing your plan
       - link:
           label: Gen 1 docs
           href: https://cloud.ibm.com/docs/EventStreams
@@ -34,6 +37,7 @@ toc:
       id: howto
       topics:
       - topic: provisioning.md
+        navtitle: Provisioning
       - topic: migrate-to-gen2.md
         navtitle: Migrating to Gen 2
       - topic: connecting_es.md
@@ -41,17 +45,23 @@ toc:
       - topicgroup:
           label: Administering
           topics:
-          - using_admin_kafka_api.md
+          - topic: using_admin_kafka_api.md
+            navtitle: Kafka Admin API
           - topic: using_kafka_console.md
             navtitle: Using Kafka console tools
-          - scaling_capacity.md
-          - enabling_kafka_quotas.md
+          - topic: scaling_capacity.md
+            navtitle: Scaling Enterprise plan capacity
+          - topic: enabling_kafka_quotas.md
+            navtitle: Setting Kafka quotas
       - topicgroup:
           label: Developing apps
           topics:
-          - using_kafka_api.md
-          - producing_messages.md
-          - consuming_messages.md
+          - topic: using_kafka_api.md
+            navtitle: Using the Kafka API
+          - topic: producing_messages.md
+            navtitle: Producing messages
+          - topic: consuming_messages.md
+            navtitle: Consuming messages
           - topic: partition_leadership.md
             navtitle: Partition leadership
           - topic: using_kafka_connect.md
@@ -65,8 +75,10 @@ toc:
           topics:
           - topic: connecting_mq.md
             navtitle: Connecting MQ to Event Streams by using Kubernetes
-          - watson_platform.md
-          - streaming_cloud_logs.md
+          - topic: watson_platform.md
+            navtitle: Watson IoT Platform bridge
+          - topic: streaming_cloud_logs.md
+            navtitle: Streaming data from IBM Cloud Logs
       - topicgroup:
           label: Enhancing security
           topics:
@@ -80,7 +92,8 @@ toc:
             navtitle: Context-based restrictions
           - topic: key-protect.md
             navtitle: Key Protect integration
-      - using_kafka_client.md
+      - topic: using_kafka_client.md
+        navtitle: Using the Kafka Java client
   - navgroup:
       id: reference
       topics:
@@ -88,7 +101,8 @@ toc:
         navtitle: API reference
       - topic: cli.md
         navtitle: CLI reference
-      - sla.md
+      - topic: sla.md
+        navtitle: Service Level Agreement (SLA)
       - topic: responsibilities.md
         navtitle: Understanding your responsibilities
       - topic: ha-dr.md
@@ -99,12 +113,16 @@ toc:
         navtitle: Understanding data portability
       - topic: limits_quotas.md
         navtitle: Limits and quotas
-      - activity_tracker_events.md
-      - monitoring.md
-      - kafka_client_metrics.md
+      - topic: activity_tracker_events.md
+        navtitle: Activity Tracker events
+      - topic: monitoring.md
+        navtitle: Monitoring service metrics
+      - topic: kafka_client_metrics.md
+        navtitle: Kafka client metrics
       - topic: service-dependency.md
         navtitle: Service dependency map
-      - reserved_disk.md
+      - topic: reserved_disk.md
+        navtitle: Reserved disk usage
       - topic: eventstreams-terraform.md
         navtitle: Terraform reference
       - topicgroup:
@@ -128,7 +146,8 @@ toc:
   - navgroup:
       id: help
       topics:
-      - faq_gen2.md
+      - topic: faq_gen2.md
+        navtitle: FAQ for Gen 2
       - topicgroup:
           label: Troubleshooting
           topics:
@@ -136,6 +155,7 @@ toc:
             navtitle: Getting help and support
           - topic: known_restrictions.md
             navtitle: Known restrictions
-          - troubleshooting.md
+          - topic: troubleshooting.md
+            navtitle: Troubleshooting
           - topic: reporting_problem.md
             navtitle: Reporting a problem

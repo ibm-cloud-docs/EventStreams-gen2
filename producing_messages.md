@@ -1,21 +1,21 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-11-28"
+  years: 2025, 2026
+lastupdated: "2026-11-04"
 
 keywords: producer, producing messages, message ordering, batching, throttling, compression
 
-subcollection: EventStreams
+subcollection: EventStreams-gen2
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Producing messages
-{: #producing_messages }
+# Publishing messages to Kafka topics with {{site.data.keyword.messagehub}}
+{: #producing_messages}
 
-A producer is an application that publishes streams of messages to Kafka topics. This information focuses on the Java programming interface that is part of the Apache Kafka project. The concepts apply to other languages too, but the names are sometimes a little different.
+Learn how to produce messages to Kafka topics using the Java programming interface in {{site.data.keyword.messagehub}}, a messaging system built on Apache Kafka.
 {: shortdesc}
 
 In the programming interfaces, a message is called a record. For example, the Java class org.apache.kafka.clients.producer.ProducerRecord is used to represent a message from the point of view of the producer API. The terms _record_ and _message_ can be used interchangeably, but essentially a record is used to represent a message.
@@ -106,7 +106,7 @@ If you try to publish messages faster than they can be sent to a server, the pro
 
 There is another factor that has an impact. To prevent individual producers or consumers from swamping the cluster, {{site.data.keyword.messagehub}} applies throughput quotas. The rate that each producer is sending data at is calculated and any producer that attempts to exceed its quota is throttled. The throttling is applied by slightly delaying the sending of responses to the producer. Usually, this just acts as a natural brake.
 
-For more information about throughput guidance, see [Limits and quotas]/docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas).
+For more information about throughput guidance, see [Limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-how-event-streams-uses-limits-and-quotas).
 
 In summary, when a message is published, its record is first written into a buffer in the producer. In the background, the producer batches up and sends the records to the server. The server then responds to the producer, possibly applying a throttling delay if the producer is publishing too fast. If the buffer in the producer fills up, the producer's send call is delayed, but ultimately might fail with an exception.
 
