@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-05"
 
 subcollection: EventStreams-gen2
 
@@ -28,7 +28,7 @@ The {{site.data.keyword.messagehub}} API uses the [Resource Controller API](/doc
 
 Access to the API requires token authentication by using the `Authorization: Bearer <token>` header. The token must be IAM-issued. You can provide an IAM API key directly as the token or [generate an IAM bearer token](/docs/iam?topic=iam-iamtoken_from_apikey) from your API key.
 
-To call API methods, you must be assigned a role with the required IAM actions. For more information about IAM actions and how they map to roles, see [Managing access to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_access).
+To call API methods, you must be assigned a role with the required IAM actions. For more information about IAM actions and how they map to roles, see [Managing access to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-security).
 
 ## Error handling
 {: #api-error-handling}
