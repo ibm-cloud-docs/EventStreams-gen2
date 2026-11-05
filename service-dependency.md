@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-07-20"
+lastupdated: "2026-11-04"
 
 keywords:
 
@@ -16,10 +16,10 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Service dependency map for IBM Event Streams for IBM Cloud Gen 2
+# Understanding service dependencies in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} Gen 2
 {: #service-dependencies}
 
-If a service depends on other {{site.data.keyword.cloud_notm}} services, there can be impacts if any of the dependent services are having issues. The dependency severity indicates the impact to the service when the dependency is down.
+Learn about the service dependencies for {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} Gen 2, including dependency severity and impact on the service when dependencies are unavailable.
 {: shortdesc}
 
 Critical

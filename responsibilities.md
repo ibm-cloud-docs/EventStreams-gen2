@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: responsibilities, incident, operations, cluster management, security, compliance, infrastructure, disaster recovery, client-side libraries, app orchestration
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Understanding your responsibilities when you use {{site.data.keyword.messagehub}}
+# Your responsibilities when using {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #event_streams_responsibilities}
 
 [Gen 2]{: tag-purple}
 
-Learn about the management responsibilities and terms and conditions that you have when you use {{site.data.keyword.messagehub_full}}. For a high-level view of the service types in {{site.data.keyword.Bluemix}} and the breakdown of responsibilities between the customer and {{site.data.keyword.IBM_notm}} for each type, see [Shared responsibilities for {{site.data.keyword.cloud_notm}} offerings](/docs/overview?topic=overview-shared-responsibilities).
+Learn about management responsibilities and terms when using {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}. Understand the breakdown of responsibilities between you and {{site.data.keyword.IBM_notm}}.
 {: shortdesc}
 
 Review the following sections for the specific responsibilities for you and for {{site.data.keyword.IBM_notm}} when you use {{site.data.keyword.messagehub_full}}. For the overall terms of use, see [{{site.data.keyword.Bluemix}} Terms and Notices](/docs/overview?topic=overview-terms).
@@ -30,7 +30,7 @@ Review the following sections for the specific responsibilities for you and for 
 |Monitor environment|  {{site.data.keyword.messagehub}} performs continuous review, service improvements, code updates, and operational monitoring. This includes automatic, no downtime upgrades of the environment. |  |
 |High availability|  {{site.data.keyword.messagehub}} provides high availability by multi-zone region deployment  to protect against single points of failure, up to and including a data center loss to achieve the IBM SLA detailed in the {{site.data.keyword.Bluemix}} terms and conditions.  |  |
 |Deploy {{site.data.keyword.messagehub}} environment|  {{site.data.keyword.messagehub}} is deployed with IBM recommended best practice configuration options.  For example, replication factor, minimum in sync replicas, throttling, and rack awareness.  | |
-|Supported client|   | Customer is responsible for maintaining a supported version of the Kafka client. For more information, see [Support summary for all recommended clients](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using#client_summary).|
+|Supported client|   | Customer is responsible for maintaining a supported version of the Kafka client. For more information, see [Support summary for all recommended clients](/docs/EventStreams-gen2?topic=EventStreams-gen2-using_kafka_api#client_summary).|
 |Client configuration, deployment, and lifecycle|   | Customer is responsible for managing client configuration, deployment, and lifecycle by following [IBM best practice documentation](/docs/overview?topic=overview-shared-responsibilities#software-packages).|
 |Cluster management|  | Customer is responsible for managing the provided resource capacity of their clusters across their organizational user base. |
 {: caption="Responsibilities for incident, operations, and cluster management" caption-side="bottom"}

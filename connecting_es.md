@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-09-21"
+lastupdated: "2026-11-04"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -12,13 +12,15 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Connecting to {{site.data.keyword.messagehub}}
+# Connecting to {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud_notm}}: A step-by-step guide
 {: #connecting}
+
+Learn how to connect to {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud_notm}} by creating a virtual private endpoint and service credentials for secure authentication.
+{: shortdesc}
 
 To connect to {{site.data.keyword.messagehub}}, a {{site.data.keyword.vpe_full}} gateway must be created to establish a secure private connection. Credentials must then be created to authenticate with IAM. For applications not running within VPC, additional networking setup is required.
 
 The following information gives an overview of the steps required, using the example of a Kafka client application running on a VPC VSI, but could be applied to any of the VPC application platforms. For apps running externally to a VPC, further information is provided for the additional steps required.
-{: #shortdesc}
 
 ### Creating a VPE gateway
 {: #create_VPE}
@@ -133,7 +135,7 @@ The following steps show how to [install and use the console tools](/docs/EventS
 ## Accessing an Enterprise instance from an external network
 {: #private_network_outside_cloud}
 
-Solutions such as [Direct Link 2.0](https://cloud.ibm.com/docs/dl){: external} or [Transit Gateway](https://cloud.ibm.com/docs/transit-gateway?topic=transit-gateway-about){: external} can be utilized to establish a connection between an external network, such as an on-premise data center or Classic infrastructure, and the {{site.data.keyword.cloud_notm}} VPE gateway. However, when dealing with workloads operating on an external network, it is essential to consider additional factors to ensure a successful connection to Kafka. Note that these considerations do not apply to HTTP workloads.
+Solutions such as [Direct Link 2.0](/docs/dl) or [Transit Gateway](/docs/transit-gateway?topic=transit-gateway-about) can be utilized to establish a connection between an external network, such as an on-premise data center or Classic infrastructure, and the {{site.data.keyword.cloud_notm}} VPE gateway. However, when dealing with workloads operating on an external network, it is essential to consider additional factors to ensure a successful connection to Kafka. Note that these considerations do not apply to HTTP workloads.
 
 The private endpoint details allocated to your instance (as described in the service key) must be resolvable and routable from the network that the workload is running in. It is not possible to specify alternative hostname entries in the workload's `bootstrap.servers` properties as a way to route traffic from the external network.
 
@@ -144,10 +146,10 @@ For more information, see [Accessing a VPE externally from a VPC](/docs/vpc?topi
 ## What to do next
 {: #after_connecting}
 
-Now you have connection and credential information, you can choose a Kafka client. For more information, see [Using the Kafka API](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using).
+Now you have connection and credential information, you can choose a Kafka client. For more information, see [Using the Kafka API](/docs/EventStreams-gen2?topic=EventStreams-gen2-using_kafka_api).
 
 ## Further information
 {: #further_info}
 
-- [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using#kafka_api_client). 
+- [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-gen2-using_kafka_api#kafka_api_client). 
 - [Restricting network access](/docs/EventStreams?topic=EventStreams-restrict_access).

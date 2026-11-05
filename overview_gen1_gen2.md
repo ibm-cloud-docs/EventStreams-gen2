@@ -1,20 +1,23 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: gen 2, generation 2, vpc, kafka
 
-subcollection: event-streams-gen2
+subcollection: EventStreams-gen2
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Overview of Gen 1 (Classic) and Gen 2 (VPC)
+# Comparing {{site.data.keyword.messagehub}} Gen 1 (Classic) and Gen 2 (VPC): Key differences
 {: #overview-gen1-gen2}
 
 [Gen 2]{: tag-purple}
+
+Learn about the differences between {{site.data.keyword.messagehub}} Generation 1 (Classic) and Generation 2 (VPC) on {{site.data.keyword.cloud_notm}}, and choose the best option for your workload.
+{: shortdesc}
 
 {{site.data.keyword.messagehub}} offers two deployment generations. Generation 1 (Classic) runs on IBM’s original Cloud platform and Generation 2 (VPC) which is built on IBM’s latest Cloud platform.
 

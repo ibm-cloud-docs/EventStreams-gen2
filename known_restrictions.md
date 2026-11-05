@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: restrictions, failover, jvm ttl, creating topic, deleting topic
 
@@ -12,24 +12,26 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Known restrictions for {{site.data.keyword.messagehub}}
+# Overcoming known restrictions in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #restrictions}
 
 [Gen 2]{: tag-purple}
 
-If you find a problem while you use {{site.data.keyword.messagehub}}, review the following known restrictions and workarounds. 
+Review known restrictions and workarounds for {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including issues with Java Kafka calls and potential timeouts.
 {: shortdesc}
 
 ## Java Kafka calls don’t failover if a Kafka bootstrap server fails
 {: #calls_failover}
 
 ### Problem
-{: #calls_failover_problem notoc}
+{: #calls_failover_problem}
+{: notoc}
 
 The Java™ Virtual Machine (JVM) caches DNS lookups. When the JVM resolves an IP address for a hostname, it caches the IP address for a specified period, which is known as the time to live (TTL). Some Java configurations set the JVM TTL so that it never refreshes a hostname’s IP address until the JVM is restarted. An example configuration is one that has a security manager.
 
 ### Workaround
-{: #calls_failover_workaround notoc}
+{: #calls_failover_workaround}
+{: notoc}
 
 Because {{site.data.keyword.messagehub}} uses Kafka bootstrap server URLs with multiple IP addresses for high availability, not all the broker IP addresses are known to the Kafka client, which prevents failover to a working broker. In these cases, a failover requires a requery of the IP addresses for the broker URLs to get a working IP address. You are recommended to configure your JVM with a TTL value of 30 to 60 seconds. This value ensures that if a bootstrap server’s IP address has issues, the Kafka client is able to look up and use a new IP address by querying the DNS.
 
@@ -55,7 +57,8 @@ See the following example from the `java.security` file:
 ```
 
 ### How to modify the JVM's TTL
-{: #jvm_ttl notoc}
+{: #jvm_ttl}
+{: notoc}
 
 - To modify the JVM's TTL for all applications, set the `networkaddress.cache.ttl` value in the `<$JAVA_HOME>/jre/lib/security/java.security` file.
 - To modify the JVM TTL for a specific application, set the `networkaddress.cache.ttl` in your application code.

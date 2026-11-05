@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-10-09"
+lastupdated: "2026-11-04"
 
 keywords: event streams cbr, context-based restrictions, gen2
 
@@ -12,14 +12,15 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-This document outlines the process for using context-based restrictions to protect your {{site.data.keyword.messagehub}} resources. Use this document to prepare your resources for context-based restrictions. 
-
-# Context-based restrictions
+# Securing {{site.data.keyword.messagehub}} with context-based restrictions on {{site.data.keyword.cloud}}
 {: #cbr}
+
+Learn how to protect your {{site.data.keyword.messagehub}} resources using context-based restrictions, an additional layer of security that works alongside IAM policies on IBM Cloud.
+{: shortdesc}
 
 Context-based restrictions give account owners and administrators the ability to define access rules that limit the network locations that connections are accepted from. For example, network type, IP ranges, VPC, or other services.
 
-These restrictions work with traditional IAM policies, which are based on identity, to provide an extra layer of protection. Unlike IAM policies, context-based restrictions don't assign access. Context-based restrictions check that an access request comes from an allowed context that you configure. Since both IAM access and context-based restrictions enforce access, context-based restrictions offer protection even in the face of compromised or mismanaged credentials. For more information, see [What are context-based restrictions](/docs/account?topic=account-context-restrictions-whatis).
+These restrictions work with traditional IAM policies, which are based on identity, to provide an extra layer of protection. Unlike IAM policies, context-based restrictions don't assign access. Context-based restrictions check that an access request comes from an allowed context that you configure. Since both IAM access and context-based restrictions enforce access, context-based restrictions offer protection even in the face of compromised or mismanaged credentials. For more information, see [What are context-based restrictions](/docs/iam?topic=iam-context-restrictions-whatis).
 
 A user must have the Administrator role on the {{site.data.keyword.messagehub}} service to create, update, or delete rules. A user must also have either the Editor or Administrator role on the context-based restrictions service to create, update, or delete network zones. A user with the Viewer role on the context-based restrictions service can add network zones to a rule.
 {: note}
@@ -29,7 +30,7 @@ Any {{site.data.keyword.cloudaccesstraillong_notm}} or audit log events generate
 {{site.data.keyword.messagehub}} does not support Report-only mode. 
 {: important}
 
-To start protecting your {{site.data.keyword.messagehub}} resources with context-based restrictions, see the tutorial for [Leveraging context-based restrictions to secure your resources](/docs/account?topic=account-context-restrictions-tutorial).
+To start protecting your {{site.data.keyword.messagehub}} resources with context-based restrictions, see the tutorial for [Leveraging context-based restrictions to secure your resources](/docs/iam?topic=iam-context-restrictions-tutorial).
 
 ## How {{site.data.keyword.messagehub}} integrates with context-based restrictions
 {: #cbr-overview}
@@ -89,7 +90,7 @@ A network zone represents an allowlist of IP addresses where an access request i
 {: #network-zone-cli}
 {: cli}
 
-To create network zones in the CLI, use the `cbr-zone-create` command to add resources to network zones. For more information, see the [context-based restrictions CLI reference](/docs/account?topic=account-cbr-plugin#cbr-zones-cli).
+To create network zones in the CLI, use the `cbr-zone-create` command to add resources to network zones. For more information, see the [context-based restrictions CLI reference](/docs/iam?topic=iam-cbr-plugin#cbr-zones-cli).
 
 Create a zone by using a command like:
 
@@ -223,7 +224,7 @@ To create a rule in the CLI, you need the {{site.data.keyword.messagehub}} `serv
 
 * `messagehub`
 
-All the other parameters that follow are explained in the [CBR plugin reference guide](https://cloud.ibm.com/docs/account?topic=account-cbr-plugin#cbr-rules-cli).
+All the other parameters that follow are explained in the [CBR plugin reference guide](/docs/iam?topic=iam-cbr-plugin#cbr-rules-cli).
 
 Example command for creating a CBR Rule:
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-09-15"
+lastupdated: "2026-11-04"
 
 keywords: gen 2, generation 2, vpc, classic, migration, differences, enterprise, kafka 4.1, private endpoints
 
@@ -14,12 +14,12 @@ content-type: faq
 
 {{site.data.keyword.attribute-definition-list}}
 
-# FAQ for {{site.data.keyword.messagehub}} Gen 2
+# {{site.data.keyword.messagehub}} Gen 2 FAQs: Comparing VPC and Classic versions
 {: #gen2-faq}
 
 [Gen 2]{: tag-purple}
 
-Frequently asked questions about {{site.data.keyword.messagehub}} Gen 2 (VPC) and how it differs from the Classic (Gen 1) version. To find all of the FAQs for {{site.data.keyword.cloud}}, see our [FAQ library](/docs/faqs).
+Get answers to frequently asked questions about {{site.data.keyword.messagehub}} Gen 2 on {{site.data.keyword.cloud}} VPC, including differences from the Classic version and key features.
 {: shortdesc}
 
 ## What is {{site.data.keyword.messagehub}} Gen 2?
@@ -47,42 +47,42 @@ The key differences include:
 
 Choose Gen 2 Enterprise if you need:
 
-- Private-only connectivity via VPE
-- Latest Kafka 4.1 features
+- Private-only connectivity by using virtual private endpoints (VPE)
+- Latest Apache Kafka 4.1 features
 - Hypervisor-level isolation with dedicated storage bandwidth
-- Modern VPC-based networking
+- VPC-based networking
 
 Choose Classic Enterprise if you need:
 
 - Public endpoint connectivity
-- Managed Schema Registry (not yet available in Gen 2)
-- Mirroring capabilities (not yet available in Gen 2)
-- Deployment in the broadest set of regions
+- Managed Schema Registry (not available in Gen 2)
+- Mirroring capabilities (not available in Gen 2)
+- Deployment across all global regions
 - Established compliance certifications (Gen 2 certifications are pending)
 
 ## What APIs and tools are supported in Gen 2?
 {: #faq-apis-tools}
 {: faq}
 
-Gen 2 currently supports:
+Gen 2 supports the following tools and interfaces:
 
 - **Kafka API**: Full support for native Kafka clients
-- **Resource Controller API**: For instance management and provisioning
-- **CLI**: IBM Cloud Resource Controller CLI (not the {{site.data.keyword.messagehub}} plugin)
+- **Resource Controller API**: For instance lifecycle management and provisioning
+- **CLI**: {{site.data.keyword.cloud_notm}} Resource Controller CLI
 - **Terraform**: Full support for infrastructure as code
 
-Gen 2 does NOT currently support:
+Gen 2 does not currently support:
 
 - Admin REST API
 - REST Producer API
 - Schema Registry API
-- {{site.data.keyword.messagehub}} CLI plugin (use Resource Controller CLI instead)
+- {{site.data.keyword.messagehub}} CLI plug-in (use the Resource Controller CLI instead)
 
-## Can I use the {{site.data.keyword.messagehub}} CLI plugin with Gen 2?
+## Can I use the {{site.data.keyword.messagehub}} CLI plug-in with Gen 2?
 {: #faq-cli-plugin}
 {: faq}
 
-No, the {{site.data.keyword.messagehub}} CLI plugin only supports Gen 1 (Classic) instances. For Gen 2 instances, you must use the IBM Cloud Resource Controller CLI commands. This includes operations like creating instances, updating configurations, and managing service credentials. See the [CLI reference documentation](/docs/EventStreams-gen2?topic=EventStreams-gen2-cli-reference) for Gen 2-specific commands.
+No. The {{site.data.keyword.messagehub}} CLI plug-in supports only Gen 1 (Classic) instances. For Gen 2 instances, use the {{site.data.keyword.cloud_notm}} Resource Controller CLI commands for operations such as creating instances, updating configurations, and managing service credentials. For more information, see [Getting started with CLI](/docs/EventStreams-gen2?topic=EventStreams-gen2-cli-reference).
 
 ## What throughput and storage options are available in Gen 2?
 {: #faq-throughput-storage}
@@ -115,34 +115,34 @@ The following features are planned for future releases:
 {: #faq-migration}
 {: faq}
 
-Direct migration is not currently supported. To move from Classic to Gen 2, you would need to:
+Direct automated migration is not supported. To migrate from Classic to Gen 2, complete the following steps:
 
-1. Provision a new Gen 2 instance in Montreal, Chennai, Mumbai, Frankfurt, Washington DC, Sydney, Madrid, Dallas, or London.
-2. Set up VPE connectivity for private networking.
+1. Provision a new Gen 2 instance in a supported region (such as Dallas, Frankfurt, London, Madrid, Montreal, Mumbai, Osaka, São Paulo, Sydney, Tokyo, Toronto, or Washington, D.C.).
+2. Configure VPE connectivity for private networking.
 3. Reconfigure your applications to use the new Kafka bootstrap servers.
-4. Migrate your data using Kafka tools or custom applications.
-5. Update any automation to use Resource Controller API/CLI instead of {{site.data.keyword.messagehub}}-specific tools.
+4. Migrate message data by using Kafka tools or custom consumer-producer applications.
+5. Update automation scripts to use the Resource Controller API or CLI instead of {{site.data.keyword.messagehub}}-specific tools.
 
-Carefully evaluate whether Gen 2 meets your requirements, especially regarding API support, regional availability, and feature parity before migrating.
+Before you migrate, evaluate whether Gen 2 meets your requirements regarding API support, regional availability, and feature parity.
 {: note}
 
 ## What networking options are available in Gen 2?
 {: #faq-networking}
 {: faq}
 
-Gen 2 supports **private endpoints only** via Virtual Private Endpoints (VPE). Public endpoint connectivity is not available. This provides enhanced security through software-defined networking within your VPC. Classic Enterprise supports both public and private endpoints, while Classic Standard and Lite support public endpoints only.
+Gen 2 supports **private endpoints only** by using virtual private endpoints (VPE). Public endpoint connectivity is not available. This configuration provides isolation and security through software-defined networking in your VPC. Classic Enterprise supports both public and private endpoints, and Classic Standard and Lite support public endpoints only.
 
 ## What compliance certifications does Gen 2 have?
 {: #faq-compliance}
 {: faq}
 
-Equivalent certifications as Classic are pending, including GDPR, Privacy Shield, ISO 27001/27017/27018/27701, SOC 1/2/3, HIPAA ready, PCI DSS, ISMAP, C5, IRAP, ENS, HITRUST, and ProtectedB. If specific compliance requirements are critical for your use case, you should continue using Classic Enterprise until Gen 2 certifications are completed.
+Certifications equivalent to Classic are pending, including GDPR, ISO 27001, ISO 27017, ISO 27018, SOC 1, SOC 2, SOC 3, PCI DSS, and HIPAA readiness. If specific compliance certifications are required for your workload, continue using Classic Enterprise until Gen 2 certifications are complete.
 
 ## How is pricing different between Gen 2 and Classic?
 {: #faq-pricing}
 {: faq}
 
-Gen 2 Enterprise follows a pay-as-you-go model similar to Classic Enterprise. For current pricing information, see the [IBM Cloud catalog](https://cloud.ibm.com/catalog) and search for {{site.data.keyword.messagehub}}.
+Gen 2 Enterprise follows a hourly and monthly consumption model similar to Classic Enterprise. For current pricing details, see the [IBM Cloud catalog](https://cloud.ibm.com/catalog){: external} and search for `{{site.data.keyword.messagehub}}`.
 
 ## What Kafka version does Gen 2 use?
 {: #faq-kafka-version}
@@ -154,42 +154,42 @@ Gen 2 uses Apache Kafka 4.1, while Classic uses Kafka 3.8. This means Gen 2 incl
 {: #faq-scaling}
 {: faq}
 
-Capacity scaling for storage is supported for 2/4/6 TB. Note that like Classic, storage capacity cannot be scaled down - you would need to create a new instance at the lower capacity.
+You can scale storage capacity (2 TB, 4 TB, or 6 TB). Similar to Classic, storage capacity cannot be scaled down; to reduce storage, you must provision a new instance with lower capacity and migrate your data.
 
-Scaling for throughput is planned for a future release. Currently, Gen 2 instances are provisioned with a fixed throughput capacity (100 MB/s throughput).
+Throughput scaling is planned for a future release. Gen 2 instances are currently provisioned with 100 MB/s throughput allocation.
 
 ## What are the partition limits in Gen 2?
 {: #faq-partitions}
 {: faq}
 
-A maximum of 3000 partitions can be created.
+You can create a maximum of 3000 partitions on a Gen 2 instance.
 
 ## Can I use Kafka Connect and Kafka Streams with Gen 2?
 {: #faq-kafka-tools}
 {: faq}
 
-Yes, both Kafka Connect and Kafka Streams are supported on Gen 2, just as they are on Classic Standard and Enterprise plans. These are not available on the Classic Lite plan.
+Yes. Both Kafka Connect and Kafka Streams are supported on Gen 2, consistent with Classic Standard and Enterprise plans.
 
 ## What is the maximum message size in Gen 2?
 {: #faq-message-size}
 {: faq}
 
-The maximum message size is 1 MB, consistent across all {{site.data.keyword.messagehub}} plans (Lite, Standard, Enterprise Classic, and Enterprise Gen 2).
+The maximum message size is 1 MB across all {{site.data.keyword.messagehub}} plans (Lite, Standard, Enterprise Classic, and Enterprise Gen 2).
 
 ## How many concurrent connections does Gen 2 support?
 {: #faq-connections}
 {: faq}
 
-Gen 2 Enterprise supports a maximum of 1000 concurrently active Kafka clients.
+Gen 2 Enterprise supports up to 1000 concurrently active Kafka client connections.
 
 ## Where can I provision Gen 2 instances?
 {: #faq-regions}
 {: faq}
 
-Gen 2 is currently available only in selected regions. For a list of the currently supported regions, see [Choosing a plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose).
+Gen 2 is available in selected {{site.data.keyword.cloud_notm}} regions. For the current list of supported multizone regions, see [Choosing a plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose).
 
 ## What encryption options are available in Gen 2?
 {: #faq-encryption}
 {: faq}
 
-Gen 2 supports customer-managed encryption via Key Protect integration (BYOK - Bring Your Own Key), similar to Classic Enterprise. This allows you to manage your own encryption keys for data at rest. The encryption key CRN can be specified during provisioning using the `dataservices.encryption.disk` parameter.
+Gen 2 supports customer-managed encryption (bring your own key, or BYOK) by integrating with {{site.data.keyword.keymanagementserviceshort}}. This capability allows you to manage encryption keys for data at rest. You can specify the root key CRN during provisioning by using the `dataservices.encryption.disk` parameter.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-05-08"
+lastupdated: "2026-11-04"
 
 keywords: api, consumer, producer, admin, streams, connect, client
 
@@ -12,34 +12,35 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Using the Kafka API
+# Using Kafka APIs with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #using_kafka_api}
 
 [Gen 2]{: tag-purple}
 
-Kafka provides a rich set of APIs and clients across a broad range of languages. APIs include core API, Streams API, and Connect API.
+Learn how to use Kafka APIs, including core, streams, and connect APIs, with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} for event-driven applications.
 {: shortdesc}
 
-- **Kafka's core API (Consumer, Producer, and Admin API)**
-    Use to send and receive messages directly from one or more Kafka topics.
-    The Kafka Admin client provides a simple interface through the Kafka API for managing Kafka resources. You can create, delete, and manage topics. You can also use the Admin client to manage consumer groups and configurations.
-- **Streams API**
-    A higher-level stream processing API to easily consume, transform, and produce events between topics.
-- **Connect API**
-    A framework that allows reusable or standard integrations to stream events into and out of external systems, such as databases.
+Kafka core API (Consumer, Producer, and Admin API)
+:   Send and receive messages directly to and from Kafka topics. The Kafka Admin client manages cluster resources, including creating, configuring, and deleting topics and managing consumer groups.
 
-The following table summarizes what you can use with {{site.data.keyword.messagehub}}:
+Streams API
+:   A stream-processing library for consuming, transforming, aggregating, and producing event streams between topics.
 
-|                                              | Enterprise plan Gen2                                                                                                                          |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Kafka version on cluster**                 | Kafka 4.1                                                                                                                                        |
-| **Minimum recommended Kafka client version** | Kafka 2.6.0, or later                                                                                                                            |
-| **Supported client versions**                | See [Support summary for all recommended clients](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using)                              |
-| **Kafka Connect supported**                  | Yes                                                                                                                                              |
-| **Kafka Streams supported**                  | Yes                                                                                                                                              |
-| **ksqlDB supported**                         | Yes                                                                                                                                              |
-| **Authentication requirements**              | Client must support authentication by using the SASL Plain mechanism and use the Server Name Indication (SNI) extension to the TLSv1.2 protocol. |
-{: caption="Kafka client support in Enterprise Gen2 plan." caption-side="bottom"}
+Connect API
+:   A framework for integrating external systems, such as databases and messaging engines, by using reusable connector plug-ins.
+
+The following table summarizes API support on {{site.data.keyword.messagehub}}:
+
+| Feature | Enterprise Gen 2 plan |
+| --- | --- |
+| Kafka version on cluster | Apache Kafka 4.1 |
+| Minimum recommended Kafka client version | Kafka 2.6.0 or later |
+| Supported client versions | [Support summary for recommended clients](#client_summary) |
+| Kafka Connect supported | Yes |
+| Kafka Streams supported | Yes |
+| ksqlDB supported | Yes |
+| Authentication requirements | SASL PLAIN or SASL OAUTHBEARER over TLS 1.2 with Server Name Indication (SNI) |
+{: caption="Kafka client support in Enterprise Gen 2 plan" caption-side="bottom"}
 
 ## Choosing a Kafka client to use with {{site.data.keyword.messagehub}}
 {: #kafka_clients}
@@ -51,25 +52,25 @@ For other languages, run one of the following clients, all of which are tested w
 ### Support summary for all recommended clients
 {: #client_summary}
 
-| Client                                                                                   | Language | Recommended version | Minimum version supported [^tabletext1] | Link to sample                                                                                                                                                                                     |
-| ---------------------------------------------------------------------------------------- | -------- | ------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Official Apache Kafka client:**                                                        |          |                     |                                         |                                                                                                                                                                                                    |
-| [Apache Kafka client](https://kafka.apache.org/community/downloads/)                                 | Java     | 4.1.1, or later     | 2.5.0                                   | [Java console sample](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_java_using) \n \n [Liberty sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-liberty-sample) |
-| **Third-party clients:**                                                                 |          |                     |                                         |                                                                                                                                                                                                    |
-| [confluent-kafka-javascript](https://github.com/confluentinc/confluent-kafka-javascript) | Node.js  | Latest              | 1.0.0                                   |                                                                                                                                                                                                    |
-| [confluent-kafka-python](https://github.com/confluentinc/confluent-kafka-python)         | Python   | Latest              | 1.4.0                                   | [Kafka Python sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-python-console-sample)                                                                              |
-| [confluent-kafka-go](https://github.com/confluentinc/confluent-kafka-go)                 | Go       | Latest              | 1.4.0                                   |                                                                                                                                                                                                    |
-| [librdkafka](https://github.com/confluentinc/librdkafka)                                 | C or C++ | Latest              | 1.4.0                                   |                                                                                                                                                                                                    |
-| [node-rdkafka](https://github.com/Blizzard/node-rdkafka)                                 | Node.js  | Latest              | 2.8.0                                   | [Node.js sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-nodejs-console-sample)                                                                                   |
-| [sarama](https://github.com/IBM/sarama)                                                  | Go       | Latest              | 1.40.0                                  | [Sarama examples](https://github.com/IBM/sarama/tree/v1.45.0/examples)                                                                                                                             |
+| Client | Language | Recommended version | Minimum version supported [^tabletext1] | Link to sample |
+| --- | --- | --- | --- | --- |
+| **Official Apache Kafka client:** | | | | |
+| [Apache Kafka client](https://kafka.apache.org/community/downloads/){: external} | Java | 4.1.1 or later | 2.5.0 | [Java console sample](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_java_using) \n \n [Liberty sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-liberty-sample){: external} |
+| **Third-party clients:** | | | | |
+| [confluent-kafka-javascript](https://github.com/confluentinc/confluent-kafka-javascript){: external} | Node.js | Latest | 1.0.0 | |
+| [confluent-kafka-python](https://github.com/confluentinc/confluent-kafka-python){: external} | Python | Latest | 1.4.0 | [Kafka Python sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-python-console-sample){: external} |
+| [confluent-kafka-go](https://github.com/confluentinc/confluent-kafka-go){: external} | Go | Latest | 1.4.0 | |
+| [librdkafka](https://github.com/confluentinc/librdkafka){: external} | C or C++ | Latest | 1.4.0 | |
+| [node-rdkafka](https://github.com/Blizzard/node-rdkafka){: external} | Node.js | Latest | 2.8.0 | [Node.js sample](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-nodejs-console-sample){: external} |
+| [sarama](https://github.com/IBM/sarama){: external} | Go | Latest | 1.40.0 | [Sarama examples](https://github.com/IBM/sarama/tree/v1.45.0/examples){: external} |
 {: caption="Client support summary" caption-side="bottom"}
 
-[^tabletext1]: The earliest version that was validated in continual testing. Typically, it is the initial version available within the last 12 months, or newer if significant issues are known to exist. If you can't run any of the clients that are listed, you can use other third-party clients that meet the following minimum requirements (for example, [librdkafka](https://github.com/confluentinc/librdkafka){: external}). 1. Supports Kafka 1.40, or later. 2. Can connect and authenticate by using SASL PLAIN with TLSv1.2. 3. Supports the SNI extensions for TLS where the server's hostname is includes in the TLS handshake. 4. Supports elliptic curve cryptography. In all cases, use the latest version of the client.
+[^tabletext1]: The earliest version validated in continuous integration testing. If you use an alternative client library, verify that it supports: 1. Kafka protocol 2.5 or later. 2. SASL PLAIN or SASL OAUTHBEARER authentication over TLS 1.2. 3. Server Name Indication (SNI) in TLS handshakes. 4. Elliptic curve cryptography (ECC).
 
 ### Connecting your client to {{site.data.keyword.messagehub}}
 {: #connect_client}
 
-For information about how to configure your Java client to connect to {{site.data.keyword.messagehub}}, see [Configuring your client](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using#kafka_api_client).
+For information about how to configure your Java client to connect to {{site.data.keyword.messagehub}}, see [Configuring your client](/docs/EventStreams-gen2?topic=EventStreams-gen2-using_kafka_api#kafka_api_client).
 
 ## Configuring your Kafka API client
 {: #kafka_api_client}
@@ -173,16 +174,16 @@ sasl.login.callback.handler.class=com.ibm.eventstreams.oauth.client.IAMOAuthBear
 sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required grant_type="urn:ibm:params:oauth:grant-type:cr-token" profile_id="${TRUSTED_PROFILE_ID_FILE_PATH}" cr_token="${SERVICE_ACCOUNT_TOKEN_FILE_PATH}";
 ```
 
-More details on [How to setup trusted profile](https://cloud.ibm.com/docs/account?group=administering-trusted-profiles)
+For more information, see [Administering trusted profiles](/docs/iam?topic=iam-trusted-profiles-overview).
 
-The source code of oauth client refer to the [{{site.data.keyword.messagehub}} Java SDK](https://github.com/IBM/eventstreams-java-sdk/tree/main/modules/oauth-client){: external}.
+For source code, see the [{{site.data.keyword.messagehub}} Java SDK](https://github.com/IBM/eventstreams-java-sdk/tree/main/modules/oauth-client){: external}.
 
 ### Using SASL OAUTHBEARER with Java clients v 4.1 and later
 {: #using_sasl_oauthbearer_java_4.1}
 
-Using a Kafka Java client from v.4.1 onward, the client must use a newer version of the {{site.data.keyword.messagehub}} oauth client, which relies on Kafka's default callback handler and an appropriate token retriever.
+For Kafka Java clients 4.1 and later, use version 2.0.0 or later of the `oauth-client` library, which uses Kafka's default callback handler with `IAMTokenRetriever`.
 
-If Maven is used in the build system, add the following information to the file `pom.xml` in the dependencies section.
+If Maven is used in the build system, add the following dependency to `pom.xml`:
 
 ```xml
 <dependency>
@@ -191,20 +192,22 @@ If Maven is used in the build system, add the following information to the file 
     <version>2.0.0</version>
 </dependency>
 ```
+{: codeblock}
 
-If Gradle is used in the build system, add the following information to the file `build.gradle` in the dependencies section.
+If Gradle is used in the build system, add the following dependency to `build.gradle`:
 
 ```gradle
-implementation com.ibm.cloud.eventstreams:oauth-client:2.0.+
+implementation 'com.ibm.cloud.eventstreams:oauth-client:2.0.0'
 ```
+{: codeblock}
 
-{{site.data.keyword.iamlong}} supports multiple options to generate bearer tokens, the following two options are supported by this oauth client library.
+{{site.data.keyword.iamlong}} supports two methods to generate bearer tokens with this library:
 
 - API key
 - Trusted profile and compute resource token
 
-#### Using SASL OAUTHBEARER with API key
-{: #using_sasl_oauthbearer_api_key}
+#### Using SASL OAUTHBEARER with API key (Kafka 4.1+)
+{: #using_sasl_oauthbearer_api_key_41}
 
 Use the following strings and properties in addition to the mandatory `bootstrap.servers` and any specific producer, consumer, and admin settings.
 
@@ -262,20 +265,21 @@ sasl.oauthbearer.jwks.endpoint.url=https://private.iam.cloud.ibm.com/identity/ke
 
 Since Kafka 4.0, the client requires a system property to set the allowed URLs of SASL OAUTHBEARER token and jwks endpoints.
 
-For more information, see [System properties](https://kafka.apache.org/42/configuration/system-properties/).
+For more information, see [System properties](https://kafka.apache.org/42/configuration/system-properties/){: external}.
 
-When using the CLI client shell scripts provided by the Apache Kafka distribution, the system property can also be set by using the `KAFKA_OPTS` environment variable.
+When you run CLI scripts included in the Apache Kafka distribution, set the system property by using the `KAFKA_OPTS` environment variable:
 
-```bash
+```sh
 export KAFKA_OPTS="-Dorg.apache.kafka.sasl.oauthbearer.allowed.urls=https://private.iam.cloud.ibm.com/identity/keys,https://private.iam.cloud.ibm.com/identity/token,https://api.metadata.cloud.ibm.com/identity/v1/iam_tokens"
 ```
+{: pre}
 
 ### Using SASL OAUTHBEARER with non-Java clients
 {: #using_sasl_oauthbearer_non_Java}
 
-For other Kafka client libraries, refer to their documentation for guidance on implementing OAUTHBEARER support. See the following examples:
+For other Kafka client libraries, refer to their documentation for guidance on implementing OAUTHBEARER support. For example:
 
-- [sarama](https://github.com/IBM/sarama): an implementation of `AccessTokenProvider` interface is required.
-- [librdkafka](https://github.com/confluentinc/librdkafka): an implementation of `oauthbearer_token_refresh_cb` callback is required.
+- [sarama](https://github.com/IBM/sarama){: external}: Implement the `AccessTokenProvider` interface.
+- [librdkafka](https://github.com/confluentinc/librdkafka){: external}: Implement the `oauthbearer_token_refresh_cb` callback.
 
-For information about how to generate an {{site.data.keyword.Bluemix_notm}} IAM token by using an API key, see [Generating an IBM Cloud IAM token by using an API key](/docs/account?topic=account-iamtoken_from_apikey).
+For information about generating an IAM token, see [Generating an IBM Cloud IAM token by using an API key](/docs/iam?topic=iam-iamtoken_from_apikey).

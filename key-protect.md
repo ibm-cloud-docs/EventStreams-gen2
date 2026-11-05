@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-10-30"
+lastupdated: "2026-11-04"
 
-subcollection: event-streams-gen2
+subcollection: EventStreams-gen2
 
 keywords: bring your own key, byok, cryptoshredding, key rotation, key rotation frequency, bring your own key
 
@@ -11,10 +11,13 @@ keywords: bring your own key, byok, cryptoshredding, key rotation, key rotation 
 
 {{site.data.keyword.attribute-definition-list}}
 
-# {{site.data.keyword.keymanagementserviceshort}} integration
+# Integrating {{site.data.keyword.keymanagementserviceshort}} with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #key-protect}
 
 [Gen 2]{: tag-purple}
+
+Learn how to integrate {{site.data.keyword.keymanagementserviceshort}} with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} to control encryption keys and secure your data including BYOK.
+{: shortdesc}
 
 The data that you store in {{site.data.keyword.messagehub}} is encrypted by default by using randomly generated keys. To control the encryption keys, you can Bring Your Own Key (BYOK) through [{{site.data.keyword.keymanagementservicelong_notm}}](/docs/key-protect?topic=key-protect-integrate-services) and use one of your own keys to encrypt the storage volumes of the brokers.
 
@@ -72,9 +75,9 @@ If you want to set up a more restrictive authorization policy, configure your po
 {: #granting-service-auth-api}
 {: api}
 
-1. Create an authorization policy to allow the {{site.data.keyword.messagehub}} service to access the {{site.data.keyword.keymanagementserviceshort}} service instance via the [IAM REST API](#auth_policy_api).
+1. Create an authorization policy to allow the {{site.data.keyword.messagehub}} service to access the {{site.data.keyword.keymanagementserviceshort}} service instance via the [IAM REST API](#granting-service-auth-api).
 
-For a full API reference, see  the [IAM Policy Management API](https://cloud.ibm.com/apidocs/iam-policy-management#create-policy).
+For a full API reference, see  the [IAM Policy Management API](/docs/apis/iam-policy-management#create-policy).
 {: note}
 
 ```bash
@@ -200,7 +203,7 @@ Cryptoshredding is a destructive action. When the key is deleted, your data is u
 ### Granting the delegation authorization
 {: #grant-auth}
 
-To enable your deployment to use the {{site.data.keyword.keymanagementserviceshort}} key, you need to [Enable authorization to be delegated](/docs/account?topic=account-serviceauth) when granting the service authorizations. If the delegation authorization is not present before provisioning your deployment with a key, the provision fails.
+To enable your deployment to use the {{site.data.keyword.keymanagementserviceshort}} key, you need to [Enable authorization to be delegated](/docs/iam?topic=iam-serviceauth) when granting the service authorizations. If the delegation authorization is not present before provisioning your deployment with a key, the provision fails.
 
 After you enable delegation and provisioned your deployment, two entries appear in your _Authorizations_ in IAM. One is the entry for the deployment that lists its status as delegator. It is "User Created".
 

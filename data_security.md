@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2025
-lastupdated: "2025-12-15"
+  years: 2015, 2026
+lastupdated: "2026-11-04"
 
 keywords: protocols, encryption, data isolation, data retention, data isolation model
 
@@ -12,11 +12,13 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Data security and privacy in {{site.data.keyword.messagehub}}
+# Securing data in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}: Protocols and best practices
 {: #data_security}
 
-{{site.data.keyword.IBM}} uses the following methods to help ensure the security and privacy of your data: cryptographic protocols, encryption, and data isolation. Each plan provides different data isolation models.
+Learn about data security and privacy in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including cryptographic protocols, encryption methods, and data isolation models.
 {: shortdesc}
+
+{{site.data.keyword.IBM}} uses the following methods to help ensure the security and privacy of your data: cryptographic protocols, encryption, and data isolation. Each plan provides different data isolation models.
 
 ## Cryptographic protocols - THIS SECTION NEEDS INPUT FROM TEAM TO BE UPDATED
 {: #cryptographic}

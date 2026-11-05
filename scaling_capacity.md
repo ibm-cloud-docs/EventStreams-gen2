@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: scaling capacity, throughput, storage, scaling
 
@@ -12,16 +12,18 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Scaling Enterprise plan capacity
+# Scaling {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} Enterprise plan capacity
 {: #ES_scaling_capacity}
 
 [Gen 2]{: tag-purple}
+
+Learn how to scale up throughput and storage capacity for {{site.data.keyword.messagehub}} Enterprise plan service instances on {{site.data.keyword.cloud_notm}} using the {{site.data.keyword.cloud_notm}} CLI.
+{: shortdesc}
 
 ## Event Streams capacity
 {: #ES_capacity}
 
 The {{site.data.keyword.messagehub}} Enterprise plan lets you specify throughput and storage capacity when a new instance of the service is created. If after using the service instance, you find that the current capacity configuration of your service instance is not meeting the demands of your solution, capacity can be scaled up to meet demands.
-{: shortdesc}
 
 The scaling of throughput is currently not supported.
 
@@ -30,114 +32,83 @@ The scaling of throughput is currently not supported.
 
 The throughput capacity represents the minimum throughput that can be expected to be continually available across the service instance assuming typical workloads. It also takes into account operational procedures and failure modes, such as the loss of an availability zone. Throughput is divided equally between produce and consume traffic. At any individual point in time, a higher throughput selected may be achievable but cannot be relied on to be continually available.
 
-The minimum throughput option available is 100MB/s, divided into 50MB/s for produce workload and 50MB/s for consume workload. Scaling throughput is currently not supported. For more information on capacity recommendations and limitations, see [limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas). Although throughput scaling is independent of storage, for each tier a defined minimum of storage amount is required. 
+The minimum throughput option available is 100 MB/s, divided into 50 MB/s for produce workloads and 50 MB/s for consume workloads. Scaling throughput is currently not supported. For more information, see [Limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas).
 
 ## Storage capacity
 {: #ES_storage_capacity}
 
-Storage capacity is the amount of storage that is allocated in the service instance for retention of message data. Storage figures are quoted in decimal (base 10), for example, 2 TB represents 2x10^12 Bytes. Storage capacity can be scaled up, independent of throughput capacity, when data retention is important for your architecture. Storage capacity cannot be scaled down.
+Storage capacity is the amount of storage allocated in the service instance for message retention. Storage numbers use decimal (base 10) units, where 2 TB represents 2 x 10^12 bytes. You can scale storage capacity upward independently of throughput capacity. Storage capacity cannot be scaled down.
 
-{{site.data.keyword.messagehub}} stores three replicas of your data to ensure the highest level of resilience across three availability zones. When you select 2 TB of storage with {{site.data.keyword.messagehub}}, it is equivalent to deploying 6 TB of storage, if you are running your own Apache Kafka cluster with the same replication policy enabled.
+{{site.data.keyword.messagehub}} stores three replicas of your data across three availability zones. Selecting 2 TB of storage provides 2 TB of usable capacity, which corresponds to 6 TB of raw storage across the cluster.
 
 ## How to scale capacity
 {: #ES_how_to_scale_capacity}
 
-The following steps show you how to scale up throughput and storage capacity for an {{site.data.keyword.messagehub}} Enterprise plan service instance. If you do not have an Enterprise instance, these steps help you to create one.
+You can scale up storage capacity for an {{site.data.keyword.messagehub}} Enterprise plan service instance by using the {{site.data.keyword.cloud_notm}} CLI.
 
-Currently, scaling up an {{site.data.keyword.messagehub}} service instance capacity requires the use of the {{site.data.keyword.Bluemix_notm}} CLI.
+To install the CLI, see [Installing the {{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli).
 
-To install this tool, see [install devtools](/docs/cli?topic=cli-install-ibmcloud-cli).
-
-The {{site.data.keyword.Bluemix_notm}} CLI command uses the **service-instance-update** command to update your {{site.data.keyword.messagehub}} service instance resource. The user ID in the account used to issue the **service-instance-** command must be assigned the same access policies that are needed when you create resources. For information about access requirements, see [creating resources](/docs/account?topic=account-manage_resource#creating-resources).
+Use the `ibmcloud resource service-instance-update` command to update your {{site.data.keyword.messagehub}} instance. The user or service ID executing the command must have Administrator or Editor permissions in the resource group. For more information, see [Managing access to resources](/docs/account?topic=account-manage_resource#creating-resources).
 
 ### During the scale-up process
 {: #scaleup_process}
 
-The time required to scale up the {{site.data.keyword.messagehub}} service instance is variable, but under normal circumstances it does not exceed 3 hours. Both throughput and storage require provisioning extra infrastructure.
+Scaling storage capacity requires provisioning additional backing storage. The scale-up operation is non-disruptive, and the flow of message traffic continues without interruption. The process typically completes in minutes, but can take up to three hours.
 
-During this time, the flow of Kafka data is not affected (the scaling operation is nondisruptive).
-
-### Example
+### Step-by-step example: Scaling storage from 2 TB to 4 TB
 {: #scaleup_example}
 
-This example shows how to first deploy a service instance configured with a base capacity unit, which is the default:
-* 100 MB/s of throughput capacity.
-* 2 TB of storage capacity for data retention.
+The following example demonstrates scaling an Enterprise Gen 2 instance from 2 TB to 4 TB of storage:
 
-The example then shows how to scale this service instance to 4 TB of storage to provide:
-* 100 MB/s of throughput capacity.
-* 4 TB of storage capacity for data retention.
+1. Log in to the {{site.data.keyword.cloud_notm}} CLI:
 
-1. If you don't already have one, create an {{site.data.keyword.messagehub}} service instance.
+   ```sh
+   ibmcloud login
+   ```
+   {: pre}
 
-    a. Log in to the **{{site.data.keyword.Bluemix_notm}} console**.
+2. Locate the resource name of your {{site.data.keyword.messagehub}} service instance:
 
-    b. Click the **{{site.data.keyword.messagehub}} service** in the Catalog.
+   ```sh
+   ibmcloud resource service-instances
+   ```
+   {: pre}
 
-    c. Select the **Enterprise plan Gen2** on the service instance page, ensuring that a supported location is selected.
+3. View the current capacity configuration:
 
-    d. Review capacity selections of 100 MB/s throughput and 2 TB storage.
+   ```sh
+   ibmcloud resource service-instance <instance_name> -o JSON
+   ```
+   {: pre}
 
-    e. Enter a name for your service instance. You can use the default value.
+   The configuration is displayed under `extensions.dataservices.kafka`:
 
-    f. Click Create. (For information about the amount of time needed to create the service instance, see [Choosing your plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported)).
+   ```json
+   {
+     "extensions": {
+       "dataservices": {
+         "kafka": {
+           "storage_gb": 2000,
+           "throughput_mb_s": 100
+         }
+       }
+     }
+   }
+   ```
+   {: codeblock}
 
-2. Log in to the **{{site.data.keyword.Bluemix_notm}} CLI**.
+4. Scale storage capacity to 4 TB (4000 GB):
 
-      ```sh
-      ibmcloud login
-      ```
-      {: pre}
+   ```sh
+   ibmcloud resource service-instance-update <instance_name> -p '{"dataservices":{"kafka":{"storage_gb":4000}}}'
+   ```
+   {: pre}
 
-3. Get the resource name of your {{site.data.keyword.messagehub}} service instance.
+5. Monitor the status of the scale operation:
 
-      ```sh
-      ibmcloud resource service-instances
-      ```
-      {: pre}
+   ```sh
+   ibmcloud resource service-instance <instance_name> -o JSON
+   ```
+   {: pre}
 
-      (You can find the name of your instance in the Name column.)
-
-4. View the current capacity configuration of your instance.
-
-      ```sh
-      ibmcloud resource service-instance "Event Streams resource instance name" -o JSON
-      ```
-      {: pre}
-
-   The information is available in the *kafka* field of the *extensions.dataservices* section of the output:
-
-      ```
-      "extensions": {
-        "dataservices": {
-        ...
-          "kafka": {
-             "storage_gb": 2000,
-              "throughput_mb_s": 100,
-          },
-       ```
-      {: pre}
-
-6. Scale up the service instance from **2 TB storage capacity** to **4 TB storage capacity**.
-
-    a. Run the following command from the CLI.
-
-      ```sh
-      ibmcloud resource service-instance-update "Event Streams resource instance name" -p '{"dataservices":{"kafka":{storage_gb":"4000"}}}'
-      ```
-      {: pre}
-
-7. Monitor the update of the service instance.
-
-    The scale-up process can take from several minutes to three hours to complete depending on what new resources need to be allocated to the service instance.
-
-    You can get the current service instance information by using the following command.
-
-      ```sh
-      ibmcloud resource service-instance "Event Streams resource instance name" --output=json
-      ```
-
-      {: pre}
-    Review the `Last Operation` section of the output. The information is continuously updated as the update proceeds. When the scale-up process completed, the last operation information indicates update succeeded or sync succeeded.
-
-    Run the command again until success is indicated.
+   Check the `last_operation` object in the JSON output. When the scale-up process completes, `last_operation.state` indicates `succeeded`.

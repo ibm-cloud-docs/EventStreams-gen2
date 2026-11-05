@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-11-04"
 
 keywords: client, wildcarding, wildcard, policies
 
@@ -12,13 +12,15 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Managing authentication to your {{site.data.keyword.messagehub}} instances
+# Managing authentication to {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} instances
 {: #security}
 
 [Gen 2]{: tag-purple}
 
-{{site.data.keyword.messagehub}} supports two [SASL](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer) (Simple Authentication and Security Layer) mechanisms as the authentication methods to {{site.data.keyword.messagehub}} instances by default: PLAIN and OAUTHBEARER.
+Learn about authentication methods for {{site.data.keyword.messagehub}} instances, including SASL mechanisms and IAM integration for secure access.
 {: shortdesc}
+
+{{site.data.keyword.messagehub}} supports two [SASL](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer) (Simple Authentication and Security Layer) mechanisms as the authentication methods to {{site.data.keyword.messagehub}} instances by default: PLAIN and OAUTHBEARER.
 
 Kafka client configured with SASL PLAIN uses an IAM API key as a plain text password in the authentication process, {{site.data.keyword.messagehub}} sends the API key to IAM for verification. When authenticated, this client will keep connected and will not require re-authentication until it is disconnected and wants to re-connect.
 
@@ -27,7 +29,7 @@ Kafka client configured with SASL OAUTHBEARER uses IAM access token in the authe
 1. The API key always stays at client side to generate the access token and is no longer sent to Kafka brokers over the network, which removes the risk of API key exposure.
 2. The authentication process happens on a regular basis when the access token is expiring and this minimizes the risk of token exposure.
 
-For more secure authentication, SASL OAUTHBEARER is the only recommended authentication method for Kafka clients. See [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_using#kafka_api_client) how to configure SASL OAUTHBEARER in Kafka clients.
+For more secure authentication, SASL OAUTHBEARER is the only recommended authentication method for Kafka clients. See [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-gen2-using_kafka_api#kafka_api_client) how to configure SASL OAUTHBEARER in Kafka clients.
 
 Enterprise users have the option to disable SASL PLAIN in their Enterprise instances. Use the following command:
 
@@ -37,7 +39,7 @@ ibmcloud resource service-instance-update <instance-name> -p'{"dataservices":{"o
 ```
 
 ## Connecting to {{site.data.keyword.messagehub}}
-{: #connect_message_enterprise }
+{: #connect_message_enterprise}
 
 For more information about how to get a security key credential for an external application, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting).
 
@@ -69,7 +71,7 @@ The levels of access (also known as a role) that you can assign to a user to eac
 {: caption="Example {{site.data.keyword.messagehub}} user roles and actions" caption-side="bottom"}
 
 ## How do I assign access?
-{: #assign_access }
+{: #assign_access}
 
 Cloud Identity and Access Management (IAM) policies are attached to the resources to be controlled. Each policy defines the level of access that a particular user must have and to which resource or set of resources. A policy consists of the following information:
 
@@ -79,17 +81,15 @@ Cloud Identity and Access Management (IAM) policies are attached to the resource
 - The resource to be secured. Specify for resources of type `topic`, `group`, `schema`, and `txnid`. If you do not specify the resource, the policy then applies to all resources of the type specified in the service instance.
 - The role that is assigned to the user. For example, Reader, Writer, or Manager.
 
-For more information about IAM, see [IBM Cloud Identity and Access Management](/docs/account?topic=account-iamoverview).
-
-For an example of how to set policies, see [IBM Cloud IAM Service IDs and API Keys](https://www.ibm.com/blog/introducing-ibm-cloud-iam-service-ids-api-keys/){: external}.
+For more information about IAM, see [IBM Cloud Identity and Access Management](/docs/iam?topic=iam-iamoverview).
 
 ### Wildcarding
-{: #wildcarding }
+{: #wildcarding}
 
-You can take advantage of the IAM wildcarding facility to set policies for groups of resources on {{site.data.keyword.messagehub}}. For example, if you give all your topics names like `Dept1_Topic1` and `Dept1_Topic2`, you can set policies for topics that are called `Dept1_*` and these policies are applied to all topics with that prefix. For more information, see [Assigning access by using wildcard policies](/docs/account?topic=account-wildcard){: external}.
+You can take advantage of the IAM wildcarding facility to set policies for groups of resources on {{site.data.keyword.messagehub}}. For example, if you give all your topics names like `Dept1_Topic1` and `Dept1_Topic2`, you can set policies for topics that are called `Dept1_*` and these policies are applied to all topics with that prefix. For more information, see [Assigning access by using wildcard policies](/docs/iam?topic=iam-wildcard).
 
 ## What are the default security settings?
-{: #default_settings }
+{: #default_settings}
 
 By default, when {{site.data.keyword.messagehub}} is provisioned, the user who provisioned it is granted the manager role to all the instance's resources. Additionally, any user who has a manager role for either 'All' services or 'All' {{site.data.keyword.messagehub}} service instances in the same account also has full access.
 
