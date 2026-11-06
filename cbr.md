@@ -58,6 +58,7 @@ Instance
 :   Protects a specific instance. If you include an instance in your context-based restrictions rule, resources in the network zones that you associate with the rule can interact only with resources in that instance. Scoping a rule to a specific instance is available only for rules that protect the cluster API type. If you use the CLI, you can specify the `--service-instance` option to protect instances in a specific resource group. If you use the UI, you can specify the *Service instance* in the resource attributes.
 
 ### Using the Command Line Interface (CLI)
+{: #using-cli}
 {: cli}
 
 You can create and manage context-based restrictions with the IBM Cloud CLI by [installing the context-based restrictions CLI plug-in](/docs/cli?topic=cli-cbr-plugin).
@@ -84,7 +85,6 @@ A network zone represents an allowlist of IP addresses where an access request i
    {: note}
 
 1. Choose your *Allowed VPCs*, selecting as many as you like.
-
 
 ### Create network zones in the CLI
 {: #network-zone-cli}
