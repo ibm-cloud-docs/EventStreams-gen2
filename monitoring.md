@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: monitoring, metrics, cost, billing, opting in
 
@@ -545,7 +545,7 @@ Shows the percentage of disk space that is currently in use.
 Provides informational insight to help you monitor usage trends over time.
 
 ## Attributes for Segmentation
-{: attributes}
+{: #attributes}
 
 ### Global attributes
 {: #global-attributes}
