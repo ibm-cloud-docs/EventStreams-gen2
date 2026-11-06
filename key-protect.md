@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 subcollection: EventStreams-gen2
 
@@ -75,7 +75,7 @@ If you want to set up a more restrictive authorization policy, configure your po
 {: #granting-service-auth-api}
 {: api}
 
-1. Create an authorization policy to allow the {{site.data.keyword.messagehub}} service to access the {{site.data.keyword.keymanagementserviceshort}} service instance via the [IAM REST API](#granting-service-auth-api).
+1. Create an authorization policy to allow the {{site.data.keyword.messagehub}} service to access the {{site.data.keyword.keymanagementserviceshort}} service instance via the [IAM REST API](/docs/EventStreams-gen2?topic=EventStreams-gen2-key-protect&interface=api#granting-service-auth-api).
 
 For a full API reference, see  the [IAM Policy Management API](/docs/apis/iam-policy-management#create-policy).
 {: note}
