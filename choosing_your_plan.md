@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025, 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: plan, Enterprise, Standard, Lite, pricing, throughput, partitions, tenancy, compliance
 
@@ -44,7 +44,7 @@ The Enterprise plan is appropriate if data isolation, performance, and increased
 The Enterprise plan includes the following features:
 
 - Exclusive access to a single-tenant {{site.data.keyword.messagehub}} service instance deployed in a highly available multizone region (MZR).
-- An option to provision a single-tenant {{site.data.keyword.messagehub}} service instance in a geographically local but single-zone location [(SZR)](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#sla_szr).
+- An option to provision a single-tenant {{site.data.keyword.messagehub}} service instance in a geographically local but single-zone location (SZR).
 - Scaling options to customize throughput, storage capacity, or both.
 - A broad set of compliance certifications, regions, and features, including public endpoint connectivity, Managed Schema Registry, and mirroring capabilities.
 
