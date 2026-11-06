@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Select the right {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} plan for your needs
+# Select the right {{site.data.keyword.messagehub}} plan for your needs
 {: #plan_choose}
 
 [Gen 2]{: tag-purple}
 
-Learn about the different {{site.data.keyword.messagehub}} plans available on {{site.data.keyword.cloud_notm}}, including Lite, Standard, and Enterprise plans, and choose the one that suits your needs.
+Learn about the {{site.data.keyword.messagehub}} Lite, Standard, and Enterprise plans available on {{site.data.keyword.cloud_notm}}, and choose the plan that suits your requirements.
 {: shortdesc}
 
 The following page covers all {{site.data.keyword.messagehub_full}} plans including Classic (Gen 1) and VPC (Gen 2).

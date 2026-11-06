@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: partition leadership, partition leader
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Understand how partition leadership works in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} Gen 2, including leader and follower roles, and how leadership elections occur.
+Understand how partition leadership works in {{site.data.keyword.messagehub}} Gen 2, including leader and follower roles, and how leadership elections occur.
 {: shortdesc}
 
 Each partition has one server in the cluster that acts as the partition's leader and other servers that act as the followers. All produce and consume requests for the partition are handled by the leader. The followers replicate the partition data from the leader with the aim of keeping up with the leader. If a follower is keeping up with the leader of a partition, the follower's replica is in-sync.

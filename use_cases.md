@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: use cases, examples
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Using Kafka with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}: Key use cases
+# Using Kafka with {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud_notm}}: Key use cases
 {: #use_cases}
 
 [Gen 2]{: tag-purple}
 
-Discover the main use cases for Kafka with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including stream processing, data pipelines, and event streaming for real-time applications.
+Discover the main use cases for Kafka with {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud_notm}}, including stream processing, data pipelines, and event streaming for real-time applications.
 {: shortdesc}
 
 ![Kafka use cases with {{site.data.keyword.messagehub}}](https://cdnapisec.kaltura.com/html5/html5lib/v2.101/mwEmbedFrame.php/p/1773841/uiconf_id/27941801/entry_id/1_us1in0l0?wid=_1773841&iframeembed=true&entry_id=1_us1in0l0){: video output="iframe" data-script="none" id="mediacenterplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}

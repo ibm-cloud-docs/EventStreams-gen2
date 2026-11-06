@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: reporting a problem, problem report
 
@@ -12,7 +12,7 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Reporting issues for Standard and Enterprise plans in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
+# Reporting a problem with {{site.data.keyword.messagehub}} Standard and Enterprise plans
 {: #report_problem_enterprise}
 
 [Gen 2]{: tag-purple}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: event streams cbr, context-based restrictions, gen2
 
@@ -12,10 +12,10 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Securing {{site.data.keyword.messagehub}} with context-based restrictions on {{site.data.keyword.cloud}}
+# Securing {{site.data.keyword.messagehub}} with context-based restrictions on {{site.data.keyword.cloud_notm}}
 {: #cbr}
 
-Learn how to protect your {{site.data.keyword.messagehub}} resources using context-based restrictions, an additional layer of security that works alongside IAM policies on IBM Cloud.
+Learn how to protect your {{site.data.keyword.messagehub}} resources by using context-based restrictions, an extra layer of security that works alongside IAM policies.
 {: shortdesc}
 
 Context-based restrictions give account owners and administrators the ability to define access rules that limit the network locations that connections are accepted from. For example, network type, IP ranges, VPC, or other services.
@@ -27,7 +27,7 @@ A user must have the Administrator role on the {{site.data.keyword.messagehub}} 
 
 Any {{site.data.keyword.cloudaccesstraillong_notm}} or audit log events generated come from the context-based restrictions service, not {{site.data.keyword.messagehub}}.
 
-{{site.data.keyword.messagehub}} does not support Report-only mode. 
+{{site.data.keyword.messagehub}} does not support Report-only mode.
 {: important}
 
 To start protecting your {{site.data.keyword.messagehub}} resources with context-based restrictions, see the tutorial for [Leveraging context-based restrictions to secure your resources](/docs/iam?topic=iam-context-restrictions-tutorial).
@@ -197,8 +197,8 @@ Rules restrict access to specific cloud resources based on resource attributes a
 2. Select **Rules**.
 3. Click **Create**.
 4. Under **Service**, select {{site.data.keyword.messagehub}} as the service you want to target with your rule.
-5. Under **APIs**, select `All`. 
-6. Under **Resources**, scope the rule to **All resources** or **Specific resources**. 
+5. Under **APIs**, select `All`.
+6. Under **Resources**, scope the rule to **All resources** or **Specific resources**.
 7. Click **Continue**.
 8. Define the allowed endpoint types.
    - Keep the toggle set to **No** to allow all endpoint types.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: api, consumer, producer, admin, streams, connect, client
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use Kafka APIs, including core, streams, and connect APIs, with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} for event-driven applications.
+Learn how to use Kafka APIs, including the core, Streams, and Connect APIs, with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} to build event-driven applications.
 {: shortdesc}
 
 Kafka core API (Consumer, Producer, and Admin API)

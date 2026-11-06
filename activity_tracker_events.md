@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: activity , cloud logs
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use {{site.data.keyword.logs_full_notm}} to track user and application interactions with {{site.data.keyword.messagehub}} on various plans in {{site.data.keyword.cloud_notm}} including Activity Tracker.
+Learn how to use {{site.data.keyword.logs_full_notm}} to track user and application interactions with {{site.data.keyword.messagehub}} on various plans in {{site.data.keyword.cloud_notm}}, including Activity Tracker.
 {: shortdesc}
 
 The {{site.data.keyword.logs_full_notm}} service records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. For more information, see [{{site.data.keyword.logs_full_notm}}](/docs/cloud-logs?topic=cloud-logs-at_events){: external}.

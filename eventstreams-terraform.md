@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: terraform, schematics, automation, declarative, Event streams
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use Terraform to manage your {{site.data.keyword.messagehub}} instance on {{site.data.keyword.cloud_notm}}, following Infrastructure as Code principles.
+Learn how to use Terraform to manage your {{site.data.keyword.messagehub}} instance on {{site.data.keyword.cloud_notm}}, following infrastructure as code (IaC) principles.
 {: shortdesc}
 
 You can manage your {{site.data.keyword.messagehub_full}} instance using Terraform, which enables you to rapidly and predictably create and change your instance following Infrastructure as Code (IaC) principles. Terraform is an open source tool that codifies APIs into declarative configuration files. These files can be shared among team members and are treated as code, edited, reviewed, and versioned. You write down what your infrastructure should look like and Terraform will create, update, and remove cloud resources as needed. For more information, see [Understand the basics of Terraform](https://developer.hashicorp.com/terraform/intro){: external}.

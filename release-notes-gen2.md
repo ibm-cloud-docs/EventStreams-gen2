@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025, 2026
-lastupdated: "2026-11-05"
+lastupdated: "2026-11-06"
 
 keywords: gen 2
 
@@ -18,7 +18,7 @@ content-type: release-note
 
 [Gen 2]{: tag-purple}
 
-Stay up-to-date with the latest {{site.data.keyword.messagehub}} Gen 2 updates, enhancements, and new features, grouped by month and year.
+Stay up-to-date with the latest updates, enhancements, and new features for {{site.data.keyword.messagehub}} Gen 2, grouped by month and year.
 {: shortdesc}
 
 ## 5 November 2026

@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: gen 2, generation 2, vpc, kafka
 
@@ -11,7 +11,7 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Comparing {{site.data.keyword.messagehub}} Gen 1 (Classic) and Gen 2 (VPC): Key differences
+# Comparing {{site.data.keyword.messagehub}} Gen 1 (Classic) and Gen 2 (VPC)
 {: #overview-gen1-gen2}
 
 [Gen 2]{: tag-purple}

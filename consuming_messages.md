@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: messages, consumer, record, offset, rebalancing, consumer group, consumer properties
 
@@ -12,11 +12,11 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Consuming messages from Kafka topics with Event Streams
+# Consuming messages from Kafka topics with {{site.data.keyword.messagehub}}
 {: #consuming_messages}
 [Gen 2]{: tag-purple}
 
-Learn how to consume messages from Kafka topics using a consumer application with Event Streams, including configuration settings and best practices.
+Learn how to consume messages from Kafka topics using a consumer application with {{site.data.keyword.messagehub}}, including configuration settings and best practices.
 {: shortdesc}
 
 When a consumer connects to Kafka, it makes an initial bootstrap connection. This connection can be to any of the servers in the cluster. The consumer requests the partition and leadership information about the topic that it wants to consume from. Then, the consumer establishes another connection to the partition leader and can consume messages. These actions happen automatically internally when your consumer connects to the Kafka cluster.

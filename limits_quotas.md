@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: limits, quotas, network throughput, retention, consumer groups, schema
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Understanding {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} limits and quotas
+# Understanding {{site.data.keyword.messagehub}} limits and quotas on {{site.data.keyword.cloud_notm}}
 {: #kafka_quotas}
 
 [Gen 2]{: tag-purple}
 
-Learn how {{site.data.keyword.messagehub}} uses quotas to control resources like network bandwidth on {{site.data.keyword.cloud_notm}}, and understand the limits based on your plan.
+Learn how {{site.data.keyword.messagehub}} uses quotas to control resources like network bandwidth on {{site.data.keyword.cloud_notm}}, and understand the limits for your plan.
 {: shortdesc}
 
 ## Enterprise plan

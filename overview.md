@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: managed kafka, kafka as a service, managed apache kafka, kafka on cloud
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Discover {{site.data.keyword.messagehub_full}}, a high-throughput message bus built with Apache Kafka, optimized for event ingestion and distribution between services.
+Discover {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, a high-throughput message bus built with Apache Kafka, optimized for event ingestion and distribution between services.
 {: shortdesc}
 
 ![Leverage Kafka to build intelligent applications with IBM Cloud Event Streams](https://cdnapisec.kaltura.com/html5/html5lib/v2.101/mwEmbedFrame.php/p/1773841/uiconf_id/27941801/entry_id/1_g98laaak?wid=_1773841&iframeembed=true&entry_id=1_g98laaak){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen}

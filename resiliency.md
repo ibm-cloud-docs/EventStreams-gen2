@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: resiliency, cluster resiliency, availability, data corruption, deletion, data management, disaster recovery, responsibilities
 
@@ -12,7 +12,7 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Maximizing {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} resiliency
+# Maximizing {{site.data.keyword.messagehub}} resiliency on {{site.data.keyword.cloud_notm}}
 {: #resiliency}
 
 [Gen 2]{: tag-purple}

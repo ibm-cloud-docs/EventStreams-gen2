@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: MQ bridge, connect configuration
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Connect {{site.data.keyword.IBM_notm}} MQ to {{site.data.keyword.messagehub}} using {{site.data.keyword.containerlong_notm}}
+# Connect IBM MQ to {{site.data.keyword.messagehub}} using {{site.data.keyword.cloud_notm}} Kubernetes Service
 {: #mq_connector}
 
 [Gen 2]{: tag-purple}
 
-Learn how to run Kafka Connect in an {{site.data.keyword.containerlong}} cluster and use the {{site.data.keyword.IBM_notm}} MQ Source Connector to copy messages from {{site.data.keyword.IBM_notm}} MQ to {{site.data.keyword.messagehub}}.
+Learn how to run Kafka Connect in an {{site.data.keyword.cloud_notm}} Kubernetes Service cluster and use the IBM MQ source connector to copy messages from IBM MQ to {{site.data.keyword.messagehub}}.
 {: shortdesc}
 
 Get the Kafka Connect runtime to run in an {{site.data.keyword.containerlong}} cluster. Then, start the {{site.data.keyword.IBM_notm}} MQ Source Connector to copy messages from an {{site.data.keyword.IBM_notm}} MQ source queue to a destination Kafka topic in {{site.data.keyword.messagehub}}.

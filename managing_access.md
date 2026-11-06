@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: client, wildcarding, wildcard, policies
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Managing authentication to {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} instances
+# Managing authentication to {{site.data.keyword.messagehub}} instances on {{site.data.keyword.cloud_notm}}
 {: #security}
 
 [Gen 2]{: tag-purple}
 
-Learn about authentication methods for {{site.data.keyword.messagehub}} instances, including SASL mechanisms and IAM integration for secure access.
+Learn about authentication methods for {{site.data.keyword.messagehub}} instances, including SASL PLAIN and OAUTHBEARER mechanisms and IAM integration for secure access.
 {: shortdesc}
 
 {{site.data.keyword.messagehub}} supports two [SASL](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer) (Simple Authentication and Security Layer) mechanisms as the authentication methods to {{site.data.keyword.messagehub}} instances by default: PLAIN and OAUTHBEARER.
