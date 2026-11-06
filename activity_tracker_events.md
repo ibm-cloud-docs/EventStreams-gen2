@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: activity , cloud logs
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use {{site.data.keyword.logs_full_notm}} to track user and application interactions with {{site.data.keyword.messagehub}} on various plans in {{site.data.keyword.cloud_notm}} including Activity Tracker.
+Learn how to use {{site.data.keyword.logs_full_notm}} to track user and application interactions with {{site.data.keyword.messagehub}} on various plans in {{site.data.keyword.cloud_notm}}, including Activity Tracker.
 {: shortdesc}
 
 The {{site.data.keyword.logs_full_notm}} service records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. For more information, see [{{site.data.keyword.logs_full_notm}}](/docs/cloud-logs?topic=cloud-logs-at_events){: external}.
@@ -36,8 +36,7 @@ The following table lists the topic events:
 | event-streams.topic.create | An event is created when you create a topic.|
 | event-streams.topic.delete | An event is created when you delete a topic.|
 | event-streams.topic.update | An event is created when you update a topic's configuration or increase partitions.|
-
-{: caption="{{site.data.keyword.messagehub}} topic events" caption-side="top"}
+{: caption="{{site.data.keyword.messagehub}} topic events" caption-side="bottom"}
 
 Additional information about topic configuration is logged in the update and delete events,  for example partitions, `retentionMs`, and `segmentMs`.
 
@@ -50,11 +49,11 @@ Also, see [How to enable message audit events](/docs/EventStreams-gen2?topic=Eve
 The following table lists the message audit events:
 
 | Action | Description |
-|:-------|:------------|
+| --- | --- |
 | event-streams.message.read | An event is created when message audit is enabled on a topic and a consumer is reading data from the topic.|
 | event-streams.message.write | An event is created when message audit is enabled on a topic and a producer is writing data to the topic.|
 | event-streams.message.delete | An event is created when message audit is enabled on a topic and records are deleted from the topic. Records deletion because of retention policy does not generate.|
-{: caption="{{site.data.keyword.messagehub}} message events" caption-side="top"}
+{: caption="{{site.data.keyword.messagehub}} message events" caption-side="bottom"}
 
 {{site.data.keyword.messagehub}} can sustain high request rates, so not every request triggers an event. Instead, events are aggregated by initiator (user ID or service ID), host (IP address), operation (read, write, delete), outcome (success or failure), and topic over a 1-hour period.
 
@@ -67,8 +66,7 @@ The following table lists the message audit events:
 |:-------|:------------|
 | event-streams.storage-key.read | Key management events are now created by the underlying block storage, which are described [here](/docs/vpc?topic=vpc-at_events#events-block-storage). |
 | event-streams.storage-key.update | Key management events are now created by the underlying block storage, which are described [here](/docs/vpc?topic=vpc-at_events#events-block-storage). |
-
-{: caption="{{site.data.keyword.messagehub}} events" caption-side="top"}
+{: caption="{{site.data.keyword.messagehub}} events" caption-side="bottom"}
 
 ## Where to view the events
 {: #ui}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: troubleshooting, question, problem
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to resolve common issues with {{site.data.keyword.messagehub_full}}, including network-related problems and troubleshooting tips.
+Learn how to resolve common issues with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including network-related problems.
 {: shortdesc}
 
 ## Network related issues

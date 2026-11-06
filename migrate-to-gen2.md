@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: event streams migration, gen1 to gen2, classic infrastructure, vpc, drain and switch, private endpoints, kafka, topics, producers, consumers
 
@@ -14,12 +14,12 @@ content-type: tutorial
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Migrate {{site.data.keyword.messagehub}} from Gen 1 to Gen 2 on {{site.data.keyword.cloud_notm}}
+# Migrate {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} from Gen 1 to Gen 2
 {: #migrating-event-streams-gen1-to-gen2}
 
 [Gen 2]{: tag-purple}
 
-Learn how to migrate your {{site.data.keyword.messagehub}} deployment from Gen 1 to Gen 2 by using the drain and switch process on {{site.data.keyword.cloud_notm}}.
+Follow this tutorial to migrate your {{site.data.keyword.messagehub}} deployment from Gen 1 to Gen 2 by using the drain and switch process.
 {: shortdesc}
 
 This tutorial applies to both the Standard and Enterprise plans. Both plans follow the same drain and switch migration process.

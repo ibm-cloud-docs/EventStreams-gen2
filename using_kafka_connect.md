@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: stand-alone, source connector, sink connector, distributed worker
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use Kafka Connect with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} for seamless data integration between external systems and Kafka clusters.
+Learn how to use Kafka Connect with {{site.data.keyword.messagehub}} for data integration between external systems and Kafka clusters on {{site.data.keyword.cloud_notm}}.
 {: shortdesc}
 
 Kafka Connect is part of the Apache Kafka project and allows connecting external systems to Kafka. It consists of a runtime that can run [connectors](https://ibm.github.io/event-automation/connectors/) to copy data to and from a cluster. Its main characteristics are:

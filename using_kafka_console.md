@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: console tools, console producer, console consumer, consumer groups
 
@@ -12,17 +12,17 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Using Kafka console tools with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
+# Using Kafka console tools with {{site.data.keyword.messagehub}}
 {: #kafka_console_tools}
 
 [Gen 2]{: tag-purple}
 
-Learn how to use Apache Kafka console tools for administration and messaging operations with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}.
+Learn how to use Apache Kafka console tools for administration and messaging operations with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including topics and consumer groups.
 {: shortdesc}
 
 Apache Kafka comes with various console tools for simple administration and messaging operations. You can use many of them with {{site.data.keyword.messagehub}}, although {{site.data.keyword.messagehub}} does not permit connection to its KRaft cluster.
 
-### Download the console tools
+## Download the console tools
 {: #download_tools}
 
 The console tools are distributed as part of the Kafka binary download and can be downloaded from the [Apache Kafka downloads](https://kafka.apache.org/community/downloads/){: external}. The most recent supported release is recommended.
@@ -44,7 +44,7 @@ $ cd kafka_2.13-4.1.1/
 
 These console tools are in the `bin` directory.
 
-### Install Java
+## Install Java
 {: #install_java}
 
 Install java with the following commands:
@@ -62,7 +62,7 @@ $ java -version
 ```
 {: codeblock}
 
-### Create a `client.properties` file
+## Create a `client.properties` file
 {: #create_properties}
 
 Create a properties file with the information needed to connect to your instance.

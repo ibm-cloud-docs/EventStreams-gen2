@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords:
 
@@ -16,10 +16,10 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Understanding service dependencies in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} Gen 2
+# Understanding service dependencies for {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} Gen 2
 {: #service-dependencies}
 
-Learn about the service dependencies for {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} Gen 2, including dependency severity and impact on the service when dependencies are unavailable.
+Learn about the service dependencies for {{site.data.keyword.messagehub}} Gen 2, including dependency severity and the impact on the service when a dependency is unavailable.
 {: shortdesc}
 
 Critical

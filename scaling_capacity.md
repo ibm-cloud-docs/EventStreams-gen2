@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: scaling capacity, throughput, storage, scaling
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to scale up throughput and storage capacity for {{site.data.keyword.messagehub}} Enterprise plan service instances on {{site.data.keyword.cloud_notm}} using the {{site.data.keyword.cloud_notm}} CLI.
+Learn how to scale up throughput and storage capacity for {{site.data.keyword.messagehub}} Enterprise plan service instances on {{site.data.keyword.cloud_notm}} by using the {{site.data.keyword.cloud_notm}} CLI.
 {: shortdesc}
 
 ## Event Streams capacity

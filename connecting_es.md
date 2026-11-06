@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -22,7 +22,7 @@ To connect to {{site.data.keyword.messagehub}}, a {{site.data.keyword.vpe_full}}
 
 The following information gives an overview of the steps required, using the example of a Kafka client application running on a VPC VSI, but could be applied to any of the VPC application platforms. For apps running externally to a VPC, further information is provided for the additional steps required.
 
-### Creating a VPE gateway
+## Creating a VPE gateway
 {: #create_VPE}
 
 To enable an application deployed in an {{site.data.keyword.vpc_full}} to access your Enterprise instance over the private network, a virtual private endpoint (VPE) gateway must be created in the VPC.
@@ -32,7 +32,7 @@ To enable an application deployed in an {{site.data.keyword.vpc_full}} to access
 3. After you create your VPE gateway, it might take a few minutes for the new VPE gateway and pDNS to complete the process and begin working for your VPC. Completion is confirmed when you see an IP address set in the [details view](/docs/vpc?topic=vpc-vpe-viewing-details-of-an-endpoint-gateway&interface=ui){: external} of the VPE gateway.
 4. Take a note of this VPE gateway IP address.
 
-### Creating a service credential
+## Creating a service credential
 {: #create_a_service_credential}
 
 All plans use [IAM](/docs/account?topic=account-overview){: external} for authentication. You don't need to understand IAM to get started but some knowledge is recommended if you want to secure your {{site.data.keyword.messagehub}} service. For more information, see [Managing access to your {{site.data.keyword.messagehub}} resources](/docs/EventStreams-gen2?topic=EventStreams-gen2-security). To complete the following steps and be authorized to create topics, your application must have a Manager access role. By default, the owner of the account that contains the service instance has this role.

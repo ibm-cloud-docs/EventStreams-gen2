@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: sla, service level agreement, connectivity, throughput
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Understanding {{site.data.keyword.messagehub}} service level agreement and high availability
+# Understanding the {{site.data.keyword.messagehub}} service level agreement (SLA)
 {: #sla}
 
 [Gen 2]{: tag-purple}
 
-Learn about the Service Level Agreement (SLA) for {{site.data.keyword.messagehub}} availability on {{site.data.keyword.cloud_notm}}, including measurement, connectivity, throughput, and message processing.
+Learn about the service level agreement (SLA) for {{site.data.keyword.messagehub}} availability on {{site.data.keyword.cloud_notm}}, including measurement, connectivity, throughput, and message durability.
 {: shortdesc}
 
 The {{site.data.keyword.messagehub}} Enterprise Plan Gen 2 provides a highly available architecture distributed across three availability zones with an availability of 99.99%.

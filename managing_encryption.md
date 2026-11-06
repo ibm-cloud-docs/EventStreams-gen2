@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: BYOK, encryption, customer-managed encryption, customer-managed key, access to data, rotating key, rotate key
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Managing encryption with customer-managed keys in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
+# Managing customer-managed encryption keys in {{site.data.keyword.messagehub}}
 {: #managing_encryption}
 
 [Gen 2]{: tag-purple}
 
-Use customer-managed keys with {{site.data.keyword.keymanagementserviceshort}} or {{site.data.keyword.hscrypto}} to control encryption in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, ensuring data security.
+Use customer-managed keys with {{site.data.keyword.keymanagementserviceshort}} to control encryption in {{site.data.keyword.messagehub}}, ensuring data security.
 {: shortdesc}
 
 By default, message payload data in {{site.data.keyword.messagehub_full}} is encrypted at rest by using a randomly generated key. Although default encryption protects data at rest, you might require granular control over encryption keys. {{site.data.keyword.messagehub}} supports customer-managed encryption with the following key management services:

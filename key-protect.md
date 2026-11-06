@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 subcollection: EventStreams-gen2
 
@@ -11,12 +11,12 @@ keywords: bring your own key, byok, cryptoshredding, key rotation, key rotation 
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Integrating {{site.data.keyword.keymanagementserviceshort}} with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
+# Integrating Key Protect with {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud_notm}}
 {: #key-protect}
 
 [Gen 2]{: tag-purple}
 
-Learn how to integrate {{site.data.keyword.keymanagementserviceshort}} with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} to control encryption keys and secure your data including BYOK.
+Learn how to integrate Key Protect with {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud_notm}} to control encryption keys and secure your data by using bring your own key (BYOK).
 {: shortdesc}
 
 The data that you store in {{site.data.keyword.messagehub}} is encrypted by default by using randomly generated keys. To control the encryption keys, you can Bring Your Own Key (BYOK) through [{{site.data.keyword.keymanagementservicelong_notm}}](/docs/key-protect?topic=key-protect-integrate-services) and use one of your own keys to encrypt the storage volumes of the brokers.
@@ -75,7 +75,7 @@ If you want to set up a more restrictive authorization policy, configure your po
 {: #granting-service-auth-api}
 {: api}
 
-1. Create an authorization policy to allow the {{site.data.keyword.messagehub}} service to access the {{site.data.keyword.keymanagementserviceshort}} service instance via the [IAM REST API](#granting-service-auth-api).
+1. Create an authorization policy to allow the {{site.data.keyword.messagehub}} service to access the {{site.data.keyword.keymanagementserviceshort}} service instance via the [IAM REST API](/docs/EventStreams-gen2?topic=EventStreams-gen2-key-protect&interface=api#granting-service-auth-api).
 
 For a full API reference, see  the [IAM Policy Management API](/docs/apis/iam-policy-management#create-policy).
 {: note}

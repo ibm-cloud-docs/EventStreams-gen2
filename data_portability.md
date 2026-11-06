@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: data portability, data management, operations, compliance, disaster recovery, data ownership, responsibilities
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn about data portability for {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud_notm}}, including tools and procedures to export digital artifacts and configuration.
+Learn about data portability for {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud_notm}}, including tools and procedures to export digital artifacts and configuration for use on other cloud providers or on-premises software.
 {: shortdesc}
 
 [Data portability](#x2113280){: term} includes the tools and procedures that enable you to export digital artifacts to implement similar workloads on other cloud providers or on-premises software. It includes procedures for copying and storing your content and configuration in your own environment.

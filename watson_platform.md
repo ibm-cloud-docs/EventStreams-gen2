@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: platform bridge, managed bridge, event pipeline, cos bridge
 
@@ -13,12 +13,12 @@ subcollection: EventStreams-gen2
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Connecting Watson IoT Platform to {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} 
+# Connecting {{site.data.keyword.iot_full}} to {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}
 {: #watson_iot}
 
 [Gen 2]{: tag-purple}
 
-Use the {{site.data.keyword.iot_full}} bridge to create a unidirectional link to {{site.data.keyword.messagehub_full}} and make device events available in real time.
+Use the {{site.data.keyword.iot_full}} bridge to create a unidirectional link to {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} and make device events available in real time.
 {: shortdesc}
 
 Connecting {{site.data.keyword.messagehub}} to {{site.data.keyword.iot_short_notm}} means that you can use {{site.data.keyword.messagehub}} as an event pipeline to consume your device events from the {{site.data.keyword.iot_short_notm}} and to make the events available in real time to the rest of the platform.

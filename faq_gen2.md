@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: gen 2, generation 2, vpc, classic, migration, differences, enterprise, kafka 4.1, private endpoints
 
@@ -19,7 +19,7 @@ content-type: faq
 
 [Gen 2]{: tag-purple}
 
-Get answers to frequently asked questions about {{site.data.keyword.messagehub}} Gen 2 on {{site.data.keyword.cloud}} VPC, including differences from the Classic version and key features.
+Get answers to frequently asked questions about {{site.data.keyword.messagehub}} Gen 2 on {{site.data.keyword.cloud_notm}} VPC, including differences from the Classic version and key features.
 {: shortdesc}
 
 ## What is {{site.data.keyword.messagehub}} Gen 2?

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: event streams gen 2 differences, event streams gen 2 limitations, event streams enterprise gen 2, gen 1 vs gen 2 kafka
 
@@ -14,12 +14,12 @@ content-type: reference
 
 {{site.data.keyword.attribute-definition-list}}
 
-# {{site.data.keyword.messagehub}} Gen 2: Architectural differences and feature parity explained
+# {{site.data.keyword.messagehub}} Gen 2: Architectural differences and feature parity
 {: #eventstreams-gen1-vs-gen2-differences-limitations}
 
 [Gen 2]{: tag-purple}
 
-Understand the permanent architectural changes and temporary feature gaps between {{site.data.keyword.messagehub}} Generation 2 (VPC) and Generation 1 (Classic) before you design, provision, or migrate workloads.
+Understand the permanent architectural changes and temporary feature gaps between {{site.data.keyword.messagehub}} Gen 2 (VPC) and Gen 1 (Classic) before you migrate.
 {: shortdesc}
 
 For plan selection guidance, see [Choosing your plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose). This topic is organized into two sections:

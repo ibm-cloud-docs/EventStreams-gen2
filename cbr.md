@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: event streams cbr, context-based restrictions, gen2
 
@@ -12,10 +12,10 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Securing {{site.data.keyword.messagehub}} with context-based restrictions on {{site.data.keyword.cloud}}
+# Securing {{site.data.keyword.messagehub}} with context-based restrictions on {{site.data.keyword.cloud_notm}}
 {: #cbr}
 
-Learn how to protect your {{site.data.keyword.messagehub}} resources using context-based restrictions, an additional layer of security that works alongside IAM policies on IBM Cloud.
+Learn how to protect your {{site.data.keyword.messagehub}} resources by using context-based restrictions, an extra layer of security that works alongside IAM policies.
 {: shortdesc}
 
 Context-based restrictions give account owners and administrators the ability to define access rules that limit the network locations that connections are accepted from. For example, network type, IP ranges, VPC, or other services.
@@ -27,7 +27,7 @@ A user must have the Administrator role on the {{site.data.keyword.messagehub}} 
 
 Any {{site.data.keyword.cloudaccesstraillong_notm}} or audit log events generated come from the context-based restrictions service, not {{site.data.keyword.messagehub}}.
 
-{{site.data.keyword.messagehub}} does not support Report-only mode. 
+{{site.data.keyword.messagehub}} does not support Report-only mode.
 {: important}
 
 To start protecting your {{site.data.keyword.messagehub}} resources with context-based restrictions, see the tutorial for [Leveraging context-based restrictions to secure your resources](/docs/iam?topic=iam-context-restrictions-tutorial).
@@ -58,6 +58,7 @@ Instance
 :   Protects a specific instance. If you include an instance in your context-based restrictions rule, resources in the network zones that you associate with the rule can interact only with resources in that instance. Scoping a rule to a specific instance is available only for rules that protect the cluster API type. If you use the CLI, you can specify the `--service-instance` option to protect instances in a specific resource group. If you use the UI, you can specify the *Service instance* in the resource attributes.
 
 ### Using the Command Line Interface (CLI)
+{: #using-cli}
 {: cli}
 
 You can create and manage context-based restrictions with the IBM Cloud CLI by [installing the context-based restrictions CLI plug-in](/docs/cli?topic=cli-cbr-plugin).
@@ -84,7 +85,6 @@ A network zone represents an allowlist of IP addresses where an access request i
    {: note}
 
 1. Choose your *Allowed VPCs*, selecting as many as you like.
-
 
 ### Create network zones in the CLI
 {: #network-zone-cli}
@@ -197,8 +197,8 @@ Rules restrict access to specific cloud resources based on resource attributes a
 2. Select **Rules**.
 3. Click **Create**.
 4. Under **Service**, select {{site.data.keyword.messagehub}} as the service you want to target with your rule.
-5. Under **APIs**, select `All`. 
-6. Under **Resources**, scope the rule to **All resources** or **Specific resources**. 
+5. Under **APIs**, select `All`.
+6. Under **Resources**, scope the rule to **All resources** or **Specific resources**.
 7. Click **Continue**.
 8. Define the allowed endpoint types.
    - Keep the toggle set to **No** to allow all endpoint types.

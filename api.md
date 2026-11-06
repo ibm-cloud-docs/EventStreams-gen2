@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-05"
+lastupdated: "2026-11-06"
 
 subcollection: EventStreams-gen2
 
@@ -65,7 +65,6 @@ crn%3Av1%3Abluemix%3Apublic%3Amessagehub%3Aus-south%3Aa%2F274074dce64e9c423ffc23
 ```
 {: codeblock}
 
-
 ## Pagination
 {: #api-pagination}
 
@@ -79,7 +78,7 @@ No endpoint currently implements rate limiting.
 ## Methods
 {: #api-methods}
 
-#### List all deployed products
+### List all deployed products
 {: #api-methods-list-deployed}
 
 Returns a list of all deployed cloud services.
@@ -121,7 +120,7 @@ Access Tags:
 ```
 {: pre}
 
-#### Get deployment information
+### Get deployment information
 {: #api-methods-get-deployment}
 
 Retrieve the complete data associated with a deployment, including the ID, name, plan, connection details, and configuration.
@@ -234,7 +233,7 @@ Example response:
 ```
 {: pre}
 
-#### Provision and configure a service instance
+### Provision and configure a service instance
 {: #api-manage-config}
 
 Create and configure a new {{site.data.keyword.messagehub}} service instance.
@@ -272,7 +271,7 @@ curl -X POST https://resource-controller.cloud.ibm.com/v2/resource_instances \
 ```
 {: pre}
 
-### Input parameters
+## Input parameters
 {: #api-input-parameters}
 
 The request body for configuring a service instance supports the following properties:

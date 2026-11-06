@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025, 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: plan, Enterprise, Standard, Lite, pricing, throughput, partitions, tenancy, compliance
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Select the right {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} plan for your needs
+# Select the right {{site.data.keyword.messagehub}} plan for your needs
 {: #plan_choose}
 
 [Gen 2]{: tag-purple}
 
-Learn about the different {{site.data.keyword.messagehub}} plans available on {{site.data.keyword.cloud_notm}}, including Lite, Standard, and Enterprise plans, and choose the one that suits your needs.
+Learn about the {{site.data.keyword.messagehub}} Lite, Standard, and Enterprise plans available on {{site.data.keyword.cloud_notm}}, and choose the plan that suits your requirements.
 {: shortdesc}
 
 The following page covers all {{site.data.keyword.messagehub_full}} plans including Classic (Gen 1) and VPC (Gen 2).
@@ -44,7 +44,7 @@ The Enterprise plan is appropriate if data isolation, performance, and increased
 The Enterprise plan includes the following features:
 
 - Exclusive access to a single-tenant {{site.data.keyword.messagehub}} service instance deployed in a highly available multizone region (MZR).
-- An option to provision a single-tenant {{site.data.keyword.messagehub}} service instance in a geographically local but single-zone location [(SZR)](/docs/EventStreams-gen2?topic=EventStreams-gen2-sla#sla_szr).
+- An option to provision a single-tenant {{site.data.keyword.messagehub}} service instance in a geographically local but single-zone location (SZR).
 - Scaling options to customize throughput, storage capacity, or both.
 - A broad set of compliance certifications, regions, and features, including public endpoint connectivity, Managed Schema Registry, and mirroring capabilities.
 

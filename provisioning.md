@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-06"
 
 keywords: provision, create, cli, vpc, service key
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to provision {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} using the console, CLI, or Terraform. Get started with the Enterprise Gen 2 plan for isolated and secure workloads.
+Learn how to provision {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} by using the console, CLI, or Terraform with the Enterprise Gen 2 plan for isolated and secure workloads.
 {: shortdesc}
 
 ## Step 1: Select your plan
