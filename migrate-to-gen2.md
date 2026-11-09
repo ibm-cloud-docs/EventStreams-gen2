@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-09"
 
 keywords: event streams migration, gen1 to gen2, classic infrastructure, vpc, drain and switch, private endpoints, kafka, topics, producers, consumers
 
@@ -14,7 +14,7 @@ content-type: tutorial
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Migrate {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} from Gen 1 to Gen 2
+# Migrating {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} from Gen 1 to Gen 2
 {: #migrating-event-streams-gen1-to-gen2}
 
 [Gen 2]{: tag-purple}
@@ -24,7 +24,7 @@ Follow this tutorial to migrate your {{site.data.keyword.messagehub}} deployment
 
 This tutorial applies to both the Standard and Enterprise plans. Both plans follow the same drain and switch migration process.
 
-The drain and switch cutover — stopping producers, draining consumers, and restarting on Gen 2 — requires coordinated action across all application teams. Plan the cutover window carefully before you start.
+The drain and switch cutover requires coordinated action across all application teams to stop producers, drain consumers, and restart applications on Gen 2. Plan the cutover window carefully before you start.
 
 ## Key considerations before you begin
 {: #key-considerations}
@@ -37,12 +37,12 @@ Review these points before you start the migration.
 Drain and switch is a coordinated cutover approach for message streaming workloads:
 
 1. The Gen 2 instance is provisioned with matching topic configurations.
-2. Producers are stopped, halting new message writes to Gen 1.
-3. Consumers process all remaining messages from Gen 1 until consumer group lag reaches zero.
-4. Producer and consumer connection strings are updated to point to Gen 2.
-5. Message flow resumes on Gen 2.
+1. Producers are stopped, halting new message writes to Gen 1.
+1. Consumers process all remaining messages from Gen 1 until consumer group lag reaches zero.
+1. Producer and consumer connection strings are updated to point to Gen 2.
+1. Message flow resumes on Gen 2.
 
-A planned downtime window occurs during steps 2 through 4. The duration depends on how quickly consumers drain remaining Gen 1 messages and the time required to restart applications with updated connection details.
+A planned downtime window occurs during steps 2 - 4. The duration depends on how quickly consumers drain remaining Gen 1 messages and the time required to restart applications with updated connection details.
 
 ### Topic configuration
 {: #topic-config-responsibility}
@@ -145,32 +145,37 @@ Review your Gen 1 source deployment and confirm your preparation is complete bef
 
 Provision a new Gen 2 (VPC) {{site.data.keyword.messagehub}} instance. No messages or topic configurations are transferred from Gen 1 automatically.
 
-When provisioning, configure the following:
+When provisioning, configure the following options:
 
-* **Location and platform**: Target region. Platform is locked to Gen 2.
-* **Service details**: Instance name, resource group, and tags.
-* **Resource allocation**: Throughput and storage capacity.
+Location and platform
+:   Target region. The platform is set to Gen 2.
+
+Service details
+:   Instance name, resource group, and tags.
+
+Resource allocation
+:   Throughput and storage capacity.
 
 Size the Gen 2 instance to match or exceed the Gen 1 source throughput and storage capacity.
 {: note}
 
-While the Gen 2 instance provisions, use this time to recreate all topic configurations on the new instance.
+While the Gen 2 instance provisions, recreate all topic configurations on the new instance.
 
-Recreate all topics on the Gen 2 instance before proceeding to the next step. Topic configurations are not replicated automatically.
+Recreate all topics on the Gen 2 instance before you proceed to the next step. Topic configurations are not replicated automatically.
 {: important}
 
 ### Phase 2: Configure and cut over
 {: #ds-phase-2}
 
-Phase 2 covers network access setup, the drain and switch cutover, and finishing the migration.
+Phase 2 covers network access setup, the drain and switch cutover, and completing the migration.
 
 #### Step 3: Set network access
 {: #ds-set-network-access}
 {: step}
 
-Configure private connectivity to the Gen 2 (VPC) instance before cutover. All connection types require a Virtual Private Endpoint (VPE) gateway for private access to the Gen 2 deployment. Create the gateway from the [{{site.data.keyword.cloud_notm}} VPC networking console](https://cloud.ibm.com/infrastructure/provision/endpointGateway){: external}.
+Configure private connectivity to the Gen 2 (VPC) instance before cutover. All connection types require a virtual private endpoint (VPE) gateway for private access to the Gen 2 deployment. Create the gateway from the [{{site.data.keyword.cloud_notm}} VPC networking console](https://cloud.ibm.com/infrastructure/provision/endpointGateway){: external}.
 
-Validate that all producer and consumer applications can reach the Gen 2 instance through the VPE before starting the cutover. Application connectivity issues discovered during the cutover window extend downtime.
+Validate that all producer and consumer applications can reach the Gen 2 instance through the VPE before you start the cutover. Application connectivity issues discovered during the cutover window extend downtime.
 {: tip}
 
 The VPE gateway must be in place before you begin the cutover.
@@ -180,22 +185,22 @@ The VPE gateway must be in place before you begin the cutover.
 {: #ds-cutover}
 {: step}
 
-Complete the following stages in order. Confirm each stage is complete before proceeding to the next.
+Complete the following stages in order. Confirm that each stage is complete before you proceed to the next stage.
 {: important}
 
 ##### Stage 1: Stop producers
 {: #ds-stop-producers}
 
-Gracefully stop all producer applications connected to Gen 1. Verify that no new messages are being written to the Gen 1 instance before continuing.
+Stop all producer applications that connect to Gen 1. Verify that no new messages are written to the Gen 1 instance before you continue.
 
-Stopping producers before consumers have drained is what creates the downtime window. Minimize the time between stopping producers and restarting them on Gen 2 to limit impact.
+Stopping producers before consumers drain remaining messages creates the downtime window. Minimize the time between stopping producers and restarting them on Gen 2 to limit downtime.
 
 ##### Stage 2: Drain consumers
 {: #ds-drain-consumers}
 
-Allow all consumer applications to process the remaining messages from Gen 1 until each consumer group's lag reaches zero. Monitor consumer group offsets to confirm all messages are consumed and offsets are committed before proceeding.
+Allow all consumer applications to process remaining messages from Gen 1 until consumer group lag reaches zero. Monitor consumer group offsets to confirm that all messages are consumed and offsets are committed before you proceed.
 
-Do not switch connections until all consumer groups have fully drained. Switching while messages remain on Gen 1 results in those messages not being processed.
+Do not switch connections until all consumer groups drain fully. Switching while messages remain on Gen 1 causes those messages to be skipped.
 {: important}
 
 ##### Stage 3: Update connection strings
@@ -206,35 +211,37 @@ Update all producer and consumer application configurations to use the Gen 2 (VP
 Gen 2 uses Let's Encrypt TLS certificates. Update any certificate validation or trust store configuration in your applications accordingly.
 {: note}
 
-**Update service credentials**
+###### Updating service credentials
+{: #ds-update-creds}
 
 If your applications already use Gen 2 service credentials, no changes are needed for authentication. Otherwise, create new service credentials for the Gen 2 instance and update your application configuration.
 
-**Consumer offset initialization**
+###### Initializing consumer offsets
+{: #ds-consumer-offset-init}
 
-Consumer groups starting on Gen 2 begin from the earliest or latest offset depending on the application's `auto.offset.reset` configuration. Because Gen 2 is a new instance with no prior message history, confirm that each consumer group's offset initialization strategy is correct before restarting consumers to avoid unintended reprocessing or message skipping.
+Consumer groups starting on Gen 2 begin from the earliest or latest offset depending on the application `auto.offset.reset` configuration. Gen 2 is a new instance with no prior message history. Confirm that each consumer group offset initialization strategy is correct before you restart consumers to avoid unintended reprocessing or message skipping.
 
 ##### Stage 4: Restart and validate
 {: #ds-restart-validate}
 
 Redeploy or restart all producer and consumer applications with the updated Gen 2 connection details.
 
-After applications are running, verify the following:
+After applications are running, verify the following conditions:
 
-* Producers are successfully writing messages to Gen 2.
+* Producers are writing messages to Gen 2.
 * Consumers are processing messages from Gen 2 and committing offsets.
-* No unexpected errors or lag is present.
+* No unexpected errors or lag are present.
 * Message throughput is consistent with expectations.
 
 #### Step 5: Finish migration
 {: #ds-finish-migration}
 {: step}
 
-After producers and consumers are confirmed to be operating correctly on Gen 2, the migration cutover is complete.
+After producers and consumers operate correctly on Gen 2, the migration cutover is complete.
 
 Additional metrics are available through {{site.data.keyword.monitoringfull}}.
 
-The Gen 1 instance remains available after cutover. Verify Gen 2 stability and confirm no applications are still connected to Gen 1 before decommissioning. Allow a minimum observation period of seven days before deleting the Gen 1 instance.
+The Gen 1 instance remains available after cutover. Verify Gen 2 stability and confirm that no applications remain connected to Gen 1 before decommissioning. Allow a minimum observation period of seven days before you delete the Gen 1 instance.
 
 Continue to [Post-migration tasks](#post-migration) to wrap up.
 
