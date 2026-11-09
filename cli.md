@@ -12,7 +12,7 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting started with {{site.data.keyword.messagehub}} CLI on {{site.data.keyword.cloud_notm}}
+# Getting started with the {{site.data.keyword.messagehub}} CLI on {{site.data.keyword.cloud_notm}}
 {: #cli-reference}
 
 [Gen 2]{: tag-purple}
@@ -35,7 +35,7 @@ ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVIC
 ```
 {: pre}
 
-See the following example command for {{site.data.keyword.messagehub}}.
+The following example command creates an {{site.data.keyword.messagehub}} instance:
 
 ```sh
 ibmcloud resource service-instance-create <INSTANCE_NAME> messagehub enterprise-gen2 ca-mon -g Default -p '{
@@ -83,14 +83,14 @@ ibmcloud resource service-instance <INSTANCE_NAME> -o JSON
 ## Updating an instance
 {: #cli-update-instance}
 
-To update your instance, such as scaling throughput or storage capacity, run the following command.
+To update an instance, such as scaling throughput or storage capacity, run the following command:
 
 ```sh
 ibmcloud resource service-instance-update <INSTANCE_NAME> -p '<{FIELDS_TO_UPDATE}>'
 ```
 {: pre}
 
-See the following example update command for {{site.data.keyword.messagehub}}.
+The following example command updates an {{site.data.keyword.messagehub}} instance:
 
 ```sh
 ibmcloud resource service-instance-update <INSTANCE_NAME> -p '{
@@ -107,14 +107,14 @@ ibmcloud resource service-instance-update <INSTANCE_NAME> -p '{
 ## Managing service credentials
 {: #cli-manage-users}
 
-To create a service credential, run the following command.
+To create a service credential, run the following command:
 
 ```sh
 ibmcloud resource service-key-create <NAME> [<ROLE_NAME>] ( --instance-id <SERVICE_INSTANCE_ID> | --instance-name <SERVICE_INSTANCE_NAME>) [--service-id <SERVICE_ID>]
 ```
 {: pre}
 
-To delete a service credential, run the following command.
+To delete a service credential, run the following command:
 
 ```sh
 ibmcloud resource service-key-delete ( <NAME> | <ID> ) [-g <RESOURCE_GROUP>]

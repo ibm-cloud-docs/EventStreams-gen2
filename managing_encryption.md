@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-09"
 
 keywords: BYOK, encryption, customer-managed encryption, customer-managed key, access to data, rotating key, rotate key
 
@@ -47,16 +47,16 @@ Deletion of the customer-managed key is unrecoverable and results in the loss of
 ## Message-level encryption for compliance
 {: #message_level_encryption_}
 
-Some regulatory standards, such as [PCI DSS](/docs/EventStreams?topic=EventStreams-compliance), require that sensitive message data (such as cardholder information) is encrypted throughout its lifecycle - at rest, in motion, and in use.
+Some regulatory standards, such as [PCI DSS](/docs/EventStreams?topic=EventStreams-compliance), require that sensitive message data (such as cardholder information) be encrypted throughout its lifecycle: at rest, in transit, and in use.
 
-The file systems used by {{site.data.keyword.messagehub}} to store message data are encrypted, protecting against unauthorized access. However, as messages pass through the transport layer, {{site.data.keyword.messagehub}} must decrypt these file systems to process the messages. While this means that message payloads are not encrypted end-to-end, encryption in transit and at rest ensures strong protection throughout the message lifecycle, in line with industry best practices.
+The file systems used by {{site.data.keyword.messagehub}} to store message data are encrypted to protect against unauthorized access. However, as messages pass through the transport layer, {{site.data.keyword.messagehub}} decrypts these file systems to process the messages. Encryption in transit and at rest ensures strong protection throughout the message lifecycle, in line with industry best practices.
 
-To ensure that sensitive data remains unreadable to anyone other than the intended recipients, clients must encrypt the message itself at the application level before sending it to {{site.data.keyword.messagehub}} - a practice known as message-level encryption.
+To ensure that sensitive data remains unreadable to anyone other than the intended recipients, clients must encrypt the message at the application level before sending it to {{site.data.keyword.messagehub}}. This practice is known as message-level encryption.
 
 ## What is not covered by customer-managed encryption
 {: #encryption_what}
 
-When you enable customer-managed encryption, **only** message payload data is encrypted by using your key. {{site.data.keyword.messagehub}} encrypts service metadata at rest by using default IBM-managed keys.
+When you enable customer-managed encryption, only message payload data is encrypted by using your key. {{site.data.keyword.messagehub}} encrypts service metadata at rest by using default IBM-managed keys.
 
 Non-payload data that is not encrypted with customer-managed keys includes topic names, configuration settings, schema definitions, and cluster metadata.
 
@@ -80,36 +80,36 @@ You own and manage the KEK root key. The {{site.data.keyword.messagehub}} servic
 Complete the following steps to provision an instance with a customer-managed key:
 
 1. Provision an instance of [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-provision) or [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-provision).
-2. Create a service authorization policy that grants {{site.data.keyword.messagehub}} Reader access to your key management service instance. For more information, see [Using authorizations to grant access between services](/docs/iam?topic=iam-serviceauth).
-3. Create or import a root key in your key management service.
-4. Copy the Cloud Resource Name (CRN) of the root key.
-5. Provision an Enterprise plan instance of {{site.data.keyword.messagehub}} and specify the root key CRN.
+1. Create a service authorization policy that grants {{site.data.keyword.messagehub}} Reader access to your key management service instance. For more information, see [Using authorizations to grant access between services](/docs/iam?topic=iam-serviceauth).
+1. Create or import a root key in your key management service.
+1. Copy the Cloud Resource Name (CRN) of the root key.
+1. Provision an Enterprise plan instance of {{site.data.keyword.messagehub}} and specify the root key CRN.
 
 If you provision by using the {{site.data.keyword.cloud_notm}} console, select your key management instance and root key during configuration.
 
-If provisioning through CLI, use the following command:
+If you are provisioning by using the CLI, run the following command:
 
-```bash
-ibmcloud resource service-instance-create EVENT-STREAMS-INSTANCE-NAME messagehub ibm.message.hub.enterprise.3nodes.2tb REGION -p '{"kms_key_crn":"KMS_KEY_CRN"}'
+```sh
+ibmcloud resource service-instance-create EVENT-STREAMS-INSTANCE-NAME messagehub enterprise-gen2 REGION -p '{"kms_key_crn":"KMS_KEY_CRN"}'
 ```
-{: codeblock}
+{: pre}
 
-An existing cluster without a customer-managed key cannot be updated because this is a destructive operation that will result in the loss of all message and topic definitions. You must delete and recreate your instance with an encryption key.
+An existing cluster without a customer-managed key cannot be updated because this destructive operation causes the loss of all message and topic definitions. You must delete and recreate your instance with an encryption key.
 {: important}
 
 ## Using a customer-managed key
 {: #using_encryption}
 
-After provisioning an instance of Event Streams with a customer-managed key, it operates with the following additional capabilities.
+After you provision an instance of {{site.data.keyword.messagehub}} with a customer-managed key, the instance supports the following additional capabilities:
 
 ### Preventing access to data
 {: #preventing_access}
 
 To temporarily prevent access, disable your root key. As a consequence, {{site.data.keyword.messagehub}} can no longer access the data because it can no longer access the key.
 
-To remove access permanently, delete the key. However, you must take extreme caution because this operation is non-recoverable. You lose access to any data that is stored in your {{site.data.keyword.messagehub}} instance. It is not possible to recover this data.
+To remove access permanently, delete the key. Use extreme caution because this operation is unrecoverable. You lose access to all data that is stored in your {{site.data.keyword.messagehub}} instance, and you cannot recover the data.
 
-In both cases, the {{site.data.keyword.messagehub}} instance shuts down and no longer accepts or processes connections. An {{site.data.keyword.cloudaccesstrailshort}} event is generated to report the action. For more information, see [{{site.data.keyword.cloudaccesstrailshort}} events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events).
+In both cases, the {{site.data.keyword.messagehub}} instance shuts down and no longer accepts or processes connections. An {{site.data.keyword.at_short}} event is generated to report the action. For more information, see [{{site.data.keyword.at_short}} events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events).
 
 Maintain the authorization policy between {{site.data.keyword.messagehub}} and your key management service even after deleting the service instance. {{site.data.keyword.messagehub}} requires the service-to-service policy to deregister the key. Check the associated resources on the root key; when the association is cleared, you can remove the authorization policy.
 {: note}
@@ -120,47 +120,47 @@ You are charged for your {{site.data.keyword.messagehub}} instance until you dep
 ### Restoring access to data
 {: #restoring_access}
 
-Access can be restored only if the key was not deleted. To restore access, re-enable your root key. After a short period of initialization, your {{site.data.keyword.messagehub}} instance is restarted and starts accepting connections again. All data is retained, subject to the normal retention limits configured in your instance.
+You can restore access only if the key was not deleted. To restore access, re-enable your root key. After a short period of initialization, your {{site.data.keyword.messagehub}} instance restarts and accepts connections again. All data is retained, subject to the normal retention limits configured in your instance.
 
-An activity tracker event is generated to report the action. For more information, see [{{site.data.keyword.cloudaccesstrailshort}} events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events).
+An {{site.data.keyword.at_short}} event is generated to report the action. For more information, see [{{site.data.keyword.at_short}} events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events).
 
 ### Rotating the key
 {: #rotating_key}
 
-{{site.data.keyword.keymanagementserviceshort}} and {{site.data.keyword.hscrypto}} support the rotation of root keys, either on demand or on a schedule. When rotating the key, {{site.data.keyword.messagehub}} adopts the new key by rewrapping the DEK as described previously in [how customer-managed encryption works](/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_encryption#encryption_how).
+{{site.data.keyword.keymanagementserviceshort}} and {{site.data.keyword.hscrypto}} support the rotation of root keys, either on demand or on a schedule. When rotating the key, {{site.data.keyword.messagehub}} adopts the new key by rewrapping the DEK as described in [How customer-managed encryption works](/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_encryption#encryption_how).
 
-An activity tracker event is generated to report the action. For more information, see [{{site.data.keyword.cloudaccesstrailshort}} events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events#other-events).
+An {{site.data.keyword.at_short}} event is generated to report the action. For more information, see [{{site.data.keyword.at_short}} events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events#other-events).
 
 ## Disabling customer-managed encryption
 {: #stop_customer_encryption}
 
-After you enable customer-managed encryption, it is not possible to disable it. Instead, you must delete the service instance and create a new instance.
+After you enable customer-managed encryption, you cannot disable it. To use a different configuration, delete the service instance and create a new instance.
 
 ## Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST)
 {: #migrating_hpcs_to_kp}
 
-During the migration from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP‑ST), the following occurs:
+During migration from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST), the following processes occur:
 
-- Each KMS instance maintains its own unique root keys. Migration involves re‑associating the service with a new {{site.data.keyword.keymanagementservicelong}} Dedicated root key.
-- Existing data encryption keys (DEKs) are securely re‑wrapped.
-- During the transition, both {{site.data.keyword.hscrypto}} to Service and {{site.data.keyword.keymanagementserviceshort}} to Service access policies must remain in place. 
-- Encrypted data is not re‑encrypted or moved.
+- Each KMS instance maintains its own unique root keys. Migration involves re-associating the service with a new {{site.data.keyword.keymanagementservicelong}} Dedicated root key.
+- Existing data encryption keys (DEKs) are securely re-wrapped.
+- During the transition, both {{site.data.keyword.hscrypto}} to service and {{site.data.keyword.keymanagementserviceshort}} to service access policies must remain in place.
+- Encrypted data is not re-encrypted or moved.
 - Service availability is maintained.
 
 ### Prerequisites
 {: #migrating_hpcs_to_kp_prereqs}
 
-Before starting the migration, ensure you have:
+Before you start migration, ensure that you have the following items:
 
-- A {{site.data.keyword.keymanagementserviceshort}} Dedicated (Single Tenant) instance.
-- A root key created in that {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP‑ST) instance.
-- Permissions to manage keys and service access policies.
+- A {{site.data.keyword.keymanagementserviceshort}} Dedicated (Single Tenant) instance
+- A root key created in that {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST) instance
+- Permissions to manage keys and service access policies
 
 ### Migration steps
 {: #migrating_hpcs_to_kp_steps}
 
 1. Identify the existing {{site.data.keyword.hscrypto}} root key in use. The key must exist in an {{site.data.keyword.hscrypto}} instance and the service must already have access to it.
 1. Create or select a {{site.data.keyword.keymanagementserviceshort}} Dedicated root key. The key must be in the appropriate {{site.data.keyword.keymanagementserviceshort}} Dedicated (Single Tenant) instance and accessible to the service.
-1. Create a migration intent linking the two keys. The migration intent maps the current {{site.data.keyword.hscrypto}} key (source) to the new {{site.data.keyword.keymanagementserviceshort}} Dedicated key (target). For more information on {{site.data.keyword.keymanagementserviceshort}} migration, see [Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated](/docs/key-protect?topic=key-protect-migrate-st). 
-1. Allow 1-2 business days for the migration to be executed. {{site.data.keyword.messagehub}} securely re‑associates and re-wraps DEKs where applicable, without re‑encrypting or moving data.
-1. Verify migration completion. The service must now reference the {{site.data.keyword.keymanagementserviceshort}} ST root key. {{site.data.keyword.keymanagementserviceshort}} ST root key should be visible and active and the {{site.data.keyword.hscrypto}} association should be removed. 
+1. Create a migration intent linking the two keys. The migration intent maps the current {{site.data.keyword.hscrypto}} key (source) to the new {{site.data.keyword.keymanagementserviceshort}} Dedicated key (target). For more information about {{site.data.keyword.keymanagementserviceshort}} migration, see [Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated](/docs/key-protect?topic=key-protect-migrate-st).
+1. Allow one to two business days for the migration to be executed. {{site.data.keyword.messagehub}} securely re-associates and re-wraps DEKs where applicable, without re-encrypting or moving data.
+1. Verify migration completion. The service must now reference the {{site.data.keyword.keymanagementserviceshort}} Dedicated root key. The root key must be visible and active, and the {{site.data.keyword.hscrypto}} association must be removed.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-09"
 
 keywords: gen 2, generation 2, vpc, classic, migration, differences, enterprise, kafka 4.1, private endpoints
 
@@ -34,25 +34,36 @@ Get answers to frequently asked questions about {{site.data.keyword.messagehub}}
 
 The key differences include:
 
-- **Platform**: Gen 2 runs on VPC with software-defined networking, while Classic runs on IBM's original platform.
-- **Kafka version**: Gen 2 uses Kafka 4.1, Classic uses Kafka 3.8.
-- **Networking**: Gen 2 supports private endpoints only (VPE), Classic supports both public and private endpoints.
-- **Plans available**: Gen 2 offers Enterprise plan, Classic offers Lite, Standard, and Enterprise plans.
-- **Compute model**: Gen 2 provides isolated compute hosting with single-tenant virtual machines and dedicated storage bandwidth.
-- **Regions**: Gen 2 is currently available only in selected regions.
+Platform
+:   Gen 2 runs on VPC with software-defined networking, whereas Classic runs on the original IBM platform.
+
+Kafka version
+:   Gen 2 uses Kafka 4.1, and Classic uses Kafka 3.8.
+
+Networking
+:   Gen 2 supports private endpoints only (VPE), whereas Classic supports both public and private endpoints.
+
+Plans available
+:   Gen 2 offers the Enterprise plan, whereas Classic offers Lite, Standard, and Enterprise plans.
+
+Compute model
+:   Gen 2 provides isolated compute hosting with single-tenant virtual machines and dedicated storage bandwidth.
+
+Regions
+:   Gen 2 is available only in selected regions.
 
 ## Which plan should I choose - Gen 2 Enterprise or Classic Enterprise?
 {: #faq-which-plan}
 {: faq}
 
-Choose Gen 2 Enterprise if you need:
+Choose Gen 2 Enterprise for the following requirements:
 
 - Private-only connectivity by using virtual private endpoints (VPE)
 - Latest Apache Kafka 4.1 features
 - Hypervisor-level isolation with dedicated storage bandwidth
 - VPC-based networking
 
-Choose Classic Enterprise if you need:
+Choose Classic Enterprise for the following requirements:
 
 - Public endpoint connectivity
 - Managed Schema Registry (not available in Gen 2)
@@ -66,12 +77,19 @@ Choose Classic Enterprise if you need:
 
 Gen 2 supports the following tools and interfaces:
 
-- **Kafka API**: Full support for native Kafka clients
-- **Resource Controller API**: For instance lifecycle management and provisioning
-- **CLI**: {{site.data.keyword.cloud_notm}} Resource Controller CLI
-- **Terraform**: Full support for infrastructure as code
+Kafka API
+:   Full support for native Kafka clients.
 
-Gen 2 does not currently support:
+Resource Controller API
+:   Instance lifecycle management and provisioning.
+
+CLI
+:   The {{site.data.keyword.cloud_notm}} Resource Controller CLI.
+
+Terraform
+:   Support for infrastructure as code.
+
+Gen 2 does not currently support the following tools and interfaces:
 
 - Admin REST API
 - REST Producer API
@@ -82,18 +100,25 @@ Gen 2 does not currently support:
 {: #faq-cli-plugin}
 {: faq}
 
-No. The {{site.data.keyword.messagehub}} CLI plug-in supports only Gen 1 (Classic) instances. For Gen 2 instances, use the {{site.data.keyword.cloud_notm}} Resource Controller CLI commands for operations such as creating instances, updating configurations, and managing service credentials. For more information, see [Getting started with CLI](/docs/EventStreams-gen2?topic=EventStreams-gen2-cli-reference).
+No. The {{site.data.keyword.messagehub}} CLI plug-in supports only Gen 1 (Classic) instances. For Gen 2 instances, use the {{site.data.keyword.cloud_notm}} Resource Controller CLI commands for operations such as creating instances, updating configurations, and managing service credentials. For more information, see [Getting started with the CLI](/docs/EventStreams-gen2?topic=EventStreams-gen2-cli-reference).
 
 ## What throughput and storage options are available in Gen 2?
 {: #faq-throughput-storage}
 {: faq}
 
-Gen 2 Enterprise currently offers:
+Gen 2 Enterprise currently offers the following options:
 
-- **Throughput**: 100 MB/s (50 MB/s producing and 50 MB/s consuming) as continuously available minimum for typical workloads
-- **Storage**: 2/4/6 TB of usable storage
-- **Partitions**: 3000 partitions
-- **Connections**: 1000 connected applications
+Throughput
+:   100 MB/s (50 MB/s producing and 50 MB/s consuming) as a continuously available minimum for typical workloads.
+
+Storage
+:   2 TB, 4 TB, or 6 TB of usable storage.
+
+Partitions
+:   Up to 3000 partitions.
+
+Connections
+:   Up to 1000 connected applications.
 
 Throughput scaling is planned for a future release.
 {: note}
@@ -142,19 +167,19 @@ Certifications equivalent to Classic are pending, including GDPR, ISO 27001, ISO
 {: #faq-pricing}
 {: faq}
 
-Gen 2 Enterprise follows a hourly and monthly consumption model similar to Classic Enterprise. For current pricing details, see the [IBM Cloud catalog](https://cloud.ibm.com/catalog){: external} and search for `{{site.data.keyword.messagehub}}`.
+Gen 2 Enterprise follows an hourly and monthly consumption model similar to Classic Enterprise. For current pricing details, see the [IBM Cloud catalog](https://cloud.ibm.com/catalog){: external} and search for `{{site.data.keyword.messagehub}}`.
 
 ## What Kafka version does Gen 2 use?
 {: #faq-kafka-version}
 {: faq}
 
-Gen 2 uses Apache Kafka 4.1, while Classic uses Kafka 3.8. This means Gen 2 includes the latest Kafka features and improvements. Ensure your Kafka clients are compatible with Kafka 4.1 before connecting to Gen 2 instances.
+Gen 2 uses Apache Kafka 4.1, whereas Classic uses Kafka 3.8. This means that Gen 2 includes the latest Kafka features and improvements. Ensure that your Kafka clients are compatible with Kafka 4.1 before connecting to Gen 2 instances.
 
 ## Can I scale my Gen 2 instance?
 {: #faq-scaling}
 {: faq}
 
-You can scale storage capacity (2 TB, 4 TB, or 6 TB). Similar to Classic, storage capacity cannot be scaled down; to reduce storage, you must provision a new instance with lower capacity and migrate your data.
+You can scale storage capacity (2 TB, 4 TB, or 6 TB). Similar to Classic, storage capacity cannot be scaled down. To reduce storage, you must provision a new instance with lower capacity and migrate your data.
 
 Throughput scaling is planned for a future release. Gen 2 instances are currently provisioned with 100 MB/s throughput allocation.
 

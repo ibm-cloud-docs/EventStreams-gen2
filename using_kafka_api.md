@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-09"
 
 keywords: api, consumer, producer, admin, streams, connect, client
 
@@ -45,9 +45,9 @@ The following table summarizes API support on {{site.data.keyword.messagehub}}:
 ## Choosing a Kafka client to use with {{site.data.keyword.messagehub}}
 {: #kafka_clients}
 
-The official client for the Kafka API is written in Java, and as such contains the latest features and bug fixes. For more information about this API, see [Kafka Producer API 4.1](https://kafka.apache.org/41/javadoc/org/apache/kafka/clients/producer/KafkaProducer.html){: external} and [Kafka Consumer API 4.1](https://kafka.apache.org/41/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html){: external}.
+The official client for the Kafka API is written in Java and contains the latest features and bug fixes. For more information about this API, see [Kafka Producer API 4.1](https://kafka.apache.org/41/javadoc/org/apache/kafka/clients/producer/KafkaProducer.html){: external} and [Kafka Consumer API 4.1](https://kafka.apache.org/41/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html){: external}.
 
-For other languages, run one of the following clients, all of which are tested with {{site.data.keyword.messagehub}}.
+For other languages, use one of the following clients, which are tested with {{site.data.keyword.messagehub}}:
 
 ### Support summary for all recommended clients
 {: #client_summary}
@@ -75,19 +75,19 @@ For information about how to configure your Java client to connect to {{site.dat
 ## Configuring your Kafka API client
 {: #kafka_api_client}
 
-To establish a connection, clients must be configured to use SASL PLAIN or SASL OAUTHBEARER over TLSv1.2 at a minimum and to require a username, and a list of the bootstrap servers. TLSv1.2 ensures that connections are encrypted and validates the authenticity of the brokers (to prevent man-in-the-middle attacks). SASL enforces authentication on all connections.
+To establish a connection, clients must use SASL PLAIN or SASL OAUTHBEARER over TLS 1.2 at a minimum, with a username and a list of bootstrap servers. TLS 1.2 ensures that connections are encrypted and validates the authenticity of the brokers. SASL enforces authentication on all connections.
 
-To retrieve the username, password, and list of bootstrap servers, a service credentials object, or service key is required for the service instance. For more information about creating these objects, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting).
+To retrieve the username, password, and list of bootstrap servers, obtain a service credentials object for the service instance. For more information about creating credentials, see [Connecting to {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-connecting).
 
 ### Using SASL PLAIN
 {: #using_sasl_plain}
 
-Use the following strings and properties.
+Use the following strings and properties:
 
 - Use the `bootstrap_endpoints` string as the list of bootstrap servers and pass this string of host and port pairs to your Kafka client.
 - Use the `user` and `api_key` properties as the username and password.
 
-For a Java client, the following example shows the minimum set of properties, where `${USERNAME}`, `${PASSWORD}`, and `${BOOTSTRAP_ENDPOINTS}` are to be replaced by the values that you retrieved previously.
+For a Java client, the following example shows the minimum set of properties. Replace `${USERNAME}`, `${PASSWORD}`, and `${BOOTSTRAP_ENDPOINTS}` with your retrieved values.
 
 ```config
 bootstrap.servers=${BOOTSTRAP_ENDPOINTS}
@@ -101,15 +101,15 @@ ssl.endpoint.identification.algorithm=HTTPS
 If you use a Kafka client earlier than version 0.10.2.1, the `sasl.jaas.config` property isn't supported, and you must instead provide the client configuration in a JAAS configuration file.
 {: note}
 
-### Using SASL OAUTHBEARER with Java clients v 3.4 - 4.0
+### Using SASL OAUTHBEARER with Java clients version 3.4 - 4.0
 {: #using_sasl_oauthbearer}
 
-Before configuring the SASL mechanism for Java client, there are two prerequisites.
+Before you configure the SASL mechanism for a Java client, verify the following prerequisites:
 
-- The minimum supported Kafka Java client version is 3.4 (3.6 or higher is preferable).
-- Additional jar package needs to be downloaded from Maven Central and made available in the classpath.
+- The minimum supported Kafka Java client version is 3.4 (3.6 or later is recommended).
+- An additional JAR package must be downloaded from Maven Central and made available in your classpath.
 
-If Maven is used in build system, add the following information to the file `pom.xml` in the dependencies section.
+If you use Maven, add the following dependency to `pom.xml`:
 
 ```xml
 <dependency>
@@ -118,31 +118,33 @@ If Maven is used in build system, add the following information to the file `pom
     <version>1.4.0</version>
 </dependency>
 ```
+{: codeblock}
 
-If Gradle is used in build system, add the following information to the file `build.gradle` in the dependencies section.
+If you use Gradle, add the following dependency to `build.gradle`:
 
 ```gradle
 implementation com.ibm.cloud.eventstreams:oauth-client:1.4.0
 ```
+{: codeblock}
 
-{{site.data.keyword.iamlong}} supports multiple ways to generate bearer token, two of which are supported by this oauth client library.
+{{site.data.keyword.iamlong}} supports multiple methods to generate a bearer token. Two methods are supported by this OAuth client library:
 
-- API key.
-- Trusted profile and compute resource token.
+- API key
+- Trusted profile and compute resource token
 
 #### Using SASL OAUTHBEARER with API key
 {: #using_sasl_oauthbearer_api_key}
 
- Use the following strings and properties.
+Use the following strings and properties:
 
 - Use the `BOOTSTRAP_ENDPOINTS` string as the list of bootstrap servers and pass this string of host and port pairs to your Kafka client.
-- The `IAMOAuthBearerLoginCallbackHandler` is provided by the jar package `com.ibm.cloud.eventstreams:oauth-client:+`.
-- The {{site.data.keyword.iamlong}}'s token endpoint `https://iam.cloud.ibm.com/identity/token` is configured to generate token from the API key by using specified grant type in jaas config. It is done on client side, thus the API key is never sent to the server side and provides better security than a long-lived API key.
-- The {{site.data.keyword.iamshort}}'s key endpoint `https://iam.cloud.ibm.com/identity/keys` is configured to validate the token.
-- `grant_type` in `sasl.jaas.config` is `urn:ibm:params:oauth:grant-type:apikey`
-- `apikey` in `sasl.jaas.config` is the API key used to generate bearer token at client side. It can be either from a user or service Id.
+- The `IAMOAuthBearerLoginCallbackHandler` is provided by the JAR package `com.ibm.cloud.eventstreams:oauth-client:+`.
+- The {{site.data.keyword.iamlong}} token endpoint `https://iam.cloud.ibm.com/identity/token` generates a token from the API key by using the specified grant type in JAAS configuration. Token generation occurs on the client side, so the API key is never sent to the server side.
+- The {{site.data.keyword.iamshort}} key endpoint `https://iam.cloud.ibm.com/identity/keys` validates the token.
+- `grant_type` in `sasl.jaas.config` is `urn:ibm:params:oauth:grant-type:apikey`.
+- `apikey` in `sasl.jaas.config` is the API key used to generate the bearer token at the client side.
 
-For a Java client, the following example shows the minimum set of properties, where `${BOOTSTRAP_ENDPOINTS}`, and `${APIKEY}` are to be replaced by the values that you retrieved previously.
+For a Java client, the following example shows the minimum set of properties. Replace `${BOOTSTRAP_ENDPOINTS}` and `${APIKEY}` with your retrieved values.
 
 ```config
 bootstrap.servers=${BOOTSTRAP_ENDPOINTS}
@@ -153,17 +155,19 @@ sasl.oauthbearer.jwks.endpoint.url=https://iam.cloud.ibm.com/identity/keys
 sasl.login.callback.handler.class=com.ibm.eventstreams.oauth.client.IAMOAuthBearerLoginCallbackHandler
 sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required grant_type="urn:ibm:params:oauth:grant-type:apikey" apikey="${APIKEY}";
 ```
+{: codeblock}
 
 #### Using SASL OAUTHBEARER with trusted profile and compute resource token
 {: #using_sasl_oauthbearer_trusted_profile}
 
-All the properties are the same with API key except the `sasl.jaas.config` is different.
+The properties are the same as with the API key, except for the `sasl.jaas.config` property:
 
 - `grant_type` in `sasl.jaas.config` is `urn:ibm:params:oauth:grant-type:cr-token`.
-- `profile_id` in `sasl.jaas.config` is a file location storing trusted profile ID. This file can be mounted to a Kubernetes pod running Kafka client code as a read-only volume and made available to the Kafka client code.
-- `cr_token` in `sasl.jaas.config` is a file location storing service account token from a Kubernetes pod running Kafka client code. See [What is a service account token](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#launch-a-pod-using-service-account-token-projection){: external}.
+- `profile_id` in `sasl.jaas.config` is a file location storing the trusted profile ID. This file can be mounted to a Kubernetes pod running Kafka client code as a read-only volume and made available to the Kafka client code.
+- `cr_token` in `sasl.jaas.config` is a file location storing the service account token from a Kubernetes pod running Kafka client code. For more information, see [What is a service account token](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#launch-a-pod-using-service-account-token-projection){: external}.
 
-See below example
+The following example shows the configuration properties:
+
 ```config
 bootstrap.servers=${BOOTSTRAP_ENDPOINTS}
 security.protocol=SASL_SSL
@@ -173,17 +177,18 @@ sasl.oauthbearer.jwks.endpoint.url=https://iam.cloud.ibm.com/identity/keys
 sasl.login.callback.handler.class=com.ibm.eventstreams.oauth.client.IAMOAuthBearerLoginCallbackHandler
 sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required grant_type="urn:ibm:params:oauth:grant-type:cr-token" profile_id="${TRUSTED_PROFILE_ID_FILE_PATH}" cr_token="${SERVICE_ACCOUNT_TOKEN_FILE_PATH}";
 ```
+{: codeblock}
 
 For more information, see [Administering trusted profiles](/docs/iam?topic=iam-trusted-profiles-overview).
 
 For source code, see the [{{site.data.keyword.messagehub}} Java SDK](https://github.com/IBM/eventstreams-java-sdk/tree/main/modules/oauth-client){: external}.
 
-### Using SASL OAUTHBEARER with Java clients v 4.1 and later
+### Using SASL OAUTHBEARER with Java clients version 4.1 and later
 {: #using_sasl_oauthbearer_java_4.1}
 
-For Kafka Java clients 4.1 and later, use version 2.0.0 or later of the `oauth-client` library, which uses Kafka's default callback handler with `IAMTokenRetriever`.
+For Kafka Java clients 4.1 and later, use version 2.0.0 or later of the `oauth-client` library, which uses the default Kafka callback handler with `IAMTokenRetriever`.
 
-If Maven is used in the build system, add the following dependency to `pom.xml`:
+If you use Maven, add the following dependency to `pom.xml`:
 
 ```xml
 <dependency>
@@ -194,7 +199,7 @@ If Maven is used in the build system, add the following dependency to `pom.xml`:
 ```
 {: codeblock}
 
-If Gradle is used in the build system, add the following dependency to `build.gradle`:
+If you use Gradle, add the following dependency to `build.gradle`:
 
 ```gradle
 implementation 'com.ibm.cloud.eventstreams:oauth-client:2.0.0'
@@ -206,10 +211,10 @@ implementation 'com.ibm.cloud.eventstreams:oauth-client:2.0.0'
 - API key
 - Trusted profile and compute resource token
 
-#### Using SASL OAUTHBEARER with API key (Kafka 4.1+)
+#### Using SASL OAUTHBEARER with API key for Kafka 4.1 and later
 {: #using_sasl_oauthbearer_api_key_41}
 
-Use the following strings and properties in addition to the mandatory `bootstrap.servers` and any specific producer, consumer, and admin settings.
+Use the following strings and properties in addition to the mandatory `bootstrap.servers` and any specific producer, consumer, and admin settings:
 
 ```properties
 security.protocol=SASL_SSL
@@ -222,6 +227,7 @@ sasl.oauthbearer.jwt.retriever.class=com.ibm.cloud.eventstreams.oauth.client.IAM
 sasl.oauthbearer.token.endpoint.url=https://private.iam.cloud.ibm.com/identity/token
 sasl.oauthbearer.jwks.endpoint.url=https://private.iam.cloud.ibm.com/identity/keys
 ```
+{: codeblock}
 
 #### Using SASL OAUTHBEARER with trusted profile and compute resource token in containerized environments
 {: #using_sasl_oauthbearer_trusted_containerized}
@@ -240,6 +246,7 @@ sasl.oauthbearer.jwt.retriever.class=com.ibm.cloud.eventstreams.oauth.client.IAM
 sasl.oauthbearer.token.endpoint.url=https://private.iam.cloud.ibm.com/identity/token
 sasl.oauthbearer.jwks.endpoint.url=https://private.iam.cloud.ibm.com/identity/keys
 ```
+{: codeblock}
 
 #### Using SASL OAUTHBEARER with trusted profile and compute resource token in Virtual Servers for VPC
 {: #using_sasl_oauthbearer_trusted_vpc}
@@ -259,11 +266,12 @@ sasl.oauthbearer.jwt.retriever.class=com.ibm.cloud.eventstreams.oauth.client.IAM
 sasl.oauthbearer.token.endpoint.url=https://api.metadata.cloud.ibm.com/identity/v1/iam_tokens?version=2025-10-14
 sasl.oauthbearer.jwks.endpoint.url=https://private.iam.cloud.ibm.com/identity/keys
 ```
+{: codeblock}
 
 #### System property `org.apache.kafka.sasl.oauthbearer.allowed.urls`
 {: #system_property}
 
-Since Kafka 4.0, the client requires a system property to set the allowed URLs of SASL OAUTHBEARER token and jwks endpoints.
+Starting in Kafka 4.0, the client requires a system property to set the allowed URLs of SASL OAUTHBEARER token and JWKS endpoints.
 
 For more information, see [System properties](https://kafka.apache.org/42/configuration/system-properties/){: external}.
 
