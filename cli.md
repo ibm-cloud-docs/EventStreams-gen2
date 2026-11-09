@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-09"
 
 keywords: event streams, cli, resource controller, service instance, provisioning, service keys
 
@@ -28,14 +28,14 @@ The {{site.data.keyword.messagehub}} plug-in supports only Gen 1 instances. For 
 ## Creating an instance
 {: #cli-create}
 
-To create an instance, run the following command:
+To create an instance, run the following command.
 
 ```sh
 ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> -g <RESOURCE_GROUP>
 ```
 {: pre}
 
-Example command for {{site.data.keyword.messagehub}}:
+See the following example command for {{site.data.keyword.messagehub}}.
 
 ```sh
 ibmcloud resource service-instance-create <INSTANCE_NAME> messagehub enterprise-gen2 ca-mon -g Default -p '{
@@ -49,7 +49,7 @@ ibmcloud resource service-instance-create <INSTANCE_NAME> messagehub enterprise-
 ```
 {: pre}
 
-You can specify additional parameters in the configuration block:
+You can specify more parameters in the configuration block.
 
 ```json
 {
@@ -83,14 +83,14 @@ ibmcloud resource service-instance <INSTANCE_NAME> -o JSON
 ## Updating an instance
 {: #cli-update-instance}
 
-To update your instance, such as scaling throughput or storage capacity, run the following command:
+To update your instance, such as scaling throughput or storage capacity, run the following command.
 
 ```sh
 ibmcloud resource service-instance-update <INSTANCE_NAME> -p '<{FIELDS_TO_UPDATE}>'
 ```
 {: pre}
 
-Example update command for {{site.data.keyword.messagehub}}:
+See the following example update command for {{site.data.keyword.messagehub}}.
 
 ```sh
 ibmcloud resource service-instance-update <INSTANCE_NAME> -p '{
@@ -107,14 +107,14 @@ ibmcloud resource service-instance-update <INSTANCE_NAME> -p '{
 ## Managing service credentials
 {: #cli-manage-users}
 
-To create a service credential:
+To create a service credential, run the following command.
 
 ```sh
 ibmcloud resource service-key-create <NAME> [<ROLE_NAME>] ( --instance-id <SERVICE_INSTANCE_ID> | --instance-name <SERVICE_INSTANCE_NAME>) [--service-id <SERVICE_ID>]
 ```
 {: pre}
 
-To delete a service credential:
+To delete a service credential, run the following command.
 
 ```sh
 ibmcloud resource service-key-delete ( <NAME> | <ID> ) [-g <RESOURCE_GROUP>]
