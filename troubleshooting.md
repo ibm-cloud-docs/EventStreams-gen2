@@ -4,7 +4,7 @@ copyright:
   years: 2026
 lastupdated: "2026-11-10"
 
-keywords: troubleshooting, question, problem
+keywords: troubleshooting, question, problem, ibm cloud event streams, resolve issues, cloud event streams
 
 subcollection: EventStreams-gen2
 
