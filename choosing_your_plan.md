@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025, 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: plan, Enterprise, Standard, Lite, pricing, throughput, partitions, tenancy, compliance
 
@@ -12,7 +12,7 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Select the right {{site.data.keyword.messagehub}} plan for your needs
+# Selecting an {{site.data.keyword.messagehub}} plan for your needs
 {: #plan_choose}
 
 [Gen 2]{: tag-purple}
@@ -90,7 +90,7 @@ The following table summarizes what is supported by the plans:
 | **Maximum throughput**  | 100 KB per second per partition  |  1 MB per second per partition (20 MB per service instance) | 150 MB/s - 450 MB/s   \n of scalable throughput [^tabletext8] | 100 MB/s (50 MB/s Produce \n 50 MB/s Consume) [^tabletext9]|
 | **Maximum message size**  | 1 MB  | 1 MB   | 1 MB | 1 MB |
 | **Maximum number of connected clients**  | 5   | 500  | 10,000  | 1000 |
-| **Location (region) availability** | Dallas (us-south)  |  **Multizone location (MZR)**   \n Dallas (us-south)   \n Sao Paulo (br-sao)   \n Toronto (ca-tor)   \n Washington (us-east)   \n Frankfurt (eu-de)   \n London (eu-gb)   \n Madrid (eu-es)   \n  Osaka (jp-osa)   \n Sydney (au-syd)   \n Tokyo (jp-tok)|   **Multizone location  \n (MZR)**  \n Dallas (us-south)   \n Sao Paulo (br-sao)   \n Toronto (ca-tor)   \n Washington (us-east)   \n Frankfurt (eu-de)   \n London (eu-gb)   \n Madrid (eu-es)   \n  Osaka (jp-osa)   \n Sydney (au-syd)   \n Tokyo (jp-tok)\n    \n  **Single-zone location  \n (SZR)**   \n Chennai (che01)  | **Multizone location (MZR)**   \n Dallas (us-south)   \n Frankfurt (eu-de)   \n London (eu-gb)   \n Madrid (eu-es)   \n Osaka (jp-osa)   \n São Paulo (br-sao)   \n Sydney (au-syd)   \n Tokyo (jp-tok)   \n Toronto (ca-tor)   \n Washington (us-east)\n    \n  **Single-campus MZR (SC-MZR)**   \n  Chennai - Airtel (in-che)   \n Montreal (ca-mon)   \n Mumbai (in-mum) |
+| **Location (region) availability** | Dallas (us-south)  | Multizone locations (MZR): \n Dallas (us-south) \n Sao Paulo (br-sao) \n Toronto (ca-tor) \n Washington (us-east) \n Frankfurt (eu-de) \n London (eu-gb) \n Madrid (eu-es) \n Osaka (jp-osa) \n Sydney (au-syd) \n Tokyo (jp-tok) | Multizone locations (MZR): \n Dallas (us-south) \n Sao Paulo (br-sao) \n Toronto (ca-tor) \n Washington (us-east) \n Frankfurt (eu-de) \n London (eu-gb) \n Madrid (eu-es) \n Osaka (jp-osa) \n Sydney (au-syd) \n Tokyo (jp-tok) \n \n Single-zone locations (SZR): \n Chennai (che01) | Multizone locations (MZR): \n Dallas (us-south) \n Frankfurt (eu-de) \n London (eu-gb) \n Madrid (eu-es) \n Osaka (jp-osa) \n São Paulo (br-sao) \n Sydney (au-syd) \n Tokyo (jp-tok) \n Toronto (ca-tor) \n Washington (us-east) \n \n Single-campus MZR (SC-MZR): \n Chennai - Airtel (in-che) \n Montreal (ca-mon) \n Mumbai (in-mum) |
 | **APIs supported** |  Kafka API   \n Admin REST API  \n REST Producer API |  Kafka API   \n Admin REST API   \n REST Producer API    |  Kafka API   \n Admin REST API   \n REST Producer API   \n  Schema Registry API  | Kafka API |
 | **Deployment timeframe** | Instantaneous provisioning  | Instantaneous provisioning    | Expect provisioning to  \n  take up to 3 hours.   \n Because Enterprise has   \n dedicated resources for   \n each cluster, it requires   \n more time for   \n provisioning.  | Typical: Minutes |
 | **Compliance** | GDPR   \n  Privacy Shield  | GDPR   \n  Privacy Shield   \n  ISO 27001, 27017,  \n 27018   \n  SOC 1 Type   \n  SOC 2 Type 2   \n  SOC 3   \n  PCI DSS \n ISMAP \n C5  |  GDPR   \n Privacy Shield   \n ISO 27001, 27017,  \n 27018   \n  SOC 1 Type 2   \n  SOC 2 Type 2   \n  SOC 3   \n  HIPAA ready   \n  PCI DSS  \n ISMAP \n C5 \n IRAP \n ENS \n HITRUST \n ProtectedB | New plan – pending certification |

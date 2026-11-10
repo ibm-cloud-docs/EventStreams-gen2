@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-10"
 
 keywords: quotas, quota implementation, mapping quotas, authorization, client metrics
 
@@ -23,7 +23,7 @@ Learn how to set Kafka quotas to enforce limits on produce and consume requests,
 ## About Kafka quotas
 {: #intro_kafka_quotas}
 
-If left unconstrained, a small number of consumers or producers can monopolize the available network throughput for your service instance.
+Without constraints, a few consumers or producers can monopolize the available network throughput for your service instance.
 
 Kafka brokers support quotas that enforce rate limits to prevent clients from saturating the network or monopolizing broker resources. For more information, see the [Apache Kafka documentation](https://kafka.apache.org/){: external}.
 

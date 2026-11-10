@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: messages, consumer, record, offset, rebalancing, consumer group, consumer properties
 
@@ -69,14 +69,14 @@ When one of the following changes takes place in a consumer group, the group reb
 * A consumer is considered as no longer live by the coordinator.
 * New partitions are added to an existing topic.
 
-If you have a consumer group that is rebalanced, be aware that any consumer that has left the group has its commits that are rejected until it rejoins the group. In this case, the consumer needs to rejoin the group, where it might be assigned a different partition to the one it was previously consuming from.
+If a consumer group is rebalanced, any consumer that departed from the group has its commits rejected until it rejoins the group. In this case, the consumer must rejoin the group, where it might be assigned a different partition from the one it was previously consuming.
 
 ## Consumer liveness
 {: #consumer_liveness}
 
 Kafka automatically detects failed consumers so that it can reassign partitions to working consumers. It uses two mechanisms: polling and heartbeating.
 
-If the batch of messages that are returned from `Consumer.poll(...)` is large or the processing is time-consuming, the delay before `poll()` is called again can be significant or unpredictable. In some cases, it's necessary to configure a long maximum polling interval so that consumers do not get removed from their groups just because message processing is taking a while. If this mechanism is the only one available, the time it takes to detect a failed consumer is also long.
+If the batch of messages returned from `Consumer.poll(...)` contains many records or processing takes extensive time, the delay before `poll()` is called again can be significant or unpredictable. In some cases, configure a longer maximum polling interval so that consumers are not removed from their groups during extended message processing. If this mechanism is the only one available, the time required to detect a failed consumer is also extended.
 
 To make consumer liveness easier to handle, background heartbeating was added in Kafka 0.10.1. The group coordinator expects group members to send it regular heartbeats to indicate that they remain active.
 A background heartbeat thread runs in the consumer and sends regular heartbeats to the coordinator. If the coordinator does not receive a heartbeat from a group member within the _session timeout_, the coordinator removes the member from the group and starts a rebalance of the group. The session timeout can be much shorter than the maximum polling interval, so that the time it takes to detect a failed consumer can be short, even if message processing takes a long time.
@@ -142,7 +142,7 @@ If you have problems with message handling that is caused by message flooding, y
 
 When consumers are added to or removed from a group, a group rebalance takes place, and consumers are not able to consume messages. This results in all the consumers in a consumer group to be unavailable for a short period.
 
-If you are notified with the "on partitions revoked" callback, use a ConsumerRebalanceListener to manually commit offsets (if you are not using auto-commit) and to pause further processing until notified of the successful rebalance by using the "on partition assigned" callback.
+If you are notified with the `on partitions revoked` callback, use a `ConsumerRebalanceListener` to manually commit offsets (if you are not using auto-commit) and to pause further processing until notified of the successful rebalance by using the `on partition assigned` callback.
 
 ## Code snippets
 {: #consumer_code_snippets}

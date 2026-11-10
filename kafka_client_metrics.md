@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-10"
 
 keywords: monitoring, metrics
 
@@ -42,7 +42,7 @@ Kafka producers and consumers generate client-side metrics to monitor applicatio
 :   Measures the average latency for each produce request in milliseconds. Spikes in request latency indicate broker bottlenecks or network contention. If request latency increases, consider adjusting producer batch sizes or scaling instance capacity.
 
 `byte-rate`
-:   Measures the average number of bytes sent per second to a topic. A sudden drop in throughput can signal application or network failures. For effective capacity planning, keep normal throughput below two-thirds of your maximum allocated bandwidth to accommodate traffic spikes and availability zone failovers.
+:   Measures the average number of bytes sent per second to a topic. A sudden drop in throughput can signal application or network failures. For effective capacity planning, keep normal throughput under two-thirds of your maximum allocated bandwidth to accommodate traffic spikes and availability zone failovers.
 
 ### Consumer metrics
 {: #consumer-metrics}
