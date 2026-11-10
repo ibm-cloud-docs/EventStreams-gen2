@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: client, wildcarding, wildcard, policies
 
@@ -105,7 +105,7 @@ The following tables summarize some common {{site.data.keyword.messagehub}} acti
 ### Cluster requirements
 {: #cluster_actions}
 
-By controlling access to the cluster resource, you can determine which applications and users can connect to the service. In addition to the policies required for the resource types below, access to `ResourceType: Cluster` and a `Role: Reader, Writer, Manager` is required.
+By controlling access to the cluster resource, you can determine which applications and users can connect to the service. In addition to the policies required for the resource types in the following sections, access to `ResourceType: Cluster` and a `Role: Reader, Writer, Manager` is required.
 
 ### Producer actions
 {: #producing_actions}

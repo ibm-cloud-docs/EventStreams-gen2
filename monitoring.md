@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: monitoring, metrics, cost, billing, opting in
 
@@ -144,7 +144,7 @@ This information is useful for detecting if the distribution of message activity
 | [IAM ID bytes out quota used percentage](#ibm_eventstreams_iam_id_bytes_out_quota_used_percentage) |  ![Checkmark icon](../icons/checkmark-icon.svg) | | |
 {: caption="Metrics available for quotas" caption-side="bottom"}
 
-Kafka quotas use sampling to determine how long clients should be paused before they can send or receive more data. For unpredictable workloads, or configurations that result in quota decisions being made using only a few samples, the percentage quota used metric could go above 100%.
+Kafka quotas use sampling to determine how long clients should be paused before they can send or receive more data. For unpredictable workloads, or configurations that result in quota decisions being made using only a few samples, the percentage quota used metric can exceed 100%.
 
 ## Enhanced service metrics available with consumers enabled
 {: #metrics-consumers}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025, 2026
-lastupdated: "2026-11-05"
+lastupdated: "2026-11-10"
 
 keywords: producer, producing messages, message ordering, batching, throttling, compression
 
@@ -93,9 +93,9 @@ acks=all (most reliable)
 :   The message is acknowledged to the producer when the partition leader successfully wrote its record and all in-sync replicas did the same. The message is not lost if the partition leadership changes provided that at least one in-sync replica is available.
 
 
-Even if you do not wait for messages to be acknowledged to the producer, messages are still only available to be consumed when committed, and that means replication to the in-sync replicas is complete. In other words, the latency of sending the messages from the point of view of the producer is lower than the end-to-end latency measured from the producer sending a message to a consumer receiving the message.
+Even if you do not wait for messages to be acknowledged to the producer, messages are still only available to be consumed when committed, and that means replication to the in-sync replicas is complete. In other words, the latency of sending the messages from the point of view of the producer is less than the end-to-end latency measured from the producer sending a message to a consumer receiving the message.
 
-If possible, avoid waiting for the acknowledgment of a message before you publish the next message. Waiting prevents the producer from being able to batch together messages and also reduces the rate that messages can be published to below the round-trip latency of the network.
+If possible, avoid waiting for the acknowledgment of a message before you publish the next message. Waiting prevents the producer from being able to batch together messages and also reduces the rate that messages can be published to less than the round-trip latency of the network.
 
 ## Batching, throttling, and compression
 {: #batching}

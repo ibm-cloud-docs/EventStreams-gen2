@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: troubleshooting, question, problem
 
@@ -70,7 +70,7 @@ If you are not able to create topics, it might be due to the following reasons:
 - Your identity lacks Manager or Administrator permissions on the cluster resource. For more information, see [Managing access](/docs/EventStreams-gen2?topic=EventStreams-gen2-security).
 - Storage capacity is exhausted. To resolve this issue, delete unused topics or decrease `retention.ms` and `retention.bytes`. For Enterprise instances, scale storage capacity as described in [Scaling Enterprise plan capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
 
-## Error: "Failed to send message"
+## Error: Failed to send message
 {: #error_failed_send_message}
 
 When producer applications cannot send records to {{site.data.keyword.messagehub}}, logs can report:

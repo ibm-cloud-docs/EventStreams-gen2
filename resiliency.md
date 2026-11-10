@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: resiliency, cluster resiliency, availability, data corruption, deletion, data management, disaster recovery, responsibilities
 
@@ -61,10 +61,10 @@ Disk usage
 :   Monitor storage utilization. When disk usage reaches 100%, topic partition creation and message writes are blocked, and only read operations continue. Scale storage capacity or truncate expired records before disk capacity is exhausted.
 
 CPU utilization
-:   Maintain normal operational CPU utilization below two-thirds (66%) capacity. Operating near maximum CPU utilization increases latency and risks request timeouts during availability zone failovers.
+:   Maintain normal operational CPU utilization under two-thirds (66%) capacity. Operating near maximum CPU utilization increases latency and risks request timeouts during availability zone failovers.
 
 Throughput management
-:   Keep throughput below two-thirds of allocated bandwidth to preserve capacity for maintenance events and failover traffic. For more information, see [Scaling Enterprise plan capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
+:   Keep throughput under two-thirds of allocated bandwidth to preserve capacity for maintenance events and failover traffic. For more information, see [Scaling Enterprise plan capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
 
 ### Automation with Terraform
 {: #resiliency_terraform}

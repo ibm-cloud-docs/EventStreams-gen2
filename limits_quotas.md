@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: limits, quotas, network throughput, retention, consumer groups, schema
 
@@ -44,7 +44,7 @@ The maximum number of partitions scales with your allocated capacity. For a stan
 
 You select storage capacity when provisioning the instance (2 TB, 4 TB, or 6 TB) and can scale storage upward as demands increase.
 
-Storage capacity cannot be scaled down. To reduce storage capacity, you must provision a new instance with lower capacity and migrate your data. For more information, see [Scaling {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
+Storage capacity cannot be scaled down. To reduce storage capacity, you must provision a new instance with less capacity and migrate your data. For more information, see [Scaling {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
 
 ### Other limits
 {: #enterprise_limits}

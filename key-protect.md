@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 subcollection: EventStreams-gen2
 
@@ -47,7 +47,7 @@ Authorize {{site.data.keyword.keymanagementserviceshort}} for use with {{site.da
 8. Select or retain the default value **Account** as the resource group for the **Target Service**
 9. In the Target service **Instance ID** menu, select the service instances to authorize.
 10. Enable the **Reader** role.
-11. To use "Bring your own key" (BYOK), select the **Enable authorizations to be delegated** box in the **Authorize dependent services** section.  
+11. To use bring your own key (BYOK), select the **Enable authorizations to be delegated** box in the **Authorize dependent services** section.
 12. Click **Authorize**.
 
 If the service authorization is not present before provisioning your deployment with a key, the provision fails.
