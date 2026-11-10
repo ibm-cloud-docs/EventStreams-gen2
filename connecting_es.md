@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: connections, endpoints, cli, vpc, create service key
 
@@ -58,14 +58,14 @@ To create a service key by using the {{site.data.keyword.cloud_notm}} CLI, compl
 2. Create a service key:
 
     ```bash
-    ibmcloud resource service-key-create <key_name> <key_role> --instance-name <your_service_name>
+    ibmcloud resource service-key-create KEY_NAME KEY_ROLE --instance-name YOUR_SERVICE_NAME
     ```
     {: codeblock}
 
 3. Print the service key:
 
     ```bash
-    ibmcloud resource service-key <key_name>
+    ibmcloud resource service-key KEY_NAME
     ```
     {: codeblock}
 

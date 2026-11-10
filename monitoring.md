@@ -54,7 +54,7 @@ To enable enhanced {{site.data.keyword.messagehub}} metrics:
 * Run the following command to update your service instance:
 
    ```sh
-   ibmcloud resource service-instance-update <instance-name> -p '{"dataservices": {"options":{"metrics":["topic","partition","consumers"]}}}'
+   ibmcloud resource service-instance-update INSTANCE_NAME -p '{"dataservices": {"options":{"metrics":["topic","partition","consumers"]}}}'
    ```
    {: pre}
 
@@ -63,7 +63,7 @@ When enhanced metrics are enabled, the corresponding dashboards become available
 To opt out of enhanced metrics, run the following command:
 
    ```sh
-   ibmcloud resource service-instance-update <instance-name> -p '{"dataservices": {"options":{"metrics":[]}}}'
+   ibmcloud resource service-instance-update INSTANCE_NAME -p '{"dataservices": {"options":{"metrics":[]}}}'
    ```
    {: pre}
 

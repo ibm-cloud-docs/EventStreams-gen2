@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-09"
+lastupdated: "2026-11-10"
 
 keywords: provision, create, cli, vpc, service key
 
@@ -67,14 +67,14 @@ Before you provision an instance, install the [{{site.data.keyword.cloud_notm}} 
 1. Run the following command to create an instance:
 
    ```sh
-   ibmcloud resource service-instance-create <NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> -g <RESOURCE_GROUP>
+   ibmcloud resource service-instance-create NAME SERVICE_NAME SERVICE_PLAN_NAME LOCATION -g RESOURCE_GROUP
    ```
    {: pre}
 
 The following example command creates an {{site.data.keyword.messagehub}} instance:
 
 ```sh
-ibmcloud resource service-instance-create <NAME> messagehub enterprise-gen2 ca-mon -g Default -p '{
+ibmcloud resource service-instance-create NAME messagehub enterprise-gen2 ca-mon -g Default -p '{
    "dataservices":{
       "kafka": {
         "throughput_mb_s": 100,
@@ -98,19 +98,19 @@ ibmcloud resource service-instance-create <NAME> messagehub enterprise-gen2 ca-m
 To create a service credential, run the following command:
 
 ```sh
-ibmcloud resource service-key-create <NAME> [<ROLE_NAME>] --instance-name <SERVICE_INSTANCE_NAME>
+ibmcloud resource service-key-create NAME [ROLE_NAME] --instance-name SERVICE_INSTANCE_NAME
 ```
 {: pre}
 
 Replace the following variables with your values:
 
-`<NAME>`
+`NAME`
 :   The name of the service credential.
 
-`<ROLE_NAME>`
+`ROLE_NAME`
 :   The IAM role for the credential (`Manager`, `Writer`, or `Reader`).
 
-`<SERVICE_INSTANCE_NAME>`
+`SERVICE_INSTANCE_NAME`
 :   The name of the service instance.
 
 For more information, see [Getting started with the CLI](/docs/EventStreams-gen2?topic=EventStreams-gen2-cli-reference).

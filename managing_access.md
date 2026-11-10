@@ -34,7 +34,7 @@ For more secure authentication, SASL OAUTHBEARER is the only recommended authent
 Enterprise users have the option to disable SASL PLAIN in their Enterprise instances. Use the following command:
 
 ```sh
-ibmcloud resource service-instance-update <instance-name> -p'{"dataservices":{"options":{"iam_token_only":true}}}'
+ibmcloud resource service-instance-update INSTANCE_NAME -p '{"dataservices":{"options":{"iam_token_only":true}}}'
  
 ```
 

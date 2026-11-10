@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: event streams cbr, context-based restrictions, gen2
 
@@ -95,7 +95,7 @@ To create network zones in the CLI, use the `cbr-zone-create` command to add res
 Create a zone by using a command like:
 
 ```sh
-ibmcloud cbr zone-create --addresses=1.1.1.1,5.5.5.5 --name=<NAME>
+ibmcloud cbr zone-create --addresses 1.1.1.1,5.5.5.5 --name NAME
 ```
 {: .pre}
 
@@ -158,7 +158,7 @@ module "ibm_cbr" "zone" {
 Update a zone by using a command like:
 
 ```sh
-ibmcloud cbr zone-update <ZONE-ID> --addresses=1.2.3.4 --name=<NAME>
+ibmcloud cbr zone-update ZONE-ID --addresses 1.2.3.4 --name NAME
 ```
 {: .pre}
 
@@ -178,7 +178,7 @@ The `zone-update` command is an overwrite. Include all of the fields that are re
 Delete a zone by using a command like:
 
 ```sh
-ibmcloud cbr zone-delete <ZONE-ID>
+ibmcloud cbr zone-delete ZONE-ID
 ```
 {: .pre}
 
@@ -229,7 +229,7 @@ All the other parameters that follow are explained in the [CBR plugin reference 
 Example command for creating a CBR Rule:
 
 ```sh
-ibmcloud cbr rule-create --enforcement-mode enabled --context-attributes "networkZoneId=<ZONE-ID>" --resource-group-id <RESOURCE_GROUP_ID> --service-name messagehub --service-instance <SERVICE-INSTANCE> --description <DESCRIPTION>
+ibmcloud cbr rule-create --enforcement-mode enabled --context-attributes "networkZoneId=ZONE-ID" --resource-group-id RESOURCE_GROUP_ID --service-name messagehub --service-instance SERVICE-INSTANCE --description DESCRIPTION
 ```
 {: .pre}
 
@@ -243,7 +243,7 @@ ibmcloud cbr rule-create --enforcement-mode enabled --context-attributes "networ
 Example command for updating a CBR rule:
 
 ```sh
-ibmcloud cbr rule-update <RULE-ID> --enforcement-mode disabled --context-attributes="networkZoneId=<ZONE-ID>" --resource-group-id   <RESOURCE_GROUP_ID> --service-name messagehub --description    <DESCRIPTION>
+ibmcloud cbr rule-update RULE-ID --enforcement-mode disabled --context-attributes "networkZoneId=ZONE-ID" --resource-group-id RESOURCE_GROUP_ID --service-name messagehub --description DESCRIPTION
 ```
 {: .pre}
 
@@ -264,7 +264,7 @@ ibmcloud cbr rules
 Delete a rule by using a command like:
 
 ```sh
-ibmcloud cbr rule-delete <RULE-ID>
+ibmcloud cbr rule-delete RULE-ID
 ```
 {: .pre}
 

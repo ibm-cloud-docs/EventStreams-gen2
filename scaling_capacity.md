@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: scaling capacity, throughput, storage, scaling
 
@@ -77,7 +77,7 @@ The following example demonstrates scaling an Enterprise Gen 2 instance from 2 T
 3. View the current capacity configuration:
 
    ```sh
-   ibmcloud resource service-instance <instance_name> -o JSON
+   ibmcloud resource service-instance INSTANCE_NAME -o JSON
    ```
    {: pre}
 
@@ -100,14 +100,14 @@ The following example demonstrates scaling an Enterprise Gen 2 instance from 2 T
 4. Scale storage capacity to 4 TB (4000 GB):
 
    ```sh
-   ibmcloud resource service-instance-update <instance_name> -p '{"dataservices":{"kafka":{"storage_gb":4000}}}'
+   ibmcloud resource service-instance-update INSTANCE_NAME -p '{"dataservices":{"kafka":{"storage_gb":4000}}}'
    ```
    {: pre}
 
 5. Monitor the status of the scale operation:
 
    ```sh
-   ibmcloud resource service-instance <instance_name> -o JSON
+   ibmcloud resource service-instance INSTANCE_NAME -o JSON
    ```
    {: pre}
 

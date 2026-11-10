@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-10"
 
 keywords: activity , cloud logs
 
@@ -95,14 +95,14 @@ Message audit events can be enabled on a per topic basis. To do so, complete the
 2. Enable message audit on an existing topic:
 
    ```sh
-   ibmcloud es topic-update <topic-name> --config message.audit.enable=true
+   ibmcloud es topic-update TOPIC_NAME --config message.audit.enable=true
    ```
    {: pre}
 
    Or create a new topic with message audit enabled:
 
    ```sh
-   ibmcloud es topic-create <topic-name> --partitions <number-of-partitions> --config message.audit.enable=true
+   ibmcloud es topic-create TOPIC_NAME --partitions NUMBER_OF_PARTITIONS --config message.audit.enable=true
    ```
    {: pre}
 
