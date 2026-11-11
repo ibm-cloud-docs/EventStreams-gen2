@@ -47,7 +47,7 @@ Deletion of the customer-managed key is unrecoverable and results in the loss of
 ## Message-level encryption for compliance
 {: #message_level_encryption_}
 
-Some regulatory standards, such as [PCI DSS](/docs/EventStreams?topic=EventStreams-compliance), require that sensitive message data (such as cardholder information) be encrypted throughout its lifecycle: at rest, in transit, and in use.
+Some regulatory standards, such as [PCI DSS](/docs/EventStreams-gen2?topic=EventStreams-gen2-compliance), require that sensitive message data (such as cardholder information) be encrypted throughout its lifecycle: at rest, in transit, and in use.
 
 The file systems used by {{site.data.keyword.messagehub}} to store message data are encrypted to protect against unauthorized access. However, as messages pass through the transport layer, {{site.data.keyword.messagehub}} decrypts these file systems to process the messages. Encryption in transit and at rest ensures strong protection throughout the message lifecycle, in line with industry best practices.
 

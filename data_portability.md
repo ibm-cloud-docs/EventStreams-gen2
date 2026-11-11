@@ -43,8 +43,8 @@ For more information about responsibilities when you use {{site.data.keyword.mes
 {{site.data.keyword.messagehub}} provides mechanisms to export content that is stored and processed by using the service:
 
 - You can access and export message data by using standard Apache Kafka APIs as described in [Using the Kafka API](/docs/EventStreams-gen2?topic=EventStreams-gen2-using_kafka_api). The service deletes data that exceeds the configured retention period, so the data is no longer available. For more information, see [Limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas).
-- To export topic configuration, use the [Administration REST API](/docs/EventStreams?topic=EventStreams-admin_api). This API is not currently available on the Enterprise Gen 2 plan.
-- To export schema definitions, use the [Schema Registry REST API](/docs/EventStreams?topic=EventStreams-ES_schema_registry). This API is not currently available on the Enterprise Gen 2 plan.
+- To export topic configuration, use the Gen 1 [Administration REST API](/docs/EventStreams?topic=EventStreams-admin_api). This API is not currently available on the Enterprise Gen 2 plan.
+- To export schema definitions, use the Gen 1 [Schema Registry REST API](/docs/EventStreams?topic=EventStreams-ES_schema_registry). This API is not currently available on the Enterprise Gen 2 plan.
 
 ## Exported data formats
 {: #data-portability-data-formats}

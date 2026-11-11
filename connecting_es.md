@@ -152,4 +152,4 @@ After you have connection and credential information, you can choose a Kafka cli
 {: #further_info}
 
 - [Configuring your Kafka API client](/docs/EventStreams-gen2?topic=EventStreams-gen2-using_kafka_api#kafka_api_client). 
-- [Restricting network access](/docs/EventStreams?topic=EventStreams-restrict_access).
+- [Securing {{site.data.keyword.messagehub}} with context-based restrictions on {{site.data.keyword.cloud_notm}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-cbr).

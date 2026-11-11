@@ -97,7 +97,6 @@ All {{site.data.keyword.messagehub}} plans can recover a deleted instance within
 
 
 
-If {{site.data.keyword.messagehub}} can’t restore the service instance, you must restore as described in [Mirroring in a disaster recovery scenario](/docs/EventStreams?topic=EventStreams-disaster_recovery_scenario).
 
 ## How {{site.data.keyword.IBM_notm}} maintains services
 {: #ibm-service-maintenance}

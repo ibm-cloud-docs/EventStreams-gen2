@@ -294,7 +294,7 @@ This metric tracks the rate of data, in bytes per second, that is produced to an
 | `Segment By` | `Service instance, Service instance name` |
 {: caption="Instance bytes in per second metric metadata" caption-side="bottom"}
 
-Use this metric to monitor data ingestion rates and identify trends in client-produced throughput. Compare observed values against the recommended limits for your plan and instance to ensure that your workload remains within supported thresholds. For more information, see [{{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-plan_choose){: external}.
+Use this metric to monitor data ingestion rates and identify trends in client-produced throughput. Compare observed values against the recommended limits for your plan and instance to ensure that your workload remains within supported thresholds. For more information, see [{{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose){: external}.
 
 ### Instance bytes out per second
 {: #ibm_eventstreams_instance_bytes_out_per_second}
@@ -309,7 +309,7 @@ This metric tracks the rate of data, in bytes per second, that is consumed from 
 | `Segment By` | `Service instance, Service instance name` |
 {: caption="Instance bytes out per second metric metadata" caption-side="bottom"}
 
-Use this metric to monitor trends in the incoming and outgoing MB/s that your clients transfer to and from your cluster. To determine the recommended limits for your plan and instance, see [{{site.data.keyword.messagehub}}](/docs/EventStreams?topic=EventStreams-plan_choose){: external}.
+Use this metric to monitor trends in the incoming and outgoing MB/s that your clients transfer to and from your cluster. To determine the recommended limits for your plan and instance, see [{{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose){: external}.
 
 ### Instance utilization
 {: #ibm_eventstreams_instance_utilization}

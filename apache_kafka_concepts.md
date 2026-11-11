@@ -72,7 +72,7 @@ A producer is a client application that publishes messages to one or more topics
 
 You can also configure your producer to prioritize speed or reliability by choosing the level of acknowledgment the producer receives for messages it publishes.
 
-For more information, see [Producing messages](/docs/EventStreams?topic=EventStreams-producing_messages).
+For more information, see [Producing messages](/docs/EventStreams-gen2?topic=EventStreams-gen2-producing_messages).
 
 ![Producers diagram.](concepts_producers.png "The diagram shows a producer publishing messages to one topic across three brokers."){: caption="The diagram shows a producer publishing messages to one topic across three brokers." caption-side="bottom"}
 
