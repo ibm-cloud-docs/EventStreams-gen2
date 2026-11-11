@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-10"
+lastupdated: "2026-11-11"
 
 keywords: data portability, data management, operations, compliance, disaster recovery, data ownership, responsibilities, ibm cloud event streams, data export
 
@@ -12,12 +12,12 @@ subcollection: EventStreams-gen2
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Exporting data from {{site.data.keyword.cloud_notm} {{site.data.keyword.messagehub}}: guide data portability
+# Exporting data from {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}: guide data portability
 {: #data-portability}
 
 [Gen 2]{: tag-purple}
 
-Learn how to export data from {{site.data.keyword.cloud_notm}}{{site.data.keyword.messagehub}}, including tools and procedures for data portability to other cloud providers or on-premises.
+Learn how to export data from {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including tools and procedures for data portability to other cloud providers or on-premises.
 {: shortdesc}
 
 [Data portability](#x2113280){: term} includes the tools and procedures that enable you to export digital artifacts to implement similar workloads on other cloud providers or on-premises software. It includes procedures for copying and storing your content and configuration in your own environment.
