@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-11"
 
 subcollection: EventStreams-gen2
 
@@ -17,7 +17,7 @@ keywords: api, resource controller, rest api, event streams api
 
 [Gen 2]{: tag-purple}
 
-Learn about the {{site.data.keyword.messagehub}} API on {{site.data.keyword.cloud_notm}}, including authentication, error handling, and available methods for managing your data services.
+Learn about the {{site.data.keyword.messagehub}} API on {{site.data.keyword.cloud}}, including authentication, error handling, and available methods for managing your data services.
 {: shortdesc}
 
 The {{site.data.keyword.messagehub}} API uses the [Resource Controller API](/docs/apis/resource-controller/resource-controller#intro) for lifecycle management operations. Use this reference to manage your service instances programmatically.
@@ -44,7 +44,7 @@ Responses can include a JSON response body with detailed error messages.
 ## Event tracking
 {: #api-event-tracking}
 
-You can monitor API activity in your account by using the [{{site.data.keyword.cloudaccesstraillong}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events) service. When you invoke an API method, an event is generated that you can track and audit in Activity Tracker.
+You can monitor API activity in your account by using the [{{site.data.keyword.cloudaccesstraillong}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events) service. When you invoke an API method, the service generates an event that you can track and audit in Activity Tracker.
 
 ## Deployment IDs and CRNs
 {: #api-deployment}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-11"
 
 keywords: reporting a problem, problem report
 
@@ -23,7 +23,7 @@ Encountering issues with {{site.data.keyword.messagehub}} on Standard or Enterpr
 If you need help from the {{site.data.keyword.messagehub}} team, gather all the following information. The more information that you can provide upfront, the more efficiently the team can help with the problem:
 
 1. What is the CRN ID of the {{site.data.keyword.messagehub}} service that you use? You can provide this ID by pasting the full {{site.data.keyword.Bluemix_notm}} console URL after you click the service, or by pasting the output from the following CLI command:
-2.
+
     ```sh
     ibmcloud resource service-instance NAME
     ```

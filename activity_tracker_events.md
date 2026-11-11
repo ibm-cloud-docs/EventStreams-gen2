@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-10"
+lastupdated: "2026-11-11"
 
 keywords: activity , cloud logs
 
@@ -17,12 +17,12 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use {{site.data.keyword.logs_full_notm}} to track user and application interactions with {{site.data.keyword.messagehub}} on various plans in {{site.data.keyword.cloud_notm}}, including Activity Tracker.
+Learn how to use {{site.data.keyword.logs_full_notm}} to track user and application interactions with {{site.data.keyword.messagehub}} on various plans in {{site.data.keyword.cloud}}, including Activity Tracker.
 {: shortdesc}
 
 The {{site.data.keyword.logs_full_notm}} service records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. For more information, see [{{site.data.keyword.logs_full_notm}}](/docs/cloud-logs?topic=cloud-logs-at_events){: external}.
 
-Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/atracker?topic=atracker-about).
+Events follow the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/atracker?topic=atracker-about).
 
 ## Topic events
 {: #topic-events}
@@ -33,12 +33,12 @@ The following table lists the topic events:
 
 | Action | Description |
 |:-------|:------------|
-| event-streams.topic.create | An event is created when you create a topic.|
-| event-streams.topic.delete | An event is created when you delete a topic.|
-| event-streams.topic.update | An event is created when you update a topic's configuration or increase partitions.|
+| event-streams.topic.create | The service creates an event when you create a topic.|
+| event-streams.topic.delete | The service creates an event when you delete a topic.|
+| event-streams.topic.update | The service creates an event when you update a topic's configuration or increase partitions.|
 {: caption="{{site.data.keyword.messagehub}} topic events" caption-side="bottom"}
 
-Additional information about topic configuration is logged in the update and delete events,  for example partitions, `retentionMs`, and `segmentMs`.
+The update and delete events also log additional information about topic configuration, for example partitions, `retentionMs`, and `segmentMs`.
 
 ## Message audit events
 {: #message-events}
@@ -50,12 +50,12 @@ The following table lists the message audit events:
 
 | Action | Description |
 | --- | --- |
-| event-streams.message.read | An event is created when message audit is enabled on a topic and a consumer is reading data from the topic.|
-| event-streams.message.write | An event is created when message audit is enabled on a topic and a producer is writing data to the topic.|
-| event-streams.message.delete | An event is created when message audit is enabled on a topic and records are deleted from the topic. Records deletion because of retention policy does not generate.|
+| event-streams.message.read | The service creates an event when message audit is enabled on a topic and a consumer is reading data from the topic.|
+| event-streams.message.write | The service creates an event when message audit is enabled on a topic and a producer is writing data to the topic.|
+| event-streams.message.delete | The service creates an event when message audit is enabled on a topic and records are deleted from the topic. Deleting records because of the retention policy does not generate an event.|
 {: caption="{{site.data.keyword.messagehub}} message events" caption-side="bottom"}
 
-{{site.data.keyword.messagehub}} can sustain high request rates, so not every request triggers an event. Instead, events are aggregated by initiator (user ID or service ID), host (IP address), operation (read, write, delete), outcome (success or failure), and topic over a 1-hour period.
+{{site.data.keyword.messagehub}} can sustain high request rates, so not every request triggers an event. Instead, the service aggregates events by initiator (user ID or service ID), host (IP address), operation (read, write, delete), outcome (success or failure), and topic over a 1-hour period.
 
 ## Other events
 {: #other-events}
@@ -64,8 +64,8 @@ The following table lists the message audit events:
 
 | Action | Description |
 |:-------|:------------|
-| event-streams.storage-key.read | Key management events are now created by the underlying block storage, which are described [here](/docs/vpc?topic=vpc-at_events#events-block-storage). |
-| event-streams.storage-key.update | Key management events are now created by the underlying block storage, which are described [here](/docs/vpc?topic=vpc-at_events#events-block-storage). |
+| event-streams.storage-key.read | The underlying block storage now creates key management events. For more information, see the [VPC block storage events](/docs/vpc?topic=vpc-at_events#events-block-storage). |
+| event-streams.storage-key.update | The underlying block storage now creates key management events. For more information, see the [VPC block storage events](/docs/vpc?topic=vpc-at_events#events-block-storage). |
 {: caption="{{site.data.keyword.messagehub}} events" caption-side="bottom"}
 
 ## Where to view the events
@@ -83,7 +83,7 @@ Events that are generated by an instance of the {{site.data.keyword.messagehub}}
 
 
 
-Message audit events can be enabled on a per topic basis. To do so, complete the following steps:
+You can enable message audit events on a per topic basis. Complete the following steps:
 
 1. Install {{site.data.keyword.messagehub}} CLI plug-in v2.3 or later:
 
@@ -109,8 +109,8 @@ Message audit events can be enabled on a per topic basis. To do so, complete the
 After the topic's message audit config is updated, it takes about 5 minutes for message audit events to show up in {{site.data.keyword.cloudaccesstrailshort}}.
 {: important}
 
-Additionally, be aware of the implications of enabling message audit events:
+Consider the following implications of enabling message audit events:
 
-1. An internal Kafka topic is used for streaming events to {{site.data.keyword.logs_full_notm}}, thus it uses a small amount of the cluster's network bandwidth and storage. Typically throughput is less than 1 KB/s, and storage does not exceed 1 GB.
+1. {{site.data.keyword.messagehub}} uses an internal Kafka topic to stream events to {{site.data.keyword.logs_full_notm}}, so it uses a small amount of the cluster's network bandwidth and storage. Typically throughput is less than 1 KB/s, and storage does not exceed 1 GB.
 
-2. Because more events are sent to {{site.data.keyword.logs_full_notm}}, enabling message audit events incurs extra storage costs for {{site.data.keyword.logs_full_notm}}. Each event's size is about 1 KB, see the following rough estimation of how much storage it takes. Assuming that the cluster has 100 topics, each topic has 10 clients actively producing and consuming, and each client runs on three different locations. It then generates 100x10x3=3000 events per hour, so 2 GB per month.
+2. Because more events are sent to {{site.data.keyword.logs_full_notm}}, enabling message audit events incurs extra storage costs for {{site.data.keyword.logs_full_notm}}. Each event is about 1 KB. The following rough estimation shows how much storage the events take. Assume that the cluster has 100 topics, each topic has 10 clients actively producing and consuming, and each client runs in three different locations. This setup generates 100x10x3=3000 events per hour, so 2 GB per month.

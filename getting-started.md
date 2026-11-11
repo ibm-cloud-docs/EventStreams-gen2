@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-09"
+lastupdated: "2026-11-11"
 
 keywords: getting started
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to quickly start using {{site.data.keyword.messagehub}} Gen 2 by provisioning an instance, creating a topic and credential, and producing and consuming data.
+Learn how to start using {{site.data.keyword.messagehub}} Gen 2 by provisioning an instance, creating a topic and credential, and producing and consuming data.
 {: shortdesc}
 
 Follow these steps to complete the getting started tutorial:
@@ -54,13 +54,13 @@ The [Enterprise Gen 2 plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan
 {: #provision_instance_ui}
 {: ui}
 
-1. Log in to the {{site.data.keyword.cloud_notm}} console.
+1. Log in to the {{site.data.keyword.cloud}} console.
 1. Search for **{{site.data.keyword.messagehub}}** in the [**Catalog**](https://cloud.ibm.com/catalog/){: external} and click the **{{site.data.keyword.messagehub}}** tile.
 1. Select a location that supports the Gen 2 platform.
 1. Select the **Enterprise Gen 2 plan** from the **Select a pricing plan** section.
 1. Enter a name for your service. You can use the default value.
 1. Click **Create**. The {{site.data.keyword.messagehub}} **Resource list** page opens.
-1. When your instance has been created, click the instance name to view more information.
+1. When your instance is created, click the instance name to view more information.
 
 
 ## Step 3: Create a topic and select the number of partitions by using the console
@@ -71,7 +71,7 @@ For guidance about the settings that you can modify when creating topics, see [T
 
 
 1. In the navigation menu of your instance, select **Topics**.
-1. Click **Create topic**, enter a topic name, and click **Next**. Topic names are restricted to a maximum of 200 characters.
+1. Click **Create topic**, enter a topic name, and click **Next**. Topic names can have a maximum of 200 characters.
 1. Select the number of partitions:
    - One or more partitions make up a topic. A partition is an ordered list of messages. One partition is sufficient for testing, while production environments typically use multiple partitions.
    - Partitions are distributed across brokers to increase scalability and distribute messages across consumer group members.
@@ -152,7 +152,7 @@ For more information about events specific to {{site.data.keyword.messagehub}}, 
 * [Message audit events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events#message-events)
 * [Other events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events#other-events)
 
-Events are formatted according to the Cloud Auditing Data Federation (CADF) standard.
+Events follow the Cloud Auditing Data Federation (CADF) standard.
 
 ## Step 8: (Optional) Use Kafka Connect or ksqlDB
 {: #kafka_connect_ksql}
@@ -171,7 +171,7 @@ Kafka Connect is not part of the managed {{site.data.keyword.messagehub}} servic
 
 You can use [ksqlDB](https://github.com/confluentinc/ksql){: external} with the {{site.data.keyword.messagehub}} Enterprise plan for stream processing.
 
-ksqlDB is a specialized database for event streaming that enables you to build stream processing applications for Apache Kafka.
+ksqlDB is a specialized database for event streaming that you can use to build stream processing applications for Apache Kafka.
 
 To configure ksqlDB, first complete the [ksqlDB setup steps](/docs/EventStreams-gen2?topic=EventStreams-gen2-ksql_using). You can run ksqlDB by using a Docker container as described in the [ksqlDB quickstart](https://www.confluent.io/product/ksqldb/){: external}.
 

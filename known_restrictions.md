@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-11"
 
 keywords: restrictions, failover, jvm ttl, creating topic, deleting topic
 
@@ -37,7 +37,7 @@ Because {{site.data.keyword.messagehub}} uses Kafka bootstrap server URLs with m
 
 See the following example from the `java.security` file: 
 
-```text
+```properties
 # The Java-level namelookup cache policy for successful lookups:
 #
 # any negative value: caching forever
@@ -63,7 +63,7 @@ See the following example from the `java.security` file:
 - To modify the JVM's TTL for all applications, set the `networkaddress.cache.ttl` value in the `<$JAVA_HOME>/jre/lib/security/java.security` file.
 - To modify the JVM TTL for a specific application, set the `networkaddress.cache.ttl` in your application code.
 
-   ```text
+   ```java
    java.security.Security.setProperty("networkaddress.cache.ttl" , "30");
    ```
 

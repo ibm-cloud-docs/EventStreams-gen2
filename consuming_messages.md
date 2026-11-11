@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-10"
+lastupdated: "2026-11-11"
 
 keywords: messages, consumer, record, offset, rebalancing, consumer group, consumer properties
 
@@ -14,12 +14,13 @@ subcollection: EventStreams-gen2
 
 # Consuming messages from Kafka topics with {{site.data.keyword.messagehub}}
 {: #consuming_messages}
+
 [Gen 2]{: tag-purple}
 
-Learn how to consume messages from Kafka topics using a consumer application with {{site.data.keyword.messagehub}}, including configuration settings and best practices.
+Learn how to consume messages from Kafka topics by using a consumer application with {{site.data.keyword.messagehub}}, including configuration settings and best practices.
 {: shortdesc}
 
-When a consumer connects to Kafka, it makes an initial bootstrap connection. This connection can be to any of the servers in the cluster. The consumer requests the partition and leadership information about the topic that it wants to consume from. Then, the consumer establishes another connection to the partition leader and can consume messages. These actions happen automatically internally when your consumer connects to the Kafka cluster.
+When a consumer connects to Kafka, it makes an initial bootstrap connection. This connection can be to any of the servers in the cluster. The consumer requests the partition and leadership information about the topic that it wants to consume from. Then, the consumer establishes another connection to the partition leader and can consume messages. These actions happen automatically when your consumer connects to the Kafka cluster.
 
 A consumer is normally a long-running application. A consumer requests messages from Kafka by calling `Consumer.poll(...)` regularly. The consumer calls `poll()`, receives a batch of messages, processes them promptly, and then calls `poll()` again.
 
@@ -27,12 +28,12 @@ When a consumer processes a message, the message is not removed from its topic. 
 
 In the programming interfaces, a message is called a record. For example, the Java class org.apache.kafka.clients.consumer.ConsumerRecord is used to represent a message for the consumer API. The terms _record_ and _message_ can be used interchangeably, but essentially a record is used to represent a message.
 
-You might find it useful to read this information along with [producing messages](/docs/EventStreams-gen2?topic=EventStreams-gen2-producing_messages) in {{site.data.keyword.messagehub}}.
+Read this information together with [producing messages](/docs/EventStreams-gen2?topic=EventStreams-gen2-producing_messages) in {{site.data.keyword.messagehub}}.
 
 ## Configuring consumer properties
 {: #configuring_consumer_properties}
 
-Many configuration settings exist for the consumer that control aspects of its behavior. The following settings are some of the most important ones.
+Many configuration settings exist for the consumer that control aspects of its behavior. The following settings are some of the most important ones:
 
 | Name     |Description   | Valid values   | Default   |
 |----------|---------|----------|---------|
@@ -95,7 +96,7 @@ Instead, it just updates its current offset by using a process that is called co
 {: #no_committed_offset}
 
 When a consumer starts and is assigned a partition to consume, it starts at its group's committed offset.
-If no existing committed offset exists, the consumer can choose whether to start with the earliest, or latest available message based on
+If no committed offset exists, the consumer can choose whether to start with the earliest or latest available message based on
 the setting of the `auto.offset.reset` property as follows:
 
 * `latest` (the default): Your consumer receives and consumes only messages that arrive after you subscribe.
@@ -119,7 +120,7 @@ If the committed offset overtakes the processing of the messages and a consumer 
 
 If `enable.auto.commit` is set to `false`, the consumer commits its offsets manually. It can do this either synchronously or asynchronously. A common pattern is to commit the offset of the latest processed message based on a periodic timer. This pattern means that every message is processed at least once, but the committed offset never overtakes the progress of messages that are actively being processed. The frequency of the periodic timer controls the number of messages that can be reprocessed following a consumer failure. Messages are retrieved again from the last saved committed offset when the application restarts or when the group rebalances.
 
-The committed offset is the offset of the messages from which processing is resumed. This is usually the offset of the most recently processed message *plus one*.
+The committed offset is the offset of the messages from which processing is resumed. This is usually the offset of the most recently processed message _plus one_.
 
 ### Consumer lag
 {: #consumer_lag}
@@ -154,7 +155,7 @@ To connect a consumer to {{site.data.keyword.messagehub}}, you need to create se
 
 In the consumer code, you first need to build the set of configuration properties. All connections to {{site.data.keyword.messagehub}} are secured by using TLS and user-password authentication, so you need at least these properties. Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with those from your own service credentials:
 
-```text
+```java
 Properties props = new Properties();
  props.put("bootstrap.servers", BOOTSTRAP_ENDPOINTS);
  props.put("sasl.jaas.config", "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"USER\" password=\"PASSWORD\";");
@@ -164,7 +165,7 @@ Properties props = new Properties();
 
 To consume messages, you also need to specify deserializers for the keys and values, as in the following example.
 
-```text
+```java
  props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
  props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 ```
@@ -174,7 +175,7 @@ These deserializers must match the serializers used by the producers.
 Then, use a KafkaConsumer to consume messages, where each message is represented by a ConsumerRecord. The most common way to consume messages is to put the consumer in a consumer group by setting the group ID, and then call `subscribe()` for a list of topics.
 The consumer is assigned some partitions to consume, although if more consumers exist in the group than partitions in the topic, the consumer might not be assigned any partitions. Next, call `poll()` in a loop, receiving a batch of messages to process, where each message is represented by a ConsumerRecord.
 
-```text
+```java
 props.put("group.id", "G1");
 Consumer<String, String> consumer = new KafkaConsumer<>(props);
 consumer.subscribe(Arrays.asList("T1"));  // T1 is the topic name
@@ -189,7 +190,7 @@ This consumer loop runs forever but it can be interrupted from another thread by
 
 To commit offsets manually, it's first necessary to set the `enable.auto.commit` configuration to `false`. Then, use either `Consumer.commmitSync()` or `Consumer.commitAsync()` to update the consumer's committed offset periodically. For simplicity, this example processes the records for each partition and commits the last offset separately.
 
-```text
+```java
 props.put("group.id", "G1");
 props.put("enable.auto.commit", "false");
 Consumer<String, String> consumer = new KafkaConsumer<>(props);
@@ -235,7 +236,7 @@ Thrown as a result of `Producer.send(...)` when the leadership for a partition c
 ### org.apache.kafka.common.errors.CommitFailedException
 {: #commitfailed_exception}
 
-Thrown as a result of `Consumer.commitSync(...)` when an unrecoverable error occurs. In some cases, it is not possible to repeat the operation because the partition assignment has changed and the consumer is no longer be able to commit its offsets. Because `Consumer.commitSync(...)` can be partially successful when used with multiple partitions in a single call, the error recovery can be simplified by using a separate `Consumer.commitSync(...)` call for each partition.
+Thrown as a result of `Consumer.commitSync(...)` when an unrecoverable error occurs. In some cases, it is not possible to repeat the operation because the partition assignment has changed and the consumer can no longer commit its offsets. Because `Consumer.commitSync(...)` can be partially successful when used with multiple partitions in a single call, the error recovery can be simplified by using a separate `Consumer.commitSync(...)` call for each partition.
 
 ### org.apache.kafka.common.errors.TimeoutException
 {: #timeout_exception}

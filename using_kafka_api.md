@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-09"
+lastupdated: "2026-11-11"
 
 keywords: api, consumer, producer, admin, streams, connect, client
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use Kafka APIs, including the core, Streams, and Connect APIs, with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} to build event-driven applications.
+Learn how to use Kafka APIs, including the core, Streams, and Connect APIs, with {{site.data.keyword.cloud}} {{site.data.keyword.messagehub}} to build event-driven applications.
 {: shortdesc}
 
 Kafka core API (Consumer, Producer, and Admin API)
@@ -101,13 +101,13 @@ ssl.endpoint.identification.algorithm=HTTPS
 If you use a Kafka client earlier than version 0.10.2.1, the `sasl.jaas.config` property isn't supported, and you must instead provide the client configuration in a JAAS configuration file.
 {: note}
 
-### Using SASL OAUTHBEARER with Java clients version 3.4 - 4.0
+### Using SASL OAUTHBEARER with Java clients version 3.4 to 4.0
 {: #using_sasl_oauthbearer}
 
 Before you configure the SASL mechanism for a Java client, verify the following prerequisites:
 
 - The minimum supported Kafka Java client version is 3.4 (3.6 or later is recommended).
-- An additional JAR package must be downloaded from Maven Central and made available in your classpath.
+- You downloaded an additional JAR package from Maven Central and made it available in your classpath.
 
 If you use Maven, add the following dependency to `pom.xml`:
 
@@ -127,7 +127,7 @@ implementation com.ibm.cloud.eventstreams:oauth-client:1.4.0
 ```
 {: codeblock}
 
-{{site.data.keyword.iamlong}} supports multiple methods to generate a bearer token. Two methods are supported by this OAuth client library:
+{{site.data.keyword.iamlong}} supports multiple methods to generate a bearer token. This OAuth client library supports two methods:
 
 - API key
 - Trusted profile and compute resource token
@@ -138,11 +138,11 @@ implementation com.ibm.cloud.eventstreams:oauth-client:1.4.0
 Use the following strings and properties:
 
 - Use the `BOOTSTRAP_ENDPOINTS` string as the list of bootstrap servers and pass this string of host and port pairs to your Kafka client.
-- The `IAMOAuthBearerLoginCallbackHandler` is provided by the JAR package `com.ibm.cloud.eventstreams:oauth-client:+`.
+- The JAR package `com.ibm.cloud.eventstreams:oauth-client:+` provides the `IAMOAuthBearerLoginCallbackHandler`.
 - The {{site.data.keyword.iamlong}} token endpoint `https://iam.cloud.ibm.com/identity/token` generates a token from the API key by using the specified grant type in JAAS configuration. Token generation occurs on the client side, so the API key is never sent to the server side.
 - The {{site.data.keyword.iamshort}} key endpoint `https://iam.cloud.ibm.com/identity/keys` validates the token.
 - `grant_type` in `sasl.jaas.config` is `urn:ibm:params:oauth:grant-type:apikey`.
-- `apikey` in `sasl.jaas.config` is the API key used to generate the bearer token at the client side.
+- `apikey` in `sasl.jaas.config` is the API key used to generate the bearer token on the client side.
 
 For a Java client, the following example shows the minimum set of properties. Replace `${BOOTSTRAP_ENDPOINTS}` and `${APIKEY}` with your retrieved values.
 
@@ -163,8 +163,8 @@ sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginMo
 The properties are the same as with the API key, except for the `sasl.jaas.config` property:
 
 - `grant_type` in `sasl.jaas.config` is `urn:ibm:params:oauth:grant-type:cr-token`.
-- `profile_id` in `sasl.jaas.config` is a file location storing the trusted profile ID. This file can be mounted to a Kubernetes pod running Kafka client code as a read-only volume and made available to the Kafka client code.
-- `cr_token` in `sasl.jaas.config` is a file location storing the service account token from a Kubernetes pod running Kafka client code. For more information, see [What is a service account token](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#launch-a-pod-using-service-account-token-projection){: external}.
+- `profile_id` in `sasl.jaas.config` is a file location that stores the trusted profile ID. You can mount this file as a read-only volume to a Kubernetes pod that runs Kafka client code, so that the Kafka client code can use it.
+- `cr_token` in `sasl.jaas.config` is a file location that stores the service account token from a Kubernetes pod that runs Kafka client code. For more information, see [What is a service account token](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#launch-a-pod-using-service-account-token-projection){: external}.
 
 The following example shows the configuration properties:
 
@@ -285,7 +285,7 @@ export KAFKA_OPTS="-Dorg.apache.kafka.sasl.oauthbearer.allowed.urls=https://priv
 ### Using SASL OAUTHBEARER with non-Java clients
 {: #using_sasl_oauthbearer_non_Java}
 
-For other Kafka client libraries, refer to their documentation for guidance on implementing OAUTHBEARER support. For example:
+For other Kafka client libraries, see their documentation for guidance on implementing OAUTHBEARER support. For example:
 
 - [sarama](https://github.com/IBM/sarama){: external}: Implement the `AccessTokenProvider` interface.
 - [librdkafka](https://github.com/confluentinc/librdkafka){: external}: Implement the `oauthbearer_token_refresh_cb` callback.

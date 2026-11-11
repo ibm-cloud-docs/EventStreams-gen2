@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-11"
 
 keywords: terraform, schematics, automation, declarative, Event streams
 
@@ -17,20 +17,20 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use Terraform to manage your {{site.data.keyword.messagehub}} instance on {{site.data.keyword.cloud_notm}}, following infrastructure as code (IaC) principles.
+Learn how to use Terraform to manage your {{site.data.keyword.messagehub}} instance on {{site.data.keyword.cloud}}, following infrastructure as code (IaC) principles.
 {: shortdesc}
 
-You can manage your {{site.data.keyword.messagehub_full}} instance using Terraform, which enables you to rapidly and predictably create and change your instance following Infrastructure as Code (IaC) principles. Terraform is an open source tool that codifies APIs into declarative configuration files. These files can be shared among team members and are treated as code, edited, reviewed, and versioned. You write down what your infrastructure should look like and Terraform will create, update, and remove cloud resources as needed. For more information, see [Understand the basics of Terraform](https://developer.hashicorp.com/terraform/intro){: external}.
+You can manage your {{site.data.keyword.messagehub_full}} instance by using Terraform. Terraform helps you create and change your instance predictably, following Infrastructure as Code (IaC) principles. Terraform is an open source tool that codifies APIs into declarative configuration files. Team members can share these files, and you can edit, review, and version them like code. You describe what your infrastructure should look like, and Terraform creates, updates, and removes cloud resources as needed. For more information, see [Understand the basics of Terraform](https://developer.hashicorp.com/terraform/intro){: external}.
 
-To support a multi-cloud approach, Terraform works with providers. A provider is responsible for understanding API interactions and exposing resources. {{site.data.keyword.cloud}} has its provider for Terraform, enabling users of {{site.data.keyword.cloud}} to manage resources with Terraform. For more information, see the [IBM Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/).
+To support a multi-cloud approach, Terraform works with providers. A provider understands API interactions and exposes resources. {{site.data.keyword.cloud_notm}} has a provider for Terraform that you can use to manage {{site.data.keyword.cloud_notm}} resources. For more information, see the [IBM Terraform documentation](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/).
 
 ## Installing Terraform
 {: #eventstreams-installing-terraform}
 
-Follow [these steps](https://developer.hashicorp.com/terraform/tutorials/docker-get-started/install-cli?in=terraform%2Fdocker-get-started){: external} to install Terraform.
+To install Terraform, follow the steps in [Install Terraform](https://developer.hashicorp.com/terraform/tutorials/docker-get-started/install-cli?in=terraform%2Fdocker-get-started){: external}.
 
 
-## Terraform examples for {{site.data.keyword.messagehub}} Gen2
+## Terraform examples for {{site.data.keyword.messagehub}} Gen 2
 {: #eventstreams-terraform-examples}
 
 - Create an {{site.data.keyword.messagehub}} instance with default provisioning parameters:

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-09"
+lastupdated: "2026-11-11"
 
 keywords: event streams migration, gen1 to gen2, classic infrastructure, vpc, drain and switch, private endpoints, kafka, topics, producers, consumers
 
@@ -36,18 +36,18 @@ Review these points before you start the migration.
 
 Drain and switch is a coordinated cutover approach for message streaming workloads:
 
-1. The Gen 2 instance is provisioned with matching topic configurations.
-1. Producers are stopped, halting new message writes to Gen 1.
+1. You provision the Gen 2 instance with matching topic configurations.
+1. You stop producers, which halts new message writes to Gen 1.
 1. Consumers process all remaining messages from Gen 1 until consumer group lag reaches zero.
-1. Producer and consumer connection strings are updated to point to Gen 2.
+1. You update producer and consumer connection strings to point to Gen 2.
 1. Message flow resumes on Gen 2.
 
-A planned downtime window occurs during steps 2 - 4. The duration depends on how quickly consumers drain remaining Gen 1 messages and the time required to restart applications with updated connection details.
+A planned downtime window occurs during steps 2 to 4. The duration depends on how quickly consumers drain remaining Gen 1 messages and the time required to restart applications with updated connection details.
 
 ### Topic configuration
 {: #topic-config-responsibility}
 
-Topic names, partition counts, retention policies, and replication factors must be recreated on the Gen 2 instance before the cutover begins. Topic configurations are not transferred automatically.
+You must recreate topic names, partition counts, retention policies, and replication factors on the Gen 2 instance before the cutover begins. The migration does not transfer topic configurations automatically.
 
 Recreate all topic configurations on Gen 2 and validate them before stopping producers on Gen 1.
 {: important}
@@ -58,10 +58,10 @@ Recreate all topic configurations on Gen 2 and validate them before stopping pro
 Complete each stage of the drain and switch in sequence to avoid the following risks:
 
 Message loss
-:   Stopping producers before consumers fully drain Gen 1 can result in unprocessed messages being lost or skipped.
+:   If you stop producers before consumers fully drain Gen 1, unprocessed messages can be lost or skipped.
 
 Duplicate processing
-:   If consumer offsets are not initialized correctly on Gen 2, messages can be processed more than once.
+:   If you do not initialize consumer offsets correctly on Gen 2, consumers can process messages more than once.
 
 Rollback complexity
 :   After consumers drain Gen 1 messages and producers write to Gen 2, rolling back to Gen 1 requires manual offset reconciliation.
@@ -95,9 +95,9 @@ Confirm the following before you start the migration:
 * You have access to provision a Gen 2 deployment in the target account, resource group, and region.
 * A maintenance window is approved and communicated to all application teams.
 * You have a complete inventory of all producer and consumer applications and their consumer groups.
-* All topic configurations are documented and ready to be recreated on Gen 2.
+* You documented all topic configurations and are ready to recreate them on Gen 2.
 * You have access to update connection strings and redeploy all producer and consumer applications.
-* A rollback plan is documented.
+* You documented a rollback plan.
 
 Run through these checks on the source deployment:
 
@@ -111,7 +111,7 @@ When you are ready, continue to [Drain and switch migration](#drain-switch-migra
 ## Drain and switch migration
 {: #drain-switch-migration}
 
-The drain and switch migration provisions a new Gen 2 instance, then coordinates the cutover of producers and consumers from Gen 1 to Gen 2. Topic configurations are not transferred automatically and must be recreated on the Gen 2 instance before the cutover begins.
+The drain and switch migration provisions a new Gen 2 instance, then coordinates the cutover of producers and consumers from Gen 1 to Gen 2. The migration does not transfer topic configurations automatically. Recreate them on the Gen 2 instance before the cutover begins.
 
 * [Phase 1: Prepare and provision](#ds-phase-1)
 
@@ -143,7 +143,7 @@ Review your Gen 1 source deployment and confirm your preparation is complete bef
 {: #ds-provision-gen2}
 {: step}
 
-Provision a new Gen 2 (VPC) {{site.data.keyword.messagehub}} instance. No messages or topic configurations are transferred from Gen 1 automatically.
+Provision a new Gen 2 (VPC) {{site.data.keyword.messagehub}} instance. The migration does not transfer messages or topic configurations from Gen 1 automatically.
 
 When provisioning, configure the following options:
 
@@ -161,7 +161,7 @@ Size the Gen 2 instance to match or exceed the Gen 1 source throughput and stora
 
 While the Gen 2 instance provisions, recreate all topic configurations on the new instance.
 
-Recreate all topics on the Gen 2 instance before you proceed to the next step. Topic configurations are not replicated automatically.
+Recreate all topics on the Gen 2 instance before you proceed to the next step. The service does not replicate topic configurations automatically.
 {: important}
 
 ### Phase 2: Configure and cut over
@@ -173,9 +173,9 @@ Phase 2 covers network access setup, the drain and switch cutover, and completin
 {: #ds-set-network-access}
 {: step}
 
-Configure private connectivity to the Gen 2 (VPC) instance before cutover. All connection types require a virtual private endpoint (VPE) gateway for private access to the Gen 2 deployment. Create the gateway from the [{{site.data.keyword.cloud_notm}} VPC networking console](https://cloud.ibm.com/infrastructure/provision/endpointGateway){: external}.
+Configure private connectivity to the Gen 2 (VPC) instance before cutover. All connection types require a virtual private endpoint (VPE) gateway for private access to the Gen 2 deployment. Create the gateway from the [{{site.data.keyword.cloud}} VPC networking console](https://cloud.ibm.com/infrastructure/provision/endpointGateway){: external}.
 
-Validate that all producer and consumer applications can reach the Gen 2 instance through the VPE before you start the cutover. Application connectivity issues discovered during the cutover window extend downtime.
+Validate that all producer and consumer applications can reach the Gen 2 instance through the VPE before you start the cutover. Application connectivity issues that you discover during the cutover window extend downtime.
 {: tip}
 
 The VPE gateway must be in place before you begin the cutover.
@@ -239,7 +239,7 @@ After applications are running, verify the following conditions:
 
 After producers and consumers operate correctly on Gen 2, the migration cutover is complete.
 
-Additional metrics are available through {{site.data.keyword.monitoringfull}}.
+You can view additional metrics in {{site.data.keyword.monitoringfull}}.
 
 The Gen 1 instance remains available after cutover. Verify Gen 2 stability and confirm that no applications remain connected to Gen 1 before decommissioning. Allow a minimum observation period of seven days before you delete the Gen 1 instance.
 

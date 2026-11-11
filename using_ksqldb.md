@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-11"
 
 keywords: ksqlDB, ksql
 
@@ -17,17 +17,17 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Use ksqlDB with {{site.data.keyword.messagehub}} for stream processing on {{site.data.keyword.cloud_notm}}. Learn how to set up and run ksqlDB for event streaming applications.
+Use ksqlDB with {{site.data.keyword.messagehub}} for stream processing on {{site.data.keyword.cloud}}. Learn how to set up and run ksqlDB for event streaming applications.
 {: shortdesc}
 
-ksqlDB is an event streaming database built on Apache Kafka that enables you to build stream processing applications by using familiar SQL syntax.
+ksqlDB is an event streaming database built on Apache Kafka that you can use to build stream processing applications by using familiar SQL syntax.
 
 You can run ksqlDB with {{site.data.keyword.messagehub}} by using Docker as described in the [ksqlDB quickstart](https://www.confluent.io/product/ksqldb/){: external}.
 
 Because ksqlDB requires topics with an unlimited `retention.ms` setting, you can use ksqlDB only with the Enterprise plan.
 {: important}
 
-Complete the following steps to configure ksqlDB. When configuration is complete, you can run the queries described in the [ksqlDB Quick Start Guide](https://www.confluent.io/product/ksqldb/#quickstart-content){: external}.
+Complete the following steps to configure ksqlDB. After configuration is complete, you can run the queries described in the [ksqlDB Quick Start Guide](https://www.confluent.io/product/ksqldb/#quickstart-content){: external}.
 
 1. In the {{site.data.keyword.cloud_notm}} console, navigate to your {{site.data.keyword.messagehub}} instance and create a topic named `_confluent-ksql-default__command_topic` with one partition and the default retention period.
 
@@ -68,7 +68,7 @@ Complete the following steps to configure ksqlDB. When configuration is complete
     
     Replace `<BOOTSTRAP_SERVERS>` and `<PASSWORD>` with the connection values from your service credential.
 
-    b. From the directory containing the file, start the ksqlDB server:
+    b. From the directory that contains the file, start the ksqlDB server:
     
     ```sh
     docker-compose up -d

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-11"
 
 keywords: event streams gen 2 differences, event streams gen 2 limitations, event streams enterprise gen 2, gen 1 vs gen 2 kafka
 
@@ -30,13 +30,13 @@ For plan selection guidance, see [Choosing your plan](/docs/EventStreams-gen2?to
 ## Architectural differences
 {: #gen1-vs-gen2-architectural-differences}
 
-Architectural differences represent permanent design changes in Gen 2 to align with the next generation of the service, built on software-defined {{site.data.keyword.cloud}} VPC infrastructure, zero-trust security architecture, and predictable compute performance.
+Architectural differences represent permanent design changes in Gen 2 to align with the next generation of the service. Gen 2 is built on software-defined {{site.data.keyword.cloud}} VPC infrastructure, zero-trust security architecture, and predictable compute performance.
 
 | Feature / Area | Gen 1 (Classic) | Gen 2 (VPC) | Why it changed (Architecture details) |
 | --- | --- | --- | --- |
-| Network endpoints | Public and private endpoints (Classic Service Endpoints). | Private endpoints only (VPC VPE). | Private endpoints only (VPC VPE).	Gen 2 is private-only. All client connections route through Virtual Private Endpoints (VPE), eliminating support for public internet access and aligning with a zero-trust networking model. |
+| Network endpoints | Public and private endpoints (Classic Service Endpoints). | Private endpoints only (VPC VPE). | Gen 2 is private-only. All client connections route through Virtual Private Endpoints (VPE), eliminating support for public internet access and aligning with a zero-trust networking model. |
 | Service provisioning and API experience | Custom {{site.data.keyword.messagehub}} provisioning broker. | {{site.data.keyword.cloud_notm}} Resource Controller based. | Standardizes lifecycle management onto the core {{site.data.keyword.cloud_notm}} Resource Controller and Resource Manager APIs, unifying resource tagging, IAM governance, and deployment orchestration. |
-| Kafka version | Kafka 3.8. | Kafka 4.1. | Gen 2 standardizes on a recent Kafka release to leverage the latest protocol improvements, consumer group enhancements, and security features. |
+| Kafka version | Kafka 3.8. | Kafka 4.1. | Gen 2 standardizes on a recent Kafka release to use the latest protocol improvements, consumer group enhancements, and security features. |
 | Provisioning model | Enterprise plan provisioning could take up to 3 hours. | Typical provisioning in minutes. | Gen 2 uses VPC compute capacity and a streamlined provisioning pipeline, reducing cluster bring-up time. |
 | TLS / SSL certificates | Certificates signed by the internal {{site.data.keyword.IBM}} Certificate Authority. | Certificates signed by a public Certificate Authority (Let's Encrypt). | Standardizes on industry-standard CA signatures, simplifying automated certificate rotation and client trust store management. |
 | Available plans (multi-tenancy) | Lite, Standard, and Enterprise plans — including multi-tenant shared clusters for lower-cost workloads. | Enterprise Gen 2 plan only (single-tenant). | Gen 2 is designed to take advantage of the enhanced isolation available on VPC infrastructure, including dedicated compute, networking, and storage resources for each deployment. These isolation levels are not feasible within the existing multi-tenant shared-cluster model. As a result, multi-tenant plans (Lite and Standard) remain Gen 1 (Classic) only plans. |
@@ -65,28 +65,41 @@ The following sections provide additional detail for each capability area summar
 ### Networking and connectivity
 {: #networking-connectivity-differences}
 
-- **Private-only networking:** Gen 2 instances do not support public internet routing. All Kafka client traffic must originate from within an authorized {{site.data.keyword.cloud_notm}} VPC or over Direct Link or Transit Gateway connected to the instance's VPE. Applications running outside a VPC must connect through an appropriately configured transit path.
-- **No Classic Service Endpoints:** Clients that connected to Gen 1 using Classic Service Endpoints (CSE) must migrate to VPE-based connectivity before moving to Gen 2.
+Private-only networking
+:   Gen 2 instances do not support public internet routing. All Kafka client traffic must originate from within an authorized {{site.data.keyword.cloud_notm}} VPC. Traffic can also use Direct Link or Transit Gateway connected to the VPE of the instance. Applications that run outside a VPC must connect through an appropriately configured transit path.
+
+No Classic Service Endpoints
+:   Clients that connected to Gen 1 by using Classic Service Endpoints (CSE) must migrate to VPE-based connectivity before moving to Gen 2.
 
 ### APIs and client connectivity
 {: #api-client-differences}
 
-- **Kafka native API:** The native Kafka producer, consumer, and AdminClient APIs are fully supported on Gen 2 and are the primary integration path.
-- **REST Producer API:** The HTTP-based REST Producer API available on Gen 1 Classic and Enterprise plans is not yet available on Gen 2. A new implementation based on Confluent REST Proxy is in development, targeted for delivery in early 2027. Workloads that rely exclusively on the REST Producer API should plan their migration timeline accordingly.
-- **Admin REST API:** HTTP-based administration is not yet available. Use the Kafka AdminClient API or {{site.data.keyword.cloud_notm}} console for topic and resource management in the interim.
+Kafka native API
+:   Gen 2 fully supports the native Kafka producer, consumer, and AdminClient APIs. These APIs are the primary integration path.
+
+REST Producer API
+:   The HTTP-based REST Producer API available on Gen 1 Classic and Enterprise plans is not yet available on Gen 2. A new implementation based on Confluent REST Proxy is in development, targeted for delivery in early 2027. If your workloads rely exclusively on the REST Producer API, plan your migration timeline accordingly.
+
+Admin REST API
+:   HTTP-based administration is not yet available. In the interim, use the Kafka AdminClient API or the {{site.data.keyword.cloud_notm}} console for topic and resource management.
 
 ### Schema Registry
 {: #schema-registry-differences}
 
-- **Managed Schema Registry:** Available on Gen 1 Enterprise plan. Not yet available on Gen 2. Teams requiring schema management should deploy a self-managed registry within their VPC until the managed offering is released.
+Managed Schema Registry
+:   Available on Gen 1 Enterprise plan. Not yet available on Gen 2. If you require schema management, deploy a self-managed registry within your VPC until the managed offering is released.
 
 ### Mirroring and replication
 {: #mirroring-replication-differences}
 
-- **Managed mirroring:** Available on the Gen 1 Enterprise plan for cross-region topic replication. This capability is not currently available on Gen 2. If you require cross-instance or cross-region replication, deploy Apache MirrorMaker 2 as a self-managed service within your VPC as an interim solution until native support becomes available on Gen 2.
+Managed mirroring
+:   Available on the Gen 1 Enterprise plan for cross-region topic replication. This capability is not currently available on Gen 2. If you require cross-instance or cross-region replication, deploy Apache MirrorMaker 2 as a self-managed service within your VPC. Use it as an interim solution until native support becomes available on Gen 2.
 
 ### Security and compliance
 {: #security-compliance-differences}
 
-- **Customer-managed encryption (Bring Your Own Key):** Supported on Gen 2 via Key Protect. Encryption keys must be configured at initial provisioning; attaching a key to an existing instance without reprovisioning is not supported on either generation.
-- **Compliance certifications:** Gen 1 Enterprise holds a broad certification portfolio. Gen 2 certifications are being pursued as the plan matures. Review the current status in [Choosing your plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose) before committing regulated workloads to Gen 2.
+Customer-managed encryption (Bring Your Own Key)
+:   Supported on Gen 2 by using {{site.data.keyword.keymanagementserviceshort}}. You must configure encryption keys at initial provisioning. Neither generation supports attaching a key to an existing instance without reprovisioning.
+
+Compliance certifications
+:   Gen 1 Enterprise holds a broad certification portfolio. Gen 2 certifications are in progress as the plan matures. Review the current status in [Choosing your plan](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose) before you commit regulated workloads to Gen 2.

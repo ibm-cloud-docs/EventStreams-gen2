@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-09"
+lastupdated: "2026-11-11"
 
 keywords: gen 2, generation 2, vpc, classic, migration, differences, enterprise, kafka 4.1, private endpoints
 
@@ -19,14 +19,14 @@ content-type: faq
 
 [Gen 2]{: tag-purple}
 
-Get answers to frequently asked questions about {{site.data.keyword.messagehub}} Gen 2 on {{site.data.keyword.cloud_notm}} VPC, including differences from the Classic version and key features.
+Get answers to frequently asked questions about {{site.data.keyword.messagehub}} Gen 2 on {{site.data.keyword.cloud}} VPC, including differences from the Classic version and key features.
 {: shortdesc}
 
 ## What is {{site.data.keyword.messagehub}} Gen 2?
 {: #faq-what-is-gen2}
 {: faq}
 
-{{site.data.keyword.messagehub}} Gen 2 is the next generation of the {{site.data.keyword.messagehub}} service built on {{site.data.keyword.IBM_notm}}'s latest VPC platform. It features highly secure, software-defined networking with private endpoints and isolated compute hosting. Gen 2 is designed for modern, cloud-native applications that require advanced networking capabilities, secure isolation, and consistent performance. Gen 2 runs Apache Kafka 4.1 and provides hypervisor-level isolation with dedicated storage bandwidth.
+{{site.data.keyword.messagehub}} Gen 2 is the next generation of the {{site.data.keyword.messagehub}} service built on {{site.data.keyword.IBM_notm}}'s latest VPC platform. It features secure, software-defined networking with private endpoints and isolated compute hosting. Gen 2 is designed for modern, cloud-native applications that require advanced networking capabilities, secure isolation, and consistent performance. Gen 2 runs Apache Kafka 4.1 and provides hypervisor-level isolation with dedicated storage bandwidth.
 
 ## What are the main differences between Gen 2 and Classic (Gen 1)?
 {: #faq-main-differences}
@@ -52,7 +52,7 @@ Compute model
 Regions
 :   Gen 2 is available only in selected regions.
 
-## Which plan should I choose - Gen 2 Enterprise or Classic Enterprise?
+## Which plan should I choose: Gen 2 Enterprise or Classic Enterprise?
 {: #faq-which-plan}
 {: faq}
 
@@ -148,7 +148,7 @@ Direct automated migration is not supported. To migrate from Classic to Gen 2, c
 4. Migrate message data by using Kafka tools or custom consumer-producer applications.
 5. Update automation scripts to use the Resource Controller API or CLI instead of {{site.data.keyword.messagehub}}-specific tools.
 
-Before you migrate, evaluate whether Gen 2 meets your requirements regarding API support, regional availability, and feature parity.
+Before you migrate, evaluate whether Gen 2 meets your requirements for API support, regional availability, and feature parity.
 {: note}
 
 ## What networking options are available in Gen 2?
@@ -167,19 +167,19 @@ Certifications equivalent to Classic are pending, including GDPR, ISO 27001, ISO
 {: #faq-pricing}
 {: faq}
 
-Gen 2 Enterprise follows an hourly and monthly consumption model similar to Classic Enterprise. For current pricing details, see the [IBM Cloud catalog](https://cloud.ibm.com/catalog){: external} and search for `{{site.data.keyword.messagehub}}`.
+Gen 2 Enterprise follows an hourly and monthly consumption model similar to Classic Enterprise. For current pricing details, see the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog){: external} and search for `{{site.data.keyword.messagehub}}`.
 
 ## What Kafka version does Gen 2 use?
 {: #faq-kafka-version}
 {: faq}
 
-Gen 2 uses Apache Kafka 4.1, whereas Classic uses Kafka 3.8. This means that Gen 2 includes the latest Kafka features and improvements. Ensure that your Kafka clients are compatible with Kafka 4.1 before connecting to Gen 2 instances.
+Gen 2 uses Apache Kafka 4.1, whereas Classic uses Kafka 3.8. Therefore, Gen 2 includes the latest Kafka features and improvements. Ensure that your Kafka clients are compatible with Kafka 4.1 before connecting to Gen 2 instances.
 
 ## Can I scale my Gen 2 instance?
 {: #faq-scaling}
 {: faq}
 
-You can scale storage capacity (2 TB, 4 TB, or 6 TB). Similar to Classic, storage capacity cannot be scaled down. To reduce storage, you must provision a new instance with lower capacity and migrate your data.
+You can scale storage capacity (2 TB, 4 TB, or 6 TB). As with Classic, you can't scale down storage capacity. To reduce storage, you must provision a new instance with lower capacity and migrate your data.
 
 Throughput scaling is planned for a future release. Gen 2 instances are currently provisioned with 100 MB/s throughput allocation.
 
@@ -217,4 +217,4 @@ Gen 2 is available in selected {{site.data.keyword.cloud_notm}} regions. For the
 {: #faq-encryption}
 {: faq}
 
-Gen 2 supports customer-managed encryption (bring your own key, or BYOK) by integrating with {{site.data.keyword.keymanagementserviceshort}}. This capability allows you to manage encryption keys for data at rest. You can specify the root key CRN during provisioning by using the `dataservices.encryption.disk` parameter.
+Gen 2 supports customer-managed encryption (bring your own key, or BYOK) by integrating with {{site.data.keyword.keymanagementserviceshort}}. With this capability, you manage encryption keys for data at rest. You can specify the root key CRN during provisioning by using the `dataservices.encryption.disk` parameter.

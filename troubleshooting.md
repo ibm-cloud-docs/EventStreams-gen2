@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-10"
+lastupdated: "2026-11-11"
 
 keywords: troubleshooting, question, problem, ibm cloud event streams, resolve issues, cloud event streams
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to resolve common issues with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including network-related problems.
+Learn how to resolve common issues with {{site.data.keyword.cloud}} {{site.data.keyword.messagehub}}, including network-related problems.
 {: shortdesc}
 
 ## Network related issues
@@ -39,7 +39,7 @@ If an Apache Kafka client cannot connect or produce and consume records, review 
     ```
     {: pre}
 
-    A timeout indicates that network firewalls, security groups, or routing policies are blocking traffic on port 9093. Ensure your VPC security groups and subnet network ACLs permit outbound and inbound TCP traffic on port 9093.
+    A timeout indicates that network firewalls, security groups, or routing policies are blocking traffic on port 9093. Ensure that your VPC security groups and subnet network ACLs permit outbound and inbound TCP traffic on port 9093.
 
 - **Connection reset or client disconnect**: During scheduled maintenance windows, brokers undergo rolling restarts. A properly configured Kafka client automatically reconnects to an alternate broker without interrupting message processing. If your client disconnects for an extended period, verify that your client retry and timeout settings follow recommended guidelines. For more information, see [Using Kafka Java client](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_java_using).
 
@@ -65,7 +65,7 @@ The Kafka native client API uses TCP protocol error codes. For more information,
 ## Unable to create a Kafka topic
 {: #unable_create_kafka_topic}
 
-If you are not able to create topics, it might be due to the following reasons:
+If you can't create topics, the cause might be one of the following reasons:
 
 - Your identity lacks Manager or Administrator permissions on the cluster resource. For more information, see [Managing access](/docs/EventStreams-gen2?topic=EventStreams-gen2-security).
 - Storage capacity is exhausted. To resolve this issue, delete unused topics or decrease `retention.ms` and `retention.bytes`. For Enterprise instances, scale storage capacity as described in [Scaling Enterprise plan capacity](/docs/EventStreams-gen2?topic=EventStreams-gen2-ES_scaling_capacity).
@@ -82,4 +82,4 @@ When producer applications cannot send records to {{site.data.keyword.messagehub
 
 This error occurs when the destination topic does not exist, or when the client produces to a broker that is not the partition leader. If a broker goes offline, partition leadership transitions to another broker in the replica set.
 
-To resolve the problem, verify that the target topic exists. Ensure your Kafka producer client refreshes metadata (`metadata.max.age.ms`) and reconnects to the new partition leader. If the issue persists, open an [IBM Cloud support case](/docs/EventStreams-gen2?topic=EventStreams-gen2-gettinghelp).
+To resolve the problem, verify that the target topic exists. Ensure that your Kafka producer client refreshes metadata (`metadata.max.age.ms`) and reconnects to the new partition leader. If the issue persists, open an [{{site.data.keyword.cloud_notm}} support case](/docs/EventStreams-gen2?topic=EventStreams-gen2-gettinghelp).

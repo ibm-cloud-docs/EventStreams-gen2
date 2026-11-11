@@ -20,7 +20,7 @@ subcollection: EventStreams-gen2
 Learn how to export data from {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including tools and procedures for data portability to other cloud providers or on-premises.
 {: shortdesc}
 
-[Data portability](#x2113280){: term} includes the tools and procedures that enable you to export digital artifacts to implement similar workloads on other cloud providers or on-premises software. It includes procedures for copying and storing your content and configuration in your own environment.
+[Data portability](#x2113280){: term} includes the tools and procedures that you use to export digital artifacts to implement similar workloads on other cloud providers or on-premises software. It includes procedures for copying and storing your content and configuration in your own environment.
 
 ## Responsibilities
 {: #data-portability-responsibilities}
@@ -29,7 +29,7 @@ Learn how to export data from {{site.data.keyword.cloud_notm}} {{site.data.keywo
 
 You are responsible for using the exported data and configuration for data portability to other infrastructures. This responsibility includes:
 
-- Planning and executing the setup of alternate infrastructure on other cloud providers or on-premises software that provides similar capabilities to IBM services.
+- Planning and running the setup of alternate infrastructure on other cloud providers or on-premises software that provides similar capabilities to IBM services.
 - Porting application code to the alternate infrastructure, including adapting code and deployment automation.
 - Converting exported data and configuration to the formats required by the alternate infrastructure and applications.
 
@@ -42,14 +42,14 @@ For more information about responsibilities when you use {{site.data.keyword.mes
 
 {{site.data.keyword.messagehub}} provides mechanisms to export content that is stored and processed by using the service:
 
-- You can access and export message data by using standard Apache Kafka APIs as described in [Using the Kafka API](/docs/EventStreams-gen2?topic=EventStreams-gen2-using_kafka_api). Data that exceeds the configured retention period is deleted and is no longer available. For more information, see [Limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas).
+- You can access and export message data by using standard Apache Kafka APIs as described in [Using the Kafka API](/docs/EventStreams-gen2?topic=EventStreams-gen2-using_kafka_api). The service deletes data that exceeds the configured retention period, so the data is no longer available. For more information, see [Limits and quotas](/docs/EventStreams-gen2?topic=EventStreams-gen2-kafka_quotas).
 - To export topic configuration, use the [Administration REST API](/docs/EventStreams?topic=EventStreams-admin_api). This API is not currently available on the Enterprise Gen 2 plan.
 - To export schema definitions, use the [Schema Registry REST API](/docs/EventStreams?topic=EventStreams-ES_schema_registry). This API is not currently available on the Enterprise Gen 2 plan.
 
 ## Exported data formats
 {: #data-portability-data-formats}
 
-Data exported through the Apache Kafka APIs retains the binary format in which it was produced. Topic and schema definitions follow the JSON structures defined by their respective REST APIs.
+Data that you export through the Apache Kafka APIs retains the binary format in which it was produced. Topic and schema definitions follow the JSON structures that their respective REST APIs define.
 
 Schema Registry is not currently available on the Enterprise Gen 2 plan.
 {: note}
