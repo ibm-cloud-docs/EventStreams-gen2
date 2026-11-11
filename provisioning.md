@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-09"
+lastupdated: "2026-11-11"
 
 keywords: provision, create, cli, vpc, service key
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to provision {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} by using the console, CLI, or Terraform with the Enterprise Gen 2 plan for isolated and secure workloads.
+Learn how to provision {{site.data.keyword.cloud}} {{site.data.keyword.messagehub}} by using the console, CLI, or Terraform with the Enterprise Gen 2 plan for isolated and secure workloads.
 {: shortdesc}
 
 ## Step 1: Select your plan
@@ -57,7 +57,7 @@ To connect to your {{site.data.keyword.messagehub}} instance, create a service k
 
 Before you provision an instance, install the [{{site.data.keyword.cloud_notm}} CLI tool](/docs/cli?topic=cli-install-ibmcloud-cli).
 
-1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated ID, log in with a one-time passcode (`ibmcloud login --sso`) or an API key (`ibmcloud login --apikey <key>`). For more information, see [General CLI commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login).
+1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated ID, log in with a one-time passcode (`ibmcloud login --sso`) or an API key (`ibmcloud login --apikey API_KEY`). For more information, see [General CLI commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login).
 
    ```sh
    ibmcloud login
@@ -67,14 +67,14 @@ Before you provision an instance, install the [{{site.data.keyword.cloud_notm}} 
 1. Run the following command to create an instance:
 
    ```sh
-   ibmcloud resource service-instance-create <NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> -g <RESOURCE_GROUP>
+   ibmcloud resource service-instance-create NAME SERVICE_NAME SERVICE_PLAN_NAME LOCATION -g RESOURCE_GROUP
    ```
    {: pre}
 
 The following example command creates an {{site.data.keyword.messagehub}} instance:
 
 ```sh
-ibmcloud resource service-instance-create <NAME> messagehub enterprise-gen2 ca-mon -g Default -p '{
+ibmcloud resource service-instance-create NAME messagehub enterprise-gen2 ca-mon -g Default -p '{
    "dataservices":{
       "kafka": {
         "throughput_mb_s": 100,
@@ -98,19 +98,19 @@ ibmcloud resource service-instance-create <NAME> messagehub enterprise-gen2 ca-m
 To create a service credential, run the following command:
 
 ```sh
-ibmcloud resource service-key-create <NAME> [<ROLE_NAME>] --instance-name <SERVICE_INSTANCE_NAME>
+ibmcloud resource service-key-create NAME [ROLE_NAME] --instance-name SERVICE_INSTANCE_NAME
 ```
 {: pre}
 
 Replace the following variables with your values:
 
-`<NAME>`
+`NAME`
 :   The name of the service credential.
 
-`<ROLE_NAME>`
+`ROLE_NAME`
 :   The IAM role for the credential (`Manager`, `Writer`, or `Reader`).
 
-`<SERVICE_INSTANCE_NAME>`
+`SERVICE_INSTANCE_NAME`
 :   The name of the service instance.
 
 For more information, see [Getting started with the CLI](/docs/EventStreams-gen2?topic=EventStreams-gen2-cli-reference).
@@ -152,6 +152,6 @@ resource "ibm_resource_key" "serviceKey" {
 ```
 {: codeblock}
 
-Replace the configuration values with your desired credential name and role (`Manager`, `Writer`, or `Reader`).
+Replace the configuration values with your credential name and role (`Manager`, `Writer`, or `Reader`).
 
 For more information, see [Using Terraform](/docs/EventStreams-gen2?topic=EventStreams-gen2-eventstreams-terraform).

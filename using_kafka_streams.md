@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-11"
 
 keywords: asl.jaas.config
 
@@ -17,18 +17,18 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use Kafka Streams with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} to process and analyze data in Kafka topics.
+Learn how to use Kafka Streams with {{site.data.keyword.cloud}} {{site.data.keyword.messagehub}} to process and analyze data in Kafka topics.
 {: shortdesc}
 
 Kafka Streams is a stream processing library that is part of the Apache Kafka project. It simplifies building applications that process and analyze data in Kafka.
 
-The topic APIs work with {{site.data.keyword.messagehub}} with no setup required. Specify your SASL credentials by using ```sasl.jaas.config``` or a JAAS file and set ```replication.factor``` to 3.
+The topic APIs work with {{site.data.keyword.messagehub}} with no setup required. Specify your SASL credentials by using `sasl.jaas.config` or a JAAS file and set `replication.factor` to 3.
 
-Ensure that you use Streams version 0.10.2, or later.   
+Ensure that you use Streams version 0.10.2 or later.
 
 See the following example:
 
-```text
+```java
     props.put(StreamsConfig.REPLICATION_FACTOR_CONFIG, "3");
     props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
     props.put("security.protocol","SASL_SSL");
@@ -38,4 +38,4 @@ See the following example:
 {: codeblock}
 
 Where `BOOTSTRAP_SERVERS`, `USERNAME`, and `PASSWORD` are the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in
-{{site.data.keyword.Bluemix_notm}}.
+{{site.data.keyword.cloud_notm}}.

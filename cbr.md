@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-11"
 
 keywords: event streams cbr, context-based restrictions, gen2
 
@@ -20,7 +20,7 @@ Learn how to protect your {{site.data.keyword.messagehub}} resources by using co
 
 Context-based restrictions give account owners and administrators the ability to define access rules that limit the network locations that connections are accepted from. For example, network type, IP ranges, VPC, or other services.
 
-These restrictions work with traditional IAM policies, which are based on identity, to provide an extra layer of protection. Unlike IAM policies, context-based restrictions don't assign access. Context-based restrictions check that an access request comes from an allowed context that you configure. Since both IAM access and context-based restrictions enforce access, context-based restrictions offer protection even in the face of compromised or mismanaged credentials. For more information, see [What are context-based restrictions](/docs/iam?topic=iam-context-restrictions-whatis).
+These restrictions work with traditional IAM policies, which are based on identity, to provide an extra layer of protection. Unlike IAM policies, context-based restrictions don't assign access. Context-based restrictions check that an access request comes from an allowed context that you configure. Because both IAM access and context-based restrictions enforce access, context-based restrictions offer protection even in the face of compromised or mismanaged credentials. For more information, see [What are context-based restrictions](/docs/iam?topic=iam-context-restrictions-whatis).
 
 A user must have the Administrator role on the {{site.data.keyword.messagehub}} service to create, update, or delete rules. A user must also have either the Editor or Administrator role on the context-based restrictions service to create, update, or delete network zones. A user with the Viewer role on the context-based restrictions service can add network zones to a rule.
 {: note}
@@ -37,7 +37,7 @@ To start protecting your {{site.data.keyword.messagehub}} resources with context
 
 You can create context-based restrictions for the {{site.data.keyword.messagehub}} service, specific resources, and specific APIs.
 
-Context-based restrictions rules are scoped to the Event Streams service and as such apply to both Gen1 and Gen2 instances.
+Context-based restrictions rules are scoped to the {{site.data.keyword.messagehub}} service and as such apply to both Gen 1 and Gen 2 instances.
 {: note}
 
 ### Protecting {{site.data.keyword.messagehub}} resources
@@ -45,7 +45,7 @@ Context-based restrictions rules are scoped to the Event Streams service and as 
 
 You can create context-based restrictions rules to protect specific **regions**, **resource groups**, and **instances**.
 
-The scope of the rules is that they apply to all connections to the user's instance. Administration functions for the service instance itself (for example the {{site.data.keyword.Bluemix_notm}} CLI `service-instance-create`, `service-instance-delete` or `service-instance-update` commands, or equivalent) are not under the scope of the context-based restrictions rules that are created against an {{site.data.keyword.messagehub}} instance.
+The rules apply to all connections to the user's instance. Administration functions for the service instance itself (for example the {{site.data.keyword.cloud}} CLI `service-instance-create`, `service-instance-delete` or `service-instance-update` commands, or equivalent) are not under the scope of the context-based restrictions rules that you create against an {{site.data.keyword.messagehub}} instance.
 {: important}
 
 Region
@@ -61,7 +61,7 @@ Instance
 {: #using-cli}
 {: cli}
 
-You can create and manage context-based restrictions with the IBM Cloud CLI by [installing the context-based restrictions CLI plug-in](/docs/cli?topic=cli-cbr-plugin).
+You can create and manage context-based restrictions with the {{site.data.keyword.cloud_notm}} CLI by [installing the context-based restrictions CLI plug-in](/docs/cli?topic=cli-cbr-plugin).
 
 ## Creating network zones
 {: #network-zone}
@@ -75,13 +75,13 @@ A network zone represents an allowlist of IP addresses where an access request i
 {: #network-zone-ui}
 {: ui}
 
-1. Go to **Manage** > **Context-based restrictions** in the {{site.data.keyword.cloud}} console.
+1. Go to **Manage** > **Context-based restrictions** in the {{site.data.keyword.cloud_notm}} console.
 1. Select **Network zones**.
 1. Click **Create**.
 1. Name your network zone and provide a description.
 1. Enter your *Allowed IP addresses.* You can enter a single IP address, a range of IP addresses, or a single CIDR.
 
-   The **Denied IP addresses** field is optional and should include only exceptions that are contained within the IP ranges you provide in the allowed IP addresses field.
+   The **Denied IP addresses** field is optional and includes only exceptions that are contained within the IP ranges you provide in the allowed IP addresses field.
    {: note}
 
 1. Choose your *Allowed VPCs*, selecting as many as you like.
@@ -95,7 +95,7 @@ To create network zones in the CLI, use the `cbr-zone-create` command to add res
 Create a zone by using a command like:
 
 ```sh
-ibmcloud cbr zone-create --addresses=1.1.1.1,5.5.5.5 --name=<NAME>
+ibmcloud cbr zone-create --addresses 1.1.1.1,5.5.5.5 --name NAME
 ```
 {: .pre}
 
@@ -137,7 +137,7 @@ resource "ibm_cbr_zone" "cbr_zone" {
 
 Alternatively, you can also use [Terraform IBM Modules (TIM) for CBR Zone](https://registry.terraform.io/modules/terraform-ibm-modules/cbr/ibm/latest/submodules/cbr-zone-module){: external} to create a zone for context-based restrictions or update addresses in an existing zone.
 
-An example for creating a CBR zone using [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/cbr/ibm/latest){: external}:
+An example for creating a CBR zone by using [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/cbr/ibm/latest){: external}:
 
 ```terraform
 module "ibm_cbr" "zone" {
@@ -158,7 +158,7 @@ module "ibm_cbr" "zone" {
 Update a zone by using a command like:
 
 ```sh
-ibmcloud cbr zone-update <ZONE-ID> --addresses=1.2.3.4 --name=<NAME>
+ibmcloud cbr zone-update ZONE-ID --addresses 1.2.3.4 --name NAME
 ```
 {: .pre}
 
@@ -169,7 +169,8 @@ ibmcloud cbr zones
 ```
 {: .pre}
 
-The `zone-update` command is an overwrite. Include all of the fields that are required as if you are creating the rule from scratch. If you omit any required fields, the rule overwrites those missing fields as empty, and the rule might fail because some of those fields are required, regardless of whether they are changing the rule. {: .important}
+The `zone-update` command is an overwrite. Include all of the fields that are required as if you are creating the rule from scratch. If you omit any required fields, the rule overwrites those missing fields as empty, and the rule might fail because some of those fields are required, regardless of whether they are changing the rule.
+{: .important}
 
 ### Delete network zones in the CLI
 {: #delete-network-zone-cli}
@@ -178,22 +179,22 @@ The `zone-update` command is an overwrite. Include all of the fields that are re
 Delete a zone by using a command like:
 
 ```sh
-ibmcloud cbr zone-delete <ZONE-ID>
+ibmcloud cbr zone-delete ZONE-ID
 ```
 {: .pre}
 
 ## Creating rules
 {: #rules}
 
-Rules restrict access to specific cloud resources based on resource attributes and contexts. A created rule can accept up to 2,000 IP/CIDR values for private endpoints and up to 2,000 IP/CIDR values for public endpoints. This limit is specfic to {{site.data.keyword.messagehub}}. Other {{site.data.keyword.cloud}} service limits may vary.
+Rules restrict access to specific cloud resources based on resource attributes and contexts. A created rule can accept up to 2,000 IP/CIDR values for private endpoints and up to 2,000 IP/CIDR values for public endpoints. This limit is specific to {{site.data.keyword.messagehub}}. Other {{site.data.keyword.cloud_notm}} service limits might vary.
 
-{{site.data.keyword.messagehub}} does not support IPv6 addresses. If an IPv6 address is included, it will be ignored.
+{{site.data.keyword.messagehub}} does not support IPv6 addresses. If you include an IPv6 address, the service ignores it.
 
 ### Creating rules in the UI
 {: #rules-ui}
 {: ui}
 
-1. Go to **Manage** > **Context-based restrictions** in the {{site.data.keyword.cloud}} console.
+1. Go to **Manage** > **Context-based restrictions** in the {{site.data.keyword.cloud_notm}} console.
 2. Select **Rules**.
 3. Click **Create**.
 4. Under **Service**, select {{site.data.keyword.messagehub}} as the service you want to target with your rule.
@@ -229,7 +230,7 @@ All the other parameters that follow are explained in the [CBR plugin reference 
 Example command for creating a CBR Rule:
 
 ```sh
-ibmcloud cbr rule-create --enforcement-mode enabled --context-attributes "networkZoneId=<ZONE-ID>" --resource-group-id <RESOURCE_GROUP_ID> --service-name messagehub --service-instance <SERVICE-INSTANCE> --description <DESCRIPTION>
+ibmcloud cbr rule-create --enforcement-mode enabled --context-attributes "networkZoneId=ZONE-ID" --resource-group-id RESOURCE_GROUP_ID --service-name messagehub --service-instance SERVICE-INSTANCE --description DESCRIPTION
 ```
 {: .pre}
 
@@ -243,7 +244,7 @@ ibmcloud cbr rule-create --enforcement-mode enabled --context-attributes "networ
 Example command for updating a CBR rule:
 
 ```sh
-ibmcloud cbr rule-update <RULE-ID> --enforcement-mode disabled --context-attributes="networkZoneId=<ZONE-ID>" --resource-group-id   <RESOURCE_GROUP_ID> --service-name messagehub --description    <DESCRIPTION>
+ibmcloud cbr rule-update RULE-ID --enforcement-mode disabled --context-attributes "networkZoneId=ZONE-ID" --resource-group-id RESOURCE_GROUP_ID --service-name messagehub --description DESCRIPTION
 ```
 {: .pre}
 
@@ -264,11 +265,11 @@ ibmcloud cbr rules
 Delete a rule by using a command like:
 
 ```sh
-ibmcloud cbr rule-delete <RULE-ID>
+ibmcloud cbr rule-delete RULE-ID
 ```
 {: .pre}
 
-Use `ibmcloud cbr <command> — help` for a full list of options and parameters. For example, `ibmcloud cbr rule-create — help` outputs parameters for rule creation.
+Use `ibmcloud cbr COMMAND --help` for a full list of options and parameters. For example, `ibmcloud cbr rule-create --help` outputs parameters for rule creation.
 {: .tip}
 
 

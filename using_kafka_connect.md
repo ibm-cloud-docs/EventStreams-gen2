@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-11"
 
 keywords: stand-alone, source connector, sink connector, distributed worker
 
@@ -17,16 +17,16 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use Kafka Connect with {{site.data.keyword.messagehub}} for data integration between external systems and Kafka clusters on {{site.data.keyword.cloud_notm}}.
+Learn how to use Kafka Connect with {{site.data.keyword.messagehub}} for data integration between external systems and Kafka clusters on {{site.data.keyword.cloud}}.
 {: shortdesc}
 
-Kafka Connect is part of the Apache Kafka project and allows connecting external systems to Kafka. It consists of a runtime that can run [connectors](https://ibm.github.io/event-automation/connectors/) to copy data to and from a cluster. Its main characteristics are:
+Kafka Connect is part of the Apache Kafka project and allows connecting external systems to Kafka. It consists of a runtime that can run [connectors](https://ibm.github.io/event-automation/connectors/){: external} to copy data to and from a cluster. Its main characteristics are:
 
-- Scalability: It can easily scale from a single worker to many.
+- Scalability: It can scale from a single worker to many.
 - Reliability: It automatically manages offsets and the lifecycle of connectors.
-- Extensibility: The community built connectors for most popular systems. {{site.data.keyword.IBM}} has connectors for [MQ](/docs/EventStreams?topic=EventStreams-mq_connector) and [Cloud Object Storage](/docs/EventStreams?topic=EventStreams-cos_connector).
+- Extensibility: The community builds connectors for most popular systems. {{site.data.keyword.IBM}} has connectors for [MQ](/docs/EventStreams-gen2?topic=EventStreams-gen2-mq_connector) and [Cloud Object Storage](/docs/EventStreams?topic=EventStreams-cos_connector).
 
-You can use Kafka Connect with {{site.data.keyword.messagehub_full}} and can run the workers inside or outside {{site.data.keyword.cloud}}. {{site.data.keyword.IBM_notm}} has an extensive list of over 50 connectors that are supported either by {{site.data.keyword.IBM_notm}} or the community. You find these connectors in the [connector catalog](https://ibm.github.io/event-automation/connectors/).
+You can use Kafka Connect with {{site.data.keyword.messagehub_full}} and can run the workers inside or outside {{site.data.keyword.cloud_notm}}. {{site.data.keyword.IBM_notm}} provides over 50 connectors that either {{site.data.keyword.IBM_notm}} or the community supports. You can find these connectors in the [connector catalog](https://ibm.github.io/event-automation/connectors/){: external}.
 
 Kafka Connect can run in either stand-alone or distributed mode. Stand-alone mode is intended for testing and temporary connections between systems. Distributed mode is more appropriate for production use. The configuration required to use {{site.data.keyword.messagehub}} with these two modes is slightly different.
 
@@ -47,7 +47,7 @@ You must provide the bootstrap servers and SASL credentials information in the w
 ```
 {: codeblock}
 
-Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
+Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.cloud_notm}} console.
 
 ### Source connector
 {: #source_connector}
@@ -64,7 +64,7 @@ The following example lists the properties that you must provide in your propert
 ```
 {: codeblock}
 
-Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
+Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.cloud_notm}} console.
 
 ### Sink connector
 {: #sink_connector}
@@ -80,7 +80,7 @@ The following example lists the properties that you must provide in your propert
 ```
 {: codeblock}
 
-Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
+Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.cloud_notm}} console.
 
 ## Distributed worker configuration
 {: #distributed_worker}
@@ -97,7 +97,7 @@ You must provide the bootstrap servers and SASL credentials information in the p
 ```
 {: codeblock}
 
-Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.Bluemix_notm}} console.
+Replace BOOTSTRAP_ENDPOINTS, USER, and PASSWORD with the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in the {{site.data.keyword.cloud_notm}} console.
 
 If you want to use a source connector, you must also specify the SSL and SASL configuration for the producer as follows:
 
@@ -119,7 +119,7 @@ If you want to use a sink connector, you must also specify the SSL and SASL conf
 ````
 {: codeblock}
 
-In addition, Kafka Connect in distributed mode uses three topics internally. These topics are created automatically when a worker starts up, if you use Kafka Connect in Apache Kafka version 0.11 or later. You provide the names of the topics as configuration parameters. Ensure that the values are the same for all workers with the same `group.id` configuration value.
+In addition, Kafka Connect in distributed mode uses three topics internally. If you use Kafka Connect in Apache Kafka version 0.11 or later, Kafka Connect creates these topics automatically when a worker starts. You provide the names of the topics as configuration parameters. Ensure that the values are the same for all workers with the same `group.id` configuration value.
 
 | Configuration               | Description                                                         |
 | --------------------------- | ------------------------------------------------------------------- |

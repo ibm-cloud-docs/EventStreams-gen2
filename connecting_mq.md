@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-11"
 
 keywords: MQ bridge, connect configuration
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to run Kafka Connect in an {{site.data.keyword.cloud_notm}} Kubernetes Service cluster and use the IBM MQ source connector to copy messages from IBM MQ to {{site.data.keyword.messagehub}}.
+Learn how to run Kafka Connect in an {{site.data.keyword.cloud}} Kubernetes Service cluster and use the IBM MQ source connector to copy messages from IBM MQ to {{site.data.keyword.messagehub}}.
 {: shortdesc}
 
 Get the Kafka Connect runtime to run in an {{site.data.keyword.containerlong}} cluster. Then, start the {{site.data.keyword.IBM_notm}} MQ Source Connector to copy messages from an {{site.data.keyword.IBM_notm}} MQ source queue to a destination Kafka topic in {{site.data.keyword.messagehub}}.
@@ -28,12 +28,12 @@ The {{site.data.keyword.IBM_notm}} MQ Source Connector connects to an {{site.dat
 ## Step 1. Install the prerequisites
 {: #step1_install_prereqs_mq}
 
-Ensure you have the following software and services installed:
+Ensure that you have the following software and services installed:
 
 * An {{site.data.keyword.messagehub}} instance - Standard or Enterprise plan.
 * An instance of [{{site.data.keyword.IBM_notm}} MQ on Cloud](/docs/mqcloud?topic=mqcloud-getting_started){: external} or [{{site.data.keyword.IBM_notm}} MQ Version 8](https://www.ibm.com/support/pages/downloading-ibm-mq-80){: external}, or later.
 
-   You can configure the {{site.data.keyword.IBM_notm}} MQ Connector to authenticate with {{site.data.keyword.IBM_notm}} MQ by using a user identifier and password. We recommend that you grant the following permissions only to the identity associated with an instance of the MQ bridge:
+   You can configure the {{site.data.keyword.IBM_notm}} MQ Connector to authenticate with {{site.data.keyword.IBM_notm}} MQ by using a user identifier and password. Grant the following permissions only to the identity that is associated with an instance of the MQ bridge:
    * CONNECT authority. The {{site.data.keyword.IBM_notm}} MQ Connector must be able to connect to the MQ queue manager.
    * GET authority for the queue that the {{site.data.keyword.IBM_notm}} MQ Connector is configured to consume from.
 * An {{site.data.keyword.containershort}} cluster. You can provision one for testing purposes at no cost.
@@ -57,13 +57,13 @@ Clone the following two repositories that contain the required files:
 
 1. You must set up this configuration only once. {{site.data.keyword.messagehub}} stores it for future use.
 
-    From the event-streams-samples project, navigate to the `kafka-connect/IKS directory`, edit the `connect-distributed.properties` file, and replace `<BOOTSTRAP_SERVERS>`; in one place and `<APIKEY>` in three places with your {{site.data.keyword.messagehub}} credentials.
+    From the event-streams-samples project, go to the `kafka-connect/IKS` directory and edit the `connect-distributed.properties` file. Replace `<BOOTSTRAP_SERVERS>` in one place and `<APIKEY>` in three places with your {{site.data.keyword.messagehub}} credentials.
 
     Provide `<BOOTSTRAP_SERVERS>` as a comma-separated list. If they are not valid, you get an error.
 
     Your `<APIKEY>` appears in clear text on your machine but is secret when pushed to {{site.data.keyword.containershort}}.
 
-    Kafka Connect can run multiple workers for reliability and scalability reasons. If your {{site.data.keyword.containershort}} cluster has more than one node and you want multiple Connect workers, edit the `kafka-connect.yaml` file, and edit the entry `replicas: 1`.
+    Kafka Connect can run multiple workers for reliability and scalability reasons. If your {{site.data.keyword.containershort}} cluster has more than one node and you want multiple Connect workers, edit the `kafka-connect.yaml` file and change the entry `replicas: 1`.
 
 2. Then, run the following commands.
 
@@ -108,7 +108,7 @@ Keep the terminal that you used for port forwarding open, and use another termin
 The Connect REST API is then available at `http://localhost:8083`. If you want more information about the API, see
 [Kafka Connect REST Interface](https://kafka.apache.org/){: external}.
 
-So, you now have the Kafka Connect runtime that is deployed and running in {{site.data.keyword.containershort}}. Next, let's configure and start the {{site.data.keyword.IBM_notm}} MQ Connector.
+You now have the Kafka Connect runtime deployed and running in {{site.data.keyword.containershort}}. Next, configure and start the {{site.data.keyword.IBM_notm}} MQ Connector.
 
 
 ## Step 6. Configure the mq-source JSON file
@@ -131,10 +131,10 @@ QUEUE
 :   Required. Name of the source IBM MQ queue.
 
 CHANNEL_NAME
-:   Required (unless you're using bindings or a CCDT file). Name of the server-connection channel.
+:   Required (unless you use bindings or a CCDT file). Name of the server-connection channel.
 
 CONNECTION_NAME_LIST
-:   Required (unless you're using bindings or a CCDT file). A list of one or more host(port) pairs for connecting to the queue manager. Separate entries with a comma.
+:   Required (unless you use bindings or a CCDT file). A list of one or more host(port) pairs for connecting to the queue manager. Separate entries with a comma.
 
 
 ## Step 7. Start the connector with its configuration
@@ -154,4 +154,4 @@ You can check your connector by going to the following address:
 
 `http://localhost:8083/connectors/mq-source/status`
 
-If the state of the connector is not running, restart the connector.
+If the connector is not running, restart it.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-11"
 
 keywords: java client, api, admin api, liberty, migrate client, sasl.jaas.config property
 
@@ -17,10 +17,10 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use the Kafka Java client with {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including sample code and configuration details for optimal performance.
+Learn how to use the Kafka Java client with {{site.data.keyword.cloud}} {{site.data.keyword.messagehub}}, including sample code and configuration details for optimal performance.
 {: shortdesc}
 
-For optimal performance with the Java client, you are recommended to use version 2.6.0, or later. For more information, see [known restriction about Java Kafka calls](/docs/EventStreams-gen2?topic=EventStreams-gen2-restrictions#calls_timeout_kafka).
+For optimal performance with the Java client, use version 2.6.0 or later. For more information, see [known restriction about Java Kafka calls](/docs/EventStreams-gen2?topic=EventStreams-gen2-restrictions#calls_timeout_kafka).
 
 The sample code is in the [event-streams-samples GitHub project](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-console-sample){: external}. Although the sample uses the Kafka API to send and receive messages, the sample uses the {{site.data.keyword.messagehub}} Administration API to create the topic it sends messages to and receives messages from.
 
@@ -31,7 +31,7 @@ For a detailed walkthrough of how to run the sample, see [Getting started with {
 ## How to use, download, and run the {{site.data.keyword.runtime_liberty_notm}} sample
 {: #liberty_sample}
 
-The {{site.data.keyword.runtime_liberty_full}} sample implements a simple application that is deployed onto the Liberty runtime. The application uses the Kafka API for {{site.data.keyword.messagehub}} to produce and consume messages. The application also serves up a web front end that you can use for administration.
+The {{site.data.keyword.runtime_liberty_full}} sample implements a simple application that you deploy onto the Liberty runtime. The application uses the Kafka API for {{site.data.keyword.messagehub}} to produce and consume messages. The application also serves up a web front end that you can use for administration.
 
 You can find the sample code in the [event-streams-samples GitHub project](https://github.com/ibm-messaging/event-streams-samples/tree/master/kafka-java-liberty-sample){: external}.
 
@@ -47,23 +47,23 @@ If you use a Kafka client at 0.10.2.1 or later, you can use the `sasl.jaas.confi
 ```
 {: codeblock}
 
-`USERNAME` and `PASSWORD` are the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in {{site.data.keyword.Bluemix_notm}}.
+`USERNAME` and `PASSWORD` are the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in {{site.data.keyword.cloud_notm}}.
 
 If you use `sasl.jaas.config`, clients that run in the same JVM can use different credentials. For more information, see [Configuring Kafka clients](https://kafka.apache.org/){: external}.
 
-For an earlier Kafka client, you must use a JAAS configuration file to specify the credentials. This mechanism is less convenient, therefore use the `sasl.jaas.config` property instead.
+For an earlier Kafka client, you must use a JAAS configuration file to specify the credentials. This mechanism is less convenient. Therefore, use the `sasl.jaas.config` property instead.
 
 ## Migrating a Kafka client from version 0.9.X or 0.10.X to later client versions
 {: #kafka_migrate}
 
 If you use the Java clients, you can use the publicly available Kafka clients version 0.10 or later.
 
-You are encouraged to move from version 0.9.X to the latest version. You can download a Kafka client from [https://kafka.apache.org/downloads](https://kafka.apache.org/community/downloads/){: external}.
+Move from version 0.9.X to the latest version. You can download a Kafka client from [https://kafka.apache.org/downloads](https://kafka.apache.org/community/downloads/){: external}.
 
 ### Migrating a Kafka client to version 0.10.2.X or later versions
 {: #kafka_migrate_later}
 
-From version 0.10.2, you can configure SASL authentication directly in the client's properties instead of using a JAAS file. This simplification lets you to run multiple clients in the same JVM by using different sets of credentials, which is not possible with a JAAS file.
+From version 0.10.2, you can configure SASL authentication directly in the client's properties instead of using a JAAS file. This simplification lets you run multiple clients in the same JVM by using different sets of credentials, which is not possible with a JAAS file.
 
 Complete the following steps:
 
@@ -75,4 +75,4 @@ Complete the following steps:
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="USERNAME" password="PASSWORD";
     ```
 
-    `USERNAME` and `PASSWORD` are the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in {{site.data.keyword.Bluemix_notm}}.
+    `USERNAME` and `PASSWORD` are the values from your {{site.data.keyword.messagehub}} **Service Credentials** tab in {{site.data.keyword.cloud_notm}}.

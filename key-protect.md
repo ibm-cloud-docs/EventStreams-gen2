@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-11-10"
+lastupdated: "2026-11-11"
 
 subcollection: EventStreams-gen2
 
@@ -16,12 +16,12 @@ keywords: bring your own key, byok, cryptoshredding, key rotation, key rotation 
 
 [Gen 2]{: tag-purple}
 
-Learn how to integrate Key Protect with {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud_notm}} to control encryption keys and secure your data by using bring your own key (BYOK).
+Learn how to integrate {{site.data.keyword.keymanagementserviceshort}} with {{site.data.keyword.messagehub}} on {{site.data.keyword.cloud}} to control encryption keys and secure your data by using bring your own key (BYOK).
 {: shortdesc}
 
-The data that you store in {{site.data.keyword.messagehub}} is encrypted by default by using randomly generated keys. To control the encryption keys, you can Bring Your Own Key (BYOK) through [{{site.data.keyword.keymanagementservicelong_notm}}](/docs/key-protect?topic=key-protect-integrate-services) and use one of your own keys to encrypt the storage volumes of the brokers.
+The data that you store in {{site.data.keyword.messagehub}} is encrypted by default by using randomly generated keys. To control the encryption keys, you can bring your own key (BYOK) through [{{site.data.keyword.keymanagementservicelong_notm}}](/docs/key-protect?topic=key-protect-integrate-services) and use one of your own keys to encrypt the storage volumes of the brokers.
 
-This document covers the integration of {{site.data.keyword.keymanagementserviceshort}} with Gen 2 {{site.data.keyword.messagehub}}. 
+This document covers the integration of {{site.data.keyword.keymanagementserviceshort}} with Gen 2 {{site.data.keyword.messagehub}}.
 {: .note}
 
 To get started, provision [{{site.data.keyword.keymanagementserviceshort}}](https://cloud.ibm.com/catalog/services/key-protect) on your {{site.data.keyword.cloud_notm}} account.
@@ -44,15 +44,15 @@ Authorize {{site.data.keyword.keymanagementserviceshort}} for use with {{site.da
 5. In the **Source service** menu, select the service of the deployment: **{{site.data.keyword.messagehub}}**.
 6. In the **Source service resources** menu, select **All resources**.
 7. In the **Target service** menu, select **{{site.data.keyword.keymanagementserviceshort}}**.
-8. Select or retain the default value **Account** as the resource group for the **Target Service**
+8. Select or retain the default value **Account** as the resource group for the **Target Service**.
 9. In the Target service **Instance ID** menu, select the service instances to authorize.
 10. Enable the **Reader** role.
 11. To use bring your own key (BYOK), select the **Enable authorizations to be delegated** box in the **Authorize dependent services** section.
 12. Click **Authorize**.
 
-If the service authorization is not present before provisioning your deployment with a key, the provision fails.
+If the service authorization is not present before provisioning your deployment with a key, the provisioning fails.
 
-If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. 
+If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance.
 {: .important}
 
 ## Granting service authorization in the CLI
@@ -66,18 +66,18 @@ bx iam authorization-policy-create messagehub kms "Reader,AuthorizationDelegator
 ```
 {: codeblock}
 
-If the service authorization is not present before provisioning your deployment with a key, the provision fails.
+If the service authorization is not present before provisioning your deployment with a key, the provisioning fails.
 
-If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. 
+If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance.
 {: .important}
 
 ## Granting service authorization via the REST API
 {: #granting-service-auth-api}
 {: api}
 
-1. Create an authorization policy to allow the {{site.data.keyword.messagehub}} service to access the {{site.data.keyword.keymanagementserviceshort}} service instance via the [IAM REST API](/docs/EventStreams-gen2?topic=EventStreams-gen2-key-protect&interface=api#granting-service-auth-api).
+1. Create an authorization policy to allow the {{site.data.keyword.messagehub}} service to access the {{site.data.keyword.keymanagementserviceshort}} service instance by using the [IAM REST API](/docs/EventStreams-gen2?topic=EventStreams-gen2-key-protect&interface=api#granting-service-auth-api).
 
-For a full API reference, see  the [IAM Policy Management API](/docs/apis/iam-policy-management#create-policy).
+For a full API reference, see the [IAM Policy Management API](/docs/apis/iam-policy-management#create-policy).
 {: note}
 
 ```bash
@@ -125,9 +125,9 @@ curl -X POST 'https://iam.cloud.ibm.com/v1/policies' -H "Authorization: Bearer $
 ```
 {: codeblock}
 
-If the service authorization is not present before provisioning your deployment with a key, the provision fails.
+If the service authorization is not present before provisioning your deployment with a key, the provisioning fails.
 
-If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance. 
+If you want to set up a more restrictive authorization policy, configure your policy for an explicit root key CRN or for a specific {{site.data.keyword.keymanagementserviceshort}} instance.
 {: .important}
 
 ## Using the {{site.data.keyword.keymanagementserviceshort}} key
@@ -139,7 +139,7 @@ After you grant your {{site.data.keyword.messagehub}} deployments permission to 
 {: #key-using-ui}
 {: ui}
 
-If provisioning from the catalog page, select the {{site.data.keyword.keymanagementserviceshort}} instance and key from the dropdown menus.
+If you provision from the catalog page, select the {{site.data.keyword.keymanagementserviceshort}} instance and key from the dropdown menus.
 
 ## Using the {{site.data.keyword.keymanagementserviceshort}} key in the CLI at provision
 {: #key-using-cli}
@@ -198,12 +198,12 @@ If you delete a deployment that is protected with a {{site.data.keyword.keymanag
 Cryptoshredding is a destructive action. When the key is deleted, your data is unrecoverable.
 {: .important}
 
-{{site.data.keyword.keymanagementserviceshort}} allows you to [initiate a force delete](/docs/key-protect?topic=key-protect-delete-keys) of a key that is in use by {{site.data.keyword.cloud}} services, including your Gen 2 {{site.data.keyword.messagehub}} deployments. This action is called cryptoshredding. Deleting a key that is in use on your deployment locks the disks that contain your data and disables your deployment. You are still able to access the UI and some metadata such as security settings in the UI, CLI, and API but you are not able to access any of the topics/partitions or data that is contained within them. Key deletion is [sent to the {{site.data.keyword.atracker_short}}](/docs/key-protect?topic=key-protect-at-events) as `kms.secrets.delete`.
+{{site.data.keyword.keymanagementserviceshort}} allows you to [initiate a force delete](/docs/key-protect?topic=key-protect-delete-keys) of a key that is in use by {{site.data.keyword.cloud_notm}} services, including your Gen 2 {{site.data.keyword.messagehub}} deployments. This action is called cryptoshredding. Deleting a key that is in use on your deployment locks the disks that contain your data and disables your deployment. You are still able to access the UI and some metadata such as security settings in the UI, CLI, and API but you are not able to access any of the topics/partitions or data that is contained within them. Key deletion is [sent to the {{site.data.keyword.atracker_short}}](/docs/key-protect?topic=key-protect-at-events) as `kms.secrets.delete`.
 
 ### Granting the delegation authorization
 {: #grant-auth}
 
-To enable your deployment to use the {{site.data.keyword.keymanagementserviceshort}} key, you need to [Enable authorization to be delegated](/docs/iam?topic=iam-serviceauth) when granting the service authorizations. If the delegation authorization is not present before provisioning your deployment with a key, the provision fails.
+To enable your deployment to use the {{site.data.keyword.keymanagementserviceshort}} key, you need to [Enable authorization to be delegated](/docs/iam?topic=iam-serviceauth) when granting the service authorizations. If the delegation authorization is not present before provisioning your deployment with a key, the provisioning fails.
 
 After you enable delegation and provisioned your deployment, two entries appear in your _Authorizations_ in IAM. One is the entry for the deployment that lists its status as delegator. It is "User Created".
 
@@ -264,11 +264,11 @@ For approved {{site.data.keyword.messagehub}} Gen 2 deployments, you can use [{{
 ## Common pitfalls
 {: #common-pitfalls}
 
-Be careful when removing keys and authorizations. If you have multiple deployments that use the same keys, it is possible to inadvertently destroy data to **all** of those deployments by revoking the delegation authorization. If possible, do not use the same key for multiple deployments.
+Be careful when removing keys and authorizations. If you have multiple deployments that use the same keys, you might inadvertently destroy data for **all** of those deployments by revoking the delegation authorization. If possible, do not use the same key for multiple deployments.
 
-If you want to shred the data associated with your instance, you can delete the key. {{site.data.keyword.block_storage_is_short}} ensures that the storage is unreadable and unwriteable. However, any other deployments that use that same key will also encounter failures.
+If you want to shred the data associated with your instance, you can delete the key. {{site.data.keyword.block_storage_is_short}} ensures that the storage is unreadable and unwriteable. However, any other deployments that use that same key also encounter failures.
 
-If you delete the {{site.data.keyword.block_storage_is_short}} volume authorization (as seen in Table 2), not only the deployment that is shown as the creator is affected, but any deployments that also use the same key are affected as well. Those deployments will encounter topic/partition failures until you open a support ticket and request the policy to be re-created.
+If you delete the {{site.data.keyword.block_storage_is_short}} volume authorization (as shown in the second authorization example), the deployment that is shown as the creator is affected, and so are any deployments that use the same key. Those deployments encounter topic/partition failures until you open a support ticket and request that {{site.data.keyword.IBM_notm}} re-create the policy.
 
 Use caution if you reuse keys.
 {: .important}

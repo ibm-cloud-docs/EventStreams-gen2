@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-10"
+lastupdated: "2026-11-11"
 
 keywords: quotas, quota implementation, mapping quotas, authorization, client metrics
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to set Kafka quotas to enforce limits on produce and consume requests, controlling broker resources used by clients on {{site.data.keyword.cloud_notm}}.
+Learn how to set Kafka quotas to enforce limits on produce and consume requests, controlling broker resources used by clients on {{site.data.keyword.cloud}}.
 {: shortdesc}
 
 ## About Kafka quotas
@@ -35,9 +35,9 @@ The following rules apply to Kafka quotas:
 
 - You can define separate quotas for producers and consumers.
 - By default, client quotas are unlimited.
-- Quotas are applied per broker, not per cluster.
+- Kafka applies quotas per broker, not per cluster.
 - A quota applies to all clients that share a single user identity.
-- A quota can be applied to the default user, applying to any user without an explicit quota.
+- You can apply a quota to the default user, which applies to any user without an explicit quota.
 
 ## Client metrics
 {: #client_metrics}
@@ -56,12 +56,12 @@ The {{site.data.keyword.messagehub_full}} Enterprise plan supports using the Kaf
 
 According to the [Kafka documentation on quotas](https://kafka.apache.org/){: external}, only throughput quota types (`producer_byte_rate` and `consumer_byte_rate`) applied to the `user` entity or the default user are supported.
 
-The `client-id`, `request`, and `controller-mutation` quota types are not supported as user-settable quotas. In {{site.data.keyword.messagehub}}, an authenticated user identity is represented by an {{site.data.keyword.iamlong}} service ID. Because Kafka quotas are applied per {{site.data.keyword.iamshort}} service ID, multiple API keys share a single quota if they belong to the same service ID.
+The `client-id`, `request`, and `controller-mutation` quota types are not supported as user-settable quotas. In {{site.data.keyword.messagehub}}, an {{site.data.keyword.iamlong}} service ID represents an authenticated user identity. Because Kafka applies quotas per {{site.data.keyword.iamshort}} service ID, multiple API keys share a single quota if they belong to the same service ID.
 
-## Mapping quotas onto an IBM Event Streams Enterprise cluster
+## Mapping quotas onto an {{site.data.keyword.messagehub}} Enterprise cluster
 {: #mapping_quotas_enterprise}
 
-Kafka API quotas apply per broker, while Enterprise plan capacity is specified as total per-cluster throughput. To limit a user to 10 MB/s in total, apply a quota of 10/*n* MB/s to each broker, where *n* is the number of brokers in the cluster.
+Kafka API quotas apply per broker, while the Enterprise plan specifies capacity as total per-cluster throughput. To limit a user to 10 MB/s in total, apply a quota of 10/*n* MB/s to each broker, where *n* is the number of brokers in the cluster.
 
 To find the number of brokers in a cluster, use the `KafkaAdminClient.describeCluster` method. For more information, see the [Kafka Java API reference](https://kafka.apache.org/32/javadoc/org/apache/kafka/clients/admin/KafkaAdminClient.html#describeClusterorg.apache.kafka.clients.admin.DescribeClusterOptions){: external}.
 
@@ -75,9 +75,9 @@ bin/kafka-configs.sh --command-config command-config.properties --bootstrap-serv
 ## {{site.data.keyword.messagehub}} authorization
 {: #es_authorization}
 
-To be authorized to set client quotas, a user must have the Manager role on the "cluster" resource in {{site.data.keyword.iamshort}}.
+To set client quotas, a user must have the Manager role on the **cluster** resource in {{site.data.keyword.iamshort}}.
 
-A set of credentials created with the {{site.data.keyword.messagehub}} UI with the Manager role on the instance also has the Manager role on cluster. Thus, you can create, delete, and alter topics in addition to setting quotas. Any authenticated user has an implied Reader role on cluster and can describe quotas.
+A set of credentials that you create with the {{site.data.keyword.messagehub}} UI with the Manager role on the instance also has the Manager role on cluster. Therefore, you can create, delete, and alter topics in addition to setting quotas. Any authenticated user has an implied Reader role on cluster and can describe quotas.
 {: note}
 
 To create credentials that can manage topics, consumer groups, and transactions without permission to set quotas, assign an IAM access policy with the Manager role on resource types `topic`, `group`, and `txnid`, and the Reader role on `cluster`.
@@ -215,6 +215,6 @@ class Snippet {
 ## {{site.data.keyword.cloudaccesstraillong_notm}} events
 {: #activity_tracker_events}
 
-When you update throughput quotas, an {{site.data.keyword.messagehub}} configuration event is generated in {{site.data.keyword.cloudaccesstraillong}}.
+When you update throughput quotas, {{site.data.keyword.messagehub}} generates a configuration event in {{site.data.keyword.cloudaccesstraillong}}.
 
 For more information about configuring {{site.data.keyword.at_short}} events for {{site.data.keyword.messagehub}}, see [Activity tracker events](/docs/EventStreams-gen2?topic=EventStreams-gen2-at_events).

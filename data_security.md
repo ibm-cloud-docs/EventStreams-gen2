@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2026
-lastupdated: "2026-11-04"
+lastupdated: "2026-11-11"
 
 keywords: protocols, encryption, data isolation, data retention, data isolation model
 
@@ -15,7 +15,7 @@ subcollection: EventStreams-gen2
 # Securing data in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}: Protocols and best practices
 {: #data_security}
 
-Learn about data security and privacy in {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including cryptographic protocols, encryption methods, and data isolation models.
+Learn about data security and privacy in {{site.data.keyword.cloud}} {{site.data.keyword.messagehub}}, including cryptographic protocols, encryption methods, and data isolation models.
 {: shortdesc}
 
 {{site.data.keyword.IBM}} uses the following methods to help ensure the security and privacy of your data: cryptographic protocols, encryption, and data isolation. Each plan provides different data isolation models.
@@ -51,23 +51,23 @@ For TLS v1.3:
 ## Encryption of message payloads, topic names, and consumer groups
 {: #encryption_payloads}
 
-Message data is encrypted for transmission between {{site.data.keyword.messagehub}} and clients as a result of TLS. {{site.data.keyword.messagehub}} stores message data at rest and message logs on encrypted disks.
+TLS encrypts message data in transit between {{site.data.keyword.messagehub}} and clients. {{site.data.keyword.messagehub}} stores message data at rest and message logs on encrypted disks.
 
-Topic names and consumer groups are encrypted for transmission between {{site.data.keyword.messagehub}} and clients as a result of TLS. However, {{site.data.keyword.messagehub}} does not encrypt these values at rest. Therefore, do not use confidential information in your topic names.
+TLS encrypts topic names and consumer groups in transit between {{site.data.keyword.messagehub}} and clients. However, {{site.data.keyword.messagehub}} does not encrypt these values at rest. Therefore, do not use confidential information in your topic names.
 
-For information about compliance on each of the {{site.data.keyword.messagehub}} plans, see [What's supported by the Lite, Standard, and Enterprise plans](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
+For information about compliance on each of the {{site.data.keyword.messagehub}} plans, see [What is supported by the Lite, Standard, Enterprise, and Enterprise Gen 2 plans](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## Data isolation model
 {: #data_isolation}
 
-### Enterprise Gen2 plan
+### Enterprise Gen 2 plan
 {: #data_isolation_enterprise}
 
-The Enterprise Gen2 plan provides a tenant-specific service in the {{site.data.keyword.IBM_notm}} service domain. The Enterprise Gen2 plan creates a single-tenant instance on a shared Kubernetes cluster on shared hardware (VSI isolation). The Enterprise Gen2 plan provides private endpoints only for network isolation. The Enterprise Gen2 plan creates single-tenant {{site.data.keyword.blockstorageshort}} for each new instance.
+The Enterprise Gen 2 plan provides a tenant-specific service in the {{site.data.keyword.IBM_notm}} service domain. The Enterprise Gen 2 plan creates a single-tenant instance on a shared Kubernetes cluster on shared hardware (VSI isolation). The Enterprise Gen 2 plan provides private endpoints only for network isolation. The Enterprise Gen 2 plan creates single-tenant {{site.data.keyword.blockstorageshort}} for each new instance.
 
 ## Data retention and reclamation
 {: #data_retention_reclamation}
 
-On all plans, when a service instance is deleted, the data is not deleted immediately. It is scheduled for reclamation and {{site.data.keyword.messagehub}} sets this retention period to three days, after which the data (both topics and messages that are written to the topics) is irreversibly destroyed. It is also possible to restore a deleted instance that is not yet reclaimed.
+On all plans, when you delete a service instance, {{site.data.keyword.messagehub}} does not delete the data immediately. Instead, it schedules the data for reclamation and sets the retention period to three days. After this period, the data (both topics and messages that are written to the topics) is irreversibly destroyed. You can also restore a deleted instance that is not yet reclaimed.
 
-You can check the status of a reclamation, and force or cancel a scheduled reclamation by using [the {{site.data.keyword.IBM_notm}} Cloud CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_reclamations).
+You can check the status of a reclamation, and force or cancel a scheduled reclamation by using the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_reclamations).

@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025, 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-11"
 
 keywords: gen 2
 
@@ -32,7 +32,7 @@ New regions available for {{site.data.keyword.messagehub}} Gen 1 to Gen 2 migrat
 {: #EventStreams-gen2-02nov2026}
 {: release-note}
 
-{{site.data.keyword.messagehub}} Gen 1 to Gen 2 migration is now generally available  
+{{site.data.keyword.messagehub}} Gen 1 to Gen 2 migration is now generally available
 :  Migration from Gen 1 (Classic) to Gen 2 (VPC) is now available for {{site.data.keyword.messagehub}}. You can migrate by using the drain-and-switch migration process, which provisions a new Gen 2 deployment, recreates topic configurations, and coordinates the cutover of producer and consumer applications from Gen 1 to Gen 2. For more information, see [Migrating {{site.data.keyword.messagehub}} from Gen 1 to Gen 2](/docs/EventStreams-gen2?topic=EventStreams-gen2-event-streams-relnotes-gen2).
 
 ## 7 October 2026
@@ -55,7 +55,7 @@ Context-based restrictions (CBR) support now available
 {: release-note}
 
 {{site.data.keyword.messagehub}} Gen 2 is now available in all VPC multizone regions
-:  You can now deploy {{site.data.keyword.messagehub}} Gen 2 in all supported {{site.data.keyword.cloud}} VPC multizone regions (MZRs). This release adds support for Toronto (ca-tor), Tokyo (jp-tok), Osaka (jp-osa), and Sao Paulo (br-sao). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
+:  You can now deploy {{site.data.keyword.messagehub}} Gen 2 in all supported {{site.data.keyword.cloud_notm}} VPC multizone regions (MZRs). This release adds support for Toronto (ca-tor), Tokyo (jp-tok), Osaka (jp-osa), and Sao Paulo (br-sao). For more information, see [Location availability](/docs/EventStreams-gen2?topic=EventStreams-gen2-plan_choose#what_is_supported).
 
 ## 17 September 2026
 {: #EventStreams-gen2-17sep2026}
@@ -97,8 +97,8 @@ Context-based restrictions (CBR) support now available
 {: release-note}
 
 Deprecation of {{site.data.keyword.hscrypto}}
-:  {{site.data.keyword.cloud}} is transitioning its dedicated key management offering from {{site.data.keyword.hscrypto}} to {{site.data.keyword.keymanagementservicelong}} Dedicated (Single Tenant). As part of this transition, {{site.data.keyword.hscrypto}} will reach **End of Life (EOL) on March 20, 2027**. After this date, the service will no longer be supported, and any remaining instances will be terminated.
-To ensure continued service availability and support, you must migrate all existing HPCS root keys to {{site.data.keyword.keymanagementservicelong_notm}} Dedicated (Single Tenant) before the EOL date. For more information on how to migrate your encryption keys, see [Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST)](/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_encryption#migrating_hpcs_to_kp).
+:  {{site.data.keyword.cloud_notm}} is transitioning its dedicated key management offering from {{site.data.keyword.hscrypto}} to {{site.data.keyword.keymanagementservicelong}} Dedicated (Single Tenant). As part of this transition, {{site.data.keyword.hscrypto}} reaches **End of Life (EOL) on March 20, 2027**. After this date, {{site.data.keyword.IBM}} no longer supports the service and terminates any remaining instances.
+To ensure continued service availability and support, you must migrate all existing HPCS root keys to {{site.data.keyword.keymanagementservicelong_notm}} Dedicated (Single Tenant) before the EOL date. For more information about how to migrate your encryption keys, see [Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST)](/docs/EventStreams-gen2?topic=EventStreams-gen2-managing_encryption#migrating_hpcs_to_kp).
 
 ## 02 March 2026
 {: #EventStreams-gen2-02mar2026}
@@ -118,7 +118,7 @@ To ensure continued service availability and support, you must migrate all exist
 {: #EventStreams-gen2-dec2025}
 {: release-note}
 
-Beta introduction of Enterprise Gen2 plan
+Beta introduction of Enterprise Gen 2 plan
 :  Support for Apache Kafka version 4.1.
 :  Built on VPC and software defined networking.
 :  Available in the Montreal region.
