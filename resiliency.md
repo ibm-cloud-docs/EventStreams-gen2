@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-10"
+lastupdated: "2026-11-11"
 
 keywords: resiliency, cluster resiliency, availability, data corruption, deletion, data management, disaster recovery, responsibilities
 
@@ -17,12 +17,12 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to maximize resiliency for your {{site.data.keyword.messagehub}} instance on {{site.data.keyword.cloud_notm}}, including cluster resiliency, application configuration, and monitoring.
+Learn how to maximize resiliency for your {{site.data.keyword.messagehub}} instance on {{site.data.keyword.cloud}}, including cluster resiliency, application configuration, and monitoring.
 {: shortdesc}
 
 By default, {{site.data.keyword.messagehub}} instances include built-in resiliency features to prevent service disruption and data loss. All instances replicate data across three brokers with automated failover. {{site.data.keyword.messagehub}} manages resource utilization and instance limits while proactively monitoring in-sync replicas and disk capacity. The service maintains an SLA of up to 99.99% for multizone regions (MZRs). For more information, see [Understanding your responsibilities when you use {{site.data.keyword.messagehub}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-event_streams_responsibilities).
 
-For disaster recovery, you can provision a secondary cluster in an alternate region and restore configuration and data, or replicate data between instances by using tools such as MirrorMaker. You are responsible for maintaining and executing disaster recovery procedures.
+For disaster recovery, you can provision a secondary cluster in an alternate region and restore configuration and data, or replicate data between instances by using tools such as MirrorMaker. You are responsible for maintaining and running disaster recovery procedures.
 
 ## Cluster resiliency
 {: #cluster_resiliency}
@@ -30,7 +30,7 @@ For disaster recovery, you can provision a secondary cluster in an alternate reg
 ### Instance deletion recovery
 {: #instance_deletion_recovery}
 
-{{site.data.keyword.messagehub}} retains deleted instances during a three-day reclamation period, after which data is permanently deleted. You can view reclamation status, reclaim, or cancel a pending reclamation by using the [IBM Cloud CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_reclamations).
+{{site.data.keyword.messagehub}} retains deleted instances during a three-day reclamation period, after which the service permanently deletes the data. You can view reclamation status, reclaim, or cancel a pending reclamation by using the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_reclamations).
 
 ### Client application configuration
 {: #resiliency_clientconfig}
@@ -55,10 +55,10 @@ Client observability
 :   Verify that client applications remain connected and process messages. Instrument producers to monitor unsent record queue depth and request latency.
 
 Consumer lag
-:   Monitor consumer group lag. If consumers fall behind and message retention limits are reached, unread messages are deleted according to the retention policy.
+:   Monitor consumer group lag. If consumers fall behind and message retention limits are reached, the service deletes unread messages according to the retention policy.
 
 Disk usage
-:   Monitor storage utilization. When disk usage reaches 100%, topic partition creation and message writes are blocked, and only read operations continue. Scale storage capacity or truncate expired records before disk capacity is exhausted.
+:   Monitor storage utilization. When disk usage reaches 100%, the service blocks topic partition creation and message writes, and only read operations continue. Scale storage capacity or truncate expired records before disk capacity is exhausted.
 
 CPU utilization
 :   Maintain normal operational CPU utilization under two-thirds (66%) capacity. Operating near maximum CPU utilization increases latency and risks request timeouts during availability zone failovers.

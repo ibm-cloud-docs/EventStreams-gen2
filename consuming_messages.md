@@ -92,7 +92,7 @@ Instead, it just updates its current offset by using a process that is called co
 
 {{site.data.keyword.messagehub}} retains committed offset information for 7 days.
 
-### What if no existing committed offset exists?
+### What if no committed offset exists?
 {: #no_committed_offset}
 
 When a consumer starts and is assigned a partition to consume, it starts at its group's committed offset.
@@ -241,4 +241,4 @@ Thrown as a result of `Consumer.commitSync(...)` when an unrecoverable error occ
 ### org.apache.kafka.common.errors.TimeoutException
 {: #timeout_exception}
 
-Thrown by `Producer.send(...),  Consumer.listTopics()` if the metadata cannot be retrieved. The exception is also seen in the send callback (or the returned Future) when the requested acknowledgment does not come back within `request.timeout.ms`. The client can retry the operation, but the effect of a repeated operation depends on the specific operation. For example, if sending a message is retried, the message is possibly duplicated.
+Thrown by `Producer.send(...),  Consumer.listTopics()` if the metadata cannot be retrieved. The exception also appears in the send callback (or the returned Future) when the requested acknowledgment does not come back within `request.timeout.ms`. The client can retry the operation, but the effect of a repeated operation depends on the specific operation. For example, if sending a message is retried, the message might be duplicated.

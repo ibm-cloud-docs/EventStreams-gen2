@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to export data from {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}, including tools and procedures for data portability to other cloud providers or on-premises.
+Learn how to export data from {{site.data.keyword.cloud}} {{site.data.keyword.messagehub}}, including tools and procedures for data portability to other cloud providers or on-premises.
 {: shortdesc}
 
 [Data portability](#x2113280){: term} includes the tools and procedures that you use to export digital artifacts to implement similar workloads on other cloud providers or on-premises software. It includes procedures for copying and storing your content and configuration in your own environment.
@@ -57,4 +57,4 @@ Schema Registry is not currently available on the Enterprise Gen 2 plan.
 ## Data ownership
 {: #data-ownership}
 
-All exported data is classified as customer content. You retain full customer ownership and licensing rights as stated in the [IBM Cloud Service Agreement](https://www.ibm.com/support/customer/csol/terms/?id=Z126-6304_WS){: external}.
+All exported data is classified as customer content. You retain full customer ownership and licensing rights as stated in the [{{site.data.keyword.cloud_notm}} Service Agreement](https://www.ibm.com/support/customer/csol/terms/?id=Z126-6304_WS){: external}.

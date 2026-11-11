@@ -106,7 +106,7 @@ You can enable message audit events on a per topic basis. Complete the following
    ```
    {: pre}
 
-After the topic's message audit config is updated, it takes about 5 minutes for message audit events to show up in {{site.data.keyword.cloudaccesstrailshort}}.
+After the topic's message audit config is updated, it takes about 5 minutes for message audit events to appear in {{site.data.keyword.cloudaccesstrailshort}}.
 {: important}
 
 Consider the following implications of enabling message audit events:

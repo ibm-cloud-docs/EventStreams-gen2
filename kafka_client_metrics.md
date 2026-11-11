@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-10"
+lastupdated: "2026-11-11"
 
 keywords: monitoring, metrics
 
@@ -17,15 +17,15 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to monitor Kafka client metrics for optimal functionality and health of your data pipeline on {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}}.
+Learn how to monitor Kafka client metrics for optimal functionality and health of your data pipeline on {{site.data.keyword.cloud}} {{site.data.keyword.messagehub}}.
 {: shortdesc}
 
-With Kafka, monitoring typically involves various metrics that are related to topics, partitions, brokers, and consumer groups. Standard Kafka metrics include information on throughput, latency, replication, and disk usage. Refer to the [Kafka documentation](https://kafka.apache.org/){: external} and relevant monitoring tools to understand the specific metrics available for your version of Kafka and how to interpret them effectively.
+With Kafka, monitoring typically involves various metrics that are related to topics, partitions, brokers, and consumer groups. Standard Kafka metrics include information on throughput, latency, replication, and disk usage. See the [Kafka documentation](https://kafka.apache.org/){: external} and relevant monitoring tools to understand the specific metrics available for your version of Kafka and how to interpret them effectively.
 
 ## Why monitor Kafka clients
 {: #why-monitor}
 
-Monitoring your {{site.data.keyword.messagehub}} instance ensures optimal functionality and health of your data pipeline. Client-side metrics help you detect issues such as resource contention, consumer lag, and broker bottlenecks before they cause downtime.
+Monitoring your {{site.data.keyword.messagehub}} instance helps you maintain optimal functionality and health of your data pipeline. Client-side metrics help you detect issues such as resource contention, consumer lag, and broker bottlenecks before they cause downtime.
 
 Kafka producers and consumers generate client-side metrics to monitor application performance and stability. The {{site.data.keyword.messagehub}} service also emits broker-side metrics. For more information, see [Monitoring {{site.data.keyword.messagehub}} service metrics by using {{site.data.keyword.mon_full_notm}}](/docs/EventStreams-gen2?topic=EventStreams-gen2-metrics).
 
@@ -60,4 +60,4 @@ Kafka producers and consumers generate client-side metrics to monitor applicatio
 :   Measures the average number of bytes consumed per second. Unexpected drops in consumed byte rate can indicate downstream application processing bottlenecks or stalled consumer threads.
 
 `rebalance-rate-per-hour`
-:   Measures the number of consumer group rebalances per hour. Frequent rebalances halt message consumption while partitions are reassigned, increasing latency. Maintain a low and stable rebalance rate to ensure consistent consumer throughput.
+:   Measures the number of consumer group rebalances per hour. Frequent rebalances halt message consumption while the service reassigns partitions, which increases latency. Maintain a low and stable rebalance rate for consistent consumer throughput.

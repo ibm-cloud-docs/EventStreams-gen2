@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-10"
+lastupdated: "2026-11-11"
 
 keywords: event streams, cli, resource controller, service instance, provisioning, service keys
 
@@ -17,7 +17,7 @@ subcollection: EventStreams-gen2
 
 [Gen 2]{: tag-purple}
 
-Learn how to use the {{site.data.keyword.cloud_notm}} Resource Controller CLI to work with {{site.data.keyword.messagehub}} Gen 2, including creating instances and managing service credentials.
+Learn how to use the {{site.data.keyword.cloud}} Resource Controller CLI to work with {{site.data.keyword.messagehub}} Gen 2, including creating instances and managing service credentials.
 {: shortdesc}
 
 To interact with {{site.data.keyword.messagehub}} on Gen 2 by using the CLI, use the {{site.data.keyword.cloud_notm}} Resource Controller CLI. For more information, see [General IBM Cloud CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli).
@@ -28,7 +28,7 @@ The {{site.data.keyword.messagehub}} plug-in supports only Gen 1 instances. For 
 ## Creating an instance
 {: #cli-create}
 
-To create an instance, run the following command.
+To create an instance, run the following command:
 
 ```sh
 ibmcloud resource service-instance-create INSTANCE_NAME SERVICE_NAME SERVICE_PLAN_NAME LOCATION -g RESOURCE_GROUP

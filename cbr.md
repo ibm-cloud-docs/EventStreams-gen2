@@ -81,7 +81,7 @@ A network zone represents an allowlist of IP addresses where an access request i
 1. Name your network zone and provide a description.
 1. Enter your *Allowed IP addresses.* You can enter a single IP address, a range of IP addresses, or a single CIDR.
 
-   The **Denied IP addresses** field is optional and should include only exceptions that are contained within the IP ranges you provide in the allowed IP addresses field.
+   The **Denied IP addresses** field is optional and includes only exceptions that are contained within the IP ranges you provide in the allowed IP addresses field.
    {: note}
 
 1. Choose your *Allowed VPCs*, selecting as many as you like.
@@ -137,7 +137,7 @@ resource "ibm_cbr_zone" "cbr_zone" {
 
 Alternatively, you can also use [Terraform IBM Modules (TIM) for CBR Zone](https://registry.terraform.io/modules/terraform-ibm-modules/cbr/ibm/latest/submodules/cbr-zone-module){: external} to create a zone for context-based restrictions or update addresses in an existing zone.
 
-An example for creating a CBR zone using [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/cbr/ibm/latest){: external}:
+An example for creating a CBR zone by using [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/cbr/ibm/latest){: external}:
 
 ```terraform
 module "ibm_cbr" "zone" {
@@ -169,7 +169,8 @@ ibmcloud cbr zones
 ```
 {: .pre}
 
-The `zone-update` command is an overwrite. Include all of the fields that are required as if you are creating the rule from scratch. If you omit any required fields, the rule overwrites those missing fields as empty, and the rule might fail because some of those fields are required, regardless of whether they are changing the rule. {: .important}
+The `zone-update` command is an overwrite. Include all of the fields that are required as if you are creating the rule from scratch. If you omit any required fields, the rule overwrites those missing fields as empty, and the rule might fail because some of those fields are required, regardless of whether they are changing the rule.
+{: .important}
 
 ### Delete network zones in the CLI
 {: #delete-network-zone-cli}
@@ -185,7 +186,7 @@ ibmcloud cbr zone-delete ZONE-ID
 ## Creating rules
 {: #rules}
 
-Rules restrict access to specific cloud resources based on resource attributes and contexts. A created rule can accept up to 2,000 IP/CIDR values for private endpoints and up to 2,000 IP/CIDR values for public endpoints. This limit is specfic to {{site.data.keyword.messagehub}}. Other {{site.data.keyword.cloud_notm}} service limits may vary.
+Rules restrict access to specific cloud resources based on resource attributes and contexts. A created rule can accept up to 2,000 IP/CIDR values for private endpoints and up to 2,000 IP/CIDR values for public endpoints. This limit is specific to {{site.data.keyword.messagehub}}. Other {{site.data.keyword.cloud_notm}} service limits might vary.
 
 {{site.data.keyword.messagehub}} does not support IPv6 addresses. If you include an IPv6 address, the service ignores it.
 
