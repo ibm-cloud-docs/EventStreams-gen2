@@ -16,6 +16,7 @@ content-type: tutorial
 
 # Migrating {{site.data.keyword.cloud_notm}} {{site.data.keyword.messagehub}} from Gen 1 to Gen 2
 {: #migrating-event-streams-gen1-to-gen2}
+{: toc-content-type="tutorial"}
 
 [Gen 2]{: tag-purple}
 
